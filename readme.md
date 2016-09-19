@@ -1,4 +1,9 @@
-# Dot files
+# Dot files - Beta
+
+# Welcome to my beta dotfiles branch
+
+# Be weary I promise no maintained functionality here
+
 
 tbh I know very little about dot file directory architecture.
 
