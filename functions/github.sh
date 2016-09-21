@@ -15,3 +15,8 @@ function pull-request() {
     git remote prune upstream;
 }
 alias pr="pull-request"
+
+# Pulls down pull request from upstream and creates branch
+function ghe() {
+    open "https://github.ibm.com/Whitewater/${1}/"
+}

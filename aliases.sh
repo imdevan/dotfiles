@@ -5,6 +5,7 @@
 
 # Default editor
 editor="atom"
+projects="~/Documents/projects/"
 work="~/Documents/projects/project-whitewater"
 aliases_file=~/.dotfiles/aliases.sh
 
@@ -38,6 +39,7 @@ alias conflicts="git diff --name-only --diff-filter=U"          # Does not push
 alias no-edit="git commit --amend --no-edit"                    # Does not push
 alias last="git log -1"                                         # Show last change
 alias rebase="git fetch upstream && git rebase upstream/master" # Fetch and rebase
+alias reset="git fetch upstream && git reset --hard upstream/master" # Fetch and rebase
 alias gcane!="git add -A && git commit --amend --no-edit && git push -f"
 
 # System
@@ -47,7 +49,7 @@ alias sleep="pmset sleepnow"        # Sleep
 # Open dotfiles
 alias dotfiles="${editor} ~/.dotfiles"
 alias n="npm start"
-alias p="cd ${work}"
+alias p="cd ${projects}"
 
 # Created from bookmark or new-alias
 alias i="/Users/devanhuapaya/Documents/projects/imdevan.github.io"
@@ -68,3 +70,4 @@ alias clean="rm -rf node_modules && npm install"
 alias liquid-docs="open https://shopify.github.io/liquid/tags/control-flow/"
 alias diff="git diff"
 alias gr="git remote"
+alias rf="rm -rf"

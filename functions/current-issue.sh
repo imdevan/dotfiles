@@ -1,4 +1,4 @@
-$current_issue="./current_issue.md"
+$current_issue=./current-issue
 
 function get-current-issue () {
     echo $(cat $current_issue)
