@@ -20,3 +20,14 @@ alias pr="pull-request"
 function ghe() {
     open "https://github.ibm.com/Whitewater/${1}/"
 }
+
+# Clone repository
+function clone() {
+    # TODO if $1 contains.git -> git clone $1
+    # TODO if $1 contains http -> git clone $1.git
+    if [ $# -gt 1 ]; then
+            git clone https://github.com/$2/$1.git
+    else
+        git clone https://github.com/imdevan/$1.git
+    fi
+}

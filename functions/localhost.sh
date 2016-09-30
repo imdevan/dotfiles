@@ -7,6 +7,6 @@ alias l80="open http://localhost:8080"
 # Opens localhost at port
 # takes number as port
 function localhost() {
-	open https://localhost:${1}
+	open http://localhost:${1}
 }
 alias l="localhost"
