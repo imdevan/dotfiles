@@ -1,9 +1,6 @@
 # Chance this is you change the location of these dotfiles
 dotfile_dir=~/.dotfiles
 
-# Variables used everywhere
-source $dotfile_dir/vars/colors.sh
-
 # Functions loosely organized category
 source $dotfile_dir/functions/localhost.sh
 source $dotfile_dir/functions/github.sh
