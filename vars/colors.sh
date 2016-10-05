@@ -10,6 +10,19 @@ pink=`tput setaf 13`
 bold=`tput bold`
 reset=`tput sgr0`
 
+function colors () {
+    echo "black: #292420,
+white: white,
+blue: #50C0E1,
+green: #2BB7A3,
+red: #E95353,
+salmon: #F77F79,
+light-gray: #f5f5f5,
+gray: #a5a5a5,
+dark-gray: #444444,
+seafoam: #2BB7A3,
+purple: #A087D2"
+}
 # e.g.
 # echo "${green}${bold}test ${reset}text"
-# Will show test in bold green and text in the default console font 
+# Will show test in bold green and text in the default console font

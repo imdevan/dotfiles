@@ -41,7 +41,6 @@ alias rebase="git fetch upstream && git rebase upstream/master" # Fetch and reba
 alias reset="git fetch upstream && git reset --hard upstream/master" # Fetch and rebase
 alias gcane="git commit --amend --no-edit"
 alias gcane!="git add -A && git commit --amend --no-edit && git push -f"
-# Delete branches
 alias delete="git for-each-ref --format=\"%(refname:short)\" refs/heads/$1\* | xargs git branch -D"
 
 # System
@@ -80,3 +79,6 @@ alias gd="git branch -D"
 alias k="killall node"
 alias doot="cd ~/.dotfiles"
 alias ci="open https://github.ibm.com/Whitewater/paddle/issues/1466"
+alias grem="git remote"
+alias sf="git add . && git commit -m 👋  && git stash"
+alias gsf="git add . && git commit -m 👋  && git stash"
