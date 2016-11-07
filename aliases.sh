@@ -7,7 +7,7 @@
 editor="atom"
 projects="~/Documents/projects/"
 work="~/Documents/projects/project-whitewater"
-aliases_file=~/.dotfiles/aliases.sh
+aliases_file=$dotfile_dir/aliases.sh
 
 # Restarts shell
 # Call after making changes w/o having to restart
@@ -48,7 +48,7 @@ alias off="sudo shutdown -h now"    # Shutdown
 alias sleep="pmset sleepnow"        # Sleep
 
 # Open dotfiles
-alias dotfiles="${editor} ~/.dotfiles"
+alias dotfiles="${editor} $dotfile_dir"
 alias n="npm start"
 alias p="cd ${projects}"
 
@@ -77,7 +77,7 @@ alias d="gulp deploy"
 alias dep="gulp deploy"
 alias gd="git branch -D"
 alias k="killall node"
-alias doot="cd ~/.dotfiles"
+alias doot="cd $dotfile_dir"
 alias ci="open https://github.ibm.com/Whitewater/paddle/issues/1466"
 alias grem="git remote"
 alias sf="git add . && git commit -m 👋  && git stash"
