@@ -6,7 +6,7 @@
 # Default editor
 editor="atom"
 work="~/Documents/projects/project-whitewater"
-aliases_file=~/.dotfiles/aliases.sh
+aliases_file=~/$dotfile_dir/aliases.sh
 
 # Restarts shell
 # Call after making changes w/o having to restart
@@ -45,7 +45,7 @@ alias off="sudo shutdown -h now"    # Shutdown
 alias sleep="pmset sleepnow"        # Sleep
 
 # Open dotfiles
-alias dotfiles="${editor} ~/.dotfiles"
+alias dotfiles="${editor} $dotfile_dir"
 alias n="npm start"
 alias p="cd ${work}"
 
