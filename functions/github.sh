@@ -16,11 +16,6 @@ function pull-request() {
 }
 alias pr="pull-request"
 
-# Pulls down pull request from upstream and creates branch
-function ghe() {
-    open "https://github.ibm.com/Whitewater/${1}/"
-}
-
 # Clone repository
 function clone() {
     # TODO if $1 contains.git -> git clone $1

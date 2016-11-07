@@ -6,7 +6,6 @@
 # Default editor
 editor="atom"
 projects="~/Documents/projects/"
-work="~/Documents/projects/project-whitewater"
 aliases_file=$dotfile_dir/aliases.sh
 
 # Restarts shell
@@ -55,7 +54,6 @@ alias p="cd ${projects}"
 alias serve="python -m SimpleHTTPServer"
 # Created from bookmark or new-alias
 alias i="/Users/devanhuapaya/Documents/projects/imdevan.github.io"
-alias paddle="/Users/devanhuapaya/Documents/projects/project-whitewater/paddle"
 alias a="atom ."
 alias v="vim ."
 alias grc="git rebase --continue"
@@ -72,16 +70,13 @@ alias diff="git diff"
 alias rf="rm -rf"
 alias gs="git stash"
 alias gb="git branch"
-alias paddle="/Users/devanhuapaya/Documents/projects/project-whitewater/paddle"
 alias d="gulp deploy"
 alias dep="gulp deploy"
 alias gd="git branch -D"
 alias k="killall node"
 alias doot="cd $dotfile_dir"
-alias ci="open https://github.ibm.com/Whitewater/paddle/issues/1466"
 alias grem="git remote"
 alias sf="git add . && git commit -m 👋  && git stash"
 alias gsf="git add . && git commit -m 👋  && git stash"
 alias nis="npm i --save"
-alias rapid="/Users/devanhuapaya/Documents/projects/project-whitewater/rapid"
 alias mat="atom /Users/devanhuapaya/Documents/projects/react-stack/node_modules/material-ui/lib/index.js"
