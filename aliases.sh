@@ -54,7 +54,7 @@ alias dotfiles="${editor} $dotfile_dir"
 alias n="npm start"
 alias p="cd ${projects}"
 
-alias serve="python -m SimpleHTTPServer"
+alias serve="python -m SimpleHTTPServer && l8"
 # Created from bookmark or new-alias
 alias i="cd ~/Documents/projects/imdevan.github.io"
 alias a="atom ."
@@ -85,3 +85,9 @@ alias nis="npm i --save"
 
 alias nrd="npm run dev"
 alias babun="cd /media/devan/OS/Users/huapa/.babun/cygwin/home"
+# Created from new-alias
+alias snig="sudo npm i -g"
+# Created from bookmark
+alias web-audio="/home/devan/Documents/projects/web-audio"
+# Created from new-alias
+alias ipconfig="ifconfig"
