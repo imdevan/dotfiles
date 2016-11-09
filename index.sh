@@ -11,5 +11,5 @@ source $dotfile_dir/aliases.sh
 source $dotfile_dir/functions/hiddenfiles.sh
 source $dotfile_dir/functions/localhost.sh
 source $dotfile_dir/functions/notes.sh
-source $dotfile_dir/functions/site.sh
+source $dotfile_dir/functions/web.sh
 source $dotfile_dir/functions/github.sh

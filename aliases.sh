@@ -15,16 +15,19 @@ alias r="refresh"
 
 # Function to create new aliases
 function new-alias() {
-    echo "alias ${1}=\"${2}\"" >> $aliases_file
-    refresh
+  echo "# Created from new-alias" >> $aliases_file
+  echo "alias ${1}=\"${2}\"" >> $aliases_file
+  echo "${green}alias ${1}=\"${2}\" ${purple} created!"
+  refresh
 }
 alias na="new-alias"
 
 # Bookmark position
 function bookmark() {
-    echo "${green}alias ${1}=\"$(pwd)\" ${purple} created!"
-    echo "alias ${1}=\"$(pwd)\"" >> $aliases_file
-    refresh
+  echo "# Created from bookmark" >> $aliases_file
+  echo "alias ${1}=\"$(pwd)\"" >> $aliases_file
+  echo "${green}alias ${1}=\"$(pwd)\" ${purple} created!"
+  refresh
 }
 alias b="bookmark"
 
@@ -53,7 +56,7 @@ alias p="cd ${projects}"
 
 alias serve="python -m SimpleHTTPServer"
 # Created from bookmark or new-alias
-alias i="/Users/devanhuapaya/Documents/projects/imdevan.github.io"
+alias i="cd ~/Documents/projects/imdevan.github.io"
 alias a="atom ."
 alias v="vim ."
 alias grc="git rebase --continue"
@@ -79,4 +82,6 @@ alias grem="git remote"
 alias sf="git add . && git commit -m 👋  && git stash"
 alias gsf="git add . && git commit -m 👋  && git stash"
 alias nis="npm i --save"
-alias mat="atom /Users/devanhuapaya/Documents/projects/react-stack/node_modules/material-ui/lib/index.js"
+
+alias nrd="npm run dev"
+alias babun="cd /media/devan/OS/Users/huapa/.babun/cygwin/home"
