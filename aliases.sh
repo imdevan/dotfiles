@@ -5,12 +5,12 @@
 
 # Default editor
 editor="atom"
-work="~/Documents/projects/project-whitewater"
+projects="~/Documents/Projects/"
 aliases_file=~/$dotfile_dir/aliases.sh
 
 # Restarts shell
 # Call after making changes w/o having to restart
-alias refresh="source ~/.zshrc && clear"
+alias refresh="source ~/.bashrc && clear"
 alias r="refresh"
 
 # Function to create new aliases
@@ -45,9 +45,10 @@ alias off="sudo shutdown -h now"    # Shutdown
 alias sleep="pmset sleepnow"        # Sleep
 
 # Open dotfiles
+alias doot="cd $dotfile_dir"
 alias dotfiles="${editor} $dotfile_dir"
 alias n="npm start"
-alias p="cd ${work}"
+alias p="cd ${projects}"
 
 # Created from bookmark or new-alias
 alias i="/Users/devanhuapaya/Documents/projects/imdevan.github.io"

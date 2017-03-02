@@ -1,3 +1,4 @@
+github_account='imdevan'
 
 # Calls git add, git commit, and git push
 # Takes commit message
@@ -15,3 +16,16 @@ function pull-request() {
     git remote prune upstream;
 }
 alias pr="pull-request"
+
+# Pulls down pull request from upstream and creates branch
+function clone() {
+  repo=$1
+  if [ -z "$2" ]; then
+      org=$2
+  else
+    org=$github_account
+  fi
+
+  git clone git@github.com:${org}/${repo}.git
+}
+alias gcl="clone"
