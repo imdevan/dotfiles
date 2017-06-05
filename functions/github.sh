@@ -15,3 +15,12 @@ function pull-request() {
     git remote prune upstream;
 }
 alias pr="pull-request"
+
+function delete-branches() {
+  for i in "$@"; do git branch -d $i; done
+}
+function force-delete-branches() {
+  for i in "$@"; do git branch -D $i; done
+}
+alias gbd="delete-branches"
+alias gbd!="force-delete-branches"
