@@ -18,10 +18,20 @@ git clone https://github.com/imdevan/dotfiles.git
 Add `source ~/dotfiles/index.sh` to the end of your `.bashrc` or `.zshrc` file
 
 If you don't have a `.bashrc` file in your root directory, you can create one
+and everything should work.
 
 
 **Step 3**
 Restart you're terminal
+
+**Optional Step 4**
+For some of the github funcationality you will have to add
+
+```
+GIT_SSH_URL=git@github.com:<your_github_username>
+```
+
+And have `ssh` setup w/ your github account.
 
 ### notes
 

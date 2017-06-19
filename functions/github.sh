@@ -1,3 +1,5 @@
+source ../.gitVars
+
 
 # Calls git add, git commit, and git push
 # Takes commit message
@@ -24,3 +26,14 @@ function force-delete-branches() {
 }
 alias gbd="delete-branches"
 alias gbd!="force-delete-branches"
+
+function new-repo() {
+  ORIGIN=${GIT_SSH_URL}/${PWD##*/}.git
+  git init
+  git add .
+  git commit -m ':tada: first commit!'
+  git remote add origin ${ORIGIN}
+  git push -u origin master
+  echo ${green}New Repo Created at $ORIGIN${reset}
+}
+alias gn='new-repo'
