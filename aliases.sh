@@ -21,11 +21,25 @@ alias na="new-alias"
 
 # Bookmark position
 function bookmark() {
+  if [ -z "$1" ]; then
+    echo 'No name provided'
+  else
     echo "${green}alias ${1}=\"$(pwd)\" ${purple} created!"
     echo "alias ${1}=\"cd $(pwd)\"" >> $aliases_file
-    refresh
+  fi
 }
 alias b="bookmark"
+
+# Warning position
+function warning() {
+  if [ -z "$1" ]; then
+    echo 'No name provided'
+  else
+    echo "${green}Warning: ${purple}${1}${green} created!"
+    echo "echo ${1}" >> $aliases_file
+  fi
+}
+alias w="warning"
 
 
 # Google docs
@@ -105,3 +119,35 @@ alias ea="cd /c/Users/huapa/Documents/Projects/mk/electron-app"
 alias gm="git merge -m ':octocat:'"
 alias bsw="cd /c/Users/huapa/Documents/Projects/bisonstudio-v2.0"
 alias rm!="rm -rf"
+alias grs="git rebase origin/staging"
+alias gd="git diff"
+alias gcat="gap ":octocat:""
+alias undo="git reset HEAD~1"
+alias rs="cd /c/Users/huapa/Documents/Projects/React-Wordpress-Starter-Kit"
+alias sparkles="git add . && git commit -m ':sparkles: ' && git push"
+alias rws="cd /c/Users/huapa/Documents/Projects/React-Wordpress-Starter-Kit"
+alias s="git checkout staging"
+alias n="npm"
+alias r!="rm -rf"
+alias build="npm run build"
+alias cpr="cp -rf"
+alias crb="cordova run browser"
+alias s="python -m http.server"
+alias la="ls -a"
+alias y="yarn"
+alias cpa="cordova platform add"
+alias cpab="cordova add platform browser"
+alias cpab="cordova platform add browser"
+alias c="cordova"
+alias android="cd ./cordova && cordova emulate android && cd .."
+alias ba="build && android"
+alias and="cd ./cordova && cordova run android && cd .."
+alias ec="cd /c/Users/huapa/Documents/Projects/evan-client/cordova"
+alias ba="yr cordova-build && and"
+alias cra="cordova run android"
+alias yrc="yarn run cordova-build"
+alias ba="yrc && and"
+alias copy="rm -rf ./cordova/www/* && cp -rf ./build/* ./cordova/www"
+alias static="-p"
+alias static="static -p 8000"
+alias grs="grunt serve"

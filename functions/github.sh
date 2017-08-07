@@ -1,4 +1,4 @@
-source ../.gitVars
+source $dotfile_dir/.gitVars
 
 
 # Calls git add, git commit, and git push
@@ -21,10 +21,11 @@ alias pr="pull-request"
 function delete-branches() {
   for i in "$@"; do git branch -d $i; done
 }
+alias gbd="delete-branches"
+
 function force-delete-branches() {
   for i in "$@"; do git branch -D $i; done
 }
-alias gbd="delete-branches"
 alias gbd!="force-delete-branches"
 
 function new-repo() {
