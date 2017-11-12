@@ -10,5 +10,6 @@ source $dotfile_dir/aliases.sh
 # Functions loosely organized category
 source $dotfile_dir/functions/localhost.sh
 source $dotfile_dir/functions/github.sh
+source $dotfile_dir/functions/facebook.sh
 
 alias ..='cd ..'
