@@ -24,8 +24,8 @@ function bookmark() {
   if [ -z "$1" ]; then
     echo 'No name provided'
   else
-    echo "${green}alias ${1}=\"$(pwd)\" ${purple} created!"
-    echo "alias ${1}=\"cd $(pwd)\"" >> $aliases_file
+    echo "${green}alias ${1}=\"cd '$(pwd)'\" ${purple} created!"
+    echo "alias ${1}=\"cd '$(pwd)'\"" >> $aliases_file
   fi
 }
 alias b="bookmark"
@@ -174,3 +174,14 @@ alias rsl="cross-env KEEP_DB=true sails lift"
 alias dotfiles="co ~/dotfiles"
 alias ec="cd /c/Users/huapa/Documents/Projects/evan-client"
 alias ec="cd /c/Users/huapa/Documents/Projects/evan-client/cordova"
+alias e="cd /c/Users/Devan/Documents/Projects/evan-client"
+alias rws="cd /c/Users/Devan/Documents/Projects/React-Wordpress-Starter-Kit"
+alias rws="cd '/c/Users/Devan/Documents/Projects/React-Wordpress-Starter-Kit'"
+alias rws="cd '/c/Users/Devan/Documents/Projects/React-Wordpress-Starter-Kit'"
+alias es="cd '/c/Users/Devan/Documents/Projects/evan-server'"
+alias gcg="git config --global"
+alias cpaa="cordova platforms add android"
+alias sl="KEEP_DB=true sails lift"
+alias cs="yarn run cordova-build-staging"
+alias cb="npm run cordova-build"
+alias cs="yarn run cordova-staging-build"
