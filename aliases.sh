@@ -12,35 +12,6 @@ aliases_file=$dotfile_dir/aliases.sh
 alias refresh="source ~/.bashrc && clear"
 alias r="refresh"
 
-# Function to create new aliases
-function new-alias() {
-    echo "alias ${1}=\"${2}\"" >> $aliases_file
-    refresh
-}
-alias na="new-alias"
-
-# Bookmark position
-function bookmark() {
-  if [ -z "$1" ]; then
-    echo 'No name provided'
-  else
-    echo "${green}alias ${1}=\"$(pwd)\" ${purple} created!"
-    echo "alias ${1}=\"cd $(pwd)\"" >> $aliases_file
-  fi
-}
-alias b="bookmark"
-
-# Warning position
-function warning() {
-  if [ -z "$1" ]; then
-    echo 'No name provided'
-  else
-    echo "${green}Warning: ${purple}${1}${green} created!"
-    echo "echo ${1}" >> $aliases_file
-  fi
-}
-alias w="warning"
-
 
 # Google docs
 alias doc="python -mwebbrowser https://docs.google.com/create" # New google doc
@@ -183,3 +154,4 @@ alias rmr="rm -rf"
 alias rsr="npm run start-renderer-dev"
 alias nrsr="npm run start-renderer-dev"
 alias nrsm="npm run start-main-dev"
+alias ni!="ni && npm i axios && npm rbuild-node-sass"
