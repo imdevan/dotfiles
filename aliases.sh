@@ -12,6 +12,38 @@ aliases_file=$dotfile_dir/aliases.sh
 alias refresh="source ~/.bashrc && clear"
 alias r="refresh"
 
+<<<<<<< HEAD
+=======
+# Function to create new aliases
+function new-alias() {
+    echo "alias ${1}=\"${2}\"" >> $aliases_file
+    refresh
+}
+alias na="new-alias"
+
+# Bookmark position
+function bookmark() {
+  if [ -z "$1" ]; then
+    echo 'No name provided'
+  else
+    echo "${green}alias ${1}=\"cd '$(pwd)'\" ${purple} created!"
+    echo "alias ${1}=\"cd '$(pwd)'\"" >> $aliases_file
+  fi
+}
+alias b="bookmark"
+
+# Warning position
+function warning() {
+  if [ -z "$1" ]; then
+    echo 'No name provided'
+  else
+    echo "${green}Warning: ${purple}${1}${green} created!"
+    echo "echo ${1}" >> $aliases_file
+  fi
+}
+alias w="warning"
+
+>>>>>>> b23b7a1366b4c866c96d22237d354b4763a7da28
 
 # Google docs
 alias doc="python -mwebbrowser https://docs.google.com/create" # New google doc
@@ -145,13 +177,20 @@ alias rsl="cross-env KEEP_DB=true sails lift"
 alias dotfiles="co ~/dotfiles"
 alias ec="cd /c/Users/huapa/Documents/Projects/evan-client"
 alias ec="cd /c/Users/huapa/Documents/Projects/evan-client/cordova"
+alias e="cd /c/Users/Devan/Documents/Projects/evan-client"
+alias rws="cd /c/Users/Devan/Documents/Projects/React-Wordpress-Starter-Kit"
+alias rws="cd '/c/Users/Devan/Documents/Projects/React-Wordpress-Starter-Kit'"
+alias rws="cd '/c/Users/Devan/Documents/Projects/React-Wordpress-Starter-Kit'"
+alias es="cd '/c/Users/Devan/Documents/Projects/evan-server'"
+alias gcg="git config --global"
 alias cpaa="cordova platforms add android"
 alias log="git log"
 alias sl="KEEP_DB=true sails lift"
 alias cs="yarn run cordova-staging-build"
 alias cb="yarn run cordova-production-build"
 alias rmr="rm -rf"
-alias rsr="npm run start-renderer-dev"
 alias nrsr="npm run start-renderer-dev"
 alias nrsm="npm run start-main-dev"
 alias ni!="ni && npm i axios && npm rbuild-node-sass"
+alias ysr="yarn run start-renderer-dev"
+alias ysm="yarn run start-main-dev"
