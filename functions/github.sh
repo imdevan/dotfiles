@@ -1,5 +1,6 @@
 source $dotfile_dir/.gitVars
-
+DEFAULT_BRANCH='staging'
+DEFAULT_ORIGIN='origin'
 
 # Calls git add, git commit, and git push
 # Takes commit message
@@ -38,3 +39,27 @@ function new-repo() {
   echo ${green}New Repo Created at $ORIGIN${reset}
 }
 alias gn='new-repo'
+
+function git-reset(){
+  git fetch
+  _BRANCH=${DEFAULT_BRANCH}
+  _ORIGIN=${DEFAULT_ORIGIN}
+  
+  if [ -d "$1"]; then 
+      _BRANCH=$1
+      if [ -d "$2"]; then 
+        _ORIGIN=$2
+      fi
+  fi
+
+  echo `git reset --hard ${_ORIGIN}/${_BRANCH}`
+  git reset --hard ${_ORIGIN}/${_BRANCH}
+}
+alias gr!="git-reset"
+
+function git-clone(){
+  echo `git clone ${GIT_SSH_URL}${1}.git`
+  git clone ${GIT_SSH_URL}${1}.git
+}
+
+alias gcl="git-clone"
