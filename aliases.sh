@@ -4,46 +4,13 @@
 # alias <name>=<string>
 
 # Default editor
-editor="atom"
+editor="code"
 aliases_file=$dotfile_dir/aliases.sh
 
 # Restarts shell
 # Call after making changes w/o having to restart
 alias refresh="source ~/.bashrc && clear"
 alias r="refresh"
-
-<<<<<<< HEAD
-=======
-# Function to create new aliases
-function new-alias() {
-    echo "alias ${1}=\"${2}\"" >> $aliases_file
-    refresh
-}
-alias na="new-alias"
-
-# Bookmark position
-function bookmark() {
-  if [ -z "$1" ]; then
-    echo 'No name provided'
-  else
-    echo "${green}alias ${1}=\"cd '$(pwd)'\" ${purple} created!"
-    echo "alias ${1}=\"cd '$(pwd)'\"" >> $aliases_file
-  fi
-}
-alias b="bookmark"
-
-# Warning position
-function warning() {
-  if [ -z "$1" ]; then
-    echo 'No name provided'
-  else
-    echo "${green}Warning: ${purple}${1}${green} created!"
-    echo "echo ${1}" >> $aliases_file
-  fi
-}
-alias w="warning"
-
->>>>>>> b23b7a1366b4c866c96d22237d354b4763a7da28
 
 # Google docs
 alias doc="python -mwebbrowser https://docs.google.com/create" # New google doc
@@ -65,9 +32,10 @@ alias dotfiles="${editor} $dotfile_dir"
 alias dot="cd $dotfile_dir"
 alias n="npm start"
 alias p="cd ${work}"
+alias halp="cat ~/dotfiles/aliases.sh"
+alias a="${editor} ~/dotfiles/aliases.sh"
 
 # Created from bookmark or new-alias
-alias a="atom ."
 alias v="vim ."
 alias grc="git rebase --continue"
 alias nt="npm test"
@@ -159,6 +127,7 @@ alias hl="heroku logs --tail --app bison-studio-web"
 alias co="code ./"
 alias ycb="yarn run cordova-build"
 alias cpr="cordova platforms rm"
+alias cpca="cordova platforms rm android && cordova platforms add androidf"
 alias cpa="cordova platforms add"
 alias grs="git rebase origin/staging"
 alias t="cd /c/Users/huapa/Documents/Projects/tilde"
@@ -194,3 +163,35 @@ alias nrsm="npm run start-main-dev"
 alias ni!="ni && npm i axios && npm rbuild-node-sass"
 alias ysr="yarn run start-renderer-dev"
 alias ysm="yarn run start-main-dev"
+alias spk="cd /c/Users/huapa/Documents/Projects/speakeasy"
+alias e="cd /c/Users/huapa/Documents/Projects/evan-client"
+alias es="cd /c/Users/huapa/Documents/Projects/evan-server"
+alias ncsb="npm run cordova-staging-build"
+alias ncb="npm run cordova-production-build"
+alias cpls="cordova platforms ls"
+alias nsr="npm run start-render-dev"
+alias nsm="npm run start-main-dev"
+alias nsr="start-renderer-dev"
+alias nrd="npm run develop"
+alias mkl="cd /c/Users/huapa/Documents/Projects/majorkey-landing-page"
+alias nrd="npm run dev"
+alias esg="cd /c/Users/huapa/Documents/Projects/evan-style-guide"
+alias mk="cd /c/Users/huapa/Documents/Projects/majorkey"
+alias nsr="npm run start-renderer-dev"
+alias cpb="npm run cordova-production-build"
+alias csb="cordova-staging-build"
+alias csb="npm run cordova-staging-build"
+alias cpra="cordova platforms remove android"
+alias cpaa="cordova platforms add android"
+alias open="explorer"
+alias o="open ./"
+alias ts="cat /c/Users/huapa/Documents/Projects/tinder-script.js > /dev/clipboard"
+alias e2="cd /c/Users/huapa/Documents/Projects/ec2"
+alias cor="cd /c/Users/huapa/Documents/Projects/evan-client/cordova"
+alias cpa="cpra && cpaa"
+alias conf="conflicts"
+alias d="cd /c/Users/huapa/Documents/Projects/devan.gg"
+alias dot="cd /c/Users/huapa/dotfiles"
+alias gms="git merge staging"
+alias gmc="git merge --continue"
+alias es2="cd /c/Users/huapa/Documents/Projects/es2"
