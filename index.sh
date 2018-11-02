@@ -10,6 +10,7 @@ source $dotfile_dir/functions/aliases.sh
 source $dotfile_dir/functions/github.sh
 source $dotfile_dir/functions/facebook.sh
 source $dotfile_dir/functions/random.sh
+source $dotfile_dir/functions/node.sh
 
 # A bunch of aliases
 source $dotfile_dir/aliases.sh
