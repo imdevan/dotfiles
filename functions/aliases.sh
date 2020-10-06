@@ -1,20 +1,23 @@
 
 
 # Default editor
-editor="atom"
+editor="code"
 aliases_file=$dotfile_dir/aliases.sh
 
 # Restarts shell
 # Call after making changes w/o having to restart
-alias refresh="source ~/.bashrc && clear"
+alias refresh="source ~/.oh-my-zsh && clear"
 alias r="refresh"
 
 # Function to create new aliases
 function new-alias() {
+  echo $aliases_file
+
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "${red}Invalid alias provided${reset}"
   else
     ALIAS="alias ${1}=\"${2}\""
+    echo ""
     echo ""
     echo $ALIAS >> $aliases_file
     echo "${green}Alias: ${purple}${1}${green} created!"

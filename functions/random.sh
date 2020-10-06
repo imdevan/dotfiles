@@ -8,7 +8,7 @@ function yes-or-no() {
     echo "${red}Nope!${reset}"
   fi
 }
-alias ?="yes-or-no"
+alias yon="yes-or-no"
 
 # Calls yes-or-no if no props provided 
 # Calls

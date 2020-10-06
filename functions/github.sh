@@ -1,5 +1,5 @@
 source $dotfile_dir/.gitVars
-DEFAULT_BRANCH='staging'
+DEFAULT_BRANCH='development'
 DEFAULT_ORIGIN='origin'
 
 # Calls git add, git commit, and git push
@@ -52,14 +52,18 @@ function git-reset(){
       fi
   fi
 
-  echo `git reset --hard ${_ORIGIN}/${_BRANCH}`
-  git reset --hard ${_ORIGIN}/${_BRANCH}
+  echo `git reset --hard ${DEFAULT_ORIGIN}/${DEFAULT_BRANCH}`
+  git reset --hard ${DEFAULT_ORIGIN}/${DEFAULT_BRANCH}
 }
 alias gr!="git-reset"
 
 function git-clone(){
-  echo `git clone ${GIT_SSH_URL}${1}.git`
-  git clone ${GIT_SSH_URL}${1}.git
+  if [[ $1 == *"git@"* ]]; then
+    echo `git clone ${1}`
+    git clone ${1}
+  else 
+    echo `git clone ${GIT_SSH_URL}${1}.git`
+    git clone ${GIT_SSH_URL}${1}.git
+  fi
 }
-
 alias gcl="git-clone"
