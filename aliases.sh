@@ -4,13 +4,14 @@
 # alias <name>=<string>
 
 # Default editor
-editor="atom"
+editor="code"
 projects="~/Documents/Projects/"
-aliases_file=~/$dotfile_dir/aliases.sh
+aliases_file=$dotfile_dir/aliases.sh
+alias a="code ${aliases_file}"
 
 # Restarts shell
 # Call after making changes w/o having to restart
-alias refresh="source ~/.bashrc && clear"
+alias refresh="clear && exec zsh"
 alias r="refresh"
 
 # Function to create new aliases
@@ -53,7 +54,7 @@ alias p="cd ${projects}"
 # Created from bookmark or new-alias
 alias i="/Users/devanhuapaya/Documents/projects/imdevan.github.io"
 alias paddle="/Users/devanhuapaya/Documents/projects/project-whitewater/paddle"
-alias a="atom ."
+alias c="code ."
 alias v="vim ."
 alias grc="git rebase --continue"
 alias kill="killall node"
@@ -68,3 +69,17 @@ alias gcane="git commit --amend --no-edit"
 alias clean="rm -rf node_modules && npm install"
 alias liquid-docs="open https://shopify.github.io/liquid/tags/control-flow/"
 alias diff="git diff"
+alias gfp="git fetch && git pull"
+alias nbp="/Users/devanhuapaya/Documents/Projects/Native-BioData/native-biodata-portal"
+alias yd="yarn dev"
+alias yps="yarn prisma:studio"
+alias ypr="yarn prisma:migrate:reset"
+alias ypr="yarn prisma:migrate:reset"
+alias ypg="yarn prisma generate"
+alias ypm="yarn prisma:migrate:dev"
+alias grd="git rebase development"
+alias gcm="git commit -m"
+alias dev="gco development"
+alias yb="yarn build"
+alias isa="acs"
+alias es="e sparkles"

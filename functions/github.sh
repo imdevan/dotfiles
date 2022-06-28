@@ -9,6 +9,15 @@ function git-add-push() {
 }
 alias gap="git-add-push"
 
+# Calls git add, git commit, and git push
+# Takes commit message
+function git-add-push-with-sparkles() {
+    git add . &&
+    git commit -m "✨ ${@}" &&
+    git push
+}
+alias gas="git-add-push-with-sparkles"
+
 # Pulls down pull request from upstream and creates branch
 function pull-request() {
     git fetch upstream pull/${1}/head:pr-${1} &&

@@ -7,8 +7,8 @@ function show-files () {
 }
 
 # Show / hide hidden files via alias
-alias showfiles="show-hidden-files YES"
-alias hidefiles="show-hidden-files NO"
+alias showfiles="show-files YES"
+alias hidefiles="show-files NO"
 
 # Lazy version of above
 alias sf="showfiles"

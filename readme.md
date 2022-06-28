@@ -7,17 +7,15 @@ tbh I know very little about dot file directory architecture.
 ### Installation
 
 **Step 1**
+Install zsh & oh-my-zsh
+
+**Step 2**
 Clone the repository into your root directory
 
 ```
 cd ~
 git clone https://github.com/imdevan/dotfiles.git
 ```
-
-**Step 2**  
-Add `source ~/dotfiles/index.sh` to the end of your `.bashrc` or `.zshrc` file
-
-If you don't have a `.bashrc` file in your root directory, you can create one
 
 
 **Step 3**
