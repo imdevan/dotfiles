@@ -14,7 +14,8 @@ source $dotfile_dir/vars/colors.sh
 source $dotfile_dir/aliases.sh
 
 # Functions loosely organized category
+source $dotfile_dir/functions/emoji.sh
+source $dotfile_dir/functions/github.sh
 source $dotfile_dir/functions/hiddenfiles.sh
 source $dotfile_dir/functions/localhost.sh
-source $dotfile_dir/functions/github.sh
-source $dotfile_dir/functions/emoji.sh
+source $dotfile_dir/functions/yarn.sh

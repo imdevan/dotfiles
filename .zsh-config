@@ -64,12 +64,20 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+# Setup for autosuggestion plugin 
+# Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# ref: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git dotenv macos vscode emoji-clock emoji copypath aliases)
+plugins=(git macos vscode emoji-clock emoji copypath aliases dotenv zsh-autosuggestions sudo web-search dirhistory copybuffer)
+
+# https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/
 
 # Set zsh theme here
 # Comment out in zsh
@@ -78,7 +86,7 @@ plugins=(git dotenv macos vscode emoji-clock emoji copypath aliases)
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="af-magic"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="amuse"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
