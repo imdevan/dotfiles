@@ -17,8 +17,16 @@ cd ~
 git clone https://github.com/imdevan/dotfiles.git
 ```
 
-
 **Step 3**
+
+If you are using bash: 
+- Replace (or append to) the contents of `~/.bashrc` with `source ~/dotfiles/index.sh`
+- Comment out the `source $dotfile_dir/.zsh-config` line from `~/dotfiles/index.sh`
+
+If you are using oh-my-zsh: 
+- Replace (or append to) the contents of `~/.zshrc` with `source ~/dotfiles/index.sh`
+
+**Step 4**
 Restart you're terminal
 
 ### notes

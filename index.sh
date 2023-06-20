@@ -2,6 +2,7 @@
 dotfile_dir=~/dotfiles
 
 # ZSH Config
+# Comment out the following line if you are not using oh-my-zsh
 source $dotfile_dir/.zsh-config
 
 # NVM Config
