@@ -4,12 +4,14 @@ tbh I know very little about dot file directory architecture.
 
 `index.sh` Is the main file that all other files are included in.
 
-### Installation
+## Installation
 
-**Step 1**
+#### Step 1
+
 Install zsh & oh-my-zsh
 
-**Step 2**
+#### Step 2
+
 Clone the repository into your root directory
 
 ```
@@ -17,7 +19,7 @@ cd ~
 git clone https://github.com/imdevan/dotfiles.git
 ```
 
-**Step 3**
+#### Step 3
 
 If you are using bash: 
 - Replace (or append to) the contents of `~/.bashrc` with `source ~/dotfiles/index.sh`
@@ -26,7 +28,8 @@ If you are using bash:
 If you are using oh-my-zsh: 
 - Replace (or append to) the contents of `~/.zshrc` with `source ~/dotfiles/index.sh`
 
-**Step 4**
+#### Step 4
+
 Restart you're terminal
 
 ### notes
