@@ -3,11 +3,13 @@
 # REMOVE THE FOLLOWING SETINGS FROM .zshrc
 # ========================================================================================
 
-# Set paths here so I don't have to it up on every computer
 # Homebrew 
-# export PATH=/opt/homebrew/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# Set paths here so I don't have to it up on every computer
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
+
+# export PATH=/usr/local/bin:$PATH
+# export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -69,13 +71,14 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # ref: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+# add "zsh-autosuggestions" to the plugins list below
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos vscode emoji-clock emoji copypath aliases dotenv zsh-autosuggestions sudo web-search dirhistory copybuffer)
+plugins=(git macos vscode emoji-clock emoji copypath aliases dotenv sudo web-search dirhistory copybuffer)
 
 # https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/
 
