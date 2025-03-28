@@ -6,3 +6,5 @@ source $dotfile_dir/functions/facebook.sh
 source $dotfile_dir/functions/random.sh
 source $dotfile_dir/functions/node.sh
 source $dotfile_dir/functions/new-function.sh
+
+# Generated functions

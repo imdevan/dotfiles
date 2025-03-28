@@ -10,7 +10,8 @@ function new_function() {
 
     # Get the function name and convert to lowercase
     function_name=$(echo "$1" | tr '[:upper:]' '[:lower:]')
-    function_file="functions/${function_name}.sh"
+    function_file="$dotfile_dir/functions/${function_name}.sh"
+    function_index_file="$dotfile_dir/functions/index.sh"
     
     # Get the description if provided, otherwise use default
     description=${2:-"[Add description here]"}
@@ -21,8 +22,8 @@ function new_function() {
         return 1
     fi
 
-    # Create alias from function name (first letter of each word)
-    alias_name=$(echo "$function_name" | sed -E 's/(^|_)([a-z])/\2/g' | tr -d '_')
+    # Create alias by taking first letter of each word
+    alias_name=$(echo "$function_name" | awk -F'_' '{for(i=1;i<=NF;i++) printf substr($i,1,1)}')
 
     # Create the function file with basic structure
     cat > "$function_file" << EOF
@@ -33,7 +34,7 @@ function new_function() {
 # Usage: ${function_name} [arguments]
 # Alias: ${alias_name}
 
-${function_name}() {
+function ${function_name}() {
     # Function implementation goes here
     echo "Function ${function_name} called"
 }
@@ -46,8 +47,9 @@ EOF
     chmod +x "$function_file"
 
     # Add source line to index.sh if it doesn't already exist
-    if ! grep -q "source \$dotfile_dir/functions/${function_name}.sh" functions/index.sh; then
-        echo "source \$dotfile_dir/functions/${function_name}.sh" >> functions/index.sh
+    if ! grep -q "source \$dotfile_dir/functions/${function_name}.sh" $function_index_file; then
+        echo "" >> $function_index_file
+        echo "source \$dotfile_dir/functions/${function_name}.sh" >> $function_index_file
     fi
 
     # Open the file in VS Code
