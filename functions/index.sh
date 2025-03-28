@@ -8,3 +8,5 @@ source $dotfile_dir/functions/node.sh
 source $dotfile_dir/functions/new-function.sh
 
 # Generated functions
+source $dotfile_dir/functions/reset_node.sh
+
