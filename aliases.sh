@@ -23,6 +23,11 @@ alias last="git log -1"                                         # Show last chan
 alias rebase="git fetch upstream && git rebase upstream/master" # Fetch and rebase
 alias gcane!="git add -A && git commit --amend --no-edit && git push -f"
 
+# Editors
+alias cu="cursor ."
+alias c="code ."
+alias v="vim ."
+
 # Open dotfiles
 alias dotfiles="${editor} $dotfile_dir"
 alias aliases="${editor} $aliases_file"
@@ -92,7 +97,6 @@ alias y="yarn"
 alias yrd="yarn run dev"
 alias d="cd ~/dotfiles"
 alias status="git status"
-alias dotfiles="c ~/dotfiles"
 alias rmr="rm -rf"
 alias ys="yarn start"
 alias gcm="git commit -m"
@@ -115,7 +119,6 @@ alias e2="yarn test:e2e"
 alias xx="cd /Users/devin/Documents/Projects/expo-expo"
 alias gr="git checkout ."
 alias clone="git clone"
-alias cu="cursor ./"
 alias yl="yarn lint"
 alias pp="cd /Users/devin/Documents/Projects/portfolio\ v5"
 alias con="cd /Users/devin/Documents/Projects/conmigo"
