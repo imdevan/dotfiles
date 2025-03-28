@@ -10,7 +10,7 @@ aliases_file=$dotfile_dir/aliases.sh
 # Restarts shell
 # Call after making changes w/o having to restart
 alias refresh="source ~/.zshrc && clear"
-alias r="refresh"
+# alias r="refresh"
 
 # Google docs
 alias doc="python -mwebbrowser https://docs.google.com/create" # New google doc
@@ -30,6 +30,8 @@ alias v="vim ."
 
 # Open dotfiles
 alias dotfiles="${editor} $dotfile_dir"
+alias d="dotfiles"
+alias dots="~/dotfiles"
 alias aliases="${editor} $aliases_file"
 alias dot="cd $dotfile_dir"
 alias p="cd ${work}"
@@ -95,7 +97,6 @@ alias s="python -m http.server"
 alias la="ls -a"
 alias y="yarn"
 alias yrd="yarn run dev"
-alias d="cd ~/dotfiles"
 alias status="git status"
 alias rmr="rm -rf"
 alias ys="yarn start"
