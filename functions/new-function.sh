@@ -53,7 +53,7 @@ EOF
     fi
 
     # Open the file in VS Code
-    code "$dotfile_dir/functions/${function_name}.sh"
+    cursor "$dotfile_dir/functions/${function_name}.sh"
 
     echo "Created new function file: $function_file"
     echo "Added to index.sh and opened in VS Code"
