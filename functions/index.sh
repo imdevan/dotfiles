@@ -11,3 +11,4 @@ source $dotfile_dir/functions/new-function.sh
 source $dotfile_dir/functions/reset_node.sh
 source $dotfile_dir/functions/search.sh
 source $dotfile_dir/functions/npm-latest.sh
+source $dotfile_dir/functions/post.sh
