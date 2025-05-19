@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# New function
+# Usage: new_function <function_name> [description]
+# Example: new_function my_function "This is a test function"
+
 # Function to create a new bash function
 function new_function() {
     # Check if function name is provided
