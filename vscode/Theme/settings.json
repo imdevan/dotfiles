@@ -1,0 +1,31 @@
+{
+    "vscode_custom_css.imports": ["file:///Users/devin/dotfiles/vscode/styles.css"],
+    "vscode_custom_css.policy": true,
+    "terminal.integrated.initialHint": false,
+    "editor.fontFamily": "\"Fira Code\", \"Victor Mono\",  Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontVariations": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+        {
+            "scope": "comment",
+            "settings": {
+            "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "string.quoted.double",
+            "settings": {
+            "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "string.quoted.single",
+            "settings": {
+            "fontStyle": "italic"
+            }
+        }
+        ]
+    },
+    "workbench.colorTheme": "Neon Night"
+}
