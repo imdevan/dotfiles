@@ -3,6 +3,9 @@
 # No spaces between name and string
 # alias <name>=<string>
 
+# Navigation
+alias ..='cd ..'
+
 # Default editor
 editor="code"
 aliases_file=$dotfile_dir/aliases.sh
@@ -150,3 +153,10 @@ alias apc="cd /Users/devin/Documents/Projects/agency-price-calculator"
 alias ni="npm install"
 alias gc="git clone"
 alias pr="pnpm run"
+alias naf="npm audit fix"
+alias o="open ./"
+alias bi="bun install"
+alias bs="bun start"
+alias bd="bun dev"
+alias bb="bun build"
+alias bu="bun uninstall"

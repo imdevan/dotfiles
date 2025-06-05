@@ -10,4 +10,3 @@ source $dotfile_dir/functions/index.sh
 # A bunch of aliases
 source $dotfile_dir/aliases.sh
 
-alias ..='cd ..'
