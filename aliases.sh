@@ -1,136 +1,164 @@
-# Example aliases
-# Note format
-# No spaces between name and string
+# Helpful aliases
+#
+# Example:
 # alias <name>=<string>
 
-# Navigation
-alias ..='cd ..'
-
-# Default editor
+# Variables used in file
 editor="code"
-aliases_file=$dotfile_dir/aliases.sh
 
-# Restarts shell
-# Call after making changes w/o having to restart
-alias refresh="source ~/.zshrc && clear"
-# alias r="refresh"
+# Navigation
+alias ..="cd .."
 
-# Google docs
-alias doc="python -mwebbrowser https://docs.google.com/create" # New google doc
-alias docs="python -mwebbrowser http://docs.google.com"        # Main docs folder
-
-# Git
-alias conflicts="git diff --name-only --diff-filter=U"          # Does not push
-alias no-edit="git commit --amend --no-edit"                    # Does not push
-alias last="git log -1"                                         # Show last change
-alias rebase="git fetch upstream && git rebase upstream/master" # Fetch and rebase
-alias gcane!="git add -A && git commit --amend --no-edit && git push -f"
-
-# Editors
-alias cu="cursor ."
-alias c="code ."
-alias v="vim ."
-
-# Open dotfiles
 alias dotfiles="${editor} $dotfile_dir"
-alias d="dotfiles"
-alias dots="~/dotfiles"
-alias aliases="${editor} $aliases_file"
-alias dot="cd $dotfile_dir"
-alias p="cd ${work}"
-alias halp="cat ~/dotfiles/aliases.sh"
-alias a="aliases"
+alias aliases="${editor} $dotfile_dir/aliases.sh"
 
-# Created from bookmark or new-alias
-alias v="vim ."
+## Aliases shortcut
+alias a="aliases"
+alias dots="~/dotfiles"
+
+# Terminal Navigation
+alias la="ls -a"    # List all in directory
+alias o="open ./"   # Open - in finder
+alias cpr="cp -rf"  # Copy recursive
+alias rf="rm -rf"   # Remove recursive
+alias refresh="source ~/.zshrc && clear"    # Refresh the terminal
+alias r="refresh"                           # Refresh shortcut
+alias t="touch"     # Make file
+alias ex="exit"     # Exit terminal
+
+# Home Brew
+alias bri="brew install"
+alias bric="brew install --cask"
+alias brui="brew uninstall"
+
+# Bun
+alias bi="bun install"
+alias bs="bun start"
+alias bd="bun dev"
+alias bb="bun build"
+alias bu="bun uninstall"
+
+# Dotfile shortcuts
+alias halp="cat ~/dotfiles/aliases.sh"
+alias dot="cd $dotfile_dir"
+
+# Code editors
+alias c="code ."
+alias cu="cursor ."
+alias v="nvim"
+
+# Bookmarks
+alias d="dotfiles"
+alias p="cd ~/Documents/Projects/"
+alias pp="cd /Users/devin/Documents/Projects/portfolio\ v5"
+alias play="cd /Users/devin/Documents/Projects/playground"
+
+# Git 
+
+# Overhead
+alias gco="git checkout"        # Git checkout
+alias gcof="git checkout --"    # Checkout file
+alias conflicts="git diff --name-only --diff-filter=U"
+alias no-edit="git commit --amend --no-edit"    # Does not push
+alias last="git log -1"                         # Show last change
+alias rebase="git fetch upstream && git rebase upstream/master"             # Fetch and rebase
+alias gcane!="git add -A && git commit --amend --no-edit && git push -f"    # Git commit ammend no edit and force push
 alias grc="git rebase --continue"
-alias nt="npm test"
 alias gfu="git fetch upstream"
-alias m="git checkout master"
 alias stash="git stash"
 alias ga="git add ."
-alias gcane="commit --amend --no-edit"
 alias gcane="git commit --amend --no-edit"
-alias clean="rm -rf node_modules && yarn"
-alias liquid-docs="open https://shopify.github.io/liquid/tags/control-flow/"
 alias diff="git diff"
-alias p="cd ~/Documents/Projects/"
-alias gco="git checkout"
-alias gcof="git checkout --"
 alias grem="git remote"
 alias gp="git push"
 alias gl="git log -1"
-alias yb="yarn build"
-alias rf="rm -rf"
-alias yys="yarn && yarn start"
-alias yc="yarn clean"
-alias e="cd ~/Documents/Projects/evan-client"
-alias ns="npm start"
-alias es="cd ~/Documents/Projects/evan-server"
-alias ea="e && a"
 alias conflicts="git diff --name-only --diff-filter=U"
-alias yd="yarn dev"
 alias gf="git fetch"
-alias gcc="gcof ./src/config/axios.js"
 alias gb="git branch"
-alias staging="gco staging"
 alias gac="git add . && git commit -m"
 alias gs="git stash"
 alias gfp="git fetch && git pull"
-alias yr="yarn run"
-alias yrw="export ENVIRONMENT=windows&&sails lift"
-alias wip="gap ':construction:'"
-alias ddac="cd ~/Documents/Projects/dallas-design-and-code-slides"
-alias mk="mkdir ${2} && cd ${2}"
-alias ea="cd ~/Documents/Projects/mk/electron-app"
 alias gm="git merge -m ':octocat:'"
-alias bsw="cd ~/Documents/Projects/bisonstudio-v2.0"
-alias rm!="rm -rf"
 alias grs="git rebase origin/staging"
 alias gd="git diff"
-alias gcat="gap ':octocat:'"
 alias undo="git reset HEAD~1"
-alias rs="cd ~/Documents/Projects/React-Wordpress-Starter-Kit"
 alias sparkles="git add . && git commit -m ':sparkles: ' && git push"
-alias s="git checkout staging"
-alias r!="rm -rf"
-alias build="yarn build"
-alias cpr="cp -rf"
-alias s="python -m http.server"
-alias la="ls -a"
-alias y="yarn"
-alias yrd="yarn run dev"
 alias status="git status"
-alias rmr="rm -rf"
-alias ys="yarn start"
 alias gcm="git commit -m"
+alias grm="git rebase main"
+alias gr="git checkout ."   # Reset a file
+alias clone="git clone"
+alias gc="git clone"    # Calls native git clone
+alias cl="git-clone"    # Calls git-clone function (clone and cd)
+
+# Branch shortcuts
+alias s="git checkout staging"
+alias staging="gco staging"
+alias m="git checkout master"
+
+# Quick pushes
+alias wip="gap ':construction:'"
+alias gcat="gap ':octocat:'"
+
+
+# Ghostty
+alias gho="ghostty"
+alias gk="ghostty +list-keybinds"
+
+# NPM
+alias nt="npm test"
+alias ns="npm start"
+alias nd="npm run dev"
+alias nb="npm run build"
+alias nw="npm run web"
+alias nee="npm run test:e2e"
+alias nu="npm uninstall"
+alias nrd="npm run dev"
+alias ni="npm install"
+alias naf="npm audit fix"
+alias jc="npx jest --coverage"
+
+# PNPM
+alias ps="pnpm start"
+alias pd="pnpm dev"
+alias pi="pnpm install"
+alias pn="pnpm"
+alias pb="pnpm build"
+alias pr="pnpm run"
+
+# Google docs
+alias doc="python3 -mwebbrowser https://docs.google.com/create" # New google doc
+alias docs="python3 -mwebbrowser http://docs.google.com"        # Main docs folder
+
+# Simple http.server
+alias s="python3 -m http.server"
+
+# Python
+alias py="python3"
+
+# Clean Modules (and run yarn)
+alias clean="rm -rf node_modules && yarn"
+
+# Yarn
+alias y="yarn"
+alias yb="yarn build"
+alias yys="yarn && yarn start"
+alias yc="yarn clean"
+alias yd="yarn dev"
+alias yr="yarn run"
+alias yrd="yarn run dev"
+alias ys="yarn start"
 alias yd="yarn dev"
 alias yb="yarn build"
 alias ya="yarn add"
-alias t="touch"
 alias yt="yarn test"
 alias yad="yarn add --dev"
-alias nd="npm run dev"
-alias nb="npm run build"
-alias grm="git rebase main"
-alias nw="npm run web"
-alias jc="npx jest --coverage"
-alias nee="npm run test:e2e"
 alias yt="yarn test"
 alias yw="yarn web"
-alias w="yarn web"
 alias e2="yarn test:e2e"
-alias xx="cd /Users/devin/Documents/Projects/expo-expo"
-alias gr="git checkout ."
-alias clone="git clone"
 alias yl="yarn lint"
-alias pp="cd /Users/devin/Documents/Projects/portfolio\ v5"
-alias con="cd /Users/devin/Documents/Projects/conmigo"
-alias ynb="yarn next:build"
 alias yn="yarn next"
-alias ap="cd /Users/devin/Documents/Projects/conmigo2/packages/app"
-alias aapi="cd /Users/devin/Documents/Projects/conmigo2/packages/api"
-alias adb="cd /Users/devin/Documents/Projects/conmigo2/packages/db"
+alias ynb="yarn next:build"
 alias yg="yarn db:generate"
 alias yp="yarn db:push"
 alias yfd="yarn functions:deploy"
@@ -140,23 +168,6 @@ alias ydp="yarn db:push"
 alias yad="yarn add -D"
 alias ydg="yarn db:generate"
 alias ytg="yarn test grep"
-alias nu="npm uninstall"
-alias ps="pnpm start"
-alias pd="pnpm dev"
-alias pi="pnpm install"
-alias trr="cd /Users/devin/Documents/Projects/turbo-repo-research"
-alias pn="pnpm"
-alias pb="pnpm build"
 alias yi="yarn install"
-alias nrd="npm run dev"
-alias apc="cd /Users/devin/Documents/Projects/agency-price-calculator"
-alias ni="npm install"
-alias gc="git clone"
-alias pr="pnpm run"
-alias naf="npm audit fix"
-alias o="open ./"
-alias bi="bun install"
-alias bs="bun start"
-alias bd="bun dev"
-alias bb="bun build"
-alias bu="bun uninstall"
+
+# New
