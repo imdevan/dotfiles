@@ -1,3 +1,6 @@
+# Shared functions
+source $dotfile_dir/functions/shared/validators.sh
+
 # Barrel file for functions
 source $dotfile_dir/functions/localhost.sh
 source $dotfile_dir/functions/aliases.sh
