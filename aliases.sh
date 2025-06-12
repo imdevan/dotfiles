@@ -104,6 +104,7 @@ alias gcat="gap ':octocat:'"
 # Ghostty
 alias gho="ghostty"
 alias gk="ghostty +list-keybinds"
+alias gkk="v ~/dotfiles/docs/keybinds/ghostty.md"
 
 # NPM
 alias nt="npm test"
