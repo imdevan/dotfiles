@@ -13,12 +13,12 @@ function new_function() {
     fi
 
     # Get the function name and convert to lowercase
-    function_name=$(echo "$1" | tr '[:upper:]' '[:lower:]')
-    function_file="$dotfile_dir/functions/${function_name}.sh"
-    function_index_file="$dotfile_dir/functions/index.sh"
+    local function_name=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+    local function_file="$dotfile_dir/functions/${function_name}.sh"
+    local function_index_file="$dotfile_dir/functions/index.sh"
     
     # Get the description if provided, otherwise use default
-    description=${2:-"[Add description here]"}
+    local description=${2:-"[Add description here]"}
 
     # Check if file already exists
     if [ -f "$function_file" ]; then
@@ -27,7 +27,7 @@ function new_function() {
     fi
 
     # Create alias by taking first letter of each word
-    alias_name=$(echo "$function_name" | awk -F'_' '{for(i=1;i<=NF;i++) printf substr($i,1,1)}')
+    local alias_name=$(echo "$function_name" | awk -F'_' '{for(i=1;i<=NF;i++) printf substr($i,1,1)}')
 
     # Create the function file with basic structure
     cat > "$function_file" << EOF

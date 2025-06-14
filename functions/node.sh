@@ -1,5 +1,5 @@
 function nodep () {
-  str=$*
+  local str=$*
   echo "$str"
   node -p "$str"
 }

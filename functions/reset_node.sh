@@ -7,7 +7,7 @@
 
 function reset_node() {
     # Get the current directory
-    current_dir=$(pwd)
+    local current_dir=$(pwd)
 
     # Navigate out of the current directory
     cd ~

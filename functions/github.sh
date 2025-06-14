@@ -45,7 +45,7 @@ function force-delete-branches() {
 alias gbd!="force-delete-branches"
 
 function new-repo() {
-  ORIGIN=${GIT_SSH_URL}/${PWD##*/}.git
+  local ORIGIN=${GIT_SSH_URL}/${PWD##*/}.git
   git init
   git add .
   git commit -m ':tada: first commit!'
@@ -57,8 +57,8 @@ alias gn='new-repo'
 
 function git-reset() {
   git fetch
-  _BRANCH=${DEFAULT_BRANCH}
-  _ORIGIN=${DEFAULT_ORIGIN}
+  local _BRANCH=${DEFAULT_BRANCH}
+  local _ORIGIN=${DEFAULT_ORIGIN}
 
   if [ -d "$1"]; then
     _BRANCH=$1
@@ -89,7 +89,7 @@ function git-clone() {
   git clone "$@"
 
   # Navigate to the directory
-  repo_name=""
+  local repo_name=""
 
   # If only one argument is passed
   if [ "$#" -eq 1 ]; then

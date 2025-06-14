@@ -9,12 +9,12 @@
 # Function to make a POST request to a Supabase Edge Function
 function post() {
     # Default function name to 'hello' if no argument provided
-    function_name=${1:-""}
+    local function_name=${1:-""}
     
     # Default data to empty object if no second argument provided
-    data=${2:-"{}"}e
+    local data=${2:-"{}"}e
     
-    url="http://localhost:54321/functions/v1/${function_name}"
+    local url="http://localhost:54321/functions/v1/${function_name}"
     
     echo $url
     
