@@ -1,11 +1,17 @@
 # Mac
-⌘ + ⌃ + ␣ - Emoji keyboard
 
+⌘ + ⌃ + ␣   - Emoji keyboard
+^ + right   - Desktop right
+^ + left    - Desktop left
 
-## References 
+## References
 
-https://support.apple.com/en-us/102650#:~:text=Command%20(or%20Cmd)%20%E2%8C%98
+<https://support.apple.com/en-us/102650#:~:text=Command%20(or%20Cmd)%20%E2%8C%98>
 
+# Keyboard Maestro
+
+⌘ ↑ G   - Search the web
+^ `     - Open ghostty
 
 # Vs Code / Cursor
 
@@ -14,9 +20,11 @@ https://support.apple.com/en-us/102650#:~:text=Command%20(or%20Cmd)%20%E2%8C%98
 ⌘ B     - Close side bar
 ⌘ ↑ E   - Open file explorer; scrollable
 ⌘ ↑ X   - Open extension explorer; scrollable
-⌘ ↑ K + z   - Zen mode
+⌘ ↑ K + z   - Zen mode (vscode)
+⌘ ↑ R + z   - Zen mode (cursor)
+^ ↑ G   - Source control
 
-## Navigation 
+## Navigation
 
 [Some assembly required](https://stackoverflow.com/questions/38957302/is-there-a-quick-change-tabs-function-in-visual-studio-code)
 
@@ -31,8 +39,15 @@ https://support.apple.com/en-us/102650#:~:text=Command%20(or%20Cmd)%20%E2%8C%98
 ⌘ {     - tab code left
 ⌘ }     - tab code right
 
+## Cursor
+
+cmd L         - chat
+cmd K         - in line ai chat
+shift cmd k   - file context ai
+
 # Vim Motions
-https://www.worldtimzone.com/res/vi.html7
+
+<https://www.worldtimzone.com/res/vi.html7>
 
 ## Cursor movement
 
@@ -52,8 +67,8 @@ $   - end of line
 G   - Go To command (prefix with number - 5G goes to line 5)
 :#  - Also works as to command
 
-{   - go to begining of paragraph 
-{w  - go to first word of pparagraph 
+{   - go to beginning of paragraph
+{w  - go to first word of paragraph
 }   - go to end of paragraph
 }ge - go to last word of paragraph
 
@@ -91,6 +106,8 @@ Esc     - exit visual mode
 y - yank (copy) marked text
 d - delete marked text
 ~ - switch case
+
+%
 
 ## Cut and Paste
 
@@ -135,7 +152,7 @@ ctrl+wv - Split windows vertically
 
 gx  - open link
 
-## Explorer navigation 
+## Explorer navigation
 
 j and k — focus down and up between files and folders;
 h and l — collapse folders and select folders and files;
@@ -166,12 +183,13 @@ u   - undo
 U   - undo all last line changes
 ^r  - redo
 
-
 ## Full Screen Navigation
 <!-- https://www.reddit.com/r/vim/comments/14o2l0m/comment/jqayb0u/ -->
 
 gg      - move cursor to first line
-#G      - move cursor to # line
+
+# G      - move cursor to # line
+
 GG      - move cursor to last line
 CTRL+b  - move cursor Backwards full page
 CTRL+f  - move cursor Forward full page
@@ -191,7 +209,8 @@ gu  - lowercase
 gU  - Uppercase
 g~  - toggle case
 
-## LSP 
+## LSP
+
 [Configured in settings](https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n)
 
 gd  - go to definition (🔥)
@@ -218,21 +237,23 @@ gpt - peek Type Definition
 :w      - save file
 :!rm %  - delete current file
 
-## Neo Vim
-<leader>e   - open explorer
+## Lazy / NeoVim
+
+<leader>e   - open explorer side panel
+<leader>ff  - file explorer menu
+<leader>wh | ctrl + h   -  go to split left
+<leader>wl | ctrl + l   -  go to split right
 
 ## References
 
 Sourced and stuff for me to read later
 
-https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n
-https://www.barbarianmeetscoding.com/blog/boost-your-coding-fu-with-vscode-and-vim
-https://www.reddit.com/r/vim/comments/14o2l0m/how_to_move_really_efficiently_in_vim/
-https://vim.rtorr.com/
-https://www.worldtimzone.com/res/vi.html
-
+<https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n>
+<https://www.barbarianmeetscoding.com/blog/boost-your-coding-fu-with-vscode-and-vim>
+<https://www.reddit.com/r/vim/comments/14o2l0m/how_to_move_really_efficiently_in_vim/>
+<https://vim.rtorr.com/>
+<https://www.worldtimzone.com/res/vi.html>
 
 # Lazy Vim Keybinds
 
-https://www.lazyvim.org/keymaps
-
+<https://www.lazyvim.org/keymaps>
