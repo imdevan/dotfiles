@@ -22,8 +22,7 @@ function flip-coin() {
 }
 alias flip="flip-coin"
 
-# Calls yes-or-no if no props provided 
-# Calls
+# Random number between 1 and 10 or provided range
 function random() {
   local MIN=1
   local MAX=10
