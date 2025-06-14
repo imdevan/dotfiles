@@ -1,6 +1,6 @@
 # Generate random number print, Yes if 2, No if 1
 function yes-or-no() {
-  ANSWER=$((1 + RANDOM % 2))
+  local ANSWER=$((1 + RANDOM % 2))
   
   if [ "$ANSWER" -eq "1" ]; then
     echo "${green}Yes!${reset}"
@@ -10,15 +10,30 @@ function yes-or-no() {
 }
 alias yon="yes-or-no"
 
+# Same as above but flip a coin instead
+function flip-coin() {
+  local ANSWER=$((1 + RANDOM % 2))
+  
+  if [ "$ANSWER" -eq "1" ]; then
+    echo "${green}Heads!${reset}"
+  else
+    echo "${red}Tails!${reset}"
+  fi
+}
+alias flip="flip-coin"
+
 # Calls yes-or-no if no props provided 
 # Calls
 function random() {
-  if [ -z "$1" ]; then
-    MAX=10
+  local MIN=1
+  local MAX=10
+
+  if [ ! -z "$1" ]; then
+    MAX=$1
   fi
   
-  if [ -z "$2" ]; then
-    MIN=1
+  if [ ! -z "$2" ]; then
+    MIN=$2
   fi
   
   echo $(($MIN + RANDOM % $MAX))
