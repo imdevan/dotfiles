@@ -185,3 +185,6 @@ alias yi="yarn install"
 
 # New
 alias fsft="cd /Users/devin/Documents/Projects/playground/full-stack-fastapi-template"
+alias igni="node /Users/devin/Documents/Projects/playground/ignite/ignite-clone/bin/ignite new"
+alias ignig="node /Users/devin/Documents/Projects/playground/ignite/ignite-clone/bin/ignite generate"
+alias db="cd /Users/devin/Documents/Projects/dance-buddy"
