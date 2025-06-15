@@ -20,8 +20,10 @@ get_repo_name() {
 # Calls git add, git commit, and git push
 # Takes commit message
 function git-add-push() {
-  git add . &&
-    git commit -m "${@}" &&
+  one-arg-required "$@" || return 1
+
+  git add ${2:-"."} &&
+    git commit -m "${1}" &&
     git push
 }
 alias gap="git-add-push"
