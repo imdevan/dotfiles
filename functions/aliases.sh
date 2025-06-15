@@ -44,18 +44,46 @@ alias b="bookmark"
 # }
 # alias w="warning"
 
-# Prints aliases if it exists
-function print-alias() {
-  local ALIAS=$(grep "${1}" ~/dotfiles/aliases.sh)
+# Alias search
+function is-alias() {
+  local files=$(find ~/dotfiles \
+    -type f \
+    -not -path "*/docs/*" \
+    -not -path "/functions/new-function.sh" \
+    -not -path "*/.git/*" \
+    -not -path "*/.history/*" \
+    -exec grep -l "^[^#]*alias.*${1}" {} \;)
   
-  if [ -z "$ALIAS" ]; then
+  if [ -z "$files" ]; then
     echo "${red}No alias found "
   else
     echo ""
     echo "${green}Aliases Found:${reset}"
     echo ""
-    echo "${ALIAS}"
+    
+    # First pass: find the longest alias name
+    local max_length=0
+    while IFS= read -r file; do
+      while IFS= read -r line; do
+        local alias_name=$(echo "$line" | sed -E 's/alias ([^=]+)=.*/\1/')
+        local name_length=${#alias_name}
+        if [ $name_length -gt $max_length ]; then
+          max_length=$name_length
+        fi
+      done < <(grep "^[^#]*alias.*${1}" "$file")
+    done <<< "$files"
+    
+    # Second pass: print with aligned equals signs
+    while IFS= read -r file; do
+      echo "${green}$(basename "$file")${reset}"
+      grep "^[^#]*alias.*${1}" "$file" | while IFS= read -r line; do
+        local alias_name=$(echo "$line" | sed -E 's/alias ([^=]+)=.*/\1/')
+        local alias_value=$(echo "$line" | sed -E 's/alias [^=]+=(.*)/\1/')
+        printf "${orange}%-${max_length}s${reset} = ${purple}%s${reset}\n" "$alias_name" "$alias_value"
+      done
+      echo ""
+    done <<< "$files"
   fi
 }
-alias isa="print-alias"
+alias isa="is-alias"
 
