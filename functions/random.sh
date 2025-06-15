@@ -1,8 +1,19 @@
+# Random functions
+
+# Generate a random number between 0 and 32767 (RANDOM's max value)
+function generate-random() {
+  local min=${1:-0}
+  local max=${2:-100}
+  local result=$(( RANDOM % (max - min + 1) + min ))
+  return $result
+}
+
 # Generate random number print, Yes if 2, No if 1
 function yes-or-no() {
-  local ANSWER=$((1 + RANDOM % 2))
-  
-  if [ "$ANSWER" -eq "1" ]; then
+  generate-random 0 1
+  local answer=$?
+
+  if [ $answer -eq "1" ]; then
     echo "${green}Yes!${reset}"
   else
     echo "${red}Nope!${reset}"
@@ -12,9 +23,10 @@ alias yon="yes-or-no"
 
 # Same as above but flip a coin instead
 function flip-coin() {
-  local ANSWER=$((1 + RANDOM % 2))
-  
-  if [ "$ANSWER" -eq "1" ]; then
+  generate-random 0 1
+  local answer=$?
+
+  if [ $answer -eq "1" ]; then
     echo "${green}Heads!${reset}"
   else
     echo "${red}Tails!${reset}"
@@ -24,17 +36,8 @@ alias flip="flip-coin"
 
 # Random number between 1 and 10 or provided range
 function random() {
-  local MIN=1
-  local MAX=10
-
-  if [ ! -z "$1" ]; then
-    MAX=$1
-  fi
-  
-  if [ ! -z "$2" ]; then
-    MIN=$2
-  fi
-  
-  echo $(($MIN + RANDOM % $MAX))
+  generate-random "$@"
+  echo $?
 }
 alias rand="random"
+
