@@ -19,3 +19,5 @@ source $dotfile_dir/functions/post.sh
 source $dotfile_dir/functions/make_directory.sh
 
 source $dotfile_dir/functions/to-copy.sh
+
+source $dotfile_dir/functions/simulator.sh
