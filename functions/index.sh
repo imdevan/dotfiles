@@ -3,7 +3,7 @@ source $dotfile_dir/functions/shared/validators.sh
 
 # Barrel file for functions
 source $dotfile_dir/functions/localhost.sh
-source $dotfile_dir/functions/aliases.sh
+source $dotfile_dir/functions/alias-utils.sh
 source $dotfile_dir/functions/github.sh
 source $dotfile_dir/functions/facebook.sh
 source $dotfile_dir/functions/random.sh
