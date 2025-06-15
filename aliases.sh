@@ -189,3 +189,4 @@ alias fsft="cd /Users/devin/Documents/Projects/playground/full-stack-fastapi-tem
 alias igni="node /Users/devin/Documents/Projects/playground/ignite/ignite-clone/bin/ignite new"
 alias ignig="node /Users/devin/Documents/Projects/playground/ignite/ignite-clone/bin/ignite generate"
 alias db="cd /Users/devin/Documents/Projects/dance-buddy"
+alias bil="eas build --platform ios --profile development --local"
