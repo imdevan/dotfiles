@@ -4,6 +4,9 @@ DEFAULT_ORIGIN='origin'
 
 # Helper function to get the name of a repo
 get_repo_name() {
+  one-arg-required "$@" || return 1
+
+  # Get the URL 
   local url="$1"
   local repo_name
 
@@ -23,8 +26,8 @@ function git-add-push() {
   one-arg-required "$@" || return 1
 
   git add ${2:-"."} &&
-    git commit -m "${1}" &&
-    git push
+  git commit -m "${1}" &&
+  git push
 }
 alias gap="git-add-push"
 
