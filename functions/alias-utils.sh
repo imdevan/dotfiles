@@ -49,7 +49,10 @@ function is-alias() {
   local files=$(find ~/dotfiles \
     -type f \
     -not -path "*/docs/*" \
-    -not -path "/functions/new-function.sh" \
+    -not -path "*/index.sh" \
+    -not -path "*/functions/index.sh" \
+    -not -path "*/functions/new-function.sh" \
+    -not -path "*/functions/alias-utils.sh" \
     -not -path "*/.git/*" \
     -not -path "*/.history/*" \
     -exec grep -l "^[^#]*alias.*${1}" {} \;)
