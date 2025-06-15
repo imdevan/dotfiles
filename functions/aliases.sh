@@ -34,15 +34,15 @@ function bookmark() {
 alias b="bookmark"
 
 # Warning position
-function warning() {
-  if [ -z "$1" ]; then
-    echo 'No name provided'
-  else
-    echo "${green}Warning: ${purple}${1}${green} created!"
-    echo "echo ${1}" >> $aliases_file
-  fi
-}
-alias w="warning"
+# function warning() {
+#   if [ -z "$1" ]; then
+#     echo 'No name provided'
+#   else
+#     echo "${green}Warning: ${purple}${1}${green} created!"
+#     echo "echo ${1}" >> $aliases_file
+#   fi
+# }
+# alias w="warning"
 
 # Prints aliases if it exists
 function print-alias() {
