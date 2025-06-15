@@ -1,63 +1,63 @@
-super + alt   + shift + j       write_screen_file:open
-super + alt   + shift + w       close_all_windows
-super + alt   + i               inspector:toggle
-super + alt   + w               close_tab
-super + alt   + up              goto_split:up
-super + alt   + down            goto_split:down
-super + alt   + right           goto_split:right
-super + alt   + left            goto_split:left
-super + ctrl  + f               toggle_fullscreen
-super + ctrl  + equal           equalize_splits
-super + ctrl  + up              resize_split:up,10
-super + ctrl  + down            resize_split:down,10
-super + ctrl  + right           resize_split:right,10
-super + ctrl  + left            resize_split:left,10
-super + shift + d               new_split:down
-super + shift + j               write_screen_file:paste
-super + shift + v               paste_from_selection
-super + shift + w               close_window
-super + shift + comma           reload_config
-super + shift + left_bracket    previous_tab
-super + shift + right_bracket   next_tab
-super + shift + up              jump_to_prompt:-1
-super + shift + down            jump_to_prompt:1
-super + shift + enter           toggle_split_zoom
+cmd + alt   + shift + j       write_screen_file:open
+cmd + alt   + shift + w       close_all_windows
+cmd + alt   + i               inspector:toggle
+cmd + alt   + w               close_tab
+cmd + alt   + up              goto_split:up
+cmd + alt   + down            goto_split:down
+cmd + alt   + right           goto_split:right
+cmd + alt   + left            goto_split:left
+cmd + ctrl  + f               toggle_fullscreen
+cmd + ctrl  + equal           equalize_splits
+cmd + ctrl  + up              resize_split:up,10
+cmd + ctrl  + down            resize_split:down,10
+cmd + ctrl  + right           resize_split:right,10
+cmd + ctrl  + left            resize_split:left,10
+cmd + shift + d               new_split:down
+cmd + shift + j               write_screen_file:paste
+cmd + shift + v               paste_from_selection
+cmd + shift + w               close_window
+cmd + shift + comma           reload_config
+cmd + shift + left_bracket    previous_tab
+cmd + shift + right_bracket   next_tab
+cmd + shift + up              jump_to_prompt:-1
+cmd + shift + down            jump_to_prompt:1
+cmd + shift + enter           toggle_split_zoom
 ctrl  + shift + tab             previous_tab
-super + a                       select_all
-super + c                       copy_to_clipboard
-super + d                       new_split:right
-super + k                       clear_screen
-super + n                       new_window
-super + q                       quit
-super + t                       new_tab
-super + v                       paste_from_clipboard
-super + w                       close_surface
-super + zero                    reset_font_size
-super + physical:one            goto_tab:1
-super + physical:two            goto_tab:2
-super + physical:three          goto_tab:3
-super + physical:four           goto_tab:4
-super + physical:five           goto_tab:5
-super + physical:six            goto_tab:6
-super + physical:seven          goto_tab:7
-super + physical:eight          goto_tab:8
-super + physical:nine           last_tab
-super + comma                   open_config
-super + minus                   decrease_font_size:1
-super + plus                    increase_font_size:1
-super + equal                   increase_font_size:1
-super + left_bracket            goto_split:previous
-super + right_bracket           goto_split:next
-super + up                      jump_to_prompt:-1
-super + down                    jump_to_prompt:1
-super + right                   text:\x05
-super + left                    text:\x01
-super + home                    scroll_to_top
-super + end                     scroll_to_bottom
-super + page_up                 scroll_page_up
-super + page_down               scroll_page_down
-super + enter                   toggle_fullscreen
-super + backspace               text:\x15
+cmd + a                       select_all
+cmd + c                       copy_to_clipboard
+cmd + d                       new_split:right
+cmd + k                       clear_screen
+cmd + n                       new_window
+cmd + q                       quit
+cmd + t                       new_tab
+cmd + v                       paste_from_clipboard
+cmd + w                       close_surface
+cmd + zero                    reset_font_size
+cmd + physical:one            goto_tab:1
+cmd + physical:two            goto_tab:2
+cmd + physical:three          goto_tab:3
+cmd + physical:four           goto_tab:4
+cmd + physical:five           goto_tab:5
+cmd + physical:six            goto_tab:6
+cmd + physical:seven          goto_tab:7
+cmd + physical:eight          goto_tab:8
+cmd + physical:nine           last_tab
+cmd + comma                   open_config
+cmd + minus                   decrease_font_size:1
+cmd + plus                    increase_font_size:1
+cmd + equal                   increase_font_size:1
+cmd + left_bracket            goto_split:previous
+cmd + right_bracket           goto_split:next
+cmd + up                      jump_to_prompt:-1
+cmd + down                    jump_to_prompt:1
+cmd + right                   text:\x05
+cmd + left                    text:\x01
+cmd + home                    scroll_to_top
+cmd + end                     scroll_to_bottom
+cmd + page_up                 scroll_page_up
+cmd + page_down               scroll_page_down
+cmd + enter                   toggle_fullscreen
+cmd + backspace               text:\x15
 alt   + right                   esc:f
 alt   + left                    esc:b
 ctrl  + tab                     next_tab
