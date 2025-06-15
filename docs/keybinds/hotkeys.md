@@ -1,6 +1,6 @@
 # Mac
 
-⌘ + ⌃ + ␣   - Emoji keyboard
+cmd + ⌃ + ␣   - Emoji keyboard
 ^ + right   - Desktop right
 ^ + left    - Desktop left
 
@@ -10,34 +10,38 @@
 
 # Keyboard Maestro
 
-⌘ ↑ G   - Search the web
+cmd shft G   - Search the web
 ^ `     - Open ghostty
 
 # Vs Code / Cursor
 
 ## Workspace
 
-⌘ B     - Close side bar
-⌘ ↑ E   - Open file explorer; scrollable
-⌘ ↑ X   - Open extension explorer; scrollable
-⌘ ↑ K + z   - Zen mode (vscode)
-⌘ ↑ R + z   - Zen mode (cursor)
-^ ↑ G   - Source control
+cmd B     - Close side bar
+cmd opt B - Toggle ai chat
+cmd shft E   - Open file explorer; scrollable
+cmd shft X   - Open extension explorer; scrollable
+cmd shft K + z   - Zen mode (vscode)
+cmd shft R + z   - Zen mode (cursor)
+^ shft G   - Source control
+cmd + t     - toggle terminal focus (changed in keybinds)
+cmd + j     - visually toggle terminal
+cmd + r -> cmd + s  - open keyboard shortcuts 
 
 ## Navigation
 
 [Some assembly required](https://stackoverflow.com/questions/38957302/is-there-a-quick-change-tabs-function-in-visual-studio-code)
 
 ^ tab       - Go to next tab
-^ ↑ tab     - Go to prev tab
+^ shft tab     - Go to prev tab
 
-⌘ ⌥ →  /  ⌘ ↑ ]  - next tab
-⌘ ⌥ ←  /  ⌘ ↑ [  - prev tab
+cmd ⌥ →  /  cmd shft ]  - next tab
+cmd ⌥ ←  /  cmd shft [  - prev tab
 
 ## Editing
 
-⌘ {     - tab code left
-⌘ }     - tab code right
+cmd {     - tab code left
+cmd }     - tab code right
 
 ## Cursor
 
