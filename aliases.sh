@@ -4,7 +4,7 @@
 # alias <name>=<string>
 
 # Variables used in file
-editor="code"
+editor="cursor"
 
 # Navigation
 alias ..="cd .."
@@ -44,6 +44,7 @@ alias dot="cd $dotfile_dir"
 
 alias hotkeys="v ~/dotfiles/docs/keybinds/hotkeys.md"
 alias hk="hotkeys"
+alias vz="v ~/.zshrc"
 
 # Docker
 alias dcd="docker compose down"
