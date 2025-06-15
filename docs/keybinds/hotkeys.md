@@ -26,7 +26,15 @@ cmd shft R + z   - Zen mode (cursor)
 ^ shft G   - Source control
 cmd + t     - toggle terminal focus (changed in keybinds)
 cmd + j     - visually toggle terminal
-cmd + r -> cmd + s  - open keyboard shortcuts 
+cmd + r -> cmd + s  - open keyboard shortcuts
+alt + shift   - duplicate line
+cmd + alt     - create multi-line cursor down
+
+terminal
+
+cmd alt right - go to terminal split right
+cmd alt left - go to terminal split left
+cmd shift delete  - kill active terminal instance (changed in keybinds)
 
 ## Navigation
 
