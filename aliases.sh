@@ -184,4 +184,4 @@ alias ytg="yarn test grep"
 alias yi="yarn install"
 
 # New
-alias fsft="cd /Users/devin/Documents/Projects/playground/full-stack-fastapi-template"alias nt="test"
+alias fsft="cd /Users/devin/Documents/Projects/playground/full-stack-fastapi-template"
