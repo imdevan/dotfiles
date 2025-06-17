@@ -15,6 +15,7 @@ alias aliases="${editor} $dotfile_dir/aliases.sh"
 ## Aliases shortcut
 alias a="aliases"
 alias dots="~/dotfiles"
+alias ra="source ~/dotfiles/aliases.sh"
 
 # Terminal Navigation
 alias la="ls -a"                         # List all in directory
@@ -101,6 +102,8 @@ alias gc="git clone" # Calls native git clone
 alias cl="git-clone" # Calls git-clone function (clone and cd)
 alias gra="git remote add"
 
+alias changes="echo '$(git diff --name-only)'" # Shows changed files (name only )
+
 # Branch shortcuts
 alias s="git checkout staging"
 alias staging="gco staging"
@@ -144,6 +147,8 @@ alias docs="python3 -mwebbrowser http://docs.google.com"        # Main docs fold
 alias s="python3 -m http.server"
 
 # Python
+alias create-ve="python -m venv .venv"
+alias cve="create-ve"
 alias ve="source .venv/bin/activate"
 alias py="python3"
 
@@ -184,9 +189,29 @@ alias ydg="yarn db:generate"
 alias ytg="yarn test grep"
 alias yi="yarn install"
 
+# Zsh web_search
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/web-search
+alias goo="web_search google"
+alias eco="web_search ecosia"
+alias gpt="web_search chatgpt"
+alias gith="web_search github"
+
 # New
 alias fsft="cd /Users/devin/Documents/Projects/playground/full-stack-fastapi-template"
 alias igni="node /Users/devin/Documents/Projects/playground/ignite/ignite-clone/bin/ignite new"
 alias ignig="node /Users/devin/Documents/Projects/playground/ignite/ignite-clone/bin/ignite generate"
 alias db="cd /Users/devin/Documents/Projects/dance-buddy"
 alias bil="eas build --platform ios --profile development --local"
+alias yib="yarn build:ios:dev"
+alias asdf="igni"
+alias va="v ~/dotfiles/aliases.sh"
+alias pi="pip install -r requirements.txt"
+alias py="python3.11"
+alias bb="cd -"
+alias pym="py monitor.py"
+alias cve="py -m venv .venv"
+alias pim="pi; py"
+alias pim="pi; pym"
+alias pym="py src/monitor.py"
+alias jcs="cd /Users/devin/Documents/Projects/playground/just-checking-scripts"
+alias vc="v /Users/devin/Library/Application\ Support/com.mitchellh.ghostty/config""
