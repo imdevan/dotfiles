@@ -256,6 +256,10 @@ gpt - peek Type Definition
 <leader>wh | ctrl + h   -  go to split left
 <leader>wl | ctrl + l   -  go to split right
 
+## Vimium
+
+contrl p  - custom
+
 ## References
 
 Sourced and stuff for me to read later
@@ -269,3 +273,12 @@ Sourced and stuff for me to read later
 # Lazy Vim Keybinds
 
 <https://www.lazyvim.org/keymaps>
+
+# Terminal / ghostty
+
+## Dirhistory (via plugin)
+
+alt + left  - go to previous directory
+alt + right - go to next directory
+alt + up    - move into the parent directory
+alt + down  - move into the first child directory by alphabetical order
