@@ -1,3 +1,12 @@
+# Functions for managing aliases
+
+# Todo:
+# - Add a function to remove aliases
+# - Add a function to edit aliases
+# - integrate with als
+#  https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aliases
+#  
+
 # Default editor
 editor="code"
 aliases_file=$dotfile_dir/aliases.sh
