@@ -108,3 +108,11 @@ function git-clone() {
   cd $repo_name
 }
 alias gcl="git-clone"
+
+
+# Shows changed files (name only)
+function changes() {
+  local changes=$(git diff --name-only)
+  echo "$changes"
+}
+# No alias for this one
