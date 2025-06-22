@@ -1,0 +1,29 @@
+{
+  "name": "Custom Theme",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#1E1E1E",
+    "editor.foreground": "#D4D4D4",
+    "activityBar.background": "#252526",
+    "activityBar.foreground": "#D4D4D4",
+    "sideBar.background": "#252526",
+    "sideBar.foreground": "#D4D4D4",
+    "statusBar.background": "#007ACC",
+    "statusBar.foreground": "#FFFFFF",
+    "titleBar.activeBackground": "#252526",
+    "titleBar.activeForeground": "#D4D4D4",
+    "panel.background": "#1E1E1E",
+    "panel.foreground": "#D4D4D4",
+    "terminal.background": "#1E1E1E",
+    "terminal.foreground": "#D4D4D4"
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": {
+        "foreground": "#6A9955"
+      }
+    }
+  ]
+} 

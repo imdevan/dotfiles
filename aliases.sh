@@ -102,8 +102,6 @@ alias gc="git clone" # Calls native git clone
 alias cl="git-clone" # Calls git-clone function (clone and cd)
 alias gra="git remote add"
 
-alias changes="echo '$(git diff --name-only)'" # Shows changed files (name only )
-
 # Branch shortcuts
 alias s="git checkout staging"
 alias staging="gco staging"
@@ -214,4 +212,4 @@ alias pim="pi; py"
 alias pim="pi; pym"
 alias pym="py src/monitor.py"
 alias jcs="cd /Users/devin/Documents/Projects/playground/just-checking-scripts"
-alias vc="v /Users/devin/Library/Application\ Support/com.mitchellh.ghostty/config""
+alias vc="v /Users/devin/Library/Application\ Support/com.mitchellh.ghostty/config"
