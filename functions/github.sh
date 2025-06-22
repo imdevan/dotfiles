@@ -111,8 +111,9 @@ alias gcl="git-clone"
 
 
 # Shows changed files (name only)
-function changes() {
+function git-changes() {
   local changes=$(git diff --name-only)
   echo "$changes"
 }
 # No alias for this one
+alias gch="git-changes"
