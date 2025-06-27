@@ -20,13 +20,18 @@ get_repo_name() {
   echo "$repo_name"
 }
 
+# Calls git add, and git commit
+function git_add_commit() {
+  one_arg_required "$@" || return 1
+  git add ${2:-"."} &&
+  git commit -m "${1}"
+}
+alias gac="git_add_commit"
+
 # Calls git add, git commit, and git push
 # Takes commit message
 function git_add_push() {
-  one_arg_required "$@" || return 1
-
-  git add ${2:-"."} &&
-  git commit -m "${1}" &&
+  git_add_commit "$@" &&
   git push
 }
 alias gap="git_add_push"
