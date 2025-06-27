@@ -31,7 +31,6 @@
         }
         ]
     },
-    "workbench.colorTheme": "yuyuko-vim-vsc",
     "workbench.iconTheme": "catppuccin-perfect-monokai",
     "workbench.editor.empty.hint": "hidden",
 
@@ -84,7 +83,11 @@
             "before": ["K"],
             "commands": ["lineBreakInsert"],
             "silent": true
-        }
+        },
+        {
+            "before": ["<leader>", "z"],
+            "commands": ["workbench.action.toggleZenMode"]
+        },
     ],
     "vim.leader": "<space>",
     "vim.highlightedyank.enable": true,
@@ -94,5 +97,9 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-
+    "cursor.composer.shouldChimeAfterChatFinishes": true,
+    "workbench.tips.enabled": false,
+    "workbench.colorTheme": "Gruvbox ish Dark Hard",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua"
 }

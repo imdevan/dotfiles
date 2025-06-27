@@ -114,11 +114,13 @@ function git_clone() {
 }
 alias gcl="git_clone"
 
-
 # Shows changed files (name only)
 function git_changes() {
-  local changes=$( git diff --name-only )
-  echo "$changes"
+  # Print out changes in a nice format
+  echo "Changes:"
+  echo "--------------------------------"
+  echo "${orange}$(git diff --name-only)${reset}"
+  echo "--------------------------------"
 }
-# No alias for this one
 alias gch="git_changes"
+alias changes="git_changes"

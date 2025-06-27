@@ -190,10 +190,17 @@ O - open blank line above current line
 ea - append at end of word
 Esc - exit insert mode
 r   - replace highlighted text
+c   - change
+ciw - replace word (change in word)
 
 u   - undo
 U   - undo all last line changes
 ^r  - redo
+
+### nvim-surround
+
+cs__- replace surrounding with
+ys__  - wrap with
 
 ## Full Screen Navigation
 <!-- https://www.reddit.com/r/vim/comments/14o2l0m/comment/jqayb0u/ -->
