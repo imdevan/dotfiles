@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# Function: one-arg-required
+# Function: one_arg_required
 # Description: Helper function to ensure only one argument was passed
-# Usage: one-arg-required [arguments]
+# Usage: one_arg_required [arguments]
 # Alias: none
-function one-arg-required() {
+function one_arg_required() {
   if [ "$#" -lt 1 ]; then
     echo "${red}Error: At least one argument is required${reset}"
     return 1

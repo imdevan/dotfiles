@@ -4,7 +4,7 @@ DEFAULT_ORIGIN='origin'
 
 # Helper function to get the name of a repo
 get_repo_name() {
-  one-arg-required "$@" || return 1
+  one_arg_required "$@" || return 1
 
   # Get the URL 
   local url="$1"
@@ -22,34 +22,34 @@ get_repo_name() {
 
 # Calls git add, git commit, and git push
 # Takes commit message
-function git-add-push() {
-  one-arg-required "$@" || return 1
+function git_add_push() {
+  one_arg_required "$@" || return 1
 
   git add ${2:-"."} &&
   git commit -m "${1}" &&
   git push
 }
-alias gap="git-add-push"
+alias gap="git_add_push"
 
 # Pulls down pull request from upstream and creates branch
-function pull-request() {
+function pull_request() {
   git fetch upstream pull/${1}/head:pr-${1} &&
     git checkout pr-${1} &&
     git remote prune upstream
 }
-alias pr="pull-request"
+alias pr="pull_request"
 
-function delete-branches() {
+function delete_branches() {
   for i in "$@"; do git branch -d $i; done
 }
-alias gbd="delete-branches"
+alias gbd="delete_branches"
 
-function force-delete-branches() {
+function force_delete_branches() {
   for i in "$@"; do git branch -D $i; done
 }
-alias gbd!="force-delete-branches"
+alias gbd!="force_delete_branches"
 
-function new-repo() {
+function new_repo() {
   local ORIGIN=${GIT_SSH_URL}/${PWD##*/}.git
   git init
   git add .
@@ -58,9 +58,9 @@ function new-repo() {
   git push -u origin master
   echo ${green}New Repo Created at $ORIGIN${reset}
 }
-alias gn='new-repo'
+alias gn='new_repo'
 
-function git-reset() {
+function git_reset() {
   git fetch
   local _BRANCH=${DEFAULT_BRANCH}
   local _ORIGIN=${DEFAULT_ORIGIN}
@@ -75,10 +75,10 @@ function git-reset() {
   echo `git reset --hard ${DEFAULT_ORIGIN}/${DEFAULT_BRANCH}`
   git reset --hard ${DEFAULT_ORIGIN}/${DEFAULT_BRANCH}
 }
-alias gr!="git-reset"
+alias gr!="git_reset"
 
-function git-clone() {
-  one-arg-required "$@" || return 1
+function git_clone() {
+  one_arg_required "$@" || return 1
 
   # TODO: accommodate for ssh
   # Clone the repo
@@ -107,13 +107,13 @@ function git-clone() {
   # Navigate to repo
   cd $repo_name
 }
-alias gcl="git-clone"
+alias gcl="git_clone"
 
 
 # Shows changed files (name only)
-function git-changes() {
-  local changes=$(git diff --name-only)
+function git_changes() {
+  local changes=$( git diff --name-only )
   echo "$changes"
 }
 # No alias for this one
-alias gch="git-changes"
+alias gch="git_changes"

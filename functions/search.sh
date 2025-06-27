@@ -1,17 +1,17 @@
 #!/bin/sh
 
-# Function: search-dir
+# Function: search_dir
 # Description: searches current directory for a file or folder with the given name
-# Usage: search-dir [arguments]
+# Usage: search_dir [arguments]
 # Alias: sd
 
-function search-dir() {
+function search_dir() {
     # Function implementation goes here
-    echo "Function search-dir called"
+    echo "Function search_dir called"
 
     # If no argument is provided, return usage
     if [ -z "$1" ]; then
-        echo "${orange}Usage: search-dir [arguments]${reset}"
+        echo "${orange}Usage: search_dir [arguments]${reset}"
         return 1
     fi
     
@@ -32,4 +32,4 @@ function search-dir() {
 }
 
 # Create alias
-alias sd="search-dir"
+alias sd="search_dir"
