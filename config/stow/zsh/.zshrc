@@ -19,10 +19,10 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 # Add a blank line after the prompt
-function add_blank_line_after_prompt() {
-  echo ''
-}
-precmd_functions+=(add_blank_line_after_prompt)
+# function add_blank_line_after_prompt() {
+#   echo ''
+# }
+# precmd_functions+=(add_blank_line_after_prompt)
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
