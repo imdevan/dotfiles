@@ -34,7 +34,8 @@ function bookmark() {
   if [ -z "$1" ]; then
     echo 'No name provided'
   else
-    local current_dir=$(pwd | sed 's/ /\\ /g')
+    # local current_dir=$(pwd | sed 's/ /\\ /g')
+    local current_dir=$(pwd | sed "s|^$HOME|~|")
     echo "alias ${1}=\"cd ${current_dir}\"" >> $aliases_file
     source $aliases_file
     echo "${green}Alias: ${pink}${1}${green}=${purple}\"${current_dir}\"${green} created!\n"
