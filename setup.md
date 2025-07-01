@@ -3,35 +3,34 @@
 ## Terimal
 ------------------------------------------------------------------------
 
+### homebrew 
+
+Install homebrew (https://brew.sh/)[https://brew.sh/]
+https://docs.brew.sh/Installation
+
 ### zsh + dotfiles
 
 Zsh https://ohmyz.sh/#install
 
 ### clone dotfiles 
 
-```bash
+```sh
 cd ~
 git clone https://github.com/imdevan/dotfiles.git
 ```
 
 ### connect zsh
 
-todo: can i use stow for this?
-todo: i can move this to a setup script
-
+```sh
+cd ~/dotfiles/config/stow
+stow -t ~/ zsh
 ```
-echo 'source ~/dotfiles/config/.zshrc' > ~/.zshrc
-```
-
-### homebrew 
-
-Install homebrew (https://brew.sh/)[https://brew.sh/]
-https://docs.brew.sh/Installation
 
 ### ghostty
 
 https://ghostty.org/download
-```
+
+```sh
 brew install --cask ghostty
 ```
 ### theme - oh-my-posh
@@ -39,8 +38,10 @@ https://ohmyposh.dev/docs/installation/macos
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 ### font
-brew install --cask font-fira-code-nerd-font
 
+```sh
+brew install --cask font-fira-code-nerd-font
+```
 
 ## Editors
 ------------------------------------------------------------------------
@@ -53,7 +54,7 @@ https://code.visualstudio.com/
 
 disable the Apple press and hold for VSCode and Cursor
 
-```
+```sh
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```
 
@@ -97,6 +98,10 @@ https://karabiner-elements.pqrs.org/
 Import macros from [saved macros](https://github.com/imdevan/keyboard-maestro-macros)
 
 ### desktop manager - aerospace
+
+```sh
+brew install --cask nikitabobko/tap/aerospace
+```
 
 note: I like aerospace but cautious of performance
 - possible alternative: raycast
