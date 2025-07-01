@@ -1,4 +1,4 @@
-# Chance this is you change the location of these dotfiles
+# Change this is you change the location of these dotfiles
 dotfile_dir=~/dotfiles
 
 # Variables used everywhere
