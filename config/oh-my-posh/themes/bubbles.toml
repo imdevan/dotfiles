@@ -39,16 +39,16 @@ console_title_template = '{{.PWD}}'
   notice = false
 
 # Insert blank line
-[[blocks]]
-  type = 'prompt'
-  alignment = 'left'
-  force = true
-  newline = true
+# [[blocks]]
+#   type = 'prompt'
+#   alignment = 'left'
+#   force = true
+#   newline = true
 
-  [[blocks.segments]]
-    template = ' '
-    type = 'text'
-    style = 'plain'
+#   [[blocks.segments]]
+#     template = ' '
+#     type = 'text'
+#     style = 'plain'
 
 [[blocks]]
   type = 'prompt'
@@ -58,8 +58,6 @@ console_title_template = '{{.PWD}}'
     leading_diamond = ''
     trailing_diamond = ' '
     template = '{{ .UserName }}'
-    # foreground = '#E64747'
-    # background = '#29315A'
     foreground = 'p:text'
     background = 'p:blue'
     type = 'session'
@@ -69,8 +67,6 @@ console_title_template = '{{.PWD}}'
     leading_diamond = ''
     trailing_diamond = ''
     template = ' {{ .Path }}'
-    # foreground = '#3EC669'
-    # background = '#29315A'
     foreground = 'p:text'
     background = 'p:pink'
 
@@ -84,8 +80,6 @@ console_title_template = '{{.PWD}}'
     leading_diamond = ' '
     trailing_diamond = ''
     template = '{{ .HEAD }}'
-    # foreground = '#43CCEA'
-    # background = '#29315A'
     foreground = 'p:text'
     background = 'p:lavender'
     type = 'git'
