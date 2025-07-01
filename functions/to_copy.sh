@@ -17,4 +17,4 @@ function copy_pwd() {
 }
 
 # Create alias
-alias cp="copy_pwd"
+alias cpwd="copy_pwd"
