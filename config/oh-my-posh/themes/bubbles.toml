@@ -1,22 +1,55 @@
 version = 3
 final_space = true
 
+[palette]
+  base = '#eff1f5'
+  blue = '#8AADF4'
+  lavender = '#B7BDF8'
+  os = '#ACB0BE'
+  pink = '#F5BDE6'
+  text = '#494D64'
+  wight = '#FFFFFF'
+  rosewater = '#dc8a78'
+  mauve = '#8839ef'
+  green = '#40c4ff'
+  maroon = '#e64553'
+  sky = '#04a5e5'
+  teal = '#40c4ff'
+  yellow = '#e6c35c'
+  orange = '#fe640b'
+  red = '#e64553'
+  violet = '#8839ef'
+
 [upgrade]
   source = 'cdn'
   interval = '168h'
   auto = false
   notice = false
 
+# Insert blank line
 [[blocks]]
   type = 'prompt'
-  alignment = 'right'
+  alignment = 'left'
+  force = true
+  newline = true
+
+  [[blocks.segments]]
+    template = ' '
+    type = 'text'
+    style = 'plain'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
 
   [[blocks.segments]]
     leading_diamond = ''
     trailing_diamond = ' '
     template = '{{ .UserName }}'
-    foreground = '#E64747'
-    background = '#29315A'
+    # foreground = '#E64747'
+    # background = '#29315A'
+    foreground = 'p:text'
+    background = 'p:blue'
     type = 'session'
     style = 'diamond'
 
@@ -24,8 +57,11 @@ final_space = true
     leading_diamond = ''
     trailing_diamond = ''
     template = ' {{ .Path }}'
-    foreground = '#3EC669'
-    background = '#29315A'
+    # foreground = '#3EC669'
+    # background = '#29315A'
+    foreground = 'p:text'
+    background = 'p:pink'
+
     type = 'path'
     style = 'diamond'
 
@@ -36,13 +72,24 @@ final_space = true
     leading_diamond = ' '
     trailing_diamond = ''
     template = '{{ .HEAD }}'
-    foreground = '#43CCEA'
-    background = '#29315A'
+    # foreground = '#43CCEA'
+    # background = '#29315A'
+    foreground = 'p:text'
+    background = 'p:lavender'
     type = 'git'
     style = 'diamond'
 
     [blocks.segments.properties]
-      branch_icon = ''
+      branch_icon = ' '
+      cherry_pick_icon = ' '
+      commit_icon = ' '
+      fetch_status = false
+      fetch_upstream_icon = false
+      merge_icon = ' '
+      no_commits_icon = ' '
+      rebase_icon = ' '
+      revert_icon = ' '
+      tag_icon = ' '
 
   [[blocks.segments]]
     leading_diamond = ' '
@@ -120,16 +167,28 @@ final_space = true
     leading_diamond = ' '
     trailing_diamond = ''
     template = '{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}'
-    foreground = '#9B6BDF'
-    background = '#29315A'
+    foreground = 'p:wight'
+    background = 'p:sky'
     type = 'battery'
     style = 'diamond'
-    foreground_templates = ['{{if eq "Charging" .State.String}}#40c4ff{{end}}', '{{if eq "Discharging" .State.String}}#ff5722{{end}}', '{{if eq "Full" .State.String}}#4caf50{{end}}']
+    foreground_templates = ['{{if eq "Charging" .State.String}}p:base{{end}}', '{{if eq "Discharging" .State.String}}p:base{{end}}', '{{if eq "Full" .State.String}}p:base{{end}}']
 
     [blocks.segments.properties]
       charged_icon = ' '
       charging_icon = '⇡ '
       discharging_icon = '⇣ '
+
+# Insert blank line
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+  force = true
+
+  [[blocks.segments]]
+    template = ' '
+    type = 'text'
+    style = 'plain'
 
 [[blocks]]
   type = 'prompt'
@@ -153,7 +212,6 @@ final_space = true
     leading_diamond = ' '
     trailing_diamond = ' '
     template = '❯'
-    foreground = '#7FD5EA'
-    # background = 'transparent'
+    foreground = 'p:pink'
     type = 'text'
     style = 'diamond'
