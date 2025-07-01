@@ -101,6 +101,8 @@ alias clone="git clone"
 alias gc="git clone" # Calls native git clone
 alias cl="git-clone" # Calls git-clone function (clone and cd)
 alias gra="git remote add"
+alias gclean="git checkout . && git clean -f"
+alias gdno="git diff --name-only"
 
 # Branch shortcuts
 alias s="git checkout staging"
@@ -223,5 +225,4 @@ alias aero="nvim ~.config/aerospace.toml"
 alias aero="v ~/.config/aerospace.toml"
 alias aero="v ~/.aerospace.toml"
 alias sto="stow -t ~/"
-alias gclean="git checkout . && git clean -f"
 alias ez="exec zsh"
