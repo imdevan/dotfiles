@@ -61,7 +61,7 @@ shift cmd k   - file context ai
 
 <https://www.worldtimzone.com/res/vi.html7>
 
-## Cursor movement
+## Cursor movement - Normal mode
 
 h   - move left
 j   - move down
@@ -86,6 +86,11 @@ G   - Go To command (prefix with number - 5G goes to line 5)
 
 Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
 
+### Word affects
+
+r     - replace hovered character
+z=    - spell check suggestion
+
 ## Insert Mode - Inserting/Appending text
 
 i     - start insert mode at cursor
@@ -102,7 +107,7 @@ Esc   - exit insert mode
 v       - start visual mode, mark lines, then do command (such as y-yank)
 V       - start Linewise visual mode
 o       - move to other end of marked area
-Ctrl+v  - start visual block mode
+Ctrl+v  - start visual block mode - multi line cursor
 O       - move to Other corner of block
 aw      - mark a word
 ab      - a () block (with braces)
@@ -110,6 +115,11 @@ aB      - a {} block (with brackets)
 ib      - inner () block
 iB      - inner {} block
 Esc     - exit visual mode
+
+### Editing in visual mode
+
+c-v + c -> change -> esc - visual block; change a word (all words selected); escape to propagate
+c-v + i -> change -> esc - visual block; insert a word (before all words selected); escape to propagate
 
 ## Visual commands
 
