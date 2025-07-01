@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Oh My Posh!
 # eval "$(oh-my-posh init zsh)"
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh)"
+  eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
 fi
 
 # Set name of the theme to load --- if set to "random", it will
@@ -78,7 +78,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+plugins=(web-search)
 
 source $ZSH/oh-my-zsh.sh
 
