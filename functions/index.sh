@@ -31,3 +31,5 @@ source $dotfile_dir/functions/quick_note.sh
 source $dotfile_dir/functions/open_github.sh
 
 source $dotfile_dir/functions/scripts.sh
+
+source $dotfile_dir/functions/make_file.sh
