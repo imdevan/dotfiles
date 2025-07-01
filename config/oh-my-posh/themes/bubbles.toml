@@ -1,5 +1,17 @@
+# Bubbles theme updated to catppuccin colors
+# https://catppuccin.com/palette/
+# https://github.com/ohmyposh/ohmyposh/blob/main/themes/bubbles.toml
+# https://github.com/catppuccin/oh-my-posh/blob/main/themes/catppuccin.toml
+# 
+# oh my posh references:
+# https://ohmyposh.dev/docs/configuration/colors
+
 version = 3
 final_space = true
+# console_title_template = "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}"
+# console_title_template = "{{.Folder}}"
+console_title_template = '{{.PWD}}'
+
 
 [palette]
   base = '#eff1f5'
@@ -167,11 +179,11 @@ final_space = true
     leading_diamond = ' '
     trailing_diamond = ''
     template = '{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}'
-    foreground = 'p:wight'
+    foreground = 'p:base'
     background = 'p:sky'
     type = 'battery'
     style = 'diamond'
-    foreground_templates = ['{{if eq "Charging" .State.String}}p:base{{end}}', '{{if eq "Discharging" .State.String}}p:base{{end}}', '{{if eq "Full" .State.String}}p:base{{end}}']
+    # foreground_templates = ['{{if eq "Charging" .State.String}}p:base{{end}}', '{{if eq "Discharging" .State.String}}p:base{{end}}', '{{if eq "Full" .State.String}}p:base{{end}}']
 
     [blocks.segments.properties]
       charged_icon = ' '
