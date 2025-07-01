@@ -11,3 +11,10 @@ function to_copy() {
 
 # Create alias
 alias tc="to_copy"
+
+function copy_pwd() {
+  pwd | pbcopy
+}
+
+# Create alias
+alias cp="copy_pwd"
