@@ -1,4 +1,4 @@
-source $dotfile_dir/.gitVars
+# source $dotfile_dir/.gitVars
 DEFAULT_BRANCH='development'
 DEFAULT_ORIGIN='origin'
 
