@@ -45,7 +45,7 @@ alias dot="cd $dotfile_dir"
 
 alias hotkeys="v ~/dotfiles/docs/keybinds/hotkeys.md"
 alias hk="hotkeys"
-alias vz="v ~/dotfiles/config/zsh/.zshrc"
+alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
 
 # Docker
 alias dcd="docker compose down"
