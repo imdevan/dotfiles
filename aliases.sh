@@ -45,7 +45,7 @@ alias dot="cd $dotfile_dir"
 
 alias hotkeys="v ~/dotfiles/docs/keybinds/hotkeys.md"
 alias hk="hotkeys"
-alias vz="v ~/.zshrc"
+alias vz="v ~/dotfiles/config/zsh/.zshrc"
 
 # Docker
 alias dcd="docker compose down"
@@ -224,3 +224,4 @@ alias aero="v ~/.config/aerospace.toml"
 alias aero="v ~/.aerospace.toml"
 alias sto="stow -t ~/"
 alias gclean="git checkout . && git clean -f"
+alias ez="exec zsh"
