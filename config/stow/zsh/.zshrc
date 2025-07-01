@@ -18,11 +18,17 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
 fi
 
+# Add a blank line after the prompt
+function add_blank_line_after_prompt() {
+  echo ''
+}
+precmd_functions+=(add_blank_line_after_prompt)
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME=powerlevel420k/powerlevel420k
 
 # Set list of themes to pick from when loading at random
