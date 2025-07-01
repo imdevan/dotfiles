@@ -1,24 +1,55 @@
-# Manual Setup 
+# Manual Setup Steps
 
-## 1. Setup Zsh
+## Terimal
+------------------------------------------------------------------------
 
-### Install
+### zsh + dotfiles
 
-Install zsh 
+Zsh https://ohmyz.sh/#install
 
-### Dotfile config
+### clone dotfiles 
 
-## 2. Editor config
+```bash
+cd ~
+git clone https://github.com/imdevan/dotfiles.git
+```
 
-### Settings
+### connect zsh
 
-Copy ./vscode/settings.json into the vscode settings found in vscode 
+todo: can i use stow for this?
+todo: i can move this to a setup script
 
-Duplicate for cursor if using.
+```
+echo 'source ~/dotfiles/config/.zshrc' > ~/.zshrc
+```
 
-### Extensions
+### homebrew 
 
-#### Vim
+Install homebrew (https://brew.sh/)[https://brew.sh/]
+https://docs.brew.sh/Installation
+
+### ghostty
+
+https://ghostty.org/download
+```
+brew install --cask ghostty
+```
+### theme - oh-my-posh
+https://ohmyposh.dev/docs/installation/macos
+brew install jandedobbeleer/oh-my-posh/oh-my-posh
+
+### font
+brew install --cask font-fira-code-nerd-font
+
+
+## Editors
+------------------------------------------------------------------------
+
+## cursor
+https://www.cursor.com/
+
+## vs_code
+https://code.visualstudio.com/
 
 disable the Apple press and hold for VSCode and Cursor
 
@@ -26,31 +57,63 @@ disable the Apple press and hold for VSCode and Cursor
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```
 
-### Theme setup
+
+Copy ./vscode/settings.json into the vscode settings found in vscode and cursor
+
+todo: can i use stow for this?
+
+## Vim
+------------------------------------------------------------------------
+
+### install neovim
+https://github.com/neovim/neovim/blob/master/INSTALL.md
 
 
+### install lazyvim
+https://www.lazyvim.org/
 
-## 3. LazyVim Config
+### config
 
-### Install
+clone nvim_config repo into `~/.config/nvim`
 
-Install LazyVim
+```
+git clone https://github.com/imdevan/nvim_config
+```
 
-### Setup
+todo: can i use stow for this?
 
-Copy Vim RC files
+## Keyboard
+------------------------------------------------------------------------
 
-## 3. Swap keyboard keys
+### swap keyboard keys - karabiner elements
 
 https://karabiner-elements.pqrs.org/ 
+- Swap caps_lock for esc
 
-## 4. Keyboard Maestro
+### macros - keyboard maestro
 
 [Download](https://www.keyboardmaestro.com/main/)
 
 Import macros from [saved macros](https://github.com/imdevan/keyboard-maestro-macros)
 
+### desktop manager - aerospace
 
-## 4. Change desktop switcher settings 
+note: I like aerospace but cautious of performance
+- possible alternative: raycast
 
-(mac keyboard > shortcuts)
+### change native desktop switcher settings 
+
+(mac keyboard > shortcuts)´
+
+
+
+
+
+# Todo:
+------------------------------------------------------------------------
+
+- Move .zshrc to ./config/.zshrc(or consider different name)?
+- - is it possible to use STOW for this? 
+- - or should I just make the name the same and source it? 
+
+- Add keyboard maestro config exports to dotfiles- 
