@@ -1,0 +1,8 @@
+brew "neovim"
+brew "fzf"
+brew "zoxide"
+brew "ripgrep"
+
+tap "homebrew/cask"
+brew "aerospace"
+brew "font-fira-code-nerd-font"
