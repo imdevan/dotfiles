@@ -39,16 +39,16 @@ console_title_template = '{{.PWD}}'
   notice = false
 
 # Insert blank line
-# [[blocks]]
-#   type = 'prompt'
-#   alignment = 'left'
-#   force = true
-#   newline = true
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  force = true
+  newline = true
 
-#   [[blocks.segments]]
-#     template = ' '
-#     type = 'text'
-#     style = 'plain'
+  [[blocks.segments]]
+    template = ' '
+    type = 'text'
+    style = 'plain'
 
 [[blocks]]
   type = 'prompt'
