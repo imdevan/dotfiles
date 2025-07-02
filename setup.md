@@ -32,10 +32,12 @@ https://ghostty.org/download
 
 ```sh
 brew install --cask ghostty
+
 ```
 ### theme - oh-my-posh
 https://ohmyposh.dev/docs/installation/macos
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
+
 
 ### font
 
