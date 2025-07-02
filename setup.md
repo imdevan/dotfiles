@@ -43,6 +43,11 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 ```sh
 brew install --cask font-fira-code-nerd-font
+
+### helpful homebrew
+
+todo: setup brewfile in config
+```
 ```
 
 ## Editors
