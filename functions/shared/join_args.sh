@@ -1,6 +1,6 @@
-# Function: join_arguments
+# Function: join_args
 # Description: Join multiple arguments with spaces
-# Usage: join_arguments [arguments]
-function join_arguments() {
+# Usage: join_args [arguments]
+function join_args() {
     echo "$@" | sed 's/ /+/g'
 }
