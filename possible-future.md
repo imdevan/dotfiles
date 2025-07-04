@@ -55,6 +55,8 @@ https://github.com/unixorn/awesome-zsh-plugins
 
 ### Dotfiles to consider 
 
+https://github.com/simonsmith/dotfiles/blob/master/scripts/macos.sh
+
 https://github.com/z0rc/dotfiles
 
 https://github.com/bradp/dotfiles
@@ -62,3 +64,25 @@ https://github.com/bradp/dotfiles
 https://github.com/LucasLarson/dotfiles
 
 https://github.com/unixorn/zsh-quickstart-kit
+
+### Aerospace improvements
+
+Read: https://nikitabobko.github.io/AeroSpace/goodies
+
+Replace status bar
+https://github.com/FelixKratz/SketchyBar
+https://felixkratz.github.io/SketchyBar/features
+
+Integrate with SketchyBar
+
+Integrate jankyboarders https://nikitabobko.github.io/AeroSpace/goodness#highlight-focused-windows-with-colored-borders
+
+#### tomls to read 
+
+https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml
+
+https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml
+
+## Terminal Possible
+
+https://github.com/alacritty/alacritty

@@ -42,6 +42,6 @@ font-family = FiraCode Nerd Font
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-theme=catppuccin-macchiato
+config-file = ~/dotfiles/config/ghostty
 
 /usr/bin/dirname

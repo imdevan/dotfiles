@@ -111,7 +111,9 @@ brew install --cask nikitabobko/tap/aerospace
 ```
 
 note: I like aerospace but cautious of performance
-- possible alternative: raycast
+- possible alternatives: 
+- - raycast
+- - yabai - https://github.com/koekeishiya/yabai/tree/master
 
 ### change native desktop switcher settings 
 

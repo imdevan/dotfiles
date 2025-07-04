@@ -9,7 +9,16 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+# after-startup-command = []
+# Run Sketchybar together with AeroSpace
+# sketchbar has a built-in detection of already running process,
+# so it won't be run twice on AeroSpace restart
+after-startup-command = ['exec-and-forget sketchybar']
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
 
 # Start AeroSpace at login
 start-at-login = false
@@ -64,13 +73,21 @@ automatically-unhide-macos-hidden-apps = false
     outer.bottom =     0
     outer.top =        0
     outer.right =      0
+    # inner.horizontal = 8
+    # inner.vertical =   8
+    # outer.left =       8
+    # outer.bottom =     8
+    # outer.top =        8
+    # outer.right =      8
+    # enable_for_floating = true  # this is the key line
+    # inner_gap = 8         # space between tiled windows
+    # outer_gap = 8         # space around the screen edge
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
-
     # All possible keys:
     # - Letters.        a, b, c, ..., z
     # - Numbers.        0, 1, 2, ..., 9
@@ -97,6 +114,10 @@ automatically-unhide-macos-hidden-apps = false
     #     activate
     # end tell'
     # '''
+    # Disable annoying and useless "hide application" shortcut
+    # https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
+    # cmd-h = [] # Disable "hide application"
+    # cmd-alt-h = [] # Disable "hide others"
 
     cmd-alt-shift-r="reload-config"
     alt-shift-cmd-t = "layout tiles"
@@ -118,44 +139,60 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-cmd-k = 'move up'
     alt-shift-cmd-l = 'move right'
 
+    ctrl-alt-cmd-h = 'join-with left'
+    ctrl-alt-cmd-j = 'join-with down'
+    ctrl-alt-cmd-k = 'join-with up'
+    ctrl-alt-cmd-l = 'join-with right'
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    alt-shift-cmd-minus = 'resize smart -50'
-    alt-shift-cmd-equal = 'resize smart +50'
+    # alt-shift-cmd-minus = 'resize smart -50'
+    # alt-shift-cmd-equal = 'resize smart +50'
+
+    alt-cmd-minus = 'resize smart -50'
+    alt-cmd-equal = 'resize smart +50'
 
     alt-shift-cmd-enter = 'macos-native-fullscreen'
 
+    alt-cmd-h = 'workspace prev'
+    alt-cmd-l = 'workspace next'
+
+    # ctrl-alt-cmd-v = 'join-with vertical'
+    # ctrl-alt-cmd-h = 'join-with horizontal'
+
+    alt-f = 'fullscreen'
+  
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-cmd-1 = 'workspace 1'
     alt-cmd-2 = 'workspace 2'
     alt-cmd-3 = 'workspace 3'
     alt-cmd-4 = 'workspace 4'
     alt-cmd-5 = 'workspace 5'
-    alt-cmd-6 = 'workspace 6'
-    alt-cmd-7 = 'workspace 7'
-    alt-cmd-8 = 'workspace 8'
-    alt-cmd-9 = 'workspace 9'
-    alt-cmd-a = 'workspace a' # in your config, you can drop workspace bindings that you don't need
-    alt-cmd-b = 'workspace b'
-    alt-cmd-c = 'workspace c'
-    alt-cmd-d = 'workspace d'
-    alt-cmd-e = 'workspace e'
-    alt-cmd-f = 'workspace f'
-    alt-cmd-g = 'workspace g'
-    alt-cmd-i = 'workspace i'
-    alt-cmd-m = 'workspace m'
-    alt-cmd-n = 'workspace N'
-    alt-cmd-o = 'workspace O'
-    alt-cmd-p = 'workspace P'
-    alt-cmd-q = 'workspace Q'
-    alt-cmd-r = 'workspace R'
-    alt-cmd-s = 'workspace S'
-    alt-cmd-t = 'workspace T'
-    alt-cmd-u = 'workspace U'
-    alt-cmd-v = 'workspace V'
-    alt-cmd-w = 'workspace W'
-    alt-cmd-x = 'workspace X'
-    alt-cmd-y = 'workspace Y'
-    alt-cmd-z = 'workspace Z'
+    # alt-cmd-6 = 'workspace 6'
+    # alt-cmd-7 = 'workspace 7'
+    # alt-cmd-8 = 'workspace 8'
+    # alt-cmd-9 = 'workspace 9'
+    # alt-cmd-a = 'workspace a' # in your config, you can drop workspace bindings that you don't need
+    # alt-cmd-b = 'workspace b'
+    # alt-cmd-c = 'workspace c'
+    # alt-cmd-d = 'workspace d'
+    # alt-cmd-e = 'workspace e'
+    # alt-cmd-f = 'workspace f'
+    # alt-cmd-g = 'workspace g'
+    # alt-cmd-i = 'workspace i'
+    # alt-cmd-m = 'workspace m'
+    # alt-cmd-n = 'workspace N'
+    # alt-cmd-o = 'workspace O'
+    # alt-cmd-p = 'workspace P'
+    # alt-cmd-q = 'workspace Q'
+    # alt-cmd-r = 'workspace R'
+    # alt-cmd-s = 'workspace S'
+    # alt-cmd-t = 'workspace T'
+    # alt-cmd-u = 'workspace U'
+    # alt-cmd-v = 'workspace V'
+    # alt-cmd-w = 'workspace W'
+    # alt-cmd-x = 'workspace X'
+    # alt-cmd-y = 'workspace Y'
+    # alt-cmd-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -163,32 +200,32 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-3 = 'move-node-to-workspace 3'
     alt-shift-4 = 'move-node-to-workspace 4'
     alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
-    alt-shift-a = 'move-node-to-workspace A'
-    alt-shift-b = 'move-node-to-workspace B'
-    alt-shift-c = 'move-node-to-workspace C'
-    alt-shift-d = 'move-node-to-workspace D'
-    alt-shift-e = 'move-node-to-workspace E'
-    alt-shift-f = 'move-node-to-workspace F'
-    alt-shift-g = 'move-node-to-workspace G'
-    alt-shift-i = 'move-node-to-workspace I'
-    alt-shift-m = 'move-node-to-workspace M'
-    alt-shift-n = 'move-node-to-workspace N'
-    alt-shift-o = 'move-node-to-workspace O'
-    alt-shift-p = 'move-node-to-workspace P'
-    alt-shift-q = 'move-node-to-workspace Q'
-    alt-shift-r = 'move-node-to-workspace R'
-    alt-shift-s = 'move-node-to-workspace S'
-    alt-shift-t = 'move-node-to-workspace T'
-    alt-shift-u = 'move-node-to-workspace U'
-    alt-shift-v = 'move-node-to-workspace V'
-    alt-shift-w = 'move-node-to-workspace W'
-    alt-shift-x = 'move-node-to-workspace X'
-    alt-shift-y = 'move-node-to-workspace Y'
-    alt-shift-z = 'move-node-to-workspace Z'
+   # alt-shift-6 = 'move-node-to-workspace 6'
+    # alt-shift-7 = 'move-node-to-workspace 7'
+    # alt-shift-8 = 'move-node-to-workspace 8'
+    # alt-shift-9 = 'move-node-to-workspace 9'
+    # alt-shift-a = 'move-node-to-workspace A'
+    # alt-shift-b = 'move-node-to-workspace B'
+    # alt-shift-c = 'move-node-to-workspace C'
+    # alt-shift-d = 'move-node-to-workspace D'
+    # alt-shift-e = 'move-node-to-workspace E'
+    # alt-shift-f = 'move-node-to-workspace F'
+    # alt-shift-g = 'move-node-to-workspace G'
+    # alt-shift-i = 'move-node-to-workspace I'
+    # alt-shift-m = 'move-node-to-workspace M'
+    # alt-shift-n = 'move-node-to-workspace N'
+    # alt-shift-o = 'move-node-to-workspace O'
+    # alt-shift-p = 'move-node-to-workspace P'
+    # alt-shift-q = 'move-node-to-workspace Q'
+    # alt-shift-r = 'move-node-to-workspace R'
+    # alt-shift-s = 'move-node-to-workspace S'
+    # alt-shift-t = 'move-node-to-workspace T'
+    # alt-shift-u = 'move-node-to-workspace U'
+    # alt-shift-v = 'move-node-to-workspace V'
+    # alt-shift-w = 'move-node-to-workspace W'
+    # alt-shift-x = 'move-node-to-workspace X'
+    # alt-shift-y = 'move-node-to-workspace Y'
+    # alt-shift-z = 'move-node-to-workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'

@@ -2,7 +2,11 @@ brew "neovim"
 brew "fzf"
 brew "zoxide"
 brew "ripgrep"
+brew "nvm"
+brew "gh"
 
 tap "homebrew/cask"
 brew "aerospace"
 brew "font-fira-code-nerd-font"
+brew "docker"
+brew "orbstack

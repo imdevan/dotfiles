@@ -10,15 +10,15 @@ if true then return {} end
 -- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  -- { "ellisonleao/gruvbox.nvim" },
 
   -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "gruvbox",
+  --   },
+  -- },
 
   -- change trouble config
   {
@@ -60,6 +60,19 @@ return {
         sorting_strategy = "ascending",
         winblend = 0,
       },
+      function(_, opts)
+        -- enable hidden files in find_files picker
+        opts.pickers = vim.tbl_deep_extend("force", opts.pickers or {}, {
+          find_files = {
+            hidden = true,
+          },
+        })
+    
+        -- add --hidden to fd command if you're using fd
+        opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+          find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
+        })
+      end,
     },
   },
 

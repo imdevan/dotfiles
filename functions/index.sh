@@ -1,6 +1,8 @@
 # Shared functions
 source $dotfile_dir/functions/shared/validators.sh
 
+source $dotfile_dir/functions/shared/join_args.sh
+
 # Barrel file for functions
 source $dotfile_dir/functions/localhost.sh
 source $dotfile_dir/functions/alias_utils.sh
@@ -33,3 +35,11 @@ source $dotfile_dir/functions/open_github.sh
 source $dotfile_dir/functions/scripts.sh
 
 source $dotfile_dir/functions/make_file.sh
+
+source $dotfile_dir/functions/encore_app_create.sh
+
+source $dotfile_dir/functions/jobbies.sh
+
+source $dotfile_dir/functions/echo_to.sh
+
+source $dotfile_dir/functions/find_string.sh

@@ -9,11 +9,13 @@ function search_gpt() {
     one_arg_required "$@" || return 1
 
     local url="https://chat.openai.com/?q="
-    local prompt=$1
+    local prompt
 
     # If more then one argument, join them with a space
     if [ $# -gt 1 ]; then
-        prompt=$(echo "$@" | sed 's/ /+/g')
+        prompt=$(join_arguments "$@")
+    else
+        prompt=$1
     fi
 
     # Escape spaces in prompt

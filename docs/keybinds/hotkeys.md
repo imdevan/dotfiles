@@ -84,6 +84,9 @@ G   - Go To command (prefix with number - 5G goes to line 5)
 }   - go to end of paragraph
 }ge - go to last word of paragraph
 
+>>  - indent line
+<<  - undent line
+
 Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
 
 ### Word affects
