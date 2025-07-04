@@ -44,4 +44,3 @@ font-family = FiraCode Nerd Font
 
 config-file = ~/dotfiles/config/ghostty
 
-/usr/bin/dirname
