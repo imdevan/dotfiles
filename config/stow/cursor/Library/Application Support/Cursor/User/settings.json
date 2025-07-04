@@ -101,5 +101,4 @@
     "workbench.tips.enabled": false,
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
-    "editor.accessibilitySupport": "on"
 }
