@@ -7,8 +7,15 @@
 
 function find_string() {
     # Function implementation goes here
-   grep -r "search_string" .
- 
+    if [[ -z "$1" ]]; then
+        echo "Usage: search <search_term>"
+        return 1
+    fi
+
+    local term="$1"
+    shift
+
+    grep -r --color=auto "$term" "${@:-.}"
 }
 
 # Create alias
