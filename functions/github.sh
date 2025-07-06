@@ -196,21 +196,14 @@ function lazy_push() {
   #  such that if -s or similar is passed it will remove the s from the "last_part" 
   #  before generating a a message
   
-  #  Generate commit message
-  # if [[ -z "$first_folder" ]]; then
-  #   commit_message="update ${last_part}"
-  # elif [[ "$first_folder" == "config" ]]; then
-  #   commit_message="update ${last_part} $first_folder"
-  # fi
- 
-  
-  echo "${green}Lazy pushing 🎉${reset}"
+  # Print out commit message
+  echo "/n${green}Lazy pushing 🎉${reset}"
   echo "${orange}commit message: ${reset}${fomatted_commit_message}${reset}"
-  # echo "actual commit message: ${commit_message}"
-  # echo " \j
-  #
+  echo " \n"
+
+  # Add, commit, and push
   git add $1 &&
-  git commit -m "update $1" &&
+  git commit -m $commit_message &&
   git push 
 }
 alias lgap="lazy_push"
