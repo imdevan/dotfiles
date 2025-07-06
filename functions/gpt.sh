@@ -13,7 +13,7 @@ function search_gpt() {
 
     # If more then one argument, join them with a space
     if [ $# -gt 1 ]; then
-        prompt=$(join_arguments "$@")
+        prompt=$(join_args "$@")
     else
         prompt=$1
     fi
