@@ -124,3 +124,93 @@ function git_changes() {
 }
 alias gch="git_changes"
 alias changes="git_changes"
+
+# function to lazily add commit and push 
+function lazy_push() {
+  # Check if argument is provided
+  if [ -z "$1" ]; then
+    echo "Usage: lazy_push <file_path>"
+    echo "Example: lazy_push 'config/stow/aerospace/*'"
+    return 1
+  fi
+
+  # Generate commit message based on file path
+  local file_path="$1"
+  local commit_message=""
+  local fomatted_commit_message="" 
+
+  # Remove trailing slash if present
+  file_path=$(echo "$file_path" | sed 's/\/$//')
+  # echo 'file path after removing trailing slash: ' $file_path
+  # Remove trailing asterisks if present
+  file_path=$(echo "$file_path" | sed 's/\*$//')
+  # echo 'file path after removing asterisks: ' $file_path
+  
+  # Split the path into parts using parameter expansion
+  path_parts=(${(s:/:)file_path})
+  
+  # echo 'path parts: ' ${path_parts[@]}
+  
+  # Get the last part (file or folder name)
+  local last_part="${path_parts[-1]}"
+  # echo 'last part: ' $last_part
+  
+  # Get the first part (first folder)
+  local first_part="${path_parts[1]}"
+  # echo 'first part: ' $first_part
+  
+  # Remove file extension from last part if it's a file
+  last_part=$(echo "$last_part" | sed 's/\.[^.]*$//')
+  # echo 'last part after removing file extension: ' $last_part
+  
+  # Generate commit message
+  if [[ ${#path_parts[@]} -eq 1 ]]; then
+    # Single file/folder
+    commit_message="${last_part}"
+  else
+    # Multiple parts: "{last_part} {first_part}"
+    commit_message="${last_part} ${first_part}"
+  fi
+
+  # Check if second argument is provided and modify commit message accordingly
+  if [[ -n "$2" && ("$2" == "a" || "$2" == "add") ]]; then
+    fomatted_commit_message="${blue} add ${reset} ${commit_message#update }"
+    commit_message="add ${commit_message#update }"
+  elif [[ -n "$2" && ("$2" == "aa") ]]; then
+    fomatted_commit_message="${blue} add ${reset} ${commit_message#update }"
+    commit_message="add ${commit_message#update }"
+
+    # Remove trailing 's' from commit message if present
+    fomatted_commit_message=$(echo "$fomatted_commit_message" | sed 's/s$//')
+    commit_message=$(echo "$commit_message" | sed 's/s$//')
+  elif [[ -n "$2" && ("$2" == "s" || "$2" == "sub" || "$2" == "subtract") ]]; then
+    fomatted_commit_message="${red} remove ${reset} ${commit_message#update }"
+    commit_message="remove ${commit_message#update }"
+  else
+    fomatted_commit_message="${yellow} update ${reset} ${commit_message#update }"
+    commit_message="update ${commit_message#update }"
+  fi
+
+
+  # todo: probably a good candidate for go commander style cli tool to add flags  
+  #  such that if -s or similar is passed it will remove the s from the "last_part" 
+  #  before generating a a message
+  
+  #  Generate commit message
+  # if [[ -z "$first_folder" ]]; then
+  #   commit_message="update ${last_part}"
+  # elif [[ "$first_folder" == "config" ]]; then
+  #   commit_message="update ${last_part} $first_folder"
+  # fi
+ 
+  
+  echo "${green}Lazy pushing 🎉${reset}"
+  echo "${orange}commit message: ${reset}${fomatted_commit_message}${reset}"
+  # echo "actual commit message: ${commit_message}"
+  # echo " \j
+  #
+  git add $1 &&
+  git commit -m "update $1" &&
+  git push 
+}
+alias lgap="lazy_push"
