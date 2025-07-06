@@ -73,6 +73,12 @@ automatically-unhide-macos-hidden-apps = false
     outer.bottom =     0
     outer.top =        0
     outer.right =      0
+    # inner.horizontal = 16
+    # inner.vertical =   16
+    # outer.left =       16
+    # outer.bottom =     16
+    # outer.top =        16
+    # outer.right =      16
     # inner.horizontal = 8
     # inner.vertical =   8
     # outer.left =       8
@@ -195,12 +201,12 @@ automatically-unhide-macos-hidden-apps = false
     # alt-cmd-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-    alt-shift-1 = 'move-node-to-workspace 1'
-    alt-shift-2 = 'move-node-to-workspace 2'
-    alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
-   # alt-shift-6 = 'move-node-to-workspace 6'
+    alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+    alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+    alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+    alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+    alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+    # alt-shift-6 = 'move-node-to-workspace 6'
     # alt-shift-7 = 'move-node-to-workspace 7'
     # alt-shift-8 = 'move-node-to-workspace 8'
     # alt-shift-9 = 'move-node-to-workspace 9'
@@ -234,7 +240,8 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
-
+    alt-shift-cmd-f = 'layout floating tiling'
+    
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
