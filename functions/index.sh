@@ -43,3 +43,7 @@ source $dotfile_dir/functions/jobbies.sh
 source $dotfile_dir/functions/echo_to.sh
 
 source $dotfile_dir/functions/find_string.sh
+
+source $dotfile_dir/functions/sto.sh
+
+source $dotfile_dir/functions/re_run.sh
