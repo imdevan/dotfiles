@@ -197,7 +197,7 @@ function lazy_push() {
   #  before generating a a message
   
   # Print out commit message
-  echo "/n${green}Lazy pushing 🎉${reset}"
+  echo "\n${green}Lazy pushing 🎉${reset}"
   echo "${orange}commit message: ${reset}${fomatted_commit_message}${reset}"
   echo " \n"
 
