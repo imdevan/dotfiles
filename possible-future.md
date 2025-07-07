@@ -86,3 +86,7 @@ https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml
 ## Terminal Possible
 
 https://github.com/alacritty/alacritty
+
+## Nvim improvements
+
+https://github.com/gbprod/yanky.nvim
