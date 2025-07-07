@@ -92,7 +92,9 @@ function is_alias() {
       grep "^[^#]*alias.*${1}" "$file" | while IFS= read -r line; do
         local alias_name=$(echo "$line" | sed -E 's/alias ([^=]+)=.*/\1/')
         local alias_value=$(echo "$line" | sed -E 's/alias [^=]+=(.*)/\1/')
-        printf "${orange}%-${max_length}s${reset} = ${purple}%s${reset}\n" "$alias_name" "$alias_value"
+        alias_value=$(echo "$alias_value" | sed 's/#.*$//')
+        local alias_comment=$(echo "$line" | sed -E 's/.*#(.*)/\1/' | sed 's/^[[:space:]]*//')
+        printf "${orange}%-${max_length}s${reset} = ${purple}%s${reset} ${yellow}%s${reset}\n" "$alias_name" "$alias_value" "# $alias_comment"
       done
       echo ""
     done <<< "$files"
