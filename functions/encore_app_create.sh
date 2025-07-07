@@ -18,4 +18,4 @@ function encore_app_create() {
 }
 
 # Create alias
-alias eace="encore_app_create"
+alias eace="encore_app_create" # $1 - proj_name $2 - optional example_name
