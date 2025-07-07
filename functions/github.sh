@@ -180,23 +180,23 @@ function lazy_push() {
 
   # Check if second argument is provided and modify commit message accordingly
   if [[ -n "$2" && ("$2" == "a" || "$2" == "add") ]]; then
-    fomatted_commit_message="${blue} add ${reset} ${commit_message#update }"
+    fomatted_commit_message="${blue}add ${reset}${commit_message#update }"
     commit_message="add ${commit_message#update }"
   elif [[ -n "$2" && ("$2" == "aa") ]]; then
-    fomatted_commit_message="${blue} add ${reset} ${commit_message#update }"
+    fomatted_commit_message="${blue}add ${reset}${commit_message#update }"
     commit_message="add ${commit_message#update }"
 
     # Remove trailing 's' from commit message if present
     fomatted_commit_message=$(echo "$fomatted_commit_message" | sed 's/s$//')
     commit_message=$(echo "$commit_message" | sed 's/s$//')
   elif [[ -n "$2" && ("$2" == "s" || "$2" == "sub" || "$2" == "subtract") ]]; then
-    fomatted_commit_message="${red} remove ${reset} ${commit_message#update }"
+    fomatted_commit_message="${red}remove ${reset}${commit_message#update }"
     commit_message="remove ${commit_message#update }"
   elif [[ -n "$2" ]]; then
     fomatted_commit_message="$2"
     commit_message="$2"
   else
-    fomatted_commit_message="${yellow} update ${reset} ${commit_message#update }"
+    fomatted_commit_message="${yellow}update ${reset}${commit_message#update }"
     commit_message="update ${commit_message#update }"
   fi
 
