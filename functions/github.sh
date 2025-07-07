@@ -117,9 +117,15 @@ alias gcl="git_clone"
 # Shows changed files (name only)
 function git_changes() {
   # Print out changes in a nice format
+  echo ""
   echo "Changes:"
   echo "--------------------------------"
-  echo "${orange}$(git diff --name-only)${reset}"
+  echo "${yellow}$(git ls-files -m)${reset}"
+  echo "--------------------------------"
+  echo ""
+  echo "Untracked:"
+  echo "--------------------------------"
+  echo "${green}$(git ls-files -o --exclude-standard)${reset}"
   echo "--------------------------------"
 }
 alias gch="git_changes"
@@ -198,16 +204,17 @@ function lazy_push() {
   # todo: probably a good candidate for go commander style cli tool to add flags  
   #  such that if -s or similar is passed it will remove the s from the "last_part" 
   #  before generating a a message
-  
-  # Print out commit message
-  echo " \n"
-  echo "${green}Lazy pushing 🎉${reset}"
-  echo "${orange}commit message: ${reset}${fomatted_commit_message}${reset}"
-  echo " \n"
 
   # Add, commit, and push
   git add $1 &&
   git commit -m $commit_message &&
   git push 
+
+    # Print out commit message
+  echo " \n"
+  echo "${green}Lazy pushed 🎉${reset}"
+  echo "${orange}commit message: ${reset}${fomatted_commit_message}${reset}"
+  echo " \n"
 }
 alias lgap="lazy_push"
+
