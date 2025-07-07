@@ -186,6 +186,9 @@ function lazy_push() {
   elif [[ -n "$2" && ("$2" == "s" || "$2" == "sub" || "$2" == "subtract") ]]; then
     fomatted_commit_message="${red} remove ${reset} ${commit_message#update }"
     commit_message="remove ${commit_message#update }"
+  elif [[ -n "$2" ]]; then
+    fomatted_commit_message="$2"
+    commit_message="$2"
   else
     fomatted_commit_message="${yellow} update ${reset} ${commit_message#update }"
     commit_message="update ${commit_message#update }"
