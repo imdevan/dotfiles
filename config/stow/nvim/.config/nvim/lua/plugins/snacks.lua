@@ -1,4 +1,5 @@
 
+  -- additional snacks 
 return {
     "folke/snacks.nvim",
     opts = {
