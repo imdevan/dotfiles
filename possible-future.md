@@ -89,6 +89,8 @@ https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml
 
 https://github.com/alacritty/alacritty
 
+https://github.com/sxyazi/yazi
+
 ## Nvim improvements
 
 https://github.com/gbprod/yanky.nvim
@@ -102,3 +104,7 @@ write plugin to randomize header images
 tmux inspiration: https://github.com/catppuccin/tmux/discussions/317
 
 
+## desktop improvements
+
+jankyborders 
+https://github.com/FelixKratz/JankyBorders
