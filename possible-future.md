@@ -56,6 +56,8 @@ https://github.com/unixorn/awesome-zsh-plugins
 ### Dotfiles to consider 
 
 https://github.com/simonsmith/dotfiles/blob/master/scripts/macos.sh
+- note one that allows you to tab through mac menus
+
 
 https://github.com/z0rc/dotfiles
 
@@ -90,3 +92,13 @@ https://github.com/alacritty/alacritty
 ## Nvim improvements
 
 https://github.com/gbprod/yanky.nvim
+
+write plugin to randomize header images
+
+
+## tmux improvements 
+
+
+tmux inspiration: https://github.com/catppuccin/tmux/discussions/317
+
+
