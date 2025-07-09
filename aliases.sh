@@ -152,7 +152,7 @@ alias ve="source .venv/bin/activate"
 alias py="python3"
 
 # FastAPI
-alias fd="fastapi dev app/main.py"
+# alias fd="fastapi dev app/main.py"
 
 # Clean Modules (and run yarn)
 alias clean="rm -rf node_modules && yarn"
@@ -246,3 +246,6 @@ alias t="tmux"
 alias tks="tmux kill-server"
 alias ta="tmux attach -t"
 alias rs="brew services restart sketchybar"
+alias go-tests="cd ~/Documents/Projects/playground/go-tests"
+alias vt="v ~/dotfiles/config/stow/tmux/.tmux.conf"
+alias tms="tmux source-file ~/.tmux.conf"
