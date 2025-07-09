@@ -23,8 +23,8 @@ sketchybar --bar \
   border_color=0x40000000 \
   border_width=1 \
   padding_left=32 \
-  padding_right=32
-  shadow=true
+  padding_right=32 \
+  shadow.drawing=on
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
