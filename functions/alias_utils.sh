@@ -102,3 +102,24 @@ function is_alias() {
 }
 alias isa="is_alias"
 
+function remove_alias() {
+  if [ -z "$1" ]; then
+    echo "${red}Error:${reset} No alias name provided."
+    echo "Usage: remove_alias <alias_name>"
+    return 1
+  fi
+
+  local alias_name="$1"
+  local aliases_file=~/dotfiles/aliases.sh
+
+  if ! grep -q "^[^#]*alias[[:space:]]\+$alias_name=" "$aliases_file"; then
+    echo "${red}Alias '$alias_name' not found in $aliases_file.${reset}"
+    return 1
+  fi
+
+  # Remove the alias line (not commented out) from the file
+  sed -i '' "/^[^#]*alias[[:space:]]\+$alias_name=/d" "$aliases_file"
+
+  echo "${green}Alias '$alias_name' removed from $aliases_file.${reset}"
+}
+alias rma="remove_alias"
