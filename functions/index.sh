@@ -47,3 +47,5 @@ source $dotfile_dir/functions/find_string.sh
 source $dotfile_dir/functions/sto.sh
 
 source $dotfile_dir/functions/re_run.sh
+
+source $dotfile_dir/functions/math.sh
