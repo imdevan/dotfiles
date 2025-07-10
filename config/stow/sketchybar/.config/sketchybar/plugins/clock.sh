@@ -6,4 +6,6 @@
 
 # sketchybar --set "$NAME" label="$(date '+%d/%m %H:%M')"
 #
-sketchybar --set "$NAME" label="$(date '+%d/%m %I:%M %p { %a }' | tr '[:upper:]' '[:lower:]')"
+# sketchybar --set "$NAME" label="$(date '+%d/%m I:%M %p { %a }' | tr '[:upper:]' '[:lower:]')"
+# sketchybar --set "$NAME" label="$(date '+%d/%m %I:%M %p | %a' | tr '[:upper:]' '[:lower:]')"
+sketchybar --set "$NAME" label="$(date '+%d/%m | %a | %I:%M %p' | tr '[:upper:]' '[:lower:]')"
