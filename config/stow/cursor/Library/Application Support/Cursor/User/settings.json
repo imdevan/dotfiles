@@ -31,6 +31,7 @@
         }
         ]
     },
+    "editor.lineNumbers": "relative",
     "workbench.iconTheme": "catppuccin-perfect-monokai",
     "workbench.editor.empty.hint": "hidden",
 
@@ -39,7 +40,7 @@
     //  Vim Motions
     // https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n
     "vim.smartRelativeLine": true,
-    "editor.lineNumbers": "relative",
+    "vim.leader": "<space>",
     "vim.normalModeKeyBindings": [
         {
             "before": ["g", "p", "d"],
@@ -88,8 +89,27 @@
             "before": ["<leader>", "z"],
             "commands": ["workbench.action.toggleZenMode"]
         },
+        {
+            "before": ["<leader>", "w"],
+            "commands": ["easymotion-w"]
+        },
+        // {
+        //     "before": ["<leader>", "j"],
+        //     "commands": ["easymotion-j"]
+        // },
+        // {
+        //     "before": ["<leader>", "k"],
+        //     "commands": ["easymotion-k"]
+        // },
+        // {
+        //     "before": ["<leader>", "h"],
+        //     "commands": ["easymotion-h"]
+        // },
+        // {
+        //     "before": ["<leader>", "l"],
+        //     "commands": ["easymotion-l"]
+        // }
     ],
-    "vim.leader": "<space>",
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.duration": 250,
     "vim.useSystemClipboard": true,
@@ -97,7 +117,6 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "cursor.composer.shouldChimeAfterChatFinishes": true,
     "workbench.tips.enabled": false,
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
