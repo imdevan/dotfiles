@@ -131,3 +131,10 @@ source ~/dotfiles/index.sh
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+eval "$(zoxide init zsh)"
+
+# Start tmux automatically if not already inside tmux
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t 0 || tmux new-session -s 0
+fi
