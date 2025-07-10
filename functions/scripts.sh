@@ -15,15 +15,18 @@ function scripts() {
     # Get the package.json file
     local package_json=$(cat package.json)
     
-
-    # Get the scripts object
-    local scripts=$(echo "$package_json" | jq -r '.scripts')
-    
-    # Remove the curly braces and quotes
-    # local scripts=$(echo "$scripts" | sed 's/[\[\]"]//g')
-
-    # Print out the scripts
-    echo "$scripts"
+    # Print header
+    echo "\nScripts:"
+    echo "----------------------------------------"
+    # Get and format the scripts using jq
+    # Print as a table with aligned columns
+    # printf "  ${blue}%-20s${yellow}%s${reset}\n" "Script" "Command"
+    # printf "  ${blue}%-20s${yellow}%s${reset}\n" "--------------------" "--------------------"
+    echo "$package_json" | jq -r '.scripts | to_entries[] | "\(.key)\t\(.value)"' | while IFS=$'\t' read -r key value; do
+        printf "  ${blue}%-12s${yellow}%-20s${reset}\n" "$key" "$value"
+    done
+    echo "----------------------------------------"
+    # echo "--------------------------------"
 }
 
 # Create alias
