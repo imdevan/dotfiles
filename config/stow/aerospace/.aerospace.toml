@@ -1,12 +1,24 @@
-# Place a copy of this config to ~/.aerospace.toml
-# After that, you can edit ~/.aerospace.toml to your liking
-
-# You can use it to add commands that run after login to macOS user session.
-# 'start-at-login' needs to be 'true' for 'after-login-command' to work
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = []
-
-# You can use it to add commands that run after AeroSpace startup.
+# 
+# =================================================================================================
+#  _______  _______  _        _______ _________ _______ 
+# (  ____ \(  ___  )( (    /|(  ____ \\__   __/(  ____ \
+# | (    \/| (   ) ||  \  ( || (    \/   ) (   | (    \/
+# | |      | |   | ||   \ | || (__       | |   | |      
+# | |      | |   | || (\ \) ||  __)      | |   | | ____ 
+# | |      | |   | || | \   || (         | |   | | \_  )
+# | (____/\| (___) || )  \  || )      ___) (___| (___) |
+# (_______/(_______)|/    )_)|/       \_______/(_______)
+# config
+# =================================================================================================
+# # Place a copy of this config to ~/.aerospace.toml
+# # After that, you can edit ~/.aerospace.toml to your liking
+#
+# # You can use it to add commands that run after login to macOS user session.
+# # 'start-at-login' needs to be 'true' for 'after-login-command' to work
+# # Available commands: https://nikitabobko.github.io/AeroSpace/commands
+# after-login-command = []
+#
+# # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 # after-startup-command = []
@@ -96,6 +108,20 @@ automatically-unhide-macos-hidden-apps = false
     # inner_gap = 8         # space between tiled windows
     # outer_gap = 8         # space around the screen edge
 
+
+# 
+# =================================================================================================
+#  _        _______           ______  _________ _        ______   _______ 
+# | \    /\(  ____ \|\     /|(  ___ \ \__   __/( (    /|(  __  \ (  ____ \
+# |  \  / /| (    \/( \   / )| (   ) )   ) (   |  \  ( || (  \  )| (    \/
+# |  (_/ / | (__     \ (_) / | (__/ /    | |   |   \ | || |   ) || (_____ 
+# |   _ (  |  __)     \   /  |  __ (     | |   | (\ \) || |   | |(_____  )
+# |  ( \ \ | (         ) (   | (  \ \    | |   | | \   || |   ) |      ) |
+# |  /  \ \| (____/\   | |   | )___) )___) (___| )  \  || (__/  )/\____) |
+# |_/    \/(_______/   \_/   |/ \___/ \_______/|/    )_)(______/ \_______)
+# keybinds
+# =================================================================================================
+# 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
