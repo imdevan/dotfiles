@@ -302,3 +302,11 @@ alt + left  - go to previous directory
 alt + right - go to next directory
 alt + up    - move into the parent directory
 alt + down  - move into the first child directory by alphabetical order
+
+## tmux
+
+see ~/dotfiles/config/stow/tmux/.tmux.config
+
+pre : opt-a
+
+
