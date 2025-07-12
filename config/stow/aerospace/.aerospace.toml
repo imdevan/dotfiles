@@ -66,19 +66,26 @@ automatically-unhide-macos-hidden-apps = false
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+
 [gaps]
-    # inner.horizontal = 0
-    # inner.vertical =   0
-    # outer.left =       0
-    # outer.bottom =     0
-    # outer.top =        0
-    # outer.right =      0
-    inner.horizontal = 16
-    inner.vertical =   16
-    outer.left =       64
-    outer.bottom =     64
-    outer.top =        64 
-    outer.right =      64 
+    inner.horizontal = 0
+    inner.vertical =   0
+    outer.left =       0
+    outer.bottom =     0
+    outer.top =        0
+    outer.right =      0
+    # inner.horizontal = 16
+    # inner.vertical =   16
+    # outer.left =       64
+    # outer.bottom =     64
+    # outer.top =        64 
+    # outer.right =      64 
+    # inner.horizontal = 16
+    # inner.vertical =   16
+    # outer.left =       48
+    # outer.bottom =     48
+    # outer.top =        48 
+    # outer.right =      48 
     # inner.horizontal = 8
     # inner.vertical =   8
     # outer.left =       8
@@ -154,13 +161,13 @@ automatically-unhide-macos-hidden-apps = false
     # alt-shift-cmd-minus = 'resize smart -50'
     # alt-shift-cmd-equal = 'resize smart +50'
 
-    alt-cmd-minus = 'resize smart -50'
-    alt-cmd-equal = 'resize smart +50'
+    cmd-ctrl-minus = 'resize smart -50'
+    cmd-ctrl-equal = 'resize smart +50'
 
     alt-shift-cmd-enter = 'macos-native-fullscreen'
 
-    alt-cmd-h = 'workspace prev'
-    alt-cmd-l = 'workspace next'
+    cmd-ctrl-h = 'workspace prev'
+    cmd-ctrl-l = 'workspace next'
 
     # ctrl-alt-cmd-v = 'join-with vertical'
     # ctrl-alt-cmd-h = 'join-with horizontal'
@@ -168,37 +175,37 @@ automatically-unhide-macos-hidden-apps = false
     alt-f = 'fullscreen'
   
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    alt-cmd-1 = 'workspace 1'
-    alt-cmd-2 = 'workspace 2'
-    alt-cmd-3 = 'workspace 3'
-    alt-cmd-4 = 'workspace 4'
-    alt-cmd-5 = 'workspace 5'
-    # alt-cmd-6 = 'workspace 6'
-    # alt-cmd-7 = 'workspace 7'
-    # alt-cmd-8 = 'workspace 8'
-    # alt-cmd-9 = 'workspace 9'
-    # alt-cmd-a = 'workspace a' # in your config, you can drop workspace bindings that you don't need
-    # alt-cmd-b = 'workspace b'
-    # alt-cmd-c = 'workspace c'
-    # alt-cmd-d = 'workspace d'
-    # alt-cmd-e = 'workspace e'
-    # alt-cmd-f = 'workspace f'
-    # alt-cmd-g = 'workspace g'
-    # alt-cmd-i = 'workspace i'
-    # alt-cmd-m = 'workspace m'
-    # alt-cmd-n = 'workspace N'
-    # alt-cmd-o = 'workspace O'
-    # alt-cmd-p = 'workspace P'
-    # alt-cmd-q = 'workspace Q'
-    # alt-cmd-r = 'workspace R'
-    # alt-cmd-s = 'workspace S'
-    # alt-cmd-t = 'workspace T'
-    # alt-cmd-u = 'workspace U'
-    # alt-cmd-v = 'workspace V'
-    # alt-cmd-w = 'workspace W'
-    # alt-cmd-x = 'workspace X'
-    # alt-cmd-y = 'workspace Y'
-    # alt-cmd-z = 'workspace Z'
+    cmd-ctrl-1 = 'workspace 1'
+    cmd-ctrl-2 = 'workspace 2'
+    cmd-ctrl-3 = 'workspace 3'
+    cmd-ctrl-4 = 'workspace 4'
+    cmd-ctrl-5 = 'workspace 5'
+    # cmd-ctrl-6 = 'workspace 6'
+    # cmd-ctrl-7 = 'workspace 7'
+    # cmd-ctrl-8 = 'workspace 8'
+    # cmd-ctrl-9 = 'workspace 9'
+    # cmd-ctrl-a = 'workspace a' # in your config, you can drop workspace bindings that you don't need
+    # cmd-ctrl-b = 'workspace b'
+    # cmd-ctrl-c = 'workspace c'
+    # cmd-ctrl-d = 'workspace d'
+    # cmd-ctrl-e = 'workspace e'
+    # cmd-ctrl-f = 'workspace f'
+    # cmd-ctrl-g = 'workspace g'
+    # cmd-ctrl-i = 'workspace i'
+    # cmd-ctrl-m = 'workspace m'
+    # cmd-ctrl-n = 'workspace N'
+    # cmd-ctrl-o = 'workspace O'
+    # cmd-ctrl-p = 'workspace P'
+    # cmd-ctrl-q = 'workspace Q'
+    # cmd-ctrl-r = 'workspace R'
+    # cmd-ctrl-s = 'workspace S'
+    # cmd-ctrl-t = 'workspace T'
+    # cmd-ctrl-u = 'workspace U'
+    # cmd-ctrl-v = 'workspace V'
+    # cmd-ctrl-w = 'workspace W'
+    # cmd-ctrl-x = 'workspace X'
+    # cmd-ctrl-y = 'workspace Y'
+    # cmd-ctrl-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
