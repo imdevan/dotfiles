@@ -271,10 +271,15 @@ gpt - peek Type Definition
 
 ## Lazy / NeoVim
 
+<https://www.lazyvim.org/keymaps>
+
+<leader>sk - telescope search thru shortcuts :)
+
 <leader>e   - open explorer side panel
 <leader>ff  - file explorer menu
 <leader>wh | ctrl + h   -  go to split left
 <leader>wl | ctrl + l   -  go to split right
+
 
 ## Vimium
 
@@ -289,10 +294,6 @@ Sourced and stuff for me to read later
 <https://www.reddit.com/r/vim/comments/14o2l0m/how_to_move_really_efficiently_in_vim/>
 <https://vim.rtorr.com/>
 <https://www.worldtimzone.com/res/vi.html>
-
-# Lazy Vim Keybinds
-
-<https://www.lazyvim.org/keymaps>
 
 # Terminal / ghostty
 
