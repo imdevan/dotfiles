@@ -2,6 +2,7 @@
 source $dotfile_dir/functions/shared/validators.sh
 
 source $dotfile_dir/functions/shared/join_args.sh
+source $dotfile_dir/functions/shared/has_flag.sh
 
 # Barrel file for functions
 source $dotfile_dir/functions/localhost.sh
