@@ -17,7 +17,6 @@
 # # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # # Available commands: https://nikitabobko.github.io/AeroSpace/commands
 # after-login-command = []
-#
 # # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
@@ -26,6 +25,26 @@
 # sketchbar has a built-in detection of already running process,
 # so it won't be run twice on AeroSpace restart
 after-startup-command = ['exec-and-forget sketchybar']
+
+# [workspace-to-monitor-force-assignment]
+# # https://nikitabobko.github.io/AeroSpace/guide
+#     1 = 1
+#     2 = 'main'
+#     3 = 'main'
+#     4 = 'main'
+#     5 = 'main'
+#     6 = 'secondary'
+#     7 = 'secondary'
+#     8 = 'secondary'
+#     9 = 'secondary'
+#     0 = 'secondary'
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+# accordion-padding = 30
+accordion-padding = 0
+
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -38,13 +57,6 @@ start-at-login = false
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-
-# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-# The 'accordion-padding' specifies the size of accordion padding
-# You can set 0 to disable the padding feature
-# accordion-padding = 30
-accordion-padding = 0
-
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
 
@@ -65,6 +77,36 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
+# 6 gcc
+[gaps]
+    # inner.horizontal = 0
+    # inner.vertical =   0
+    # outer.left =       0
+    # outer.bottom =     0
+    # outer.top =        0
+    # outer.right =      0
+    inner.horizontal = 16
+    inner.vertical =   16
+    outer.left =       32
+    outer.bottom =     32
+    outer.top =        32 
+    outer.right =      32 
+    # inner.horizontal = 16
+    # inner.vertical =   16
+    # outer.left =       64
+    # outer.bottom =     64
+    # outer.top =        64 
+    # outer.right =      64 
+    # inner.horizontal = 8
+    # inner.vertical =   8
+    # outer.left =       8
+    # outer.bottom =   648
+    # outer.top =        8
+    # outer.right =      8
+    # enable_for_floating = true  # this is the key line
+    # inner_gap = 8         # space between tiled windows
+    # outer_gap = 8         # space around the screen edge
+
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
@@ -78,36 +120,6 @@ automatically-unhide-macos-hidden-apps = false
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-
-[gaps]
-    inner.horizontal = 0
-    inner.vertical =   0
-    outer.left =       0
-    outer.bottom =     0
-    outer.top =        0
-    outer.right =      0
-    # inner.horizontal = 16
-    # inner.vertical =   16
-    # outer.left =       64
-    # outer.bottom =     64
-    # outer.top =        64 
-    # outer.right =      64 
-    # inner.horizontal = 16
-    # inner.vertical =   16
-    # outer.left =       48
-    # outer.bottom =     48
-    # outer.top =        48 
-    # outer.right =      48 
-    # inner.horizontal = 8
-    # inner.vertical =   8
-    # outer.left =       8
-    # outer.bottom =   648
-    # outer.top =        8
-    # outer.right =      8
-    # enable_for_floating = true  # this is the key line
-    # inner_gap = 8         # space between tiled windows
-    # outer_gap = 8         # space around the screen edge
-
 
 # 
 # =================================================================================================
@@ -158,9 +170,9 @@ automatically-unhide-macos-hidden-apps = false
     # cmd-h = [] # Disable "hide application"
     # cmd-alt-h = [] # Disable "hide others"
 
-    cmd-alt-shift-r="reload-config"
-    alt-shift-cmd-t = "layout tiles"
-    alt-shift-cmd-a = "layout accordion"
+    shift-cmd-r="reload-config"
+    shift-cmd-s = "layout tiles"
+    shift-cmd-a = "layout accordion"
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
@@ -187,51 +199,50 @@ automatically-unhide-macos-hidden-apps = false
     # alt-shift-cmd-minus = 'resize smart -50'
     # alt-shift-cmd-equal = 'resize smart +50'
 
-    cmd-ctrl-minus = 'resize smart -50'
-    cmd-ctrl-equal = 'resize smart +50'
+    shift-cmd-minus = 'resize smart -50'
+    shift-cmd-equal = 'resize smart +50'
 
     alt-shift-cmd-enter = 'macos-native-fullscreen'
 
-    cmd-ctrl-h = 'workspace prev'
-    cmd-ctrl-l = 'workspace next'
-
-    # ctrl-alt-cmd-v = 'join-with vertical'
+    shift-cmd-h = 'workspace prev'
+    shift-cmd-l = 'workspace next'
+# ctrl-alt-cmd-v = 'join-with vertical'
     # ctrl-alt-cmd-h = 'join-with horizontal'
 
     alt-f = 'fullscreen'
   
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    cmd-ctrl-1 = 'workspace 1'
-    cmd-ctrl-2 = 'workspace 2'
-    cmd-ctrl-3 = 'workspace 3'
-    cmd-ctrl-4 = 'workspace 4'
-    cmd-ctrl-5 = 'workspace 5'
-    # cmd-ctrl-6 = 'workspace 6'
-    # cmd-ctrl-7 = 'workspace 7'
-    # cmd-ctrl-8 = 'workspace 8'
-    # cmd-ctrl-9 = 'workspace 9'
-    # cmd-ctrl-a = 'workspace a' # in your config, you can drop workspace bindings that you don't need
-    # cmd-ctrl-b = 'workspace b'
-    # cmd-ctrl-c = 'workspace c'
-    # cmd-ctrl-d = 'workspace d'
-    # cmd-ctrl-e = 'workspace e'
-    # cmd-ctrl-f = 'workspace f'
-    # cmd-ctrl-g = 'workspace g'
-    # cmd-ctrl-i = 'workspace i'
-    # cmd-ctrl-m = 'workspace m'
-    # cmd-ctrl-n = 'workspace N'
-    # cmd-ctrl-o = 'workspace O'
-    # cmd-ctrl-p = 'workspace P'
-    # cmd-ctrl-q = 'workspace Q'
-    # cmd-ctrl-r = 'workspace R'
-    # cmd-ctrl-s = 'workspace S'
-    # cmd-ctrl-t = 'workspace T'
-    # cmd-ctrl-u = 'workspace U'
-    # cmd-ctrl-v = 'workspace V'
-    # cmd-ctrl-w = 'workspace W'
-    # cmd-ctrl-x = 'workspace X'
-    # cmd-ctrl-y = 'workspace Y'
-    # cmd-ctrl-z = 'workspace Z'
+    shift-cmd-1 = 'workspace 1'
+    shift-cmd-2 = 'workspace 2'
+    shift-cmd-3 = 'workspace 3'
+    shift-cmd-4 = 'workspace 4'
+    shift-cmd-5 = 'workspace 5'
+    # shift-cmd-6 = 'workspace 6'
+    # shift-cmd-7 = 'workspace 7'
+    # shift-cmd-8 = 'workspace 8'
+    # shift-cmd-9 = 'workspace 9'
+    # shift-cmd-a = 'workspace a' # in your config, you can drop workspace bindings that you don't need
+    # shift-cmd-b = 'workspace b'
+    # shift-cmd-c = 'workspace c'
+    # shift-cmd-d = 'workspace d'
+    # shift-cmd-e = 'workspace e'
+    # shift-cmd-f = 'workspace f'
+    # shift-cmd-g = 'workspace g'
+    # shift-cmd-i = 'workspace i'
+    # shift-cmd-m = 'workspace m'
+    # shift-cmd-n = 'workspace N'
+    # shift-cmd-o = 'workspace O'
+    # shift-cmd-p = 'workspace P'
+    # shift-cmd-q = 'workspace Q'
+    # shift-cmd-r = 'workspace R'
+    # shift-cmd-s = 'workspace S'
+    # shift-cmd-t = 'workspace T'
+    # shift-cmd-u = 'workspace U'
+    # shift-cmd-v = 'workspace V'
+    # shift-cmd-w = 'workspace W'
+    # shift-cmd-x = 'workspace X'
+    # shift-cmd-y = 'workspace Y'
+    # shift-cmd-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
