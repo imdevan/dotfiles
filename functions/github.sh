@@ -122,7 +122,7 @@ function git_changes() {
   
   if [ -z "$changes" ] && [ -z "$additions" ]; then
     echo ""
-    echo "${green}No changes 🥳${reset}"
+    echo "${green}No changes${reset} 🥳"
     return 0
   fi
 
