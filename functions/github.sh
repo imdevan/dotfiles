@@ -121,8 +121,7 @@ function git_changes() {
   local additions=$(git ls-files -o --exclude-standard)
   
   if [ -z "$changes" ] && [ -z "$additions" ]; then
-    echo ""
-    echo "${green}No changes${reset} 🥳"
+    echo "\n${green}No changes${reset} 🥳\n"
     return 0
   fi
 
