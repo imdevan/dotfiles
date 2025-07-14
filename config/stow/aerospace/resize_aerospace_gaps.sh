@@ -1,9 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Todo: make this run from aerospace 
-
-function resize_aerospace_gaps() {
-  local config_file="$(dirname "$HOME/.config/aerospace.toml")"
+resize_aerospace_gaps() {
+  local config_file="$(dirname "${BASH_SOURCE[0]}")/.aerospace.toml"
   local -a configs=(
     $'    inner.horizontal = 0\n    inner.vertical =   0\n    outer.left =       0\n    outer.bottom =     0\n    outer.top =        0\n    outer.right =      0'
     $'    inner.horizontal = 10\n    inner.vertical =   8\n    outer.left =       10\n    outer.bottom =     10\n    outer.top =        10\n    outer.right =      10'
@@ -42,6 +40,3 @@ function resize_aerospace_gaps() {
 
   echo "Applied gap config index: $input"
 }
-
-
-resize_aerospace_gaps "$@"
