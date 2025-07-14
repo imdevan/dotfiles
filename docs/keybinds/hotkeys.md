@@ -280,6 +280,8 @@ gpt - peek Type Definition
 <leader>wh | ctrl + h   -  go to split left
 <leader>wl | ctrl + l   -  go to split right
 
+alt-cmd-k - move line (or selection in visual) up 
+alt-cmd-j - move line (or selection in visual) down
 
 ## Vimium
 
