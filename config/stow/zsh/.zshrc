@@ -18,6 +18,7 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
 fi
 
+echo ''
 # Add a blank line after the prompt
 # function add_blank_line_after_prompt() {
 #   echo ''
@@ -131,6 +132,7 @@ source ~/dotfiles/index.sh
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 eval "$(zoxide init zsh)"
 
@@ -138,3 +140,6 @@ eval "$(zoxide init zsh)"
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   tmux attach-session -t 0 || tmux new-session -s 0
 fi
+
+# Add aerospace to path
+export PATH="/Applications/Aerospace.app/Contents/MacOS:$PATH"
