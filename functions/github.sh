@@ -117,16 +117,29 @@ alias gcl="git_clone"
 # Shows changed files (name only)
 function git_changes() {
   # Print out changes in a nice format
-  echo ""
-  echo "Changes:"
-  echo "--------------------------------"
-  echo "${yellow}$(git ls-files -m)${reset}"
-  echo "--------------------------------"
-  echo ""
-  echo "Untracked:"
-  echo "--------------------------------"
-  echo "${green}$(git ls-files -o --exclude-standard)${reset}"
-  echo "--------------------------------"
+  local changes=$(git ls-files -m)
+  local additions=$(git ls-files -o --exclude-standard)
+  
+  if [ -z "$changes" ] && [ -z "$additions" ]; then
+    echo "No changes"
+    return 0
+  fi
+
+  if [ -n "$changes" ]; then
+    echo ""
+    echo "Changes:"
+    echo "--------------------------------"
+    echo "${yellow}$changes${reset}"
+    echo "--------------------------------"
+  fi
+
+  if [ -n "$additions" ]; then
+    echo ""
+    echo "Untracked:"
+    echo "--------------------------------"
+    echo "${green}$additions${reset}"
+    echo "--------------------------------"
+  fi
 }
 alias gch="git_changes"
 alias changes="git_changes"
@@ -196,7 +209,7 @@ function lazy_push() {
     fomatted_commit_message="$2"
     commit_message="$2"
   else
-    fomatted_commit_message="${yellow}update ${reset}${commit_message#update }"
+    fomatted_commit_message="${yellow} update ${reset} ${commit_message#update }"
     commit_message="update ${commit_message#update }"
   fi
 
@@ -210,7 +223,7 @@ function lazy_push() {
   git commit -m $commit_message &&
   git push 
 
-    # Print out commit message
+  # Print out commit message
   echo " \n"
   echo "${green}Lazy pushed 🎉${reset}"
   echo "${orange}commit message: ${reset}${fomatted_commit_message}${reset}"
