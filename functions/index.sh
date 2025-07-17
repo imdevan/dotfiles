@@ -50,3 +50,5 @@ source $dotfile_dir/functions/sto.sh
 source $dotfile_dir/functions/re_run.sh
 
 source $dotfile_dir/functions/math.sh
+
+source $dotfile_dir/functions/docker_exec_it.sh
