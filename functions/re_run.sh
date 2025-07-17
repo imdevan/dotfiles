@@ -17,10 +17,11 @@ function re_run() {
     fi
     
     # Execute the last command with any additional arguments
-    echo "${green}Reloading ...${reset}"
+    echo "\nReloading ..."
     source ~/.zshrc &&
-    echo "${green}Re-running: $last_command $* ${reset}"
+    echo "${light_blue}Re-running:${reset} $last_command $*"
     eval "$last_command $*"
+    echo ""
 }
 
 # Create alias

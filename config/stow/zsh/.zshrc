@@ -137,9 +137,9 @@ export PATH="$HOME/go/bin:$PATH"
 eval "$(zoxide init zsh)"
 
 # Start tmux automatically if not already inside tmux
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux attach-session -t 0 || tmux new-session -s 0
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#   tmux attach-session -t 0 || tmux new-session -s 0
+# fi
 
 # Add aerospace to path
 export PATH="/Applications/Aerospace.app/Contents/MacOS:$PATH"

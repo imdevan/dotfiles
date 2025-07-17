@@ -5,7 +5,7 @@
 # - Add a function to edit aliases
 # - integrate with als
 #  https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aliases
-#  
+#
 
 # Default editor
 editor="code"
@@ -21,9 +21,15 @@ function new_alias() {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "${red}Invalid alias provided${reset}"
   else
-    local ALIAS="alias ${1}=\"${2}\""
-    echo $ALIAS >> $aliases_file
-    echo "${green}Alias: ${pink}${1}${green}=${purple}\"${2}\"${green} created!\n"
+    if [ -n "$3" ]; then
+      local ALIAS="alias ${1}=\"${2}\" # ${3}"
+      echo $ALIAS >>$aliases_file
+      echo "${green}Alias: ${pink}${1}${green}=${gold}\"${2}\"${green} ${light_green}# ${3}${green} created!${reset}\n"
+    else
+      local ALIAS="alias ${1}=\"${2}\""
+      echo $ALIAS >>$aliases_file
+      echo "${green}Alias: ${pink}${1}${green}=${purple}\"${2}\"${green} created!\n"
+    fi
     source $aliases_file
   fi
 }
@@ -36,7 +42,7 @@ function bookmark() {
   else
     # local current_dir=$(pwd | sed 's/ /\\ /g')
     local current_dir=$(pwd | sed "s|^$HOME|~|")
-    echo "alias ${1}=\"cd ${current_dir}\"" >> $aliases_file
+    echo "alias ${1}=\"cd ${current_dir}\"" >>$aliases_file
     source $aliases_file
     echo "${green}Alias: ${pink}${1}${green}=${purple}\"${current_dir}\"${green} created!\n"
   fi
@@ -66,14 +72,14 @@ function is_alias() {
     -not -path "*/.git/*" \
     -not -path "*/.history/*" \
     -exec grep -l "^[^#]*alias.*${1}" {} \;)
-  
+
   if [ -z "$files" ]; then
     echo "${red}No alias found "
   else
     echo ""
     echo "${green}Aliases Found:${reset}"
     echo ""
-    
+
     # First pass: find the longest alias name
     local max_length=0
     while IFS= read -r file; do
@@ -84,8 +90,8 @@ function is_alias() {
           max_length=$name_length
         fi
       done < <(grep "^[^#]*alias.*${1}" "$file")
-    done <<< "$files"
-    
+    done <<<"$files"
+
     # Second pass: print with aligned equals signs
     while IFS= read -r file; do
       echo "${green}$(basename "$file")${reset}"
@@ -97,7 +103,7 @@ function is_alias() {
         printf "${orange}%-${max_length}s${reset} = ${purple}%s${reset} ${yellow}%s${reset}\n" "$alias_name" "$alias_value" "# $alias_comment"
       done
       echo ""
-    done <<< "$files"
+    done <<<"$files"
   fi
 }
 alias isa="is_alias"
@@ -123,3 +129,5 @@ function remove_alias() {
   echo "${green}Alias '$alias_name' removed from $aliases_file.${reset}"
 }
 alias rma="remove_alias"
+
+# Todo: create function to replace alias 'ra'

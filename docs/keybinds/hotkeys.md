@@ -166,7 +166,7 @@ N               - repeat search in opposite direction
 
 :e filename - Edit a file in a new buffer
 :bnext (or :bn) - go to next buffer
-:bprev (of :bp) - go to previous buffer
+:bprev (or :bp) - go to previous buffer
 :bd - delete a buffer (close a file)
 :sp filename - Open a file in a new buffer and split window
 ctrl+ws - Split windows
@@ -176,6 +176,13 @@ ctrl+wq - Quit a window
 ctrl+wv - Split windows vertically
 
 gx  - open link
+
+### LSPs
+
+gd — go to definition
+gr — find references
+gi — go to implementation
+K — hover
 
 ## Explorer navigation
 
@@ -310,6 +317,7 @@ alt + down  - move into the first child directory by alphabetical order
 
 see ~/dotfiles/config/stow/tmux/.tmux.config
 
-pre : opt-a
+pre : opt-f
 
+pre-z - zoom
 
