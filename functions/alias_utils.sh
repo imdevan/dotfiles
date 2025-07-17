@@ -62,6 +62,10 @@ alias b="bookmark"
 
 # Alias search
 function is_alias() {
+  one_arg_required "$@" || return 1
+
+  local to_find="$@"
+
   local files=$(find ~/dotfiles \
     -type f \
     -not -path "*/docs/*" \
@@ -71,7 +75,7 @@ function is_alias() {
     -not -path "*/functions/alias_utils.sh" \
     -not -path "*/.git/*" \
     -not -path "*/.history/*" \
-    -exec grep -l "^[^#]*alias.*${1}" {} \;)
+    -exec grep -l "^[^#]*alias.*${to_find}" {} \;)
 
   if [ -z "$files" ]; then
     echo "${red}No alias found "
@@ -89,7 +93,7 @@ function is_alias() {
         if [ $name_length -gt $max_length ]; then
           max_length=$name_length
         fi
-      done < <(grep "^[^#]*alias.*${1}" "$file")
+      done < <(grep "^[^#]*alias.*${to_find}" "$file")
     done <<<"$files"
 
     # Second pass: print with aligned equals signs
