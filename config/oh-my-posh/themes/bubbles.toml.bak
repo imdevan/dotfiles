@@ -1,25 +1,36 @@
-console_title_template = '{{.PWD}}'
-version = 3
+# Bubbles theme updated to catppuccin colors
+# https://catppuccin.com/palette/
+# https://github.com/ohmyposh/ohmyposh/blob/main/themes/bubbles.toml
+# https://github.com/catppuccin/oh-my-posh/blob/main/themes/catppuccin.toml
+# 
+# oh my posh references:
+# https://ohmyposh.dev/docs/configuration/colors
+
+vrsion = 3
 final_space = true
+# console_title_template = "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}"
+# console_title_template = "{{.Folder}}"
+console_title_template = '{{.PWD}}'
+
 
 [palette]
   base = '#eff1f5'
   blue = '#8AADF4'
-  green = '#40c4ff'
   lavender = '#B7BDF8'
-  maroon = '#e64553'
-  mauve = '#8839ef'
-  orange = '#fe640b'
   os = '#ACB0BE'
   pink = '#F5BDE6'
-  red = '#e64553'
+  text = '#494D64'
+  wight = '#FFFFFF'
   rosewater = '#dc8a78'
+  mauve = '#8839ef'
+  green = '#40c4ff'
+  maroon = '#e64553'
   sky = '#04a5e5'
   teal = '#40c4ff'
-  text = '#494D64'
-  violet = '#8839ef'
-  wight = '#FFFFFF'
   yellow = '#e6c35c'
+  orange = '#fe640b'
+  red = '#e64553'
+  violet = '#8839ef'
 
 [upgrade]
   source = 'cdn'
@@ -27,11 +38,12 @@ final_space = true
   auto = false
   notice = false
 
+# Insert blank line
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
-  newline = true
   force = true
+  newline = true
 
   [[blocks.segments]]
     template = ' '
@@ -51,18 +63,13 @@ final_space = true
     type = 'session'
     style = 'diamond'
 
-  # [var]
-  #   LocationVar = '{{ if eq .Path .Home }}~{{ else if .Parent }}{{ .Parent }}/{{ .Folder }}{{ else }}{{ .Folder }}{{ end }}'
-
   [[blocks.segments]]
     leading_diamond = ''
     trailing_diamond = ''
-    # template = ' {{ if ge (len .PathSegments) 2 }}{{ index .PathSegments (sub (len .PathSegments) 2) }}/{{ index .PathSegments (sub (len .PathSegments) 1) }}{{ else }}{{ .Folder }}{{ end }}'
-    # template = ' {{ if eq .Path .Home }}~{{ else if .Parent }}{{ .Parent }}/{{ .Folder }}{{ else }}{{ .Folder }}{{ end }}'  
-    # template = ' {{ .PWD }}'
-    template = ' {{ .Folder }}'
+    template = ' {{ .PWD }}'
     foreground = 'p:text'
     background = 'p:pink'
+
     type = 'path'
     style = 'diamond'
 
@@ -170,12 +177,14 @@ final_space = true
     background = 'p:sky'
     type = 'battery'
     style = 'diamond'
+    # foreground_templates = ['{{if eq "Charging" .State.String}}p:base{{end}}', '{{if eq "Discharging" .State.String}}p:base{{end}}', '{{if eq "Full" .State.String}}p:base{{end}}']
 
     [blocks.segments.properties]
       charged_icon = ' '
       charging_icon = '⇡ '
       discharging_icon = '⇣ '
 
+# Insert blank line
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
