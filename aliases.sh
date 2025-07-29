@@ -266,3 +266,6 @@ alias tt="tmux attach -t 0"                                                     
 alias nvim-defauts="v .local/share/nvim/lazy/LazyVim/lua/lazyvim/config/keymaps.lua" # Open nvim keymap defaults in nvim
 alias nvd="v .local/share/nvim/lazy/LazyVim/lua/lazyvim/config/keymaps.lua"          # Open nvim keymap defaults in nvim
 alias mdr="make docker.run"
+alias fp="git push --set-upstream origin master" # First push
+alias gro="git remote add origin"
+alias ief="cd ~/Documents/Projects/ignite-expo-fast"
