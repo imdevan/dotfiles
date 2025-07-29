@@ -31,6 +31,8 @@ alias gac="git_add_commit"
 # Calls git add, git commit, and git push
 # Takes commit message
 function git_add_push() {
+  one_arg_required "$@" || return 1
+
   git_add_commit "$@" &&
   git push
 }
