@@ -18,14 +18,13 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 sketchybar --bar \
   position=top \
   height=24 \
-  blur_radius=100 \
-  # color=0x90000000 \  
-  color=0xff000000 \  
-  border_color=0xff000000 \
-  border_width=0 \
+  blur_radius=30 \
+  color=0x40000000 \  
+  border_color=0x40000000 \
+  border_width=1 \
   padding_left=32 \
   padding_right=32 \
-  shadow.drawing=off
+  shadow.drawing=on
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
 # For a full list of all available item properties see:
@@ -130,12 +129,12 @@ sketchybar --default "${default[@]}"
 #         # background.corner_radius=5 \
 
 # Active app
-# sketchybar --add item chevron left \
-#            --set chevron icon= label.drawing=off \
-#            --add item front_app left \
-#            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-#            --subscribe front_app front_app_switched
-#
+sketchybar --add item chevron left \
+           --set chevron icon= label.drawing=off \
+           --add item front_app left \
+           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+           --subscribe front_app front_app_switched
+
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
 # Additional position (e.g. center) are available, see:
@@ -148,15 +147,15 @@ sketchybar --default "${default[@]}"
 # https://felixkratz.github.io/SketchyBar/config/events
 
 # Right items
-# sketchybar --add item clock right \
-#            --set clock update_freq=10 icon= icon.font="Hack Nerd Font:Normal:12.0" script="$PLUGIN_DIR/clock.sh" \
-#            --add item volume right \
-#            --set volume script="$PLUGIN_DIR/volume.sh" \
-#            --subscribe volume volume_change \
-#            --add item battery right \
-#            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-#            --subscribe battery system_woke power_source_change
-#
+sketchybar --add item clock right \
+           --set clock update_freq=10 icon= icon.font="Hack Nerd Font:Normal:12.0" script="$PLUGIN_DIR/clock.sh" \
+           --add item volume right \
+           --set volume script="$PLUGIN_DIR/volume.sh" \
+           --subscribe volume volume_change \
+           --add item battery right \
+           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+           --subscribe battery system_woke power_source_change
+
       #  background.border_color=0x80ffffff \
       #   background.color=0x00000000 \
       #   background.border_width=1 \
@@ -164,18 +163,18 @@ sketchybar --default "${default[@]}"
       #   background.corner_radius=2 \
       #   background.drawing=off \
 
-# sketchybar --add event aerospace_workspace_change
+sketchybar --add event aerospace_workspace_change
 
 # Aerospace config
-# for sid in $(aerospace list-workspaces --all); do
-#     sketchybar --add item space.$sid right \
-#         --subscribe space.$sid aerospace_workspace_change \
-#         --set space.$sid \
-#         label="󰍹  $sid" \
-#         click_script="aerospace workspace $sid" \
-#         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-# done
-#
+for sid in $(aerospace list-workspaces --all); do
+    sketchybar --add item space.$sid right \
+        --subscribe space.$sid aerospace_workspace_change \
+        --set space.$sid \
+        label="󰍹  $sid" \
+        click_script="aerospace workspace $sid" \
+        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+done
+
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
