@@ -22,4 +22,8 @@
         "key": "shift+cmd+backspace",
         "command": "workbench.action.terminal.kill"
     },
+    {
+        "key": "cmd+e",
+        "command": "composerMode.background"
+    },
 ]

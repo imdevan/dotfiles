@@ -35,7 +35,7 @@
     "workbench.iconTheme": "catppuccin-perfect-monokai",
     "workbench.editor.empty.hint": "hidden",
 
-    "zenMode.centerLayout": true, 
+    "zenMode.centerLayout": false, 
     "zenMode.hideLineNumbers": false,
     //  Vim Motions
     // https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n
@@ -121,8 +121,37 @@
     "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
     "explorer.confirmDragAndDrop": false,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.colorCustomizations": {
+		// "sideBar.background": "#000000",
+		// "statusBar.background": "#000000",
+        // "editor.background": "#000000", // Replace with your desired hex color
+		// "titleBar.inactiveBackground": "#000000",
+		// // "editorLineNumber.background": "#000000",
+        // // "editorLineNumber.activeBackground": "#000000",
+        // // "editorLineNumber.inactiveBackground": "#000000",
+		// "editorRuler.foreground": "#000000",
+		// "editorRuler.baackground": "#000000",
+        // // "editorCursor.background": "#000000",
+        // "editorGroupHeader.tabsBackground": "#000000",
+        // "sideBarSectionHeader.background": "#000000",
+        // "statusBar.noFolderBackground": "#000000",
+        // "tab.border": "#00000000",
+        // "titleBar.activeBackground": "#000000",
+        // "breadcrumbPicker.background": "#000000",
+        // "dropdown.background": "#000000",
+        // "peekViewEditor.background": "#000000",
+        // "peekViewResult.background": "#000000",
+        // "peekViewTitle.background": "#000000",
+		// "menu.background": "#000000",
+		// "tab.inactiveBackground": "#000000",
+        // "editorGutter.addedBackground": "#000000",
+        // // "editorGutter.background": "#000000",  // Gutter background (affects line numbers)
+		// // "editorGutter.modifiedBackground": "#00000000",
+		// "editorGutter.modifiedBackground": "blue",
+        // "editorGutter.background": "#000",
+		// // "editorGutter.modifiedBackground": "#fff",
+
         "[Vira*]": {
             "toolbar.activeBackground": "#80CBC426",
             "button.background": "#80CBC4",
