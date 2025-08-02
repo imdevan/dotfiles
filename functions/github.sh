@@ -233,3 +233,12 @@ function lazy_push() {
 }
 alias lgap="lazy_push"
 
+# Function: lcs
+# Description: Super lazy git management for stow files
+# Usage: lcs [arguments]
+# Alias: l
+function lazy_push_config_stow() {
+    lazy_push config/stow/$1
+}
+alias lcs="lazy_push_config_stow"
+
