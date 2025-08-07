@@ -1,4 +1,4 @@
-# Empty sketchybar
+# Just the clock
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
@@ -26,6 +26,10 @@ default=(
   label.padding_right=8
 )
 sketchybar --default "${default[@]}"
+
+# Right items
+sketchybar --add item clock right \
+           --set clock update_freq=10 icon.font="Hack Nerd Font:Normal:12.0" script="$PLUGIN_DIR/clock.sh" \
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
