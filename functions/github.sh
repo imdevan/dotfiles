@@ -240,5 +240,6 @@ alias lgap="lazy_push"
 function lazy_push_config_stow() {
     lazy_push config/stow/$1
 }
-alias lcs="lazy_push_config_stow"
+# alias lcs="lazy_push_config_stow"
+alias clgap="lazy_push_config_stow"
 
