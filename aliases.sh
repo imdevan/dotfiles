@@ -54,7 +54,7 @@ alias dcw="docker compose watch"
 
 # Code editors
 alias co="code ."
-alias c="cursor"
+alias c="cursor ."
 alias v="nvim"
 
 # Bookmarks
@@ -274,7 +274,6 @@ alias pyt="cd ~/Documents/Projects/playground/python-tests"
 alias gc="scripts/generate-client.sh"
 alias eab="eas build --platform ios --profile development --local"
 alias cf="cp -rf"
-alias bc="bun compile"
 alias clean="rf node_modules && bun install"
 alias vdc="bve && dcw"
 alias vdc="z backend && ve && dcw"
@@ -295,3 +294,4 @@ alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias ba="bun add"
 alias iefb="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/backend"
 alias vg="v /Users/devy/dotfiles/functions/github.sh"
+alias vf="v ~/dotfiles/functions"
