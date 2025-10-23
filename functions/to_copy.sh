@@ -12,6 +12,13 @@ function to_copy() {
 # Create alias
 alias tc="to_copy"
 
+
+function copy_text() {
+  echo "$@" | pbcopy
+}
+
+alias ct="copy_text"
+
 function copy_pwd() {
   pwd | pbcopy
 }
