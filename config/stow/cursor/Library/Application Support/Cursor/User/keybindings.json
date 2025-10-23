@@ -23,10 +23,6 @@
         "command": "workbench.action.terminal.kill"
     },
     {
-        "key": "cmd+e",
-        "command": "composerMode.background"
-    },
-    {
         "key": "cmd+g",
         "command": "workbench.scm.focus"
     }
