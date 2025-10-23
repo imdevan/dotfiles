@@ -141,8 +141,17 @@ eval "$(zoxide init zsh)"
 #   tmux attach-session -t 0 || tmux new-session -s 0
 # fi
 
+# Add cargo (rust toolkit) to path
+export PATH="${HOME}/.cargo/bin:${PATH}"
+
+
 # Add aerospace to path
 export PATH="/Applications/Aerospace.app/Contents/MacOS:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+# Add android paths 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulatorand
+export PATH=$PATH:$ANDROID_HOME/platform-tools
