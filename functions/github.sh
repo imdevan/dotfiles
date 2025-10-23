@@ -243,3 +243,24 @@ function lazy_push_config_stow() {
 # alias lcs="lazy_push_config_stow"
 alias clgap="lazy_push_config_stow"
 
+# Function: push current branch
+function push_current_branch() {
+  # Ensure we're in a git repo
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo "Not a git repository" >&2
+    return 1
+  fi
+
+  # Get the current branch name
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD)
+
+  # Ensure we actually got a branch name
+  if [ -z "$branch" ]; then
+    echo "Unable to determine branch name" >&2
+    return 1
+  fi
+
+  echo "Pushing branch '$branch' to origin..."
+  git push --set-upstream origin "$branch"
+}
+alias pcb="push_current_branch"
