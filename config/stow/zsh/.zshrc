@@ -155,3 +155,5 @@ eval "$(pyenv init - zsh)"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulatorand
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
