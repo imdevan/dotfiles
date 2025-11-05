@@ -6,8 +6,22 @@
 # Alias: og
 
 function open_github() {
+    local remote_arg=${1:-origin}
+    local remote
+
+    if [[ "$remote_arg" == "u" || "$remote_arg" == "up" ]]; then
+        remote="upstream"
+    else
+        remote="$remote_arg"
+    fi
+
     # Get the remote origin URL
-    local remote_url=$(git config --get remote.origin.url)
+    local remote_url=$(git config --get remote."$remote".url)
+
+    if [ -z "$remote_url" ]; then
+        echo "Error: Remote '$remote' not found."
+        return 1
+    fi
     
     # Convert SSH URL to HTTPS if needed
     if [[ $remote_url == *"git@"* ]]; then
