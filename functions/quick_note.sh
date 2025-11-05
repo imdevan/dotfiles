@@ -62,3 +62,5 @@ function notes() {
   echo -e "${green}${dated_notes}${reset}"
   echo "--------------------------------"
 }
+
+alias vn="v ~/Documents/notes"
