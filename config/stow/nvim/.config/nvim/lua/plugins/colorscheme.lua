@@ -4,6 +4,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
+    enabled = not vim.g.vscode,
     opts = {
       transparent_background = true,
     },
@@ -12,9 +13,13 @@ return {
         flavour = "macchiato", -- latte, frappe, macchiato, mocha
         transparent_background = true, -- disables setting the background color.
         -- transparent = true,
+        float = {
+          transparent = false, -- enable transparent floating windows
+          solid = true, -- use solid styling for floating windows, see |winborder|
+        },
         styles = {
           sidebars = "transparent",
-          -- floats = "transparent",
+          floats = "transparent",
         },
         integrations = {
           treesitter = true,
