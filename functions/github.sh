@@ -264,3 +264,15 @@ function push_current_branch() {
   git push --set-upstream origin "$branch"
 }
 alias pcb="push_current_branch"
+
+# Function: checkout_and_set_upstream
+# Description: checkout branch and push to upstream branch with the same name
+# Usage: checkout_and_set_upstream feature-branch-name
+function checkout_and_set_upstream () {
+  git checkout -b "$1"
+
+  git push --set-upstream upstream "$1"
+}
+
+alias casu="checkout_and_set_upstream"
+
