@@ -92,7 +92,8 @@ echo ''
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(web-search)
+# custom plugin added: https://github.com/jeffreytse/zsh-vi-mode
+plugins=(web-search zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -157,3 +158,4 @@ export PATH=$PATH:$ANDROID_HOME/emulatorand
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+export JAVA_HOME=$(brew --prefix)/opt/openjdk@17
