@@ -1,11 +1,11 @@
 #!/bin/sh
 
-# Function: clear-all-modules
+# Function: clear_all_modules
 # Description: Clear all node modules
-# Usage: clear-all-modules [arguments]
+# Usage: clear_all_modules [arguments]
 # Alias: c
 
-function clear-all-modules() {
+function clear_all_modules() {
     echo "Searching for all node_modules folders..."
     find . -type d -name 'node_modules' -prune -print
 
@@ -25,4 +25,4 @@ function clear-all-modules() {
 }
 
 # Create alias
-alias 'can!'="clear-all-modules" # ! to prevent accidental trigger
+alias 'can!'="clear_all_modules" # ! to prevent accidental trigger
