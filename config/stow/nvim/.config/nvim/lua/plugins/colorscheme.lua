@@ -1,4 +1,5 @@
 -- https://github.com/catppuccin/nvim
+-- https://catppuccin.com/palette/
 return {
   {
     "catppuccin/nvim",
