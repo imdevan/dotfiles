@@ -100,6 +100,9 @@ https://github.com/sxyazi/yazi
 https://github.com/gbprod/yanky.nvim
 
 write plugin to randomize header images
+- did it, love it
+
+-- other snacks considerations: https://github.com/zvrkSam/nvim-dotfiles/blob/main/lua/plugins/snacks-noice.lua#52
 
 
 ## tmux improvements 
