@@ -13,7 +13,7 @@ function quick_note() {
     # local note_file="~/Documents/notes/$(date +%Y-%m-%d).md"
    
   if [ "$#" -lt 1 ]; then
-    nvim ~/Documents/notes/$(date +%d-%m-%Y).md
+    nvim ~/Documents/notes/$(date +%m-%d-%Y).md
   else  
     nvim ~/documents/notes/$(to_snake_case "$@").md
   fi
