@@ -7,11 +7,14 @@
 -- <leader>P page
 vim.keymap.set("n", "<leader>po", "ggVGd", { desc = "Clear whole page", remap = true })
 
+-- default disable line indention indicators cuz im weird like that
+local snacks = require("snacks")
+snacks.indent.disable()
+
 vim.keymap.set("n", "<leader>pl", function()
   vim.wo.list = not vim.wo.list
   vim.opt.list = not vim.opt.list
-  local snacks = require("snacks")
-  local current = snacks.config.indent.enabled
+  local current = snacks.indent.enabled
 
   if current then
     snacks.indent.disable()
@@ -19,6 +22,21 @@ vim.keymap.set("n", "<leader>pl", function()
     snacks.indent.enable()
   end
 
-  -- snacks.config.indent.enabled = not current
-  vim.notify("Snacks indent " .. (snacks.config.indent.enabled and "enabled" or "disabled"))
+  vim.notify("Snacks indent " .. (not current and "enabled" or "disabled"))
 end, { desc = "Toggle whitespace visibility" })
+
+-- TODO: add keymap to toggle ignoring gitignore in searches
+-- vim.keymap.set("n", "<leader>pi", function()
+--   vim.wo.list = not vim.wo.list
+--   vim.opt.list = not vim.opt.list
+--   local current = snacks.picker.ignored;
+--
+--   if current then
+--     snacks.indent.disable()
+--   else
+--     snacks.indent.enable()
+--   end
+--
+--   vim.notify("Snacks ignored files " .. (not current and "enabled" or "disabled"))
+-- end, { desc = "Toggle ignored files" })
+--
