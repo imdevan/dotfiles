@@ -36,3 +36,5 @@ source $dotfile_dir/functions/re_run.sh
 source $dotfile_dir/functions/math.sh
 source $dotfile_dir/functions/docker_exec_it.sh
 source $dotfile_dir/functions/clear_all_modules.sh
+
+source $dotfile_dir/functions/function_utils.sh
