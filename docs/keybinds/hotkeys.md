@@ -217,6 +217,11 @@ u   - undo
 U   - undo all last line changes
 ^r  - redo
 
+"   - access registers
+"0  - last yanked register 
+
+<!-- read more: https://learnvim.irian.to/basics/registers -->
+
 ### nvim-surround
 
 cs__- replace surrounding with
