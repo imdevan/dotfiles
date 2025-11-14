@@ -1,0 +1,11 @@
+return {}
+-- -- Diable indents by default in snacks
+-- -- Cuz I'm weird like that
+-- return {
+--   "folke/snacks.nvim",
+--   opts = function(_, opts)
+--     opts.indent = { enabled = false }
+--   end,
+-- }
+--
+-- -- other snacks considerations: https://github.com/zvrkSam/nvim-dotfiles/blob/main/lua/plugins/snacks-noice.lua#52
