@@ -22,4 +22,9 @@
         "key": "shift+cmd+backspace",
         "command": "workbench.action.terminal.kill"
     },
+    {
+        "key": "cmd+g",
+        "command": "workbench.scm.focus"
+    }
+
 ]
