@@ -1,0 +1,110 @@
+{
+    "vscode_custom_css.imports": ["file:///Users/devin/dotfiles/config/code/custom_theme.css"],
+    "vscode_custom_css.policy": true,
+
+    "workbench.colorTheme": "Panda Syntax",
+    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Victor Mono',Menlo, Monaco, 'Courier New', monospace",
+    "chat.agent.enabled": false,
+    "chat.mcp.autostart": "never",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "git.openRepositoryInParentFolders": "never",
+    "editor.fontLigatures": true,
+    "debug.internalConsoleOptions": "neverOpen",
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.location": "top",
+
+    // Terminal
+    "terminal.integrated.initialHint": false,
+
+    // Theme
+    "editor.fontVariations": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+        {
+            "scope": "comment",
+            "settings": {
+            "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "string.quoted.double",
+            "settings": {
+            "fontStyle": "italic"
+            }
+        },
+        {
+            "scope": "string.quoted.single",
+            "settings": {
+            "fontStyle": "italic"
+            }
+        }
+        ]
+    },
+    "workbench.iconTheme": "catppuccin-perfect-monokai",
+    "workbench.editor.empty.hint": "hidden",
+
+    "zenMode.centerLayout": true, 
+    "zenMode.hideLineNumbers": false,
+    //  Vim Motions
+    // https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n
+    "vim.smartRelativeLine": true,
+    "editor.lineNumbers": "relative",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["g", "p", "d"],
+            "commands": ["editor.action.peekDefinition"]
+        },
+        {
+            "before": ["g", "h"],
+            "commands": ["editor.action.showDefinitionPreviewHover"]
+        },
+        {
+            "before": ["g", "i"],
+            "commands": ["editor.action.goToImplementation"]
+        },
+        {
+            "before": ["g", "p", "i"],
+            "commands": ["editor.action.peekImplementation"]
+        },
+        {
+            "before": ["g", "q"],
+            "commands": ["editor.action.quickFix"]
+        },
+        {
+            "before": ["g", "r"],
+            "commands": ["editor.action.referenceSearch.trigger"]
+        },
+        {
+            "before": ["g", "t"],
+            "commands": ["editor.action.goToTypeDefinition"]
+        },
+        {
+            "before": ["g", "p", "t"],
+            "commands": ["editor.action.peekTypeDefinition"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "t"],
+            "commands": ["workbench.action.toggleCenteredLayout"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["lineBreakInsert"],
+            "silent": true
+        },
+        {
+            "before": ["<leader>", "z"],
+            "commands": ["workbench.action.toggleZenMode"]
+        },
+    ],
+    "vim.leader": "<space>",
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 250,
+    "vim.useSystemClipboard": true,
+    "editor.cursorSurroundingLines": 12,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.tips.enabled": false,
+}
