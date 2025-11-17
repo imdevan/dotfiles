@@ -107,6 +107,7 @@ alias gdno="git diff --name-only"
 alias gpu="git push upstream"
 alias gppu="git push --set-upstream upstream"
 alias mas="gco master"
+alias gca="git commit --amend"
 
 # Branch shortcuts
 alias s="git checkout staging"
