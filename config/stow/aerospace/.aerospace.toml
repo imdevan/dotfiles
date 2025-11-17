@@ -213,6 +213,9 @@ automatically-unhide-macos-hidden-apps = false
 
     shift-cmd-h = 'workspace prev'
     shift-cmd-l = 'workspace next'
+
+    alt-shift-ctrl-cmd-h = 'move-node-to-workspace prev'
+    alt-shift-ctrl-cmd-l = 'move-node-to-workspace next'
     # ctrl-alt-cmd-v = 'join-with vertical'
     # ctrl-alt-cmd-h = 'join-with horizontal'
 
