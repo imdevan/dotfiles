@@ -1,0 +1,66 @@
+
+tap "jandedobbeleer/oh-my-posh"
+tap "jesseduffield/lazygit"
+tap "nikitabobko/tap"
+tap "oven-sh/bun"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
+# Container runtimes on MacOS (and Linux) with minimal setup
+# Docker alternative
+brew "colima"
+# Apjanke's fork of the classic cowsay project
+brew "cowsay"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Easiest way to build and release mobile apps
+brew "fastlane"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
+# GitHub command-line tool
+brew "gh"
+# Lazier way to manage everything docker
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Manage multiple Node.js versions
+brew "nvm"
+# Development kit for the Java programming language
+brew "openjdk"
+# Python version management
+brew "pyenv"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# Terminal multiplexer
+brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar"
+# Prompt theme engine for any shell
+brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
+vscode "aaronyoung.dark-synthwave-vscode"
+vscode "asvetliakov.vscode-neovim"
+vscode "chakrounanas.turbo-console-log"
+vscode "ms-python.vscode-pylance"
+vscode "tinkertrain.theme-panda"

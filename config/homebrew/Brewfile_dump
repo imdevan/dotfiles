@@ -1,0 +1,102 @@
+# Full brew dump from "brew bundle dump --describe --file=~/Brewfile"
+# Use Brewfile_cherrypick on fresh install
+# TODO: cleanup with https://docs.brew.sh/Brew-Bundle-and-Brewfile
+tap "create-go-app/tap"
+tap "encoredev/tap"
+tap "felixkratz/formulae"
+tap "gobuffalo/tap"
+tap "jandedobbeleer/oh-my-posh"
+tap "jesseduffield/lazygit"
+tap "nikitabobko/tap"
+tap "oven-sh/bun"
+# Arbitrary precision numeric processing language
+brew "bc"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# Apjanke's fork of the classic cowsay project
+brew "cowsay"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Easiest way to build and release mobile apps
+brew "fastlane"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Fast and simple Node.js version manager
+brew "fnm"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Interact with Google Gemini AI models from the command-line
+brew "gemini-cli"
+# GitHub command-line tool
+brew "gh"
+# Opinionated Go source code linter
+brew "go-critic"
+# Database migrations CLI tool
+brew "golang-migrate"
+# Fast linters runner for Go
+brew "golangci-lint"
+# Golang security checker
+brew "gosec"
+# Lazier way to manage everything docker
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
+# CLI for MySQL with auto-completion and syntax highlighting
+brew "mycli"
+# Open source relational database management system
+brew "mysql"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Manage multiple Node.js versions
+brew "nvm"
+# Development kit for the Java programming language
+brew "openjdk"
+# Development kit for the Java programming language
+brew "openjdk@17"
+# Python version management
+brew "pyenv"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# Terminal multiplexer
+brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Create a new production-ready project with backend (Golang), frontend (JavaScript, TypeScript) and deploy automation (Ansible, Docker) by running one CLI command.
+# Focus on writing code and thinking of business-logic! The CLI will take care of the rest.
+brew "create-go-app/tap/cgapp"
+# The static analysis-powered Go framework for building backend applications
+brew "encoredev/tap/encore"
+# Custom macOS statusbar with shell plugin, interaction and graph support
+brew "felixkratz/formulae/sketchybar"
+brew "gobuffalo/tap/buffalo"
+# Prompt theme engine for any shell
+brew "jandedobbeleer/oh-my-posh/oh-my-posh"
+# Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
+brew "oven-sh/bun/bun"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "aerospace"
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-sauce-code-pro-nerd-font"
+vscode "aaronyoung.dark-synthwave-vscode"
+vscode "asvetliakov.vscode-neovim"
+vscode "chakrounanas.turbo-console-log"
+vscode "ms-python.vscode-pylance"
+vscode "tinkertrain.theme-panda"
+go "github.com/gobuffalo/buffalo-pop/v3"
+go "fyne.io/tools/cmd/fyne"
+go "golang.org/x/tools/gopls"
+go "honnef.co/go/tools/cmd/staticcheck"
+go "github.com/swaggo/swag/cmd/swag"
