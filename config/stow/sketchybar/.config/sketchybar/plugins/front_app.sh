@@ -14,6 +14,7 @@ cursor=🐁
 keyboard=⌨️
 karabiner=🧗🏻‍♀️
 system=⚙️
+streamlabs=🎬
 "
 
 lower() {
