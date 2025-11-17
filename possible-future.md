@@ -5,6 +5,7 @@
 ## Things to figure out
 
 - How to move file to a directory and have it update file references; like vs code
+- tmux double stack all left side status bar layout
 
 ### Zsh plugins
 
