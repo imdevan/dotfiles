@@ -186,6 +186,7 @@ K — hover
 
 ## Explorer navigation
 
+shift h and l - move left and right between open buffers
 j and k — focus down and up between files and folders;
 h and l — collapse folders and select folders and files;
 enter   — select folders and files;
