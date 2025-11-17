@@ -1,6 +1,7 @@
 # Shared functions
-source $dotfile_dir/functions/shared/validators.sh
+source $dotfile_dir/functions/shared/colors.sh  # colors should be loaded first
 
+source $dotfile_dir/functions/shared/validators.sh
 source $dotfile_dir/functions/shared/join_args.sh
 source $dotfile_dir/functions/shared/has_flag.sh
 
