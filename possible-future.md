@@ -2,6 +2,10 @@
 
 “...Things that yet may be”
 
+## Things to figure out
+
+- How to move file to a directory and have it update file references; like vs code
+
 ### Zsh plugins
 
 <!-- zsh vi mode -->
