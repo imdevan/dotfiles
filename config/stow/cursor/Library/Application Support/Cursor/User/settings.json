@@ -1,5 +1,5 @@
 {
-    "vscode_custom_css.imports": ["file:///Users/devin/dotfiles/vscode/theme/styles.css"],
+    "vscode_custom_css.imports": ["file:///Users/devin/dotfiles/config/code/theme/custom_theme.css"],
     "vscode_custom_css.policy": true,
 
     // Terminal
