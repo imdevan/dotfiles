@@ -1,0 +1,43 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nmap <c-p> togglePinTab\nunmap d\nmap { scrollFullPageUp\nmap } scrollFullPageDown",
+  "scrollStepSize": 24,
+  "settingsVersion": "2.3.1",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://excalidraw.com/*"
+    },
+    {
+      "passKeys": "m",
+      "pattern": "https?://calendar.google.com/*"
+    },
+    {
+      "passKeys": "t",
+      "pattern": "https?://calendar.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://map.riftkit.net/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://loldodgegame.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://loldodgegame.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://localhost:8080/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://terrycavanagh.itch.io/*"
+    },
+    {
+      "passKeys": "/",
+      "pattern": "https?://github.com/*"
+    }
+  ]
+}
