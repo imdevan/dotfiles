@@ -66,7 +66,6 @@ alias p="cd ~/Documents/Projects/"
 alias play="cd ~/Documents/Projects/playground"
 
 # Git
-
 # Overhead
 alias gco="git checkout"     # Git checkout
 alias gcof="git checkout --" # Checkout file
@@ -118,17 +117,9 @@ alias staging="gco staging"
 alias wip="gap ':construction:'"
 alias gcat="gap ':octocat:'"
 
-# Ghostty
-# alias gho="ghostty"
-# alias gk="ghostty +list-keybinds"
-# alias gkk="v ~/dotfiles/docs/keybinds/ghostty.md"
-
 # NPM
 alias nt="npm test"
 alias ns="npm start"
-alias nd="npm run dev"
-alias nb="npm run build"
-alias nw="npm run web"
 alias nee="npm run test:e2e"
 alias nu="npm uninstall"
 alias nrd="npm run dev"
@@ -136,6 +127,17 @@ alias ni="npm install"
 alias naf="npm audit fix"
 alias jc="npx jest --coverage"
 
+# Various run scripts
+alias nd="npm run dev"
+alias nb="npm run build"
+alias nw="npm run web"
+alias nrl="npm run lint"
+alias ninrw="ni && nrw"
+alias nid="npm i --save-dev"
+alias nrc="npm run clean"
+alias nrp="npm run prettier"
+alias nrw="npm run web"
+alias nis="npm install -S"
 # PNPM
 alias pns="pnpm start"
 alias pnd="pnpm dev"
@@ -205,6 +207,8 @@ alias ld="lazydocker"
 alias dl="docker logs"
 alias dli="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}'"
 alias dlv="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}' | nvim"
+
+# Tmux
 
 # New
 alias fsft="cd ~/Documents/Projects/playground/full-stack-fastapi-template"
@@ -325,22 +329,15 @@ alias pt="python google_photo_transfer.py"
 alias ppt="rf output2 && pt -d ./tests2 -o ./output2"
 alias tka="tmux kill-session -a"
 alias rndp="cd ~/Documents/Projects/playground/react-native-dropdown-picker"
-alias nrw="npm run web"
 alias nclean="rf node_modules && rm package-lock.json && ni"
 alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
 alias rndp="cd ~/Documents/Projects/playground/react-native-dropdown/react-native-dropdown-picker"
 alias nnrw="nclean && nrw"
 alias ma="gco main"
-alias nis="npm install -S"
 alias gcob="gco -b"
 alias pr="open https://github.com/imdevan/react-native-dropdown-picker/compare/main...imdevan:react-native-dropdown-picker:main"
 alias rndp2="cd ~/Documents/Projects/playground/react-native-dropdown/rndp2"
-alias nrl="npm run lint"
-alias ninrw="ni && nrw"
-alias nid="npm i --save-dev"
-alias nrc="npm run clean"
 alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
-alias nrp="npm run prettier"
 alias fd="gfp && nrd"
 alias k="kiro ./"
 alias fs="~/dotfiles/functions"
@@ -349,3 +346,7 @@ alias ved="deactivate"
 alias vdcw="ve && dcw"
 alias rndpe="cd ~/Documents/Projects/playground/react-native-dropdown/react-native-dropdown-picker/examples"
 alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
+alias cgen="scripts/generate-client.sh"
+alias tkse="tmux kill-session -t"
+alias vcd="ve && cs && dcw"
+alias ge="gemini"
