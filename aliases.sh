@@ -160,7 +160,6 @@ alias ve="source .venv/bin/activate"
 alias py="python3"
 
 # FastAPI
-# alias fd="fastapi dev app/main.py"
 
 # Clean Modules (and run yarn)
 alias clean="rm -rf node_modules && yarn"
@@ -338,7 +337,7 @@ alias gcob="gco -b"
 alias pr="open https://github.com/imdevan/react-native-dropdown-picker/compare/main...imdevan:react-native-dropdown-picker:main"
 alias rndp2="cd ~/Documents/Projects/playground/react-native-dropdown/rndp2"
 alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
-alias fd="gfp && nrd"
+# alias fd_old="gfp && nrd"
 alias k="kiro ./"
 alias fs="~/dotfiles/functions"
 alias rndp3="cd ~/Documents/Projects/playground/react-native-dropdown/rndp3"
@@ -350,3 +349,5 @@ alias cgen="scripts/generate-client.sh"
 alias tkse="tmux kill-session -t"
 alias vcd="ve && cs && dcw"
 alias ge="gemini"
+alias sketch="cd ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
+alias pres="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
