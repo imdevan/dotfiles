@@ -15,6 +15,8 @@ keyboard=⌨️
 karabiner=🧗🏻‍♀️
 system=⚙️
 streamlabs=🎬
+messages=🤗
+whatsapp=🙌🏼
 "
 
 lower() {
