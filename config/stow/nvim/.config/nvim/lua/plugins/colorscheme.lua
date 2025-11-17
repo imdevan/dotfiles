@@ -15,8 +15,10 @@ return {
         transparent_background = true, -- disables setting the background color.
         -- transparent = true,
         float = {
-          transparent = false, -- enable transparent floating windows
-          solid = true, -- use solid styling for floating windows, see |winborder|
+          -- transparent = false, -- enable transparent floating windows
+          transparent = true, -- enable transparent floating windows
+          solid = false, -- use solid styling for floating windows, see |winborder|
+          -- solid = true, -- use solid styling for floating windows, see |winborder|
         },
         styles = {
           sidebars = "transparent",
