@@ -52,7 +52,7 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 ]
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -64,7 +64,6 @@ default-root-container-layout = 'tiles'
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
 #               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'auto'
-
 # Mouse follows focus when focused monitor changes
 # Drop it from your config, if you don't like this behavior
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
@@ -79,18 +78,18 @@ automatically-unhide-macos-hidden-apps = false
 
 # 6 gcc
 [gaps]
-    inner.horizontal = 0
-    inner.vertical =   0
+    # inner.horizontal = 0
+    # inner.vertical =   0
     outer.left =       0
     outer.bottom =     0
     outer.top =        0
     outer.right =      0
-    # inner.horizontal = 16
-    # inner.vertical =   16
-    # outer.left =       32
-    # outer.bottom =     32
-    # outer.top =        32 
-    # outer.right =      32 
+    inner.horizontal = 16
+    inner.vertical =   16
+    # outer.left =       16
+    # outer.bottom =     16
+    # outer.top =        16 
+    # outer.right =      16 
     # inner.horizontal = 16
     # inner.vertical =   16
     # outer.left =       64
@@ -100,7 +99,7 @@ automatically-unhide-macos-hidden-apps = false
     # inner.horizontal = 8
     # inner.vertical =   8
     # outer.left =       8
-    # outer.bottom =   648
+    # outer.bottom =     8
     # outer.top =        8
     # outer.right =      8
     # enable_for_floating = true  # this is the key line
@@ -206,6 +205,9 @@ automatically-unhide-macos-hidden-apps = false
 
     shift-cmd-minus = 'resize smart -50'
     shift-cmd-equal = 'resize smart +50'
+
+    ctrl-cmd-h = 'resize smart -50'
+    ctrl-cmd-l = 'resize smart +50'
 
     alt-shift-cmd-enter = 'macos-native-fullscreen'
 
