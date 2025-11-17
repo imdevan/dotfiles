@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # Some events send additional information specific to the event in the $INFO
 # variable. E.g. the front_app_switched event sends the name of the newly
 # focused application in the $INFO variable:
@@ -7,7 +6,7 @@
 #
 SUBSTITUTES="
 chrome=🦄
-arc=📺
+arc=🌈
 iterm2=👾
 code=🧑🏻‍💻
 kiro=👻
@@ -52,9 +51,9 @@ $SUBSTITUTES
 EOF
 
   if [ "$found" = true ]; then
-    printf '%s\n' "$result"
+    printf '%s' "$result"
   else
-    printf '%s\n' "$name_lc"
+    printf '%s' "$name_lc"
   fi
 }
 
@@ -62,4 +61,5 @@ if [ "$SENDER" = "front_app_switched" ]; then
   label="$(substitute "$INFO")"
 
   sketchybar --set "$NAME" label="$label"
+  # sketchybar --set "$NAME" label="$INFO"
 fi
