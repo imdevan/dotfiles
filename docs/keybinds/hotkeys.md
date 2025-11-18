@@ -324,9 +324,9 @@ alt + down  - move into the first child directory by alphabetical order
 
 ## tmux
 
-see ~/dotfiles/config/stow/tmux/.tmux.config
+see [./config/stow/tmux/.tmux.config](./config/stow/tmux/.tmux.config)
 
-pre : opt-f
+## aerospace 
 
-pre-z - zoom
+see [./config/stow/aerospace/.aerospace.toml](./config/stow/aerospace/.aerospace.toml)
 

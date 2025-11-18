@@ -8,6 +8,7 @@
 - tmux double stack all left side status bar layout
 - move homebrew config to stow?
 - how can I make this a one line install? 
+- should I convert my alaises + alias_utils into a go-commander app? 
 
 ### Zsh plugins
 
