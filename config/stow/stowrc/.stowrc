@@ -1,0 +1,15 @@
+# Global stow config
+# https://www.gnu.org/software/stow/manual/stow.html#Resource-Files
+
+# Your stow directory
+--dir=~/dotfiles/config/stow/
+
+# Where they should be saved; generally home
+--target='~/'
+
+# this is a test
+
+# Ignore files and directories that contain the string ".stow_ignore" anywhere
+--ignore='\.stow_ignore'
+
+
