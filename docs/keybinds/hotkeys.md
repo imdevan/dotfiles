@@ -78,6 +78,8 @@ B   - jump backward by words (no punctuation)
 $   - end of line
 G   - Go To command (prefix with number - 5G goes to line 5)
 :#  - Also works as to command
+"   - see register context
+"0p - paste the "yank register"
 
 {   - go to beginning of paragraph
 {w  - go to first word of paragraph
@@ -281,6 +283,7 @@ gpt - peek Type Definition
 :sav    - save new file
 :w      - save file
 :!rm %  - delete current file
+"
 
 ## Lazy / NeoVim
 

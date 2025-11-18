@@ -75,8 +75,7 @@ See [/docs/setup.md](/docs/setup.md) for more information ;)
 │   ├── keybinds
 │   │   └── hotkeys.md ...... hotkeys across most used apps
 │   ├── possible-future.md  . future planning
-│   ├── setup.md ............ how to use this thing
-│   └── vim-commands.md .....
+│   └── setup.md ............ environment setup guide
 ├── functions ............... utility functions, like aliases with more "pow!"
 │   ├── shared .............. shared functions, used across other functions
 │   ├── index.sh ............ barrel function called from index
