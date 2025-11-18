@@ -7,6 +7,7 @@
 - How to move file to a directory and have it update file references; like vs code
 - tmux double stack all left side status bar layout
 - move homebrew config to stow?
+- how can I make this a one line install? 
 
 ### Zsh plugins
 

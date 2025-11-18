@@ -53,11 +53,15 @@ todo: setup brewfile in config
 ## Editors
 ------------------------------------------------------------------------
 
-## cursor
+### 1: download
+
+#### cursor
 https://www.cursor.com/
 
-## vs_code
+#### vs_code
 https://code.visualstudio.com/
+
+### 2: config
 
 disable the Apple press and hold for VSCode and Cursor
 
@@ -66,9 +70,6 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ```
 
 
-Copy ./vscode/settings.json into the vscode settings found in vscode and cursor
-
-todo: can i use stow for this?
 
 ## Vim
 ------------------------------------------------------------------------
@@ -82,13 +83,12 @@ https://www.lazyvim.org/
 
 ### config
 
-clone nvim_config repo into `~/.config/nvim`
+Using GNU stow and installed aliases: 
 
+```sh
+cd ~/dotfiles/config/stow/
+sto nvim
 ```
-git clone https://github.com/imdevan/nvim_config
-```
-
-todo: can i use stow for this?
 
 ## Keyboard
 ------------------------------------------------------------------------
