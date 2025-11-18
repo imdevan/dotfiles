@@ -55,6 +55,7 @@ See [/docs/setup.md](/docs/setup.md) for more information ;)
 
 ```
 ├── aliases.sh .............. commonly used shortcuts
+│
 ├── config
 │   ├── code ................ default config for vscode based editors
 │   │                         configs are loaded from stow to actual editor below
@@ -71,16 +72,20 @@ See [/docs/setup.md](/docs/setup.md) for more information ;)
 │   │   ├── vscode
 │   │   └── zsh
 │   └── vimium .............. chrome extension backup
+│
 ├── docs .................... make it make sense
 │   ├── keybinds
 │   │   └── hotkeys.md ...... hotkeys across most used apps
 │   ├── possible-future.md  . future planning
 │   └── setup.md ............ environment setup guide
+│
 ├── functions ............... utility functions, like aliases with more "pow!"
 │   ├── shared .............. shared functions, used across other functions
 │   ├── index.sh ............ barrel function called from index
 │   └── ...
+│
 ├── index.sh ................ ties the room together
+│
 └── readme.md ............... you're reading it
 ```
 
