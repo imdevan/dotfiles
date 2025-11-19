@@ -17,6 +17,8 @@ system=⚙️
 streamlabs=🎬
 messages=🤗
 whatsapp=🙌🏼
+qutebrowser=🐐
+alacritty=😸
 "
 
 lower() {
