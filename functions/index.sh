@@ -1,13 +1,15 @@
 # Shared functions
-source $dotfile_dir/functions/shared/colors.sh  # colors should be loaded first
-
+source $dotfile_dir/functions/shared/colors.sh # colors should be loaded first
 source $dotfile_dir/functions/shared/validators.sh
 source $dotfile_dir/functions/shared/join_args.sh
 source $dotfile_dir/functions/shared/has_flag.sh
+source $dotfile_dir/functions/shared/alias_utils.sh
+
+# Global function handler for zsh
+source $dotfile_dir/functions/command_not_found_handler.sh
 
 # Barrel file for functions
 source $dotfile_dir/functions/localhost.sh
-source $dotfile_dir/functions/alias_utils.sh
 source $dotfile_dir/functions/github.sh
 source $dotfile_dir/functions/facebook.sh
 source $dotfile_dir/functions/random.sh
