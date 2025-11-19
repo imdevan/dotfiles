@@ -165,8 +165,7 @@ alias pr="open https://github.com/imdevan/react-native-dropdown-picker/compare/m
 alias s="git checkout staging"
 alias staging="gco staging"
 # alias m="git checkout master"
-aalias mast="gco master"
-lias mast="gco master"
+alias mast="gco master"
 
 # Quick pushes
 alias wip="gap ':construction:'"
