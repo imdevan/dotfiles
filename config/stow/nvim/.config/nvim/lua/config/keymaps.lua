@@ -6,6 +6,7 @@
 --
 -- <leader>P page
 vim.keymap.set("n", "<leader>po", "ggVGd", { desc = "Clear whole page", remap = true })
+vim.keymap.set("n", "<leader>pc", "BvEy", { desc = "Copy word (from anywhere in word)", remap = true })
 
 -- default disable line indention indicators cuz im weird like that
 local snacks = require("snacks")
