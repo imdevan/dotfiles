@@ -26,6 +26,7 @@ alias refresh="source ~/.zshrc && clear" # Refresh the terminal
 alias r="refresh"                        # Refresh shortcut
 alias t="touch"                          # Make file
 alias ex="exit"                          # Exit terminal
+alias bb="cd -"                          # Go back to last dirctory
 
 # Home Brew
 alias bri="brew install"
@@ -46,10 +47,6 @@ alias bbas="bun build:android:sim"
 alias halp="cat ~/dotfiles/aliases.sh"
 alias dot="cd $dotfile_dir"
 
-alias hotkeys="v ~/dotfiles/docs/keybinds/hotkeys.md"
-alias hk="hotkeys"
-alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
-
 # Docker
 alias dcd="docker compose down"
 alias dcu="docker compose up"
@@ -64,6 +61,20 @@ alias v="nvim"
 alias d="dotfiles"
 alias p="cd ~/Documents/Projects/"
 alias play="cd ~/Documents/Projects/playground"
+
+# Open in Vim 
+alias hs="v ~/dotfiles/docs/keybinds/hotkeys.md"
+alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
+alias va="v ~/dotfiles/aliases.sh"
+alias vc="v ~/Library/Application\ Support/com.mitchellh.ghostty/config"
+alias aero="v ~/.aerospace.toml"
+alias vs="v ~/dotfiles/setup.md"
+alias vpf="v ~/dotfiles/possible-future.md"
+alias vd="v ~/dotfiles"
+alias vt="v ~/dotfiles/config/stow/tmux/.tmux.conf"
+alias vs="v ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
+alias vn="v ~/dotfiles/config/stow/nvim/.config/nvim"
+# alias vf="" now handled by function_utils/vim_function
 
 # Git
 # Overhead
@@ -127,8 +138,6 @@ alias nrd="npm run dev"
 alias ni="npm install"
 alias naf="npm audit fix"
 alias jc="npx jest --coverage"
-
-# Various run scripts
 alias nd="npm run dev"
 alias nb="npm run build"
 alias nw="npm run web"
@@ -139,6 +148,7 @@ alias nrc="npm run clean"
 alias nrp="npm run prettier"
 alias nrw="npm run web"
 alias nis="npm install -S"
+
 # PNPM
 alias pns="pnpm start"
 alias pnd="pnpm dev"
@@ -146,24 +156,6 @@ alias pni="pnpm install"
 alias pnn="pnpm"
 alias pnb="pnpm build"
 alias pnr="pnpm run"
-
-# Google docs
-alias doc="python3 -mwebbrowser https://docs.google.com/create" # New google doc
-alias docs="python3 -mwebbrowser http://docs.google.com"        # Main docs folder
-
-# Simple http.server
-alias s="python3 -m http.server"
-
-# Python
-alias create-ve="python -m venv .venv"
-alias cve="create-ve"
-alias ve="source .venv/bin/activate"
-alias py="python3"
-
-# FastAPI
-
-# Clean Modules (and run yarn)
-alias clean="rm -rf node_modules && yarn"
 
 # Yarn
 alias y="yarn"
@@ -195,6 +187,20 @@ alias yad="yarn add -D"
 alias ydg="yarn db:generate"
 alias ytg="yarn test grep"
 alias yi="yarn install"
+alias clean="rm -rf node_modules && yarn"
+
+# Google docs
+alias doc="python3 -mwebbrowser https://docs.google.com/create" # New google doc
+alias docs="python3 -mwebbrowser http://docs.google.com"        # Main docs folder
+
+# Python
+alias create-ve="python -m venv .venv"
+alias cve="create-ve"
+alias ve="source .venv/bin/activate"
+alias py="python3"
+
+# Simple http.server
+alias s="python3 -m http.server"
 
 # Zsh web_search
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/web-search
@@ -208,7 +214,20 @@ alias dl="docker logs"
 alias dli="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}'"
 alias dlv="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}' | nvim"
 
+# Grep
+alias gre="grep -rl"
+alias rge='rg --files | sk --preview="bat {} --color=always" --bind "enter:execute(nvim {})"'
+
 # Tmux
+alias t="tmux"
+alias tks="tmux kill-server"
+alias ta="tmux attach -t"
+alias tms="tmux source-file ~/.tmux.conf"
+# alias tmr="tmux rename-window -t"
+alias tls="tmux list-sessions"
+alias tt="tmux attach -t 0"                                                          # add after ta alias
+alias tka="tmux kill-session -a"
+alias tkse="tmux kill-session -t"
 
 # New
 alias fsft="cd ~/Documents/Projects/playground/full-stack-fastapi-template"
@@ -216,68 +235,65 @@ alias db="cd ~/Documents/Projects/dance-buddy"
 alias bil="eas build --platform ios --profile development --local"
 alias yib="yarn build:ios:dev"
 alias asdf="cowsay 'hang in there!'"
-alias va="v ~/dotfiles/aliases.sh"
+
 alias pi="pip install -r requirements.txt"
 alias py="python3.11"
-alias bb="cd -"
 alias pym="py monitor.py"
 alias cve="py -m venv .venv"
 alias pim="pi; py"
 alias pim="pi; pym"
 alias pym="py src/monitor.py"
 alias jcs="cd ~/Documents/Projects/playground/just-checking-scripts"
-alias vc="v ~/Library/Application\ Support/com.mitchellh.ghostty/config"
+
 alias nvim-config="cd ~/.config/nvim"
 alias np="cd ~/.config/nvim/lua"
 alias np="cd ~/.config/nvim/lua/plugins"
 alias aero="v .aerospace.toml"
-alias aero="v ~/.config/aero.toml"
+
 alias aero="nvim ~.config/aerospace.toml"
-alias aero="v ~/.config/aerospace.toml"
-alias aero="v ~/.aerospace.toml"
+
 alias sto="stow -t ~/"
 alias ez="exec zsh"
 alias play="cd /Users/devy/Documents/Projects/playground"
-alias vs="v ~/dotfiles/setup.md"
+
 alias gaa="git add"
 alias lg="lazygit"
 alias portfolio="cd ~/Documents/Projects/portfolio"
 alias pp="cd ~/Documents/Projects/portfolio"
 alias eac="encore app create"
-alias vpf="v ~/dotfiles/possible-future.md"
+
 alias brs="brew services"
 alias enc="encore"
 alias find_string="Grep in directory"
-alias gre="grep -rl"
+
 alias encr="encore app run"
 alias encr="encore run"
-alias vd="v ~/dotfiles"
+
 alias turb="npx create-turbo@latest"
 alias igni="npx ignite-cli@latest new "
 alias brd="bun run dev"
-alias tks="tmux kill-server"
-alias ta="tmux attach -t"
+
+
 alias rs="brew services restart sketchybar"
 alias go-tests="cd ~/Documents/Projects/playground/go-tests"
-alias vt="v ~/dotfiles/config/stow/tmux/.tmux.conf"
-alias tms="tmux source-file ~/.tmux.conf"
-# alias tmr="tmux rename-window -t"
+
+
+
 alias lsa="ls -a"
 alias exgo="cd ~/Documents/Projects/playground/exgo"
-alias vs="v ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
-alias vl="v ~/dotfiles/config/stow/nvim/.config/nvim/"
+
+
 alias sr="brew services restart sketchybar"
 alias sst="brew services stop sketchybar"
 alias ss="brew services stop sketchybar"
 alias ss="brew services start sketchybar"
 alias gr="go run main.go"
 alias cols="colima start"
-alias tls="tmux list-sessions"
+
 alias fv="fzf --bind 'enter:become(nvim {})'"
-alias nv="cd ~/dotfiles/config/stow/nvim/.config"
-alias nv="v ~/dotfiles/config/stow/nvim/.config/nvim"
+
 alias gmt="go mod tidy"
-alias tt="tmux attach -t 0"                                                          # add after ta alias
+
 alias nvim-defauts="v .local/share/nvim/lazy/LazyVim/lua/lazyvim/config/keymaps.lua" # Open nvim keymap defaults in nvim
 alias nvd="v .local/share/nvim/lazy/LazyVim/lua/lazyvim/config/keymaps.lua"          # Open nvim keymap defaults in nvim
 alias mdr="make docker.run"
@@ -304,12 +320,11 @@ alias iefe="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/expo
 alias uvs="uv sync"
 alias zb="z ./app/backend"
 alias ved="deactivate"
-alias t="tmux"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias ba="bun add"
 alias iefb="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/backend"
 alias vg="v /Users/devy/dotfiles/functions/github.sh"
-# alias vf="v ~/dotfiles/functions"
+
 alias eief="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/expo"
 alias devy="cd ~/Documents/Projects/project-ignite-go-fast/devy"
 alias de="cd ~/Documents/Projects/project-ignite-go-fast/devy"
@@ -327,7 +342,7 @@ alias bdp="cd ~/Documents/Projects/dance-partner/dance-partner-app/app/backend"
 alias csd="cs && dcw"
 alias pt="python google_photo_transfer.py"
 alias ppt="rf output2 && pt -d ./tests2 -o ./output2"
-alias tka="tmux kill-session -a"
+
 alias rndp="cd ~/Documents/Projects/playground/react-native-dropdown-picker"
 alias nclean="rf node_modules && rm package-lock.json && ni"
 alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
@@ -347,9 +362,12 @@ alias vdcw="ve && dcw"
 alias rndpe="cd ~/Documents/Projects/playground/react-native-dropdown/react-native-dropdown-picker/examples"
 alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
 alias cgen="scripts/generate-client.sh"
-alias tkse="tmux kill-session -t"
+
 alias vcd="ve && cs && dcw"
 alias ge="gemini"
 alias sketch="cd ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
 alias pres="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
 alias dlb="docker logs backend-backend-1"
+alias vcd="ve && cs && dcw"
+alias vq="v /Users/devy/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
+alias icat="kitty +kitten icat"
