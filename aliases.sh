@@ -32,6 +32,16 @@ alias bb="cd -"                          # Go back to last dirctory
 alias bri="brew install"
 alias bric="brew install --cask"
 alias brui="brew uninstall"
+alias brs="brew services"
+
+# Sketchybar
+alias rs="brew services restart sketchybar"
+alias sr="brew services restart sketchybar"
+alias sst="brew services stop sketchybar"
+alias ss="brew services stop sketchybar"
+alias ss="brew services start sketchybar"
+
+
 
 # Bun
 alias bi="bun install"
@@ -198,6 +208,14 @@ alias create-ve="python -m venv .venv"
 alias cve="create-ve"
 alias ve="source .venv/bin/activate"
 alias py="python3"
+alias pi="pip install -r requirements.txt"
+alias py="python3.11"
+alias pym="py monitor.py"
+alias cve="py -m venv .venv"
+alias pim="pi; py"
+alias pim="pi; pym"
+alias pym="py src/monitor.py"
+alias jcs="cd ~/Documents/Projects/playground/just-checking-scripts"
 
 # Simple http.server
 alias s="python3 -m http.server"
@@ -229,40 +247,62 @@ alias tt="tmux attach -t 0"                                                     
 alias tka="tmux kill-session -a"
 alias tkse="tmux kill-session -t"
 
-# New
+# Bookmarks
 alias fsft="cd ~/Documents/Projects/playground/full-stack-fastapi-template"
 alias db="cd ~/Documents/Projects/dance-buddy"
+alias nvim-config="cd ~/.config/nvim"
+alias np="cd ~/.config/nvim/lua"
+alias np="cd ~/.config/nvim/lua/plugins"
+alias play="cd /Users/devy/Documents/Projects/playground"
+alias portfolio="cd ~/Documents/Projects/portfolio"
+alias pp="cd ~/Documents/Projects/portfolio"
+alias go-tests="cd ~/Documents/Projects/playground/go-tests"
+alias exgo="cd ~/Documents/Projects/playground/exgo"
+alias pyt="cd ~/Documents/Projects/playground/python-tests"
+alias ief2="cd ~/Documents/Projects/ignite-expo-fast-2"
+alias pief="cd ~/Documents/Projects/project-ignite-go-fast"
+alias ief="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast"
+alias iefe="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/expo"
+alias iefb="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/backend"
+alias eief="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/expo"
+alias devy="cd ~/Documents/Projects/project-ignite-go-fast/devy"
+alias de="cd ~/Documents/Projects/project-ignite-go-fast/devy"
+alias pypo="cd ~/Documents/Projects/project-ignite-go-fast/pypo"
+alias epy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/expo"
+alias bpy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/backend"
+alias epy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/app/expo"
+alias bpy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/app/backend"
+alias dance="cd ~/Documents/Projects/dance-partner"
+alias dpa="cd ~/Documents/Projects/dance-partner/dance-partner-app"
+alias bdpa="cd ~/Documents/Projects/dance-partner/dance-partner-app/app/backend"
+alias edp="cd ~/Documents/Projects/dance-partner/dance-partner-app/app/expo"
+alias bdp="cd ~/Documents/Projects/dance-partner/dance-partner-app/app/backend"
+alias rndp="cd ~/Documents/Projects/playground/react-native-dropdown-picker"
+alias rndp="cd ~/Documents/Projects/playground/react-native-dropdown/react-native-dropdown-picker"
+alias rndp2="cd ~/Documents/Projects/playground/react-native-dropdown/rndp2"
+alias rndp3="cd ~/Documents/Projects/playground/react-native-dropdown/rndp3"
+alias rndpe="cd ~/Documents/Projects/playground/react-native-dropdown/react-native-dropdown-picker/examples"
+alias sketch="cd ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
+alias pres="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
+
+# New
 alias bil="eas build --platform ios --profile development --local"
 alias yib="yarn build:ios:dev"
 alias asdf="cowsay 'hang in there!'"
 
-alias pi="pip install -r requirements.txt"
-alias py="python3.11"
-alias pym="py monitor.py"
-alias cve="py -m venv .venv"
-alias pim="pi; py"
-alias pim="pi; pym"
-alias pym="py src/monitor.py"
-alias jcs="cd ~/Documents/Projects/playground/just-checking-scripts"
-
-alias nvim-config="cd ~/.config/nvim"
-alias np="cd ~/.config/nvim/lua"
-alias np="cd ~/.config/nvim/lua/plugins"
 alias aero="v .aerospace.toml"
 
 alias aero="nvim ~.config/aerospace.toml"
-
 alias sto="stow -t ~/"
 alias ez="exec zsh"
-alias play="cd /Users/devy/Documents/Projects/playground"
 
-alias gaa="git add"
+
 alias lg="lazygit"
-alias portfolio="cd ~/Documents/Projects/portfolio"
-alias pp="cd ~/Documents/Projects/portfolio"
+
+
 alias eac="encore app create"
 
-alias brs="brew services"
+
 alias enc="encore"
 alias find_string="Grep in directory"
 
@@ -274,19 +314,19 @@ alias igni="npx ignite-cli@latest new "
 alias brd="bun run dev"
 
 
-alias rs="brew services restart sketchybar"
-alias go-tests="cd ~/Documents/Projects/playground/go-tests"
+
+
 
 
 
 alias lsa="ls -a"
-alias exgo="cd ~/Documents/Projects/playground/exgo"
 
 
-alias sr="brew services restart sketchybar"
-alias sst="brew services stop sketchybar"
-alias ss="brew services stop sketchybar"
-alias ss="brew services start sketchybar"
+
+
+
+
+
 alias gr="go run main.go"
 alias cols="colima start"
 
@@ -301,7 +341,7 @@ alias fp="git push --set-upstream origin master" # First push
 alias gro="git remote add origin"
 alias bve="z backend && ve"
 alias bve="z backend && ve && .."
-alias pyt="cd ~/Documents/Projects/playground/python-tests"
+
 alias gc="scripts/generate-client.sh"
 alias eab="eas build --platform ios --profile development --local"
 alias cf="cp -rf"
@@ -310,63 +350,63 @@ alias vdc="bve && dcw"
 alias vdc="z backend && ve && dcw"
 alias mast="gco master"
 alias ze="z ./app/expo"
-alias ief2="cd ~/Documents/Projects/ignite-expo-fast-2"
+
 alias bsc="bs --clear"
 alias sdown="sudo shutdown -h now"
 alias cs="colima start"
-alias pief="cd ~/Documents/Projects/project-ignite-go-fast"
-alias ief="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast"
-alias iefe="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/expo"
+
+
+
 alias uvs="uv sync"
 alias zb="z ./app/backend"
 alias ved="deactivate"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias ba="bun add"
-alias iefb="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/backend"
+
 alias vg="v /Users/devy/dotfiles/functions/github.sh"
 
-alias eief="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/expo"
-alias devy="cd ~/Documents/Projects/project-ignite-go-fast/devy"
-alias de="cd ~/Documents/Projects/project-ignite-go-fast/devy"
-alias pypo="cd ~/Documents/Projects/project-ignite-go-fast/pypo"
-alias epy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/expo"
-alias bpy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/backend"
-alias epy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/app/expo"
-alias bpy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/app/backend"
+
+
+
+
+
+
+
+
 alias restart="sudo shutdown -r now"
-alias dance="cd ~/Documents/Projects/dance-partner"
-alias dpa="cd ~/Documents/Projects/dance-partner/dance-partner-app"
-alias bdpa="cd ~/Documents/Projects/dance-partner/dance-partner-app/app/backend"
-alias edp="cd ~/Documents/Projects/dance-partner/dance-partner-app/app/expo"
-alias bdp="cd ~/Documents/Projects/dance-partner/dance-partner-app/app/backend"
+
+
+
+
+
 alias csd="cs && dcw"
 alias pt="python google_photo_transfer.py"
 alias ppt="rf output2 && pt -d ./tests2 -o ./output2"
 
-alias rndp="cd ~/Documents/Projects/playground/react-native-dropdown-picker"
+
 alias nclean="rf node_modules && rm package-lock.json && ni"
 alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
-alias rndp="cd ~/Documents/Projects/playground/react-native-dropdown/react-native-dropdown-picker"
+
 alias nnrw="nclean && nrw"
 alias ma="gco main"
 alias gcob="gco -b"
 alias pr="open https://github.com/imdevan/react-native-dropdown-picker/compare/main...imdevan:react-native-dropdown-picker:main"
-alias rndp2="cd ~/Documents/Projects/playground/react-native-dropdown/rndp2"
+
 alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
 # alias fd_old="gfp && nrd"
 alias k="kiro ./"
 alias fs="~/dotfiles/functions"
-alias rndp3="cd ~/Documents/Projects/playground/react-native-dropdown/rndp3"
+
 alias ved="deactivate"
 alias vdcw="ve && dcw"
-alias rndpe="cd ~/Documents/Projects/playground/react-native-dropdown/react-native-dropdown-picker/examples"
+
 alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
 alias cgen="scripts/generate-client.sh"
 
 alias vcd="ve && cs && dcw"
 alias ge="gemini"
-alias sketch="cd ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
-alias pres="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
+
+
 alias dlb="docker logs backend-backend-1"
 alias vcd="ve && cs && dcw"
 alias vq="v /Users/devy/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
