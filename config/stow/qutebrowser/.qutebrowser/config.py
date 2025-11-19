@@ -5,7 +5,7 @@ config.load_autoconfig()
 path_to_start_page = "https://github.com/news-s/Qutebrowser-config/blob/main/config.py"
 # path_to_start_page = "https://qutebrowser.org/doc/quickstart.html"
 
-# c.window.hide_decoration = True
+c.window.hide_decoration = True
 c.window.transparent = True
 
 c.colors.webpage.darkmode.enabled = True
