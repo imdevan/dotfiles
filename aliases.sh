@@ -16,11 +16,16 @@ alias aliases="${editor} $dotfile_dir/aliases.sh"
 alias a="aliases"
 alias dots="~/dotfiles"
 alias ra="source ~/dotfiles/aliases.sh"
+alias restart="sudo shutdown -r now"
+alias sdown="sudo shutdown -h now"
+alias dot="cd $dotfile_dir"
 
 # Terminal Navigation
-alias la="ls -a"                         # List all in directory
-alias o="open ./"                        # Open - in finder
-alias cpr="cp -rf"                       # Copy recursive
+alias la="ls -a" # List all in directory
+alias lsa="ls -a"
+alias o="open ./"  # Open - in finder
+alias cpr="cp -rf" # Copy recursive
+alias cf="cp -rf"
 alias rf="rm -rf"                        # Remove recursive
 alias refresh="source ~/.zshrc && clear" # Refresh the terminal
 alias r="refresh"                        # Refresh shortcut
@@ -41,8 +46,6 @@ alias sst="brew services stop sketchybar"
 alias ss="brew services stop sketchybar"
 alias ss="brew services start sketchybar"
 
-
-
 # Bun
 alias bi="bun install"
 alias bs="bun start"
@@ -52,27 +55,43 @@ alias bu="bun uninstall"
 alias bgen="bun generate:client"
 alias bbis="bun build:ios:sim"
 alias bbas="bun build:android:sim"
+alias brd="bun run dev"
+alias bsc="bs --clear"
+alias clean="rf node_modules && bun install"
 
-# Dotfile shortcuts
-alias halp="cat ~/dotfiles/aliases.sh"
-alias dot="cd $dotfile_dir"
+# Expo
+alias eab="eas build --platform ios --profile development --local"
+alias ze="z ./app/expo"
+alias bil="eas build --platform ios --profile development --local"
 
 # Docker
 alias dcd="docker compose down"
 alias dcu="docker compose up"
 alias dcw="docker compose watch"
 
+alias cs="colima start"
+alias csd="cs && dcw"
+
+alias ved="deactivate"
+alias vdcw="ve && dcw"
+alias vcd="ve && cs && dcw"
+alias dlb="docker logs backend-backend-1"
+alias vcd="ve && cs && dcw"
+alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
+alias cgen="scripts/generate-client.sh"
+
 # Code editors
 alias co="code ."
 alias c="cursor ."
 alias v="nvim"
+alias k="kiro ./"
 
 # Bookmarks
 alias d="dotfiles"
 alias p="cd ~/Documents/Projects/"
 alias play="cd ~/Documents/Projects/playground"
 
-# Open in Vim 
+# Open in Vim
 alias hs="v ~/dotfiles/docs/keybinds/hotkeys.md"
 alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
 alias va="v ~/dotfiles/aliases.sh"
@@ -85,9 +104,15 @@ alias vt="v ~/dotfiles/config/stow/tmux/.tmux.conf"
 alias vs="v ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
 alias vn="v ~/dotfiles/config/stow/nvim/.config/nvim"
 # alias vf="" now handled by function_utils/vim_function
+alias fv="fzf --bind 'enter:become(nvim {})'" # fzf file search then open in nvim
+alias vq="v ~/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
+alias vg="v /Users/devy/dotfiles/functions/github.sh"
+alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
+alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
 
 # Git
 # Overhead
+alias lg="lazygit"
 alias gco="git checkout"     # Git checkout
 alias gcof="git checkout --" # Checkout file
 alias conflicts="git diff --name-only --diff-filter=U"
@@ -129,11 +154,19 @@ alias gpu="git push upstream"
 alias gppu="git push --set-upstream upstream"
 alias mas="gco master"
 alias gca="git commit --amend"
+alias fp="git push --set-upstream origin master" # First push
+alias gro="git remote add origin"
+alias ma="gco main"
+alias gcob="gco -b"
+# TODO: write pr as a dynamic function
+alias pr="open https://github.com/imdevan/react-native-dropdown-picker/compare/main...imdevan:react-native-dropdown-picker:main"
 
 # Branch shortcuts
 alias s="git checkout staging"
 alias staging="gco staging"
 # alias m="git checkout master"
+aalias mast="gco master"
+lias mast="gco master"
 
 # Quick pushes
 alias wip="gap ':construction:'"
@@ -158,6 +191,9 @@ alias nrc="npm run clean"
 alias nrp="npm run prettier"
 alias nrw="npm run web"
 alias nis="npm install -S"
+# Particularly lazy npm scripts
+alias nnrw="nclean && nrw"
+alias nclean="rf node_modules && rm package-lock.json && ni"
 
 # PNPM
 alias pns="pnpm start"
@@ -216,6 +252,14 @@ alias pim="pi; py"
 alias pim="pi; pym"
 alias pym="py src/monitor.py"
 alias jcs="cd ~/Documents/Projects/playground/just-checking-scripts"
+alias pi="pip install -r requirements.txt"
+alias py="python3.11"
+alias pym="py monitor.py"
+alias cve="py -m venv .venv"
+alias pim="pi; pym"
+alias uvs="uv sync"
+alias ved="deactivate"
+alias ba="bun add"
 
 # Simple http.server
 alias s="python3 -m http.server"
@@ -231,6 +275,14 @@ alias ld="lazydocker"
 alias dl="docker logs"
 alias dli="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}'"
 alias dlv="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}' | nvim"
+alias ved="deactivate"
+alias dlb="docker logs backend-backend-1"
+alias cols="colima start"
+# Particularly lazy python + docker scripts
+alias vdcw="ve && dcw"
+alias vcd="ve && cs && dcw"
+alias vcd="ve && cs && dcw"
+alias mdr="make docker.run"
 
 # Grep
 alias gre="grep -rl"
@@ -243,9 +295,40 @@ alias ta="tmux attach -t"
 alias tms="tmux source-file ~/.tmux.conf"
 # alias tmr="tmux rename-window -t"
 alias tls="tmux list-sessions"
-alias tt="tmux attach -t 0"                                                          # add after ta alias
+alias tt="tmux attach -t 0" # add after ta alias
 alias tka="tmux kill-session -a"
 alias tkse="tmux kill-session -t"
+
+# Qutebrowser
+alias qb="qutebrowser"
+alias lhqb="qb localhost:3000"
+alias q1="qb localhost:8081"
+
+# Create app scripts
+alias turb="npx create-turbo@latest"
+alias igni="npx ignite-cli@latest new "
+alias ct3="bun create t3-app@latest"
+
+# fast API scripts
+alias cgen="scripts/generate-client.sh"
+alias vdc="bve && dcw"
+alias vdc="z backend && ve && dcw"
+alias zb="z ./app/backend"
+alias bve="z backend && ve"
+alias bve="z backend && ve && .."
+
+# golang scripts
+alias gr="go run main.go"
+alias gmt="go mod tidy"
+
+# Misc.
+alias ge="gemini"
+alias pt="python google_photo_transfer.py"
+alias ppt="rf output2 && pt -d ./tests2 -o ./output2"
+alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
+alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
+alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
+alias asdf="cowsay 'hang in there!'"
 
 # Bookmarks
 alias fsft="cd ~/Documents/Projects/playground/full-stack-fastapi-template"
@@ -286,128 +369,3 @@ alias sketch="cd ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
 alias pres="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
 
 # New
-alias bil="eas build --platform ios --profile development --local"
-alias yib="yarn build:ios:dev"
-alias asdf="cowsay 'hang in there!'"
-
-alias aero="v .aerospace.toml"
-
-alias aero="nvim ~.config/aerospace.toml"
-alias sto="stow -t ~/"
-alias ez="exec zsh"
-
-
-alias lg="lazygit"
-
-
-alias eac="encore app create"
-
-
-alias enc="encore"
-alias find_string="Grep in directory"
-
-alias encr="encore app run"
-alias encr="encore run"
-
-alias turb="npx create-turbo@latest"
-alias igni="npx ignite-cli@latest new "
-alias brd="bun run dev"
-
-
-
-
-
-
-
-alias lsa="ls -a"
-
-
-
-
-
-
-
-alias gr="go run main.go"
-alias cols="colima start"
-
-alias fv="fzf --bind 'enter:become(nvim {})'"
-
-alias gmt="go mod tidy"
-
-alias nvim-defauts="v .local/share/nvim/lazy/LazyVim/lua/lazyvim/config/keymaps.lua" # Open nvim keymap defaults in nvim
-alias nvd="v .local/share/nvim/lazy/LazyVim/lua/lazyvim/config/keymaps.lua"          # Open nvim keymap defaults in nvim
-alias mdr="make docker.run"
-alias fp="git push --set-upstream origin master" # First push
-alias gro="git remote add origin"
-alias bve="z backend && ve"
-alias bve="z backend && ve && .."
-
-alias gc="scripts/generate-client.sh"
-alias eab="eas build --platform ios --profile development --local"
-alias cf="cp -rf"
-alias clean="rf node_modules && bun install"
-alias vdc="bve && dcw"
-alias vdc="z backend && ve && dcw"
-alias mast="gco master"
-alias ze="z ./app/expo"
-
-alias bsc="bs --clear"
-alias sdown="sudo shutdown -h now"
-alias cs="colima start"
-
-
-
-alias uvs="uv sync"
-alias zb="z ./app/backend"
-alias ved="deactivate"
-alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
-alias ba="bun add"
-
-alias vg="v /Users/devy/dotfiles/functions/github.sh"
-
-
-
-
-
-
-
-
-
-alias restart="sudo shutdown -r now"
-
-
-
-
-
-alias csd="cs && dcw"
-alias pt="python google_photo_transfer.py"
-alias ppt="rf output2 && pt -d ./tests2 -o ./output2"
-
-
-alias nclean="rf node_modules && rm package-lock.json && ni"
-alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
-
-alias nnrw="nclean && nrw"
-alias ma="gco main"
-alias gcob="gco -b"
-alias pr="open https://github.com/imdevan/react-native-dropdown-picker/compare/main...imdevan:react-native-dropdown-picker:main"
-
-alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
-# alias fd_old="gfp && nrd"
-alias k="kiro ./"
-alias fs="~/dotfiles/functions"
-
-alias ved="deactivate"
-alias vdcw="ve && dcw"
-
-alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
-alias cgen="scripts/generate-client.sh"
-
-alias vcd="ve && cs && dcw"
-alias ge="gemini"
-
-
-alias dlb="docker logs backend-backend-1"
-alias vcd="ve && cs && dcw"
-alias vq="v /Users/devy/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
-alias icat="kitty +kitten icat"
