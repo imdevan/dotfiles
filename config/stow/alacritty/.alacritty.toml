@@ -1,0 +1,25 @@
+# https://alacritty.org/config-alacritty.html
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 0
+
+decorations = "None"
+opacity = 0.8
+blur = true
+
+[font]
+normal = { family = "FiraCode Nerd Font Mono" }
+
+[keyboard]
+bindings = [
+          { key = "1", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "2", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "3", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "4", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "5", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          ]
+
+
