@@ -330,3 +330,7 @@ see [./config/stow/tmux/.tmux.config](./config/stow/tmux/.tmux.config)
 
 see [./config/stow/aerospace/.aerospace.toml](./config/stow/aerospace/.aerospace.toml)
 
+
+## qutebrowser 
+
+see https://qutebrowser.org/doc/help/settings.html

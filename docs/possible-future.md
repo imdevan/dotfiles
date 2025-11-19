@@ -10,6 +10,15 @@
 - how can I make this a one line install? 
 - should I convert my alaises + alias_utils into a go-commander app? 
 
+### Considerations of tools to add
+
+- consider switching to alacritty eventually
+- consider adding marta config (e.g. https://github.com/agenttank/dotfiles_macos/blob/main/marta/conf.marco)
+- consider using just https://github.com/casey/just for non-js projects
+- janky borders https://github.com/FelixKratz/JankyBorders
+- hammerspoon for scripting https://www.hammerspoon.org/
+- eza https://github.com/eza-community/eza
+
 ### Zsh plugins
 
 <!-- zsh vi mode -->
