@@ -1,4 +1,10 @@
 # 
+# TODO: 
+# https://github.com/nikitabobko/AeroSpace/discussions/756
+#
+# possitlbe solution to padding toggling
+# https://github.com/agenttank/dotfiles_macos/blob/main/aerospace/presentation.sh
+#
 # =================================================================================================
 #  _______  _______  _        _______ _________ _______ 
 # (  ____ \(  ___  )( (    /|(  ____ \\__   __/(  ____ \
@@ -80,16 +86,16 @@ automatically-unhide-macos-hidden-apps = false
 [gaps]
     # inner.horizontal = 0
     # inner.vertical =   0
-    outer.left =       0
-    outer.bottom =     0
-    outer.top =        0
-    outer.right =      0
+    # outer.left =       0
+    # outer.bottom =     0
+    # outer.top =        0
+    # outer.right =      0
     inner.horizontal = 16
     inner.vertical =   16
-    # outer.left =       16
-    # outer.bottom =     16
-    # outer.top =        16 
-    # outer.right =      16 
+    outer.left =       16
+    outer.bottom =     16
+    outer.top =        16 
+    outer.right =      16 
     # inner.horizontal = 16
     # inner.vertical =   16
     # outer.left =       64
@@ -137,6 +143,7 @@ automatically-unhide-macos-hidden-apps = false
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
+#
 [mode.main.binding]
     # All possible keys:
     # - Letters.        a, b, c, ..., z
@@ -148,7 +155,7 @@ automatically-unhide-macos-hidden-apps = false
     #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
     #                   sectionSign (ISO keyboards only, european keyboards only)
     # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-    #                   keypadMinus, keypadMultiply, keypadPlus
+    #                   keypadMinus e, keypadMultiply, keypadPlus
     # - Arrows.         left, down, up, right
 
     # All possible modifiers: cmd, alt, ctrl, shift
