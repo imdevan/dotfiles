@@ -62,11 +62,14 @@ See [/docs/setup.md](/docs/setup.md) for more information ;)
 │   ├── homebrew ............ homebrew backups
 │   ├── keyboard-maestro .... keyboard maestro backups
 │   ├── oh-my-posh .......... zsh theme config
+│   ├── macos ............... macos config script
+│   ├── setup ............... scripts intended to run once
 │   ├── stow ................ GNU stow configs
 │   │   ├── aerospace
 │   │   ├── cspell
 │   │   ├── cursor
 │   │   ├── nvim
+│   │   ├── qutebrowser
 │   │   ├── sketchybar
 │   │   ├── tmux
 │   │   ├── vscode
@@ -89,3 +92,7 @@ See [/docs/setup.md](/docs/setup.md) for more information ;)
 └── readme.md ............... you're reading it
 ```
 
+## Acknowledgements
+
+https://github.com/mathiasbynens/dotfiles/tree/main
+https://github.com/thoughtbot/dotfiles
