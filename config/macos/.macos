@@ -106,6 +106,9 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
 
+# https://nikitabobko.github.io/AeroSpace/goodness#highlight-focused-windows-with-colored-borders
+defaults write -g NSWindowShouldDragOnGesture -bool true
+
 # todo: consider
 # Disable automatic capitalization as it’s annoying when typing code
 # defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
