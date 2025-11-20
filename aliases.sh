@@ -38,6 +38,8 @@ alias bri="brew install"
 alias bric="brew install --cask"
 alias brui="brew uninstall"
 alias brs="brew services"
+# source: https://blog.jpalardy.com/posts/untangling-your-homebrew-dependencies/
+alias brew:graph="brew graph --installed --highlight-leaves | fdp -T png -o graph.png"
 
 # Sketchybar
 alias rs="brew services restart sketchybar"
@@ -92,7 +94,7 @@ alias p="cd ~/Documents/Projects/"
 alias play="cd ~/Documents/Projects/playground"
 
 # Open in Vim
-alias hs="v ~/dotfiles/docs/keybinds/hotkeys.md"
+alias hk="v ~/dotfiles/docs/keybinds/hotkeys.md"
 alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
 alias va="v ~/dotfiles/aliases.sh"
 alias vc="v ~/Library/Application\ Support/com.mitchellh.ghostty/config"
@@ -327,7 +329,8 @@ alias ppt="rf output2 && pt -d ./tests2 -o ./output2"
 alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
 alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
 alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
-alias asdf="cowsay 'hang in there!'"
+alias asdf="cowsay 'hang in there!'" # use incase of frustration
+alias weather="curl http://wttr.in/Seattle"
 
 # Bookmarks
 alias fsft="cd ~/Documents/Projects/playground/full-stack-fastapi-template"
@@ -368,3 +371,4 @@ alias sketch="cd ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
 alias pres="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
 
 # New
+alias wea="weather"
