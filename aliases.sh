@@ -370,5 +370,11 @@ alias rndpe="cd ~/Documents/Projects/playground/react-native-dropdown/react-nati
 alias sketch="cd ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
 alias pres="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
 
+# Jankyborder
+# :open https://github.com/FelixKratz/JankyBorders/wiki/Man-Page
+alias jbr="brew services stop borders &&  brew services start borders"
+alias jbs="brew services start borders"
+alias jbo="brew services stop borders"
+
 # New
 alias wea="weather"
