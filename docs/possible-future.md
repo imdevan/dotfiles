@@ -18,6 +18,12 @@
 - janky borders https://github.com/FelixKratz/JankyBorders
 - hammerspoon for scripting https://www.hammerspoon.org/
 - eza https://github.com/eza-community/eza
+- nix package manager / nixos
+
+### Additional dotfile insipiration 
+
+Check his bash_profile setup and .macos
+https://github.com/mathiasbynens/dotfiles/tree/main
 
 ### Zsh plugins
 

@@ -89,6 +89,8 @@ G   - Go To command (prefix with number - 5G goes to line 5)
 >>  - indent line
 <<  - undent line
 
+ctrl+space  - select current block level and optionally more
+
 Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
 
 ### Word affects
