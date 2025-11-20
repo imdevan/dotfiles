@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>773035633.97966802</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>65690</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>com.apple.systempreferences</string>
+							<key>Name</key>
+							<string>System Settings</string>
+							<key>NewFile</key>
+							<string>/System/Applications/System Settings.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<true/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>773482149.63245904</real>
+				<key>ModificationDate</key>
+				<real>773482224.17732298</real>
+				<key>Name</key>
+				<string>wall papes</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>1</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>4352</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>C8C8C747-3EEC-487B-B91A-6E73C0136454</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>app group</string>
+		<key>ToggleMacroUID</key>
+		<string>487EFAF6-0598-48D6-80DA-EA8CCA79C539</string>
+		<key>UID</key>
+		<string>A8E8A5ED-FDAB-4193-9C71-CCD5E34263B4</string>
+	</dict>
+</array>
+</plist>

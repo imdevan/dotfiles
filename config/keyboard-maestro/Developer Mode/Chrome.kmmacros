@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>707038746.79924703</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>80021</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>company.thebrowser.Browser</string>
+							<key>Name</key>
+							<string>Arc</string>
+							<key>NewFile</key>
+							<string>/Applications/Arc.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>771646999.20454299</real>
+				<key>ModificationDate</key>
+				<real>785234479.31196296</real>
+				<key>Name</key>
+				<string>Chrome</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>120</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2048</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>8AAB5B8D-4E9D-4A11-82E6-407D460F2ED1</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Developer Mode</string>
+		<key>ToggleMacroUID</key>
+		<string>4090B819-9B9C-424F-BD71-219C31B0EEDD</string>
+		<key>UID</key>
+		<string>AED2987D-FDFC-464F-88EF-F6652380939A</string>
+	</dict>
+</array>
+</plist>

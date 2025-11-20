@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>707038746.79924703</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>80411</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>dev.kiro.desktop</string>
+							<key>Name</key>
+							<string>Kiro</string>
+							<key>NewFile</key>
+							<string>/Applications/Kiro.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>771647048.46856701</real>
+				<key>ModificationDate</key>
+				<real>785234437.45207906</real>
+				<key>Name</key>
+				<string>Kiro</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>99</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>256</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>99B95C21-739D-4E5F-9D2F-2CAB12210F9F</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Normal Mode</string>
+		<key>ToggleMacroUID</key>
+		<string>15AD7C6C-C688-42E6-B272-D02FB7010783</string>
+		<key>UID</key>
+		<string>23AF4AB8-E96A-45DB-AE03-5926FD3D18D2</string>
+	</dict>
+</array>
+</plist>

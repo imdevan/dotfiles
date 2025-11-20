@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>773818006.50459099</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>Action</key>
+						<string>ByPasting</string>
+						<key>ActionUID</key>
+						<integer>66834</integer>
+						<key>MacroActionType</key>
+						<string>InsertText</string>
+						<key>ProcessingMode</key>
+						<string>Nothing</string>
+						<key>Text</key>
+						<string>Hi , thanks for offering to pick up the !
+
+When do you think you can come by?
+
+My address is: 
+
+3914 2nd Ave NE,
+Seattle 98105
+
+Access: 
+
+My unit is on the right hand side of the building (second door). I'll put the item outside. </string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>717193963.12044096</real>
+				<key>ModificationDate</key>
+				<real>772741452.49742496</real>
+				<key>Name</key>
+				<string>do the 3rd thing!</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>20</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2048</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>CBB455C9-6D6D-4870-8E8E-2F29801A67DF</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Mtg Mode</string>
+		<key>ToggleMacroUID</key>
+		<string>0B856293-9C39-4E5F-BE92-4AE31F7703D7</string>
+		<key>UID</key>
+		<string>19EA04F9-2665-423A-AB06-708FF51818FE</string>
+	</dict>
+</array>
+</plist>

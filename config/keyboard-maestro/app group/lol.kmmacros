@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>773035633.97966802</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>72388</integer>
+						<key>AllWindows</key>
+						<true/>
+						<key>AlreadyActivatedActionType</key>
+						<string>Normal</string>
+						<key>Application</key>
+						<dict>
+							<key>BundleIdentifier</key>
+							<string>com.riotgames.LeagueofLegends.LeagueClientUx</string>
+							<key>Name</key>
+							<string>League of Legends</string>
+							<key>NewFile</key>
+							<string>/Applications/League of Legends.app/Contents/LoL/League of Legends.app</string>
+						</dict>
+						<key>MacroActionType</key>
+						<string>ActivateApplication</string>
+						<key>ReopenWindows</key>
+						<false/>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>772651416.49665999</real>
+				<key>IsActive</key>
+				<false/>
+				<key>ModificationDate</key>
+				<real>784981654.25863898</real>
+				<key>Name</key>
+				<string>lol</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>51</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>596C2494-1CB2-463E-8B02-92BBD77F7F6C</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>app group</string>
+		<key>ToggleMacroUID</key>
+		<string>487EFAF6-0598-48D6-80DA-EA8CCA79C539</string>
+		<key>UID</key>
+		<string>A8E8A5ED-FDAB-4193-9C71-CCD5E34263B4</string>
+	</dict>
+</array>
+</plist>

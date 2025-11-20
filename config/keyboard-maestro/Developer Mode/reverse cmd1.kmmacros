@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>707038746.79924703</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>78499</integer>
+						<key>KeyCode</key>
+						<integer>25</integer>
+						<key>MacroActionType</key>
+						<string>SimulateKeystroke</string>
+						<key>Modifiers</key>
+						<integer>256</integer>
+						<key>ReleaseAll</key>
+						<false/>
+						<key>TargetApplication</key>
+						<dict/>
+						<key>TargetingType</key>
+						<string>Front</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>720735032.73552299</real>
+				<key>ModificationDate</key>
+				<real>784056943.27624905</real>
+				<key>Name</key>
+				<string>reverse cmd1</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>29</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2304</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>7E4E791D-28F0-49BE-AFF3-9D0618F0557C</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Developer Mode</string>
+		<key>ToggleMacroUID</key>
+		<string>4090B819-9B9C-424F-BD71-219C31B0EEDD</string>
+		<key>UID</key>
+		<string>AED2987D-FDFC-464F-88EF-F6652380939A</string>
+	</dict>
+</array>
+</plist>
