@@ -45,3 +45,5 @@ source $dotfile_dir/functions/function_utils.sh
 source $dotfile_dir/functions/to_grep.sh
 
 source $dotfile_dir/functions/fcd.sh
+
+source $dotfile_dir/functions/aero_utils.sh
