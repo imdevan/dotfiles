@@ -1,10 +1,15 @@
 # https://alacritty.org/config-alacritty.html
 
+[general]
+live_config_reload = true
+
 [env]
 TERM = "xterm-256color"
 
 [window]
 padding.x = 0
+padding.y = 0
+option_as_alt = "Both"
 
 decorations = "None"
 opacity = 0.8
@@ -15,11 +20,38 @@ normal = { family = "FiraCode Nerd Font Mono" }
 
 [keyboard]
 bindings = [
-          { key = "1", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "2", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "3", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "4", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "5", mods = "Option", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "1", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "2", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "3", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "4", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
+          { key = "5", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
           ]
 
-
+#
+# # Default colors
+# [colors.primary]
+# background = "#2d2a2e"
+# foreground = "#fff1f3"
+#
+# # Normal colors
+# [colors.normal]
+# black   = "#2c2525"
+# red     = "#fd6883"
+# green   = "#adda78"
+# yellow  = "#f9cc6c"
+# blue    = "#f38d70"
+# magenta = "#a8a9eb"
+# cyan    = "#85dacc"
+# white   = "#fff1f3"
+#
+# # Bright colors
+# [colors.bright]
+# black   = "#72696a"
+# red     = "#fd6883"
+# green   = "#adda78"
+# yellow  = "#f9cc6c"
+# blue    = "#f38d70"
+# magenta = "#a8a9eb"
+# cyan    = "#85dacc"
+# white   = "#fff1f3"
+#
