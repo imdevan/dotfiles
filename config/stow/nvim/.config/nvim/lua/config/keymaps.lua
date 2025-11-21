@@ -22,9 +22,7 @@ vim.keymap.set("n", "<leader>pl", function()
   else
     snacks.indent.enable()
   end
-
-  vim.notify("Snacks indent " .. (not current and "enabled" or "disabled"))
-end, { desc = "Toggle whitespace visibility" })
+end, { desc = "Toggle indent lines", remap = true })
 
 -- TODO: add keymap to toggle ignoring gitignore in searches
 -- vim.keymap.set("n", "<leader>pi", function()
@@ -41,3 +39,19 @@ end, { desc = "Toggle whitespace visibility" })
 --   vim.notify("Snacks ignored files " .. (not current and "enabled" or "disabled"))
 -- end, { desc = "Toggle ignored files" })
 --
+--
+
+-- https://github.com/folke/todo-comments.nvim
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- You can also specify a list of valid jump keywords
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
+end, { desc = "Next error/warning todo comment" })
