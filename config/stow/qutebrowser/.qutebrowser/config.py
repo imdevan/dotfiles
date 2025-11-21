@@ -2,7 +2,7 @@ import catppuccin
 
 config.load_autoconfig()
 
-path_to_start_page = "https://google.com/"
+path_to_start_page = "http://localhost:8081/"
 # path_to_start_page = "https://github.com/news-s/Qutebrowser-config/blob/main/config.py"
 # path_to_start_page = "https://qutebrowser.org/doc/quickstart.html"
 
