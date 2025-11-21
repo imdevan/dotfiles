@@ -7,134 +7,134 @@
 - How to move file to a directory and have it update file references; like vs code
 - tmux double stack all left side status bar layout
 - move homebrew config to stow?
-- how can I make this a one line install? 
-- should I convert my alaises + alias_utils into a go-commander app? 
+- how can I make this a one line install?
+- should I convert my alaises + alias_utils into a go-commander app?
 
 ### Considerations of tools to add
 
 - consider switching to alacritty eventually
-- consider adding marta config (e.g. https://github.com/agenttank/dotfiles_macos/blob/main/marta/conf.marco)
-- consider using just https://github.com/casey/just for non-js projects
-- janky borders https://github.com/FelixKratz/JankyBorders
-- hammerspoon for scripting https://www.hammerspoon.org/
-- eza https://github.com/eza-community/eza
+- consider adding marta config (e.g. <https://github.com/agenttank/dotfiles_macos/blob/main/marta/conf.marco>)
+- consider using just <https://github.com/casey/just> for non-js projects
+- janky borders <https://github.com/FelixKratz/JankyBorders>
+- hammerspoon for scripting <https://www.hammerspoon.org/>
+- eza <https://github.com/eza-community/eza>
 - nix package manager / nixos
 
-### Additional dotfile insipiration 
+### Additional dotfile insipiration
 
 Check his bash_profile setup and .macos
-https://github.com/mathiasbynens/dotfiles/tree/main
+<https://github.com/mathiasbynens/dotfiles/tree/main>
 
 ### Zsh plugins
 
-<!-- zsh vi mode -->
-<!-- https://github.com/jeffreytse/zsh-vi-mode -->
-<!-- Did it, love it -->
+zsh vi mode
+<https://github.com/jeffreytse/zsh-vi-mode>
+Did it, love it
 
-<!-- zoxide  -->
-<!-- https://github.com/z-shell/zsh-zoxide -->
-<!-- Did it, like it -->
+zoxide
+<https://github.com/z-shell/zsh-zoxide>
+Did it, like it
 
 printc - could replace vars/colors
-https://github.com/philFernandez/printc
+<https://github.com/philFernandez/printc>
 
 cluster of plugins to consider
-https://github.com/zshzoo/zshzoo
+<https://github.com/zshzoo/zshzoo>
 
 syntax-highlighting
-https://github.com/zsh-users/zsh-syntax-highlighting
+<https://github.com/zsh-users/zsh-syntax-highlighting>
 
 zsh-autosuggestions
-https://github.com/zsh-users/zsh-autosuggestions
+<https://github.com/zsh-users/zsh-autosuggestions>
 
 zsh-bat
-https://github.com/fdellwing/zsh-bat
+<https://github.com/fdellwing/zsh-bat>
 
-plugin manager 
-https://github.com/zpm-zsh/zpm
+plugin manager
+<https://github.com/zpm-zsh/zpm>
 
 another plugin manager
-https://github.com/marlonrichert/zsh-snap
+<https://github.com/marlonrichert/zsh-snap>
 
-mac utils 
-https://github.com/unixorn/tumult.plugin.zsh
+mac utils
+<https://github.com/unixorn/tumult.plugin.zsh>
 
-git utils 
-https://github.com/unixorn/git-extra-commands
+git utils
+<https://github.com/unixorn/git-extra-commands>
 
-zplug - wish more plugins supported this 
-https://github.com/zplug/zplug
+zplug - wish more plugins supported this
+<https://github.com/zplug/zplug>
 
-you-should-use https://github.com/MichaelAquilina/zsh-you-should-use
-
+you-should-use <https://github.com/MichaelAquilina/zsh-you-should-use>
 
 keybinds
-https://github.com/marlonrichert/zsh-edit
+<https://github.com/marlonrichert/zsh-edit>
 
 silly hacker quotes
-https://github.com/oldratlee/hacker-quotes
+<https://github.com/oldratlee/hacker-quotes>
 
 copilot - im sus on the costing of api usage vs gpt in browser
-https://github.com/Myzel394/zsh-copilot
+<https://github.com/Myzel394/zsh-copilot>
 
 additional plugins
-https://github.com/unixorn/awesome-zsh-plugins
+<https://github.com/unixorn/awesome-zsh-plugins>
 
-### Dotfiles to consider 
+### Dotfiles to consider
 
-https://github.com/simonsmith/dotfiles/blob/master/scripts/macos.sh
+<https://github.com/simonsmith/dotfiles/blob/master/scripts/macos.sh>
+
 - note one that allows you to tab through mac menus
 
+<https://github.com/z0rc/dotfiles>
 
-https://github.com/z0rc/dotfiles
+<https://github.com/bradp/dotfiles>
 
-https://github.com/bradp/dotfiles
+<https://github.com/LucasLarson/dotfiles>
 
-https://github.com/LucasLarson/dotfiles
-
-https://github.com/unixorn/zsh-quickstart-kit
+<https://github.com/unixorn/zsh-quickstart-kit>
 
 ### Aerospace improvements
 
-Read: https://nikitabobko.github.io/AeroSpace/goodies
+Read: <https://nikitabobko.github.io/AeroSpace/goodies>
 
 Replace status bar
-https://github.com/FelixKratz/SketchyBar
-https://felixkratz.github.io/SketchyBar/features
+<https://github.com/FelixKratz/SketchyBar>
+<https://felixkratz.github.io/SketchyBar/features>
 
 Integrate with SketchyBar
 
-Integrate jankyboarders https://nikitabobko.github.io/AeroSpace/goodness#highlight-focused-windows-with-colored-borders
+Integrate jankyboarders <https://nikitabobko.github.io/AeroSpace/goodness#highlight-focused-windows-with-colored-borders>
 
-#### tomls to read 
+#### tomls to read
 
-https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml
+<https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml>
 
-https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml
+<https://github.com/simonsmith/dotfiles/blob/master/dots/aerospace.toml>
 
 ## Terminal Possible
 
-https://github.com/alacritty/alacritty
+<https://github.com/alacritty/alacritty>
 
-https://github.com/sxyazi/yazi
+<https://github.com/sxyazi/yazi>
 
 ## Nvim improvements
 
-https://github.com/gbprod/yanky.nvim
+<https://github.com/gbprod/yanky.nvim>
 
 write plugin to randomize header images
+
 - did it, love it
 
--- other snacks considerations: https://github.com/zvrkSam/nvim-dotfiles/blob/main/lua/plugins/snacks-noice.lua#52
+-- other snacks considerations: <https://github.com/zvrkSam/nvim-dotfiles/blob/main/lua/plugins/snacks-noice.lua#52>
 
+enable yanky
+<https://www.lazyvim.org/extras/coding/yanky>
 
-## tmux improvements 
+## tmux improvements
 
-
-tmux inspiration: https://github.com/catppuccin/tmux/discussions/317
-
+tmux inspiration: <https://github.com/catppuccin/tmux/discussions/317>
 
 ## desktop improvements
 
-jankyborders 
-https://github.com/FelixKratz/JankyBorders
+jankyborders
+<https://github.com/FelixKratz/JankyBorders>
