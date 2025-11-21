@@ -19,6 +19,7 @@ messages=🤗
 whatsapp=🙌🏼
 qutebrowser=🐐
 alacritty=😸
+finder=👀
 "
 
 lower() {
