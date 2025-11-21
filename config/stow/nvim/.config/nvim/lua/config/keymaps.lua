@@ -5,8 +5,16 @@
 -- Custom keymaps
 --
 -- <leader>P page
-vim.keymap.set("n", "<leader>po", "ggVGd", { desc = "Clear whole page", remap = true })
-vim.keymap.set("n", "<leader>pc", "BvEy", { desc = "Copy word (from anywhere in word)", remap = true })
+-- Full page clear
+vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page", remap = true })
+
+-- Full page paste
+vim.keymap.set("n", "<leader>pop", "ggVGp", { desc = "Paste whole page", remap = true })
+vim.keymap.set("n", "<leader>poy", "ggVGy", { desc = "Yank whole page", remap = true })
+
+-- Copy / Paste full word
+vim.keymap.set("n", "<leader>pc", "bvEy", { desc = "Copy word (from anywhere in word)", remap = true })
+vim.keymap.set("n", "<leader>pc", "bvEp", { desc = "Paste word", remap = true })
 
 -- default disable line indention indicators cuz im weird like that
 local snacks = require("snacks")
@@ -24,23 +32,6 @@ vim.keymap.set("n", "<leader>pl", function()
   end
 end, { desc = "Toggle indent lines", remap = true })
 
--- TODO: add keymap to toggle ignoring gitignore in searches
--- vim.keymap.set("n", "<leader>pi", function()
---   vim.wo.list = not vim.wo.list
---   vim.opt.list = not vim.opt.list
---   local current = snacks.picker.ignored;
---
---   if current then
---     snacks.indent.disable()
---   else
---     snacks.indent.enable()
---   end
---
---   vim.notify("Snacks ignored files " .. (not current and "enabled" or "disabled"))
--- end, { desc = "Toggle ignored files" })
---
---
-
 -- https://github.com/folke/todo-comments.nvim
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()
@@ -55,3 +46,61 @@ end, { desc = "Previous todo comment" })
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
 end, { desc = "Next error/warning todo comment" })
+
+--
+-- Open in Editor
+-- Helper function
+function open_in_editor(editor_cmd)
+  local file = vim.fn.expand("%:p")
+  if file == "" then
+    return
+  end
+
+  local line = vim.fn.line(".")
+  local dir = vim.fn.fnamemodify(file, ":h")
+
+  vim.fn.jobstart({
+    editor_cmd,
+    dir,
+    "--goto",
+    file .. ":" .. line,
+  })
+end
+
+-- Open in Vscode
+vim.keymap.set("n", "<leader>ov", function()
+  open_in_editor("code")
+end, { desc = "Open file and parent folder in VS Code" })
+
+-- Open in Cursor
+vim.keymap.set("n", "<leader>oc", function()
+  open_in_editor("cursor")
+end, { desc = "Open in Cursor at line" })
+
+-- Open in Kiro
+vim.keymap.set("n", "<leader>ok", function()
+  open_in_editor("kiro")
+end, { desc = "Open in Kiro at line" })
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+--
+-- Custom keymaps
+--
+-- <leader>P page
+-- Full page clear
+vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page", remap = true })
+-- Full page paste
+vim.keymap.set("n", "<leader>pop", "ggVGp", { desc = "Clear whole page", remap = true })
+vim.keymap.set("n", "<leader>poy", "ggVGy", { desc = "Clear whole page", remap = true })
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+--
+-- Custom keymaps
+--
+-- <leader>P page
+-- Full page clear
+vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page", remap = true })
+-- Full page paste
+vim.keymap.set("n", "<leader>pop", "ggVGp", { desc = "Clear whole page", remap = true })
+vim.keymap.set("n", "<leader>poy", "ggVGy", { desc = "Clear whole page", remap = true })
