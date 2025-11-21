@@ -9,6 +9,8 @@ return {
 
       sources = {
         -- Grep search settings
+        -- Show hidden files
+        -- Ignore .gitignore and the like
         grep = {
           hidden = true,
           ignored = false,
