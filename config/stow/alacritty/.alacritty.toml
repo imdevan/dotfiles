@@ -1,4 +1,6 @@
 # https://alacritty.org/config-alacritty.html
+# default config:
+# https://gist.github.com/nightgrey/2ed92d362077843502e3dce639aae9c7
 
 [general]
 live_config_reload = true
@@ -20,12 +22,12 @@ normal = { family = "FiraCode Nerd Font Mono" }
 
 [keyboard]
 bindings = [
-          { key = "1", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "2", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "3", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "4", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          { key = "5", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" }, 
-          ]
+  { key = "1", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" },
+  { key = "2", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" },
+  { key = "3", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" },
+  { key = "4", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" },
+  { key = "5", mods = "Alt", mode = "AppCursor | AppKeypad | Search | Alt | Vi", action = "None" },
+]
 
 #
 # # Default colors
