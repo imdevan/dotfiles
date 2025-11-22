@@ -44,7 +44,7 @@ return {
 
     -- vim.cmd([[
     --   highlight RainbowDelimiterRed guifg=#f5bde6
-      highlight RainbowDelimiterViolet guifg=#845EC2
+    -- highlight RainbowDelimiterViolet guifg=#845EC2
     --   highlight RainbowDelimiterYellow guifg=#eed49f
     --   highlight RainbowDelimiterBlue guifg=#8aadf4
     --   highlight RainbowDelimiterGreen guifg=#a6da95
@@ -52,7 +52,6 @@ return {
     --   highlight RainbowDelimiterViolet guifg=#845EC2
     --   highlight RainbowDelimiterCyan guifg=#8bd5ca
     -- ]])
-
   end,
   keys = {
     {

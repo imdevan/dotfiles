@@ -1,6 +1,8 @@
 -- Plugin to open urls in browser. Also works with certain plugins
 -- https://github.com/sontungexpt/url-open
-
+--
+-- open_app = "qutebrowser",
+--
 -- Keymap
 vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
 
@@ -15,8 +17,6 @@ return {
     if not status_ok then
       return
     end
-    url_open.setup({
-      open_app = "qutebrowser",
-    })
+    url_open.setup({})
   end,
 }
