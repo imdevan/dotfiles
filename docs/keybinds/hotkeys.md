@@ -67,6 +67,10 @@ h   - move left
 j   - move down
 k   - move up
 l   - move right
+J   - delete line down # TODO: remap to something useful
+H   - move buffer left
+K   - move up  # TODO: remap to something useful
+L   - move buffer right
 w   - jump by start of words (punctuation considered words)
 W   - jump by words (spaces separate words)
 e   - jump to end of words (punctuation considered words)
@@ -86,7 +90,7 @@ G   - Go To command (prefix with number - 5G goes to line 5)
 }   - go to end of paragraph
 }ge - go to last word of paragraph
 
->>  - indent line
+>> - indent line
 <<  - undent line
 
 ctrl+space  - select current block level and optionally more
@@ -117,6 +121,7 @@ o       - move to other end of marked area
 Ctrl+v  - start visual block mode - multi line cursor
 O       - move to Other corner of block
 aw      - mark a word
+%       - select matching current block
 ab      - a () block (with braces)
 aB      - a {} block (with brackets)
 ib      - inner () block
@@ -223,7 +228,7 @@ U   - undo all last line changes
 ^r  - redo
 
 "   - access registers
-"0  - last yanked register 
+"0  - last yanked register
 
 <!-- read more: https://learnvim.irian.to/basics/registers -->
 
@@ -298,7 +303,7 @@ gpt - peek Type Definition
 <leader>wh | ctrl + h   -  go to split left
 <leader>wl | ctrl + l   -  go to split right
 
-alt-cmd-k - move line (or selection in visual) up 
+alt-cmd-k - move line (or selection in visual) up
 alt-cmd-j - move line (or selection in visual) down
 
 ## Vimium
@@ -328,11 +333,17 @@ alt + down  - move into the first child directory by alphabetical order
 
 see [./config/stow/tmux/.tmux.config](./config/stow/tmux/.tmux.config)
 
-## aerospace 
+## aerospace
 
 see [./config/stow/aerospace/.aerospace.toml](./config/stow/aerospace/.aerospace.toml)
 
+## qutebrowser
 
-## qutebrowser 
+references:
 
-see https://qutebrowser.org/doc/help/settings.html
+<https://qutebrowser.org/doc/help/settings.html>
+<https://qutebrowser.org/doc/help/settings.html>
+
+O - open in new tab
+o - open in curent tab
+yy - yank url

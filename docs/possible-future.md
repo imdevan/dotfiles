@@ -19,6 +19,11 @@
 - hammerspoon for scripting <https://www.hammerspoon.org/>
 - eza <https://github.com/eza-community/eza>
 - nix package manager / nixos
+- nu shell <https://github.com/nushell/nushell> has some nice navigation features
+- yazi <https://github.com/sxyazi/yazi>
+- zed <https://zed.dev/q>
+
+- nvim better function folding <https://github.com/kevinhwang91/nvim-ufo>
 
 ### Additional dotfile insipiration
 
@@ -138,3 +143,6 @@ tmux inspiration: <https://github.com/catppuccin/tmux/discussions/317>
 
 jankyborders
 <https://github.com/FelixKratz/JankyBorders>
+
+## Other people's dotfiles to be inspired by
+<https://github.com/nik-rev/dotfiles/tree/main/>
