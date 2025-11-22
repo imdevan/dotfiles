@@ -3,6 +3,6 @@
 -- Add any additional options here
 
 -- vim.diagnostic.config({ virtual_text = false })
--- Default diagnotics as disabled due to unknown word issue
--- TODO:: fix unknown word issue and default diagonsitcs to enabled
+-- Default diagnostics as disabled due to unknown word issue
+-- TODO:: fix unknown word issue and default diagnostics to enabled
 vim.diagnostic.enable(false)
