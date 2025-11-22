@@ -106,6 +106,7 @@ alias vt="v ~/dotfiles/config/stow/tmux/.tmux.conf"
 alias vs="v ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
 alias vn="v ~/dotfiles/config/stow/nvim/.config/nvim"
 alias vb="v ~/dotfiles/config/stow/borders/.config/borders/bordersrc"
+alias val="v ~/dotfiles/config/stow/alacritty/.alacritty.toml"
 # alias vf="" now handled by function_utils/vim_function
 alias fv="fzf --bind 'enter:become(nvim {})'" # fzf file search then open in nvim
 alias vq="v ~/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
