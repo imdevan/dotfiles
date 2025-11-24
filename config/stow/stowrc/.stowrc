@@ -10,6 +10,8 @@
 # this is a test
 
 # Ignore files and directories that contain the string ".stow_ignore" anywhere
+# e.g. .stow_ignore.file.txt, file.stow_ignore.txt, .stow_ignore/file.txt
 --ignore='\.stow_ignore'
 
+#  .stow-local-ignore can be used to ignore files locally
 
