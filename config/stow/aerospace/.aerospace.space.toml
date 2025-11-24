@@ -87,33 +87,12 @@ automatically-unhide-macos-hidden-apps = false
 
 # 6 gcc
 [gaps]
-# inner.horizontal = 0
-# inner.vertical =   0
-# outer.left =       0
-# outer.bottom =     0
-# outer.top =        0
-# outer.right =      0
 inner.horizontal = 16
 inner.vertical = 16
 outer.left = 16
 outer.bottom = 16
 outer.top = 16
 outer.right = 16
-# inner.horizontal = 16
-# inner.vertical =   16
-# outer.left =       64
-# outer.bottom =     64
-# outer.top =        64 
-# outer.right =      64 
-# inner.horizontal = 8
-# inner.vertical =   8
-# outer.left =       8
-# outer.bottom =     8
-# outer.top =        8
-# outer.right =      8
-# enable_for_floating = true  # this is the key line
-# inner_gap = 8         # space between tiled windows
-# outer_gap = 8         # space around the screen edge
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping

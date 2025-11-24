@@ -22,13 +22,14 @@
 - nu shell <https://github.com/nushell/nushell> has some nice navigation features
 - yazi <https://github.com/sxyazi/yazi>
 - zed <https://zed.dev/q>
-
+- indent blank line colors <https://github.com/lukas-reineke/indent-blankline.nvim>
 - nvim better function folding <https://github.com/kevinhwang91/nvim-ufo>
 
 ### Additional dotfile insipiration
 
 Check his bash_profile setup and .macos
 <https://github.com/mathiasbynens/dotfiles/tree/main>
+<https://github.com/Kyuuhachi/worzel.nvim/blob/main/lua/worzel.lua>
 
 ### Zsh plugins
 
@@ -145,4 +146,5 @@ jankyborders
 <https://github.com/FelixKratz/JankyBorders>
 
 ## Other people's dotfiles to be inspired by
+
 <https://github.com/nik-rev/dotfiles/tree/main/>

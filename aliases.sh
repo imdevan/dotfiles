@@ -26,12 +26,10 @@ alias lsa="ls -a"
 alias o="open ./"  # Open - in finder
 alias cpr="cp -rf" # Copy recursive
 alias cf="cp -rf"
-alias rf="rm -rf"                        # Remove recursive
-alias refresh="source ~/.zshrc && clear" # Refresh the terminal
-alias r="refresh"                        # Refresh shortcut
-alias t="touch"                          # Make file
-alias ex="exit"                          # Exit terminal
-alias bb="cd -"                          # Go back to last dirctory
+alias rf="rm -rf" # Remove recursive
+alias t="touch"   # Make file
+alias ex="exit"   # Exit terminal
+alias bb="cd -"   # Go back to last dirctory
 
 # Home Brew
 alias bri="brew install"
@@ -113,6 +111,8 @@ alias vq="v ~/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
 alias vg="v /Users/devy/dotfiles/functions/github.sh"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
+alias vk="v ~/dotfiles/config/stow/kitty/.config/kitty/kitty.conf"
+alias vw="v ~/dotfiles/config/stow/wezterm/.wezterm.lua"
 
 # Git
 # Overhead
