@@ -115,5 +115,5 @@
 # open mpv
 # cmd - m : open -na /Applications/mpv.app $(pbpaste)
 
-cmd + shift - 0 : "ac"
-cmd + shift + alt + ctrl - 9 : ac space
+cmd + shift - 0 : aero_config
+cmd + shift + alt + ctrl - 9 : aero_config space
