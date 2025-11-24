@@ -93,6 +93,7 @@ alias play="cd ~/Documents/Projects/playground"
 
 # Open in Vim
 alias hk="v ~/dotfiles/docs/keybinds/hotkeys.md"
+alias vpf="v ~/dotfiles/docs/possible-future.md"
 alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
 alias va="v ~/dotfiles/aliases.sh"
 alias vc="v ~/Library/Application\ Support/com.mitchellh.ghostty/config"
@@ -113,6 +114,7 @@ alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
 alias vk="v ~/dotfiles/config/stow/kitty/.config/kitty/kitty.conf"
 alias vw="v ~/dotfiles/config/stow/wezterm/.wezterm.lua"
+alias vsk="v ~/dotfiles/config/stow/skhd/.config/skhd/skhdrc"
 
 # Git
 # Overhead
@@ -381,3 +383,9 @@ alias jbo="brew services stop borders"
 # New
 alias wea="weather"
 alias qblh="qb http://localhost:8081"
+alias pdot="cd ~/Documents/Projects/playground/presentation/dotfiles-for-web-developers-presentaiton"
+alias skr="skhd --restart-services"
+alias sks="skhd --stop-service"
+alias skr="skhd --restart-service"
+alias rskr="r  /tmp/skhd_devy.log && skr &&  v  /tmp/skhd_devy.log"
+alias skst="skhd --start-service"
