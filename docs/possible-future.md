@@ -1,6 +1,7 @@
 # Possible Future
 
-“...Things that yet may be”
+> “...Things that yet may be”
+>         - Galadriel
 
 ## Things to figure out
 
@@ -12,20 +13,26 @@
 
 ### Considerations of tools to add
 
-- consider switching to alacritty eventually
-- consider adding marta config (e.g. <https://github.com/agenttank/dotfiles_macos/blob/main/marta/conf.marco>)
-- consider using just <https://github.com/casey/just> for non-js projects
-- janky borders <https://github.com/FelixKratz/JankyBorders>
-- hammerspoon for scripting <https://www.hammerspoon.org/>
-- eza <https://github.com/eza-community/eza>
-- nix package manager / nixos
-- nu shell <https://github.com/nushell/nushell> has some nice navigation features
-- yazi <https://github.com/sxyazi/yazi>
-- zed <https://zed.dev/q>
-- indent blank line colors <https://github.com/lukas-reineke/indent-blankline.nvim>
-- nvim better function folding <https://github.com/kevinhwang91/nvim-ufo>
-- <https://github.com/koekeishiya/skhd>
-- <https://github.com/nvbn/thefuck>
+- [ ] consider adding marta config (e.g. <https://github.com/agenttank/dotfiles_macos/blob/main/marta/conf.marco>)
+- [ ] consider using just <https://github.com/casey/just> for non-js projects
+- [ ] janky borders <https://github.com/FelixKratz/JankyBorders>
+- [ ] hammerspoon for scripting <https://www.hammerspoon.org/>
+- [ ] eza <https://github.com/eza-community/eza>
+- [ ] nix package manager / nixos
+- [ ] nu shell <https://github.com/nushell/nushell> has some nice navigation features
+- [ ] yazi <https://github.com/sxyazi/yazi>
+- [ ] zed <https://zed.dev/q>
+- [ ] indent blank line colors <https://github.com/lukas-reineke/indent-blankline.nvim>
+- [ ] nvim better function folding <https://github.com/kevinhwang91/nvim-ufo>
+- [ ] <https://github.com/koekeishiya/skhd>
+- [ ] <https://github.com/nvbn/thefuck>
+- [ ] https://github.com/tmux-plugins/tmux-yank
+- [ ] tmux open https://github.com/tmux-plugins/tmux-open
+- [ ] tmux copycat https://github.com/tmux-plugins/tmux-copycat
+- [ ] - with search => could solve the ghostty "no search" issue
+- [x] consider switching to alacritty eventually - landed on wezterm
+- [ ] presentations in terminal https://github.com/museslabs/kyma
+
 
 ### Additional dotfile insipiration
 
@@ -60,7 +67,6 @@ zsh-bat
 
 plugin manager
 <https://github.com/zpm-zsh/zpm>
-
 another plugin manager
 <https://github.com/marlonrichert/zsh-snap>
 
@@ -124,6 +130,9 @@ Integrate jankyboarders <https://nikitabobko.github.io/AeroSpace/goodness#highli
 <https://github.com/alacritty/alacritty>
 
 <https://github.com/sxyazi/yazi>
+
+fun animations to add 
+https://github.com/toolleeo/awesome-cli-apps-in-a-csv#animation
 
 ## Nvim improvements
 
