@@ -8,7 +8,7 @@
 - tmux double stack all left side status bar layout
 - move homebrew config to stow?
 - how can I make this a one line install?
-- should I convert my alaises + alias_utils into a go-commander app?
+- should I convert my alaises + alias_utils into a go-commander app?https://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.html
 
 ### Considerations of tools to add
 
@@ -24,6 +24,8 @@
 - zed <https://zed.dev/q>
 - indent blank line colors <https://github.com/lukas-reineke/indent-blankline.nvim>
 - nvim better function folding <https://github.com/kevinhwang91/nvim-ufo>
+- <https://github.com/koekeishiya/skhd>
+- <https://github.com/nvbn/thefuck>
 
 ### Additional dotfile insipiration
 
@@ -133,8 +135,15 @@ write plugin to randomize header images
 
 -- other snacks considerations: <https://github.com/zvrkSam/nvim-dotfiles/blob/main/lua/plugins/snacks-noice.lua#52>
 
+Wez term 
+- parallax https://wezterm.org/config/lua/config/background.html#parallax-example
+
 enable yanky
 <https://www.lazyvim.org/extras/coding/yanky>
+
+markdown rendering improvements
+- probably just disable the ui stuff (hiding brackets and comments)
+- http://www.lazyvim.org/extras/lang/markdown
 
 ## tmux improvements
 
