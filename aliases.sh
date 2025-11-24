@@ -36,8 +36,7 @@ alias bri="brew install"
 alias bric="brew install --cask"
 alias brui="brew uninstall"
 alias brs="brew services"
-# source: https://blog.jpalardy.com/posts/untangling-your-homebrew-dependencies/
-alias brew:graph="brew graph --installed --highlight-leaves | fdp -T png -o graph.png"
+alias brup="brew upgrade"
 
 # Sketchybar
 alias rs="brew services restart sketchybar"
@@ -303,6 +302,7 @@ alias tls="tmux list-sessions"
 alias tt="tmux attach -t 0" # add after ta alias
 alias tka="tmux kill-session -a"
 alias tkse="tmux kill-session -t"
+alias t4="ta 420"
 
 # Qutebrowser
 alias qb="qutebrowser"
