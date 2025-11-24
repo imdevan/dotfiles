@@ -112,6 +112,17 @@ function is_alias() {
 }
 alias isa="is_alias"
 
+# Undo Alias
+#
+
+function undo_alias() {
+  sed -i '' -e '$ d' '$dotfile_dir'/aliases.sh
+  refresh
+}
+alias ua="undo_alias"
+
+# TODO: adjustments needed for non-mac os
+
 # Todo: fix this
 # Does not currently remove the alias correctly from aliases.sh
 # function remove_alias() {
