@@ -7,7 +7,8 @@
 SUBSTITUTES="
 chrome=🦄
 arc=🌈
-iterm2=👾
+qutebrowser=🐶
+wezterm=👾
 code=🧑🏻‍💻
 kiro=👻
 cursor=🐁
@@ -17,8 +18,7 @@ system=⚙️
 streamlabs=🎬
 messages=🤗
 whatsapp=🙌🏼
-qutebrowser=🐐
-alacritty=😸
+kitty=😸
 finder=👀
 "
 

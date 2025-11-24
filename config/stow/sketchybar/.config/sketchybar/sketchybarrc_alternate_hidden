@@ -3,30 +3,14 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ##### Bar Appearance #####
-sketchybar --bar \
-  position=top \
-  height=24 \
-  blur_radius=100 \
-  # color=0x90000000 \  
-  color=0xff000000 \  
-  border_color=0xff000000 \
-  border_width=0 \
-  padding_left=32 \
-  padding_right=32 \
+bar=(
+  position=top
+  height=0
+  color=0x00000000
+  border_width=0
   shadow.drawing=off
-
-default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Hack Nerd Font:Normal:17.0"
-  label.font="Hack Nerd Font:Normal:12.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
-  label.padding_left=8
-  label.padding_right=8
 )
-sketchybar --default "${default[@]}"
+sketchybar --bar "${bar[@]}"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
-
