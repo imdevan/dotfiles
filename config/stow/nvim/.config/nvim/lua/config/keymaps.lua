@@ -22,7 +22,9 @@ vim.keymap.set("n", "<leader>poy", "ggVGy", { desc = "Yank whole page", remap = 
 
 -- Copy / Paste full word
 vim.keymap.set("n", "<leader>py", "bvEy", { desc = "Copy word (from anywhere in word)", remap = true })
+vim.keymap.set("n", "<leader>pY", "BvEy", { desc = "Copy Full word (from anywhere in word)", remap = true })
 vim.keymap.set("n", "<leader>pp", "bvEp", { desc = "Paste word", remap = true })
+vim.keymap.set("n", "<leader>pP", "BvEp", { desc = "Paste Full word", remap = true })
 
 -- Default disable line indention indicators cuz im weird like that
 local snacks = require("snacks")
@@ -76,29 +78,7 @@ end, { desc = "Open in Cursor at line" })
 vim.keymap.set("n", "<leader>ok", function()
   open_in_editor("kiro")
 end, { desc = "Open in Kiro at line" })
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
---
--- Custom keymaps
---
--- <leader>P page
--- Full page clear
-vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page", remap = true })
--- Full page paste
-vim.keymap.set("n", "<leader>pop", "ggVGp", { desc = "Clear whole page", remap = true })
-vim.keymap.set("n", "<leader>poy", "ggVGy", { desc = "Clear whole page", remap = true })
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
---
--- Custom keymaps
---
--- <leader>P page
--- Full page clear
-vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page", remap = true })
--- Full page paste
-vim.keymap.set("n", "<leader>pop", "ggVGp", { desc = "Clear whole page", remap = true })
-vim.keymap.set("n", "<leader>poy", "ggVGy", { desc = "Clear whole page", remap = true })
 
 -- Logger
+-- TODO: find a better logging solution similar to turbo console_log
 vim.keymap.set("n", "<leader>pcl", js_console_log, { desc = "[C]onsole [L]og variable" })
