@@ -1,0 +1,15 @@
+font-family = "FiraCode Nerd Font Mono"
+
+background = 000000
+background-opacity = 0.5
+background-blur = 80
+
+# Square border
+# window-decoration = "none"
+
+macos-titlebar-style = hidden
+
+theme = "Catppuccin Macchiato"
+
+macos-icon-frame = beige
+
