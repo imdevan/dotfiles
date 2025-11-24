@@ -6,3 +6,6 @@
 -- Default diagnostics as disabled due to unknown word issue
 -- TODO:: fix unknown word issue and default diagnostics to enabled
 vim.diagnostic.enable(false)
+
+-- Show all content - notably in markdown
+vim.opt.conceallevel = 0
