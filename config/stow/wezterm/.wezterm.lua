@@ -27,6 +27,7 @@ config.color_scheme = "Catppuccin Macchiato"
 -- config.window_decorations = "RESIZE"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_SQUARE_CORNERS"
 config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
+-- config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_FORCE_SQUARE_CORNERS"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 80
 config.window_close_confirmation = "NeverPrompt"
@@ -38,16 +39,16 @@ config.window_padding = {
 	bottom = 0,
 }
 
-config.window_frame = {
-	border_left_width = "3px",
-	border_right_width = "3px",
-	border_bottom_height = "3px",
-	border_top_height = "3px",
-	border_left_color = "#484848",
-	border_right_color = "#484848",
-	border_bottom_color = "#484848",
-	border_top_color = "#484848",
-}
+-- config.window_frame = {
+-- 	border_left_width = "3px",
+-- 	border_right_width = "3px",
+-- 	border_bottom_height = "1px",
+-- 	border_top_height = "3px",
+-- 	border_left_color = "#484848",
+-- 	border_right_color = "#484848",
+-- 	border_bottom_color = "#484848",
+-- 	border_top_color = "#484848",
+-- }
 
 -- config.window_frame = {
 -- 	border_left_width = "0.5cell",
@@ -63,9 +64,10 @@ config.window_frame = {
 -- Wezterm go brrr
 -- -------------------------------------------------------------------------
 config.max_fps = 240
--- Slow it down for resources
+
+-- Slow it down for resources if needed
 -- config.max_fps = 120
--- config.max_fps = 60
+-- config.max_fps = 60 -- default
 
 -- Finally, return the configuration to wezterm:
 return config
