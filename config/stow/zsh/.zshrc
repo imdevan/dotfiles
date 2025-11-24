@@ -162,3 +162,7 @@ export JAVA_HOME=$(brew --prefix)/opt/openjdk@17
 
 # Added by Antigravity
 export PATH="/Users/devy/.antigravity/antigravity/bin:$PATH"
+
+# ZSH syntax highlight plugin
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
