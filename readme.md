@@ -71,6 +71,7 @@ See [/docs/setup.md](/docs/setup.md) for more information ;)
 │   │   ├── nvim
 │   │   ├── qutebrowser
 │   │   ├── sketchybar
+│   │   ├── stowrc
 │   │   ├── tmux
 │   │   ├── vscode
 │   │   └── zsh
