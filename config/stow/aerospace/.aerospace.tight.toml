@@ -85,14 +85,15 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
-# 6 gcc
 [gaps]
+# 6 gcc
 inner.horizontal = 5
 inner.vertical = 5
-outer.left = 5
-outer.bottom = 5
-outer.top = 5
-outer.right = 5
+outer.bottom = 0
+outer.left = 1
+# outer.top = 0
+outer.top = [{ monitor."Built-in Retina Display" = 0 }, 30]
+outer.right = 1
 
 # enable_for_floating = true  # this is the key line
 # inner_gap = 8         # space between tiled windows
