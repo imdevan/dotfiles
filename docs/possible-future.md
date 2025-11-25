@@ -3,6 +3,10 @@
 > “...Things that yet may be”
 >         - Galadriel
 
+## Top priorities
+
+- [ ] use variables for git hub, files, and other psersonal variablizable information
+
 ## Things to figure out
 
 - How to move file to a directory and have it update file references; like vs code
@@ -10,6 +14,15 @@
 - move homebrew config to stow?
 - how can I make this a one line install?
 - should I convert my alaises + alias_utils into a go-commander app?https://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.html
+- the notch https://notes.alinpanaitiu.com/Fullscreen-apps-above-the-MacBook-notch
+
+
+## Things to check out
+- https://github.com/NvChad/NvChad
+- https://github.com/twpayne/chezmoi or nix
+https://github.com/holman/dotfiles/tree/master
+https://github.com/gh0stzk/dotfiles
+https://github.com/paulirish/dotfiles
 
 ### Considerations of tools to add
 
@@ -157,6 +170,8 @@ markdown rendering improvements
 ## tmux improvements
 
 tmux inspiration: <https://github.com/catppuccin/tmux/discussions/317>
+
+- currently the "current folder" status on the right can get really big and eat the left side on smaller widths
 
 ## desktop improvements
 
