@@ -9,3 +9,6 @@ vim.diagnostic.enable(false)
 
 -- Show all content - notably in markdown
 vim.opt.conceallevel = 0
+
+-- Reload files on save
+vim.opt.autoread = true
