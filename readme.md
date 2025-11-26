@@ -1,4 +1,4 @@
-# Dot files
+# Dotfiles
 
 My personal dotfiles, use or edit at your own risk. Working on a more public option if people want to take inspiration.
 
