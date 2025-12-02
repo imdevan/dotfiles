@@ -22,8 +22,8 @@ config.bind("<Ctrl-t>", f"open {path_to_start_page}")
 
 # Window Styles
 c.window.hide_decoration = True
-c.window.transparent = True
-c.colors.webpage.darkmode.enabled = True
+# c.window.transparent = True
+# c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.show = "in-mode"
 c.tabs.show = "switching"
