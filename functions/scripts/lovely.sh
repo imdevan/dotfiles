@@ -56,6 +56,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -63,7 +65,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: ./dist
 
   deploy:
     environment:
@@ -161,6 +163,27 @@ bun i && bun dev
 EOF
 
 echo "${green}✓ Created/updated README.md${reset}"
+
+# Modify src/App.tsx to add basename to BrowserRouter
+if [ -f "src/App.tsx" ]; then
+  # Check if BrowserRouter exists
+  if grep -q "<BrowserRouter" src/App.tsx; then
+    # Check if basename already exists
+    if grep -q "basename=" src/App.tsx; then
+      # Update existing basename - replace the project name in the basename
+      perl -i -pe "s|(basename=\{import\.meta\.env\.PROD \? \"/)[^\"]*(\" : \"\"\})|\1${PROJECT_NAME}\2|g" src/App.tsx
+      echo "${green}✓ Updated basename in src/App.tsx${reset}"
+    else
+      # Add basename to BrowserRouter - match <BrowserRouter> or <BrowserRouter ...>
+      perl -i -pe "s|<BrowserRouter([^>]*)>|<BrowserRouter\1 basename={import.meta.env.PROD ? \"/${PROJECT_NAME}\" : \"\"}>|g" src/App.tsx
+      echo "${green}✓ Added basename to BrowserRouter in src/App.tsx${reset}"
+    fi
+  else
+    echo "${yellow}Warning: BrowserRouter not found in src/App.tsx${reset}"
+  fi
+else
+  echo "${yellow}Warning: src/App.tsx not found${reset}"
+fi
 
 echo ""
 echo "${green}${bold}✓ Setup complete!${reset}"
