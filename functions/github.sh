@@ -97,18 +97,29 @@ function git_clone() {
   #   git clone ${GIT_SSH_URL}${1}.git
   # fi
 
-  # Clone the repo
-  git clone "$@"
+  # Process the repo URL (first argument)
+  local repo_url="${1}"
+  
+  # Strip query parameters and hash fragments from the URL
+  repo_url="${repo_url%%#*}"  # Remove everything from # onwards
+  repo_url="${repo_url%%\?*}"  # Remove everything from ? onwards
+  
+  # If repo URL starts with "https://github.com" and doesn't end in ".git", add ".git"
+  if [[ "$repo_url" == https://github.com* ]] && [[ "$repo_url" != *.git ]]; then
+    repo_url="${repo_url}.git"
+  fi
 
   # Navigate to the directory
   local repo_name=""
 
-  # If only one argument is passed
+  # If only one argument is passed, use the URL and extract repo name from it
   if [ "$#" -eq 1 ]; then
-    repo_name=$(get_repo_name ${1})
-  # Otherwise use the second argument
+    git clone "$repo_url"
+    repo_name=$(get_repo_name "$repo_url")
+  # Otherwise use the first arg as repo URL and second arg as directory name
   elif [ "$#" -eq 2 ]; then
-    repo_name=$(get_repo_name ${2})
+    git clone "$repo_url" "${2}"
+    repo_name="${2}"
   fi
 
   # Navigate to repo
