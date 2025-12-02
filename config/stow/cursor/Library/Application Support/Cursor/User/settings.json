@@ -1,234 +1,277 @@
 {
-    "vscode_custom_css.imports": ["file:///Users/devin/dotfiles/config/code/theme/custom_theme.css"],
-    "vscode_custom_css.policy": true,
-
-    // Terminal
-    "terminal.integrated.initialHint": false,
-
-    // Theme
-    "editor.fontFamily": "\"FiraCode Nerd Font Mono\", \"Victor Mono\",  Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    "editor.fontVariations": true,
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-        {
-            "scope": "comment",
-            "settings": {
-            "fontStyle": "italic"
-            }
-        },
-        {
-            "scope": "string.quoted.double",
-            "settings": {
-            "fontStyle": "italic"
-            }
-        },
-        {
-            "scope": "string.quoted.single",
-            "settings": {
-            "fontStyle": "italic"
-            }
+  "vscode_custom_css.imports": [
+    "file:///Users/devin/dotfiles/config/code/theme/custom_theme.css"
+  ],
+  "vscode_custom_css.policy": true,
+  // Terminal
+  "terminal.integrated.initialHint": false,
+  // Theme
+  "editor.fontFamily": "\"FiraCode Nerd Font Mono\", \"Victor Mono\",  Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontVariations": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
         }
-        ]
-    },
-    "editor.lineNumbers": "relative",
-    "workbench.iconTheme": "catppuccin-perfect-monokai",
-    "workbench.editor.empty.hint": "hidden",
-
-    "zenMode.centerLayout": false,
-    "zenMode.hideLineNumbers": false,
-    //  Vim Motions
-    // https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n
-    "vim.smartRelativeLine": true,
-    "vim.leader": "<space>",
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["g", "p", "d"],
-            "commands": ["editor.action.peekDefinition"]
-        },
-        {
-            "before": ["g", "h"],
-            "commands": ["editor.action.showDefinitionPreviewHover"]
-        },
-        {
-            "before": ["g", "i"],
-            "commands": ["editor.action.goToImplementation"]
-        },
-        {
-            "before": ["g", "p", "i"],
-            "commands": ["editor.action.peekImplementation"]
-        },
-        {
-            "before": ["g", "q"],
-            "commands": ["editor.action.quickFix"]
-        },
-        {
-            "before": ["g", "r"],
-            "commands": ["editor.action.referenceSearch.trigger"]
-        },
-        {
-            "before": ["g", "t"],
-            "commands": ["editor.action.goToTypeDefinition"]
-        },
-        {
-            "before": ["g", "p", "t"],
-            "commands": ["editor.action.peekTypeDefinition"]
+      },
+      {
+        "scope": "string.quoted.double",
+        "settings": {
+          "fontStyle": "italic"
         }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<leader>", "t"],
-            "commands": ["workbench.action.toggleCenteredLayout"]
-        },
-        {
-            "before": ["K"],
-            "commands": ["lineBreakInsert"],
-            "silent": true
-        },
-        {
-            "before": ["<leader>", "z"],
-            "commands": ["workbench.action.toggleZenMode"]
-        },
-        {
-            "before": ["<leader>", "w"],
-            "commands": ["easymotion-w"]
-        },
-        // {
-        //     "before": ["<leader>", "j"],
-        //     "commands": ["easymotion-j"]
-        // },
-        // {
-        //     "before": ["<leader>", "k"],
-        //     "commands": ["easymotion-k"]
-        // },
-        // {
-        //     "before": ["<leader>", "h"],
-        //     "commands": ["easymotion-h"]
-        // },
-        // {
-        //     "before": ["<leader>", "l"],
-        //     "commands": ["easymotion-l"]
-        // }
-    ],
-    "vim.highlightedyank.enable": true,
-    "vim.highlightedyank.duration": 250,
-    "vim.useSystemClipboard": true,
-    "editor.cursorSurroundingLines": 12,
-    "workbench.tips.enabled": false,
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
-    "explorer.confirmDragAndDrop": false,
-    "workbench.colorTheme": "Community Material Theme Darker",
-    "workbench.colorCustomizations": {
-		// "sideBar.background": "#000000",
-		// "statusBar.background": "#000000",
-        // "editor.background": "#000000", // Replace with your desired hex color
-		// "titleBar.inactiveBackground": "#000000",
-		// // "editorLineNumber.background": "#000000",
-        // // "editorLineNumber.activeBackground": "#000000",
-        // // "editorLineNumber.inactiveBackground": "#000000",
-		// "editorRuler.foreground": "#000000",
-		// "editorRuler.baackground": "#000000",
-        // // "editorCursor.background": "#000000",
-        // "editorGroupHeader.tabsBackground": "#000000",
-        // "sideBarSectionHeader.background": "#000000",
-        // "statusBar.noFolderBackground": "#000000",
-        // "tab.border": "#00000000",
-        // "titleBar.activeBackground": "#000000",
-        // "breadcrumbPicker.background": "#000000",
-        // "dropdown.background": "#000000",
-        // "peekViewEditor.background": "#000000",
-        // "peekViewResult.background": "#000000",
-        // "peekViewTitle.background": "#000000",
-		// "menu.background": "#000000",
-		// "tab.inactiveBackground": "#000000",
-        // "editorGutter.addedBackground": "#000000",
-        // // "editorGutter.background": "#000000",  // Gutter background (affects line numbers)
-		// // "editorGutter.modifiedBackground": "#00000000",
-		// "editorGutter.modifiedBackground": "blue",
-        // "editorGutter.background": "#000",
-		// // "editorGutter.modifiedBackground": "#fff",
-
-        "[Vira*]": {
-            "toolbar.activeBackground": "#80CBC426",
-            "button.background": "#80CBC4",
-            "button.hoverBackground": "#80CBC4cc",
-            "extensionButton.separator": "#80CBC433",
-            "extensionButton.background": "#80CBC414",
-            "extensionButton.foreground": "#80CBC4",
-            "extensionButton.hoverBackground": "#80CBC433",
-            "extensionButton.prominentForeground": "#80CBC4",
-            "extensionButton.prominentBackground": "#80CBC414",
-            "extensionButton.prominentHoverBackground": "#80CBC433",
-            "activityBarBadge.background": "#80CBC4",
-            "activityBar.activeBorder": "#80CBC4",
-            "activityBarTop.activeBorder": "#80CBC4",
-            "list.inactiveSelectionIconForeground": "#80CBC4",
-            "list.activeSelectionForeground": "#80CBC4",
-            "list.inactiveSelectionForeground": "#80CBC4",
-            "list.highlightForeground": "#80CBC4",
-            "sash.hoverBorder": "#80CBC480",
-            "list.activeSelectionIconForeground": "#80CBC4",
-            "scrollbarSlider.activeBackground": "#80CBC480",
-            "editorSuggestWidget.highlightForeground": "#80CBC4",
-            "textLink.foreground": "#80CBC4",
-            "progressBar.background": "#80CBC4",
-            "pickerGroup.foreground": "#80CBC4",
-            "tab.activeBorder": "#80CBC4",
-            "tab.activeBorderTop": "#80CBC400",
-            "tab.unfocusedActiveBorder": "#80CBC4",
-            "tab.unfocusedActiveBorderTop": "#80CBC400",
-            "tab.activeModifiedBorder": "#80CBC400",
-            "notificationLink.foreground": "#80CBC4",
-            "editorWidget.resizeBorder": "#80CBC4",
-            "editorWidget.border": "#80CBC4",
-            "settings.modifiedItemIndicator": "#80CBC4",
-            "panelTitle.activeBorder": "#80CBC4",
-            "breadcrumb.activeSelectionForeground": "#80CBC4",
-            "menu.selectionForeground": "#80CBC4",
-            "menubar.selectionForeground": "#80CBC4",
-            "editor.findMatchBorder": "#80CBC4",
-            "selection.background": "#80CBC440",
-            "statusBarItem.remoteBackground": "#80CBC414",
-            "statusBarItem.remoteHoverBackground": "#80CBC4",
-            "statusBarItem.remoteForeground": "#80CBC4",
-            "notebook.inactiveFocusedCellBorder": "#80CBC480",
-            "commandCenter.activeBorder": "#80CBC480",
-            "chat.slashCommandForeground": "#80CBC4",
-            "chat.avatarForeground": "#80CBC4",
-            "activityBarBadge.foreground": "#000000",
-            "button.foreground": "#000000",
-            "statusBarItem.remoteHoverForeground": "#000000"
+      },
+      {
+        "scope": "string.quoted.single",
+        "settings": {
+          "fontStyle": "italic"
         }
+      }
+    ]
+  },
+  "editor.lineNumbers": "relative",
+  "workbench.iconTheme": "catppuccin-perfect-monokai",
+  "workbench.editor.empty.hint": "hidden",
+  "custom-ui-style.electron": {
+    "frame": false,
+  },
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  //  Vim Motions
+  // https://dev.to/ansonh/10-vs-code-vim-tricks-to-boost-your-productivity-1b0n
+  "vim.smartRelativeLine": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "g",
+        "p",
+        "d"
+      ],
+      "commands": [
+        "editor.action.peekDefinition"
+      ]
     },
-    "autoHidePlus.autoHideLeftSideBar": true,
-    "autoHidePlus.autoHidePanel": true,
-    "autoHidePlus.autoHideRightSideBar": true,
-    "workbench.settings.applyToAllProfiles": [
-
-    ],
-    "colorize.languages": [
-        "javascript",
-        "typescript",
-        "markdown"
-    ],
-    "python.createEnvironment.trigger": "off",
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
+    {
+      "before": [
+        "g",
+        "h"
+      ],
+      "commands": [
+        "editor.action.showDefinitionPreviewHover"
+      ]
     },
-    "git.openRepositoryInParentFolders": "always",
-    "[dockercompose]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2,
-        "editor.autoIndent": "advanced",
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": false,
-            "strings": true
-        },
-        "editor.defaultFormatter": "redhat.vscode-yaml"
+    {
+      "before": [
+        "g",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
     },
-    "[github-actions-workflow]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
+    {
+      "before": [
+        "g",
+        "p",
+        "i"
+      ],
+      "commands": [
+        "editor.action.peekImplementation"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "q"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.referenceSearch.trigger"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "t"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "p",
+        "t"
+      ],
+      "commands": [
+        "editor.action.peekTypeDefinition"
+      ]
     }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.toggleCenteredLayout"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "lineBreakInsert"
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "<leader>",
+        "z"
+      ],
+      "commands": [
+        "workbench.action.toggleZenMode"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "easymotion-w"
+      ]
+    },
+    // {
+    //     "before": ["<leader>", "j"],
+    //     "commands": ["easymotion-j"]
+    // },
+    // {
+    //     "before": ["<leader>", "k"],
+    //     "commands": ["easymotion-k"]
+    // },
+    // {
+    //     "before": ["<leader>", "h"],
+    //     "commands": ["easymotion-h"]
+    // },
+    // {
+    //     "before": ["<leader>", "l"],
+    //     "commands": ["easymotion-l"]
+    // }
+  ],
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.duration": 250,
+  "vim.useSystemClipboard": true,
+  "editor.cursorSurroundingLines": 12,
+  "workbench.tips.enabled": false,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.colorCustomizations": {
+    "[Vira*]": {
+      "toolbar.activeBackground": "#80CBC426",
+      "button.background": "#80CBC4",
+      "button.hoverBackground": "#80CBC4cc",
+      "extensionButton.separator": "#80CBC433",
+      "extensionButton.background": "#80CBC414",
+      "extensionButton.foreground": "#80CBC4",
+      "extensionButton.hoverBackground": "#80CBC433",
+      "extensionButton.prominentForeground": "#80CBC4",
+      "extensionButton.prominentBackground": "#80CBC414",
+      "extensionButton.prominentHoverBackground": "#80CBC433",
+      "activityBarBadge.background": "#80CBC4",
+      "activityBar.activeBorder": "#80CBC4",
+      "activityBarTop.activeBorder": "#80CBC4",
+      "list.inactiveSelectionIconForeground": "#80CBC4",
+      "list.activeSelectionForeground": "#80CBC4",
+      "list.inactiveSelectionForeground": "#80CBC4",
+      "list.highlightForeground": "#80CBC4",
+      "sash.hoverBorder": "#80CBC480",
+      "list.activeSelectionIconForeground": "#80CBC4",
+      "scrollbarSlider.activeBackground": "#80CBC480",
+      "editorSuggestWidget.highlightForeground": "#80CBC4",
+      "textLink.foreground": "#80CBC4",
+      "progressBar.background": "#80CBC4",
+      "pickerGroup.foreground": "#80CBC4",
+      "tab.activeBorder": "#80CBC4",
+      "tab.activeBorderTop": "#80CBC400",
+      "tab.unfocusedActiveBorder": "#80CBC4",
+      "tab.unfocusedActiveBorderTop": "#80CBC400",
+      "tab.activeModifiedBorder": "#80CBC400",
+      "notificationLink.foreground": "#80CBC4",
+      "editorWidget.resizeBorder": "#80CBC4",
+      "editorWidget.border": "#80CBC4",
+      "settings.modifiedItemIndicator": "#80CBC4",
+      "panelTitle.activeBorder": "#80CBC4",
+      "breadcrumb.activeSelectionForeground": "#80CBC4",
+      "menu.selectionForeground": "#80CBC4",
+      "menubar.selectionForeground": "#80CBC4",
+      "editor.findMatchBorder": "#80CBC4",
+      "selection.background": "#80CBC440",
+      "statusBarItem.remoteBackground": "#80CBC414",
+      "statusBarItem.remoteHoverBackground": "#80CBC4",
+      "statusBarItem.remoteForeground": "#80CBC4",
+      "notebook.inactiveFocusedCellBorder": "#80CBC480",
+      "commandCenter.activeBorder": "#80CBC480",
+      "chat.slashCommandForeground": "#80CBC4",
+      "chat.avatarForeground": "#80CBC4",
+      "activityBarBadge.foreground": "#000000",
+      "button.foreground": "#000000",
+      "statusBarItem.remoteHoverForeground": "#000000"
+    },
+    "terminal.background": "#00000000"
+  },
+  "autoHidePlus.autoHideLeftSideBar": true,
+  "autoHidePlus.autoHidePanel": true,
+  "autoHidePlus.autoHideRightSideBar": true,
+  "workbench.settings.applyToAllProfiles": [],
+  "colorize.languages": [
+    "javascript",
+    "typescript",
+    "markdown"
+  ],
+  "python.createEnvironment.trigger": "off",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "git.openRepositoryInParentFolders": "always",
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "vscode_vibrancy.opacity": 0.2,
+  "window.titleBarStyle": "custom",
+  "vscode_vibrancy.refreshInterval": 500,
+  "vscode_vibrancy.theme": "Catppuccin Mocha",
+  "vscode_vibrancy.preferedLightTheme": "Catppuccin Mocha",
+  "vscode_vibrancy.preferedDarkTheme": "Catppuccin Mocha",
+  "terminal.integrated.gpuAcceleration": "off",
+  "window.systemColorTheme": "dark",
+  "window.autoDetectColorScheme": false
 }

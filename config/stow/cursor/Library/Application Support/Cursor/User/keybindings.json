@@ -26,4 +26,9 @@
         "key": "cmd+g",
         "command": "workbench.scm.focus"
     }
+,
+    {
+        "key": "cmd+z",
+        "command": "workbench.action.toggleZenMode"
+    }
 ]
