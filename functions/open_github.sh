@@ -22,15 +22,15 @@ function open_github() {
         echo "Error: Remote '$remote' not found."
         return 1
     fi
-    
+
     # Convert SSH URL to HTTPS if needed
     if [[ $remote_url == *"git@"* ]]; then
         remote_url=${remote_url/git@github.com:/https://github.com/}
     fi
-    
+
     # Remove .git suffix if present
     remote_url=${remote_url%.git}
-    
+
     # Open URL in default browser
     if [[ "$OSTYPE" == "darwin"* ]]; then
         open "$remote_url"
