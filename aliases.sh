@@ -406,3 +406,4 @@ alias drm="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r dock
 alias dcr="drm && dcub"
 alias gn="open https://github.com/new"
 alias lov="~/dotfiles/functions/scripts/lovely.sh"
+alias dp="cd ~/Documents/Projects/dance-partner"
