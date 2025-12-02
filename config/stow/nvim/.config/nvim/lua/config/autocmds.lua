@@ -12,9 +12,11 @@
 -- http://www.lazyvim.org/configuration/tips#:~:text=Navigating%20around%20multiple%20buffers%E2%80%8B,Core%20Plugins
 -- <leader>uf to enable autoformat anyway for that buffer.
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "markdown" },
+  pattern = { "markdown", "text", "gitcommit" },
   callback = function()
     vim.b.autoformat = false
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
   end,
 })
 

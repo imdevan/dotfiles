@@ -12,3 +12,6 @@ vim.opt.conceallevel = 0
 
 -- Reload files on save
 vim.opt.autoread = true
+
+-- Show column at 80 chars
+vim.opt.colorcolumn = "80"

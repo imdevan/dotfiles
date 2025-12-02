@@ -18,7 +18,7 @@ local js_console_log = require("utils.js_console_log").js_console_log
 -- vim.keymap.set("n", "<C-l>", "<leader>wl", { desc = "window left", remap = true })
 
 -- Clear whole page
-vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page", remap = true })
+vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page" })
 
 -- Full page paste
 vim.keymap.set("n", "<leader>pop", 'ggVG"0p', { desc = "Paste whole page", remap = true })
@@ -46,6 +46,11 @@ vim.keymap.set("n", "<leader>pl", function()
     snacks.indent.enable()
   end
 end, { desc = "Toggle indent lines", remap = true })
+
+-- Toggle rainbow delimiters
+vim.keymap.set("n", "<leader>pd", function()
+  require("rainbow-delimiters").toggle(0)
+end, { desc = "Toggle rainbow delimiters", remap = true })
 
 -- Todo comments
 -- https://github.com/folke/todo-comments.nvim
@@ -77,8 +82,10 @@ vim.keymap.set("n", "<M-s>", "<CMD>write<CR>", { silent = true })
 vim.keymap.set("i", "<M-s>", "<CMD>write<CR>", { silent = true })
 
 -- Quit
-vim.keymap.set("n", "<M-q>", "<CMD>quit<CR>", { silent = true })
-vim.keymap.set("n", "<M-Q>", "<CMD>Quit<CR>", { silent = true })
+vim.keymap.set("n", "<M-q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("n", "<M-Q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("i", "<M-q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("i", "<M-Q>", "<CMD>quitall<CR>", { silent = true })
 
 -- Reload file
 vim.keymap.set("n", "<M-r>", "<CMD>e!<CR>", {
@@ -122,36 +129,29 @@ vim.keymap.set("n", "<leader>ti", function()
   Snacks.notify(msg)
 end, { desc = "Toggle Snacks ignored files" })
 
+-- Create space
+vim.keymap.set("n", "<leader>ps", function()
+  -- Using 'o' enters insert mode, so we must return to normal mode
+  vim.cmd("5normal o")
+  -- Then move up 5 lines
+  vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1] - 5, 0 })
+end, { desc = "Create 5 lines below and move to the first" })
+
+vim.keymap.set("n", "<leader>pS", function()
+  -- Use "normal O" to insert lines above the current line
+  vim.cmd("5normal O")
+  -- The cursor is already on the top-most new line after this
+end, { desc = "Create 5 lines above and move to the first" })
+
 -- Navigation
--- local function ctx_move(direction)
---   Snacks.notify("calling ctx_move")
---
---   local success = pcall(vim.cmd, "wincmd " .. direction)
---
---   local msg = success and "Success" or "Failed"
---   -- Snacks.notify(msg)
---
---   Snacks.notify("success: " .. tostring(success), { title = "Success" })
---
---   if not success then
---     Snacks.notify("wincmd failed calling tmux select-")
---     vim.fn.system("tmux select-pane " .. ({
---       h = "-L",
---       j = "-D",
---       k = "-U",
---       l = "-R",
---     })[direction])
---   end
--- end
-
-local tmux_dirs = {
-  h = "-L",
-  j = "-D",
-  k = "-U",
-  l = "-R",
-}
-
 local function ctx_move(dir)
+  local tmux_dirs = {
+    h = "-L",
+    j = "-D",
+    k = "-U",
+    l = "-R",
+  }
+
   local before = vim.api.nvim_get_current_win()
 
   vim.cmd("wincmd " .. dir)
@@ -175,3 +175,14 @@ end)
 vim.keymap.set("n", "<C-l>", function()
   ctx_move("l")
 end)
+
+-- Toggle color column
+vim.keymap.set("n", "<leader>puc", function()
+  if vim.opt.colorcolumn:get() == "" then
+    vim.opt.colorcolumn = "80" -- Set your desired column number
+    vim.notify("ColorColumn: ON (80)", vim.log.levels.INFO)
+  else
+    vim.opt.colorcolumn = ""
+    vim.notify("ColorColumn: OFF", vim.log.levels.INFO)
+  end
+end, { desc = "Toggle colorcolumn" })

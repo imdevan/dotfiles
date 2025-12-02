@@ -1,3 +1,5 @@
+-- return {}
+
 -- https://catppuccin.com/palette/
 -- https://github.com/HiPhish/rainbow-delimiters.nvim
 --
