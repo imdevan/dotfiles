@@ -186,3 +186,36 @@ vim.keymap.set("n", "<leader>puc", function()
     vim.notify("ColorColumn: OFF", vim.log.levels.INFO)
   end
 end, { desc = "Toggle colorcolumn" })
+
+-- Copy file path and line number(s)
+vim.keymap.set("n", "<leader>pf", function()
+  local filepath = vim.fn.expand("%:.")
+  local line_num = vim.api.nvim_win_get_cursor(0)[1]
+  local content = filepath .. ":" .. line_num
+  vim.fn.setreg("+", content)
+  vim.notify("Copied: " .. content, vim.log.levels.INFO)
+end, { desc = "Copy file path and line number" })
+
+vim.keymap.set("v", "<leader>pf", function()
+  local filepath = vim.fn.expand("%:.")
+  -- Get visual selection range
+  -- 'v' is the start of visual selection, '.' is current cursor position
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+
+  -- Ensure start_line is less than or equal to end_line
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  local content
+  if start_line == end_line then
+    content = filepath .. ":" .. start_line
+  else
+    content = filepath .. ":" .. start_line .. "-" .. end_line
+  end
+
+  vim.fn.setreg("+", content)
+  vim.notify("Copied: " .. content, vim.log.levels.INFO)
+end, { desc = "Copy file path and line range" })
+
