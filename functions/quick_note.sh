@@ -5,6 +5,8 @@
 # Usage: quick_note [arguments]
 # Alias: qn
 
+local notes_folder='~/Documents/notes/'
+
 function quick_note() {
     # Function implementation goes here
     # Possible improvements:
@@ -28,12 +30,10 @@ alias qn="quick_note"
 # Usage: notes
 
 function notes() {
-  local folder=~/Documents/notes/
-
   local named=()
   local dated=()
 
-  for file in "$folder"*; do
+  for file in "$notes_folder"*; do
     [ -f "$file" ] || continue
     local basename=$(basename "$file")
 
@@ -63,4 +63,23 @@ function notes() {
   echo "--------------------------------"
 }
 
-alias vn="v ~/Documents/notes"
+alias vqn="v ~/Documents/notes"
+
+# Function: notes_grep
+# Description: Opens notes folder in nvim with grep search
+# Usage: notes_grep [search query]
+
+function notes_grep() {
+  local search_query="$*"
+  local notes_path=$(eval echo "$notes_folder")
+  # Escape single quotes in search query for lua
+  local escaped_query=$(echo "$search_query" | sed "s/'/''/g")
+  if [ -n "$search_query" ]; then
+    nvim "$notes_path" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_path' }); vim.defer_fn(function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('$escaped_query', true, false, true), 't', false) end, 200) end, 100)"
+  else
+    nvim "$notes_path" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_path' }) end, 100)"
+  fi
+}
+
+# Create alias
+alias qng="notes_grep"
