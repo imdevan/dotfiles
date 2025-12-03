@@ -265,7 +265,7 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "vscode_vibrancy.opacity": 0.2,
+  "vscode_vibrancy.opacity": 0.025,
   "window.titleBarStyle": "custom",
   "vscode_vibrancy.refreshInterval": 500,
   "vscode_vibrancy.theme": "Catppuccin Mocha",

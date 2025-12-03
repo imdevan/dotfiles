@@ -1,34 +1,33 @@
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "cmd+i",
-        "command": "composerMode.agent"
-    },
-    {
-        "key": "cmd+t",
-        "command": "-workbench.action.showAllSymbols"
-    },
-    {
-        "key": "cmd+t",
-        "command": "workbench.action.terminal.focus",
-        "when": "!terminalFocus"
-    },
-    {
-        "key": "cmd+t",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "shift+cmd+backspace",
-        "command": "workbench.action.terminal.kill"
-    },
-    {
-        "key": "cmd+g",
-        "command": "workbench.scm.focus"
-    }
-,
-    {
-        "key": "cmd+z",
-        "command": "workbench.action.toggleZenMode"
-    }
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+t",
+    "command": "-workbench.action.showAllSymbols"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+cmd+backspace",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "cmd+g",
+    "command": "workbench.scm.focus"
+  },
+  {
+    "key": "cmd+z",
+    "command": "workbench.action.toggleZenMode"
+  },
 ]
