@@ -20,9 +20,11 @@
 ## Things to check out
 - https://github.com/NvChad/NvChad
 - https://github.com/twpayne/chezmoi or nix
-https://github.com/holman/dotfiles/tree/master
-https://github.com/gh0stzk/dotfiles
-https://github.com/paulirish/dotfiles
+- https://github.com/holman/dotfiles/tree/master
+- https://github.com/gh0stzk/dotfiles
+- https://github.com/paulirish/dotfiles
+- https://github.com/PatrickJS/awesome-cursorrules
+- https://pastebin.com/wLX4cZu6
 
 ### Considerations of tools to add
 
