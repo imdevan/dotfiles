@@ -1,12 +1,16 @@
 // Place your key bindings in this file to override the defaults
 [
   {
+    "key": "cmd+shift+i",
+    "command": "composer.newAgentChat"
+  },
+  {
     "key": "cmd+i",
     "command": "composerMode.agent"
   },
   {
-    "key": "cmd+t",
-    "command": "-workbench.action.showAllSymbols"
+    "key": "cmd+shift+/",
+    "command": "workbench.action.showAllSymbols"
   },
   {
     "key": "cmd+t",
@@ -17,6 +21,10 @@
     "key": "cmd+t",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+shift+t",
+    "command": "editor.cpp.toggle"
   },
   {
     "key": "shift+cmd+backspace",
