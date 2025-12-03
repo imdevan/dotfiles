@@ -111,6 +111,13 @@ vim.keymap.set("n", "<leader>ok", function()
   open_in_editor("kiro")
 end, { desc = "Open in Kiro at line" })
 
+-- Open parent folder in Finder
+vim.keymap.set("n", "<leader>of", function()
+  local parent_dir = vim.fn.expand("%:p:h")
+  vim.fn.system({ "open", parent_dir })
+  vim.notify("Opened parent folder in Finder: " .. parent_dir, vim.log.levels.INFO)
+end, { desc = "Open parent folder in Finder" })
+
 -- Logger
 -- TODO: find a better logging solution similar to turbo console_log
 vim.keymap.set("n", "<leader>pcl", js_console_log, { desc = "[C]onsole [L]og variable" })
