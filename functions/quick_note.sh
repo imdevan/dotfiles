@@ -5,19 +5,18 @@
 # Usage: quick_note [arguments]
 # Alias: qn
 
-local notes_folder='~/Documents/notes/'
+notes_folder="$HOME/Documents/notes/"
 
 function quick_note() {
     # Function implementation goes here
     # Possible improvements:
-    # - pass an argument to specify the name of the note
     # - pass an argument as a string containing the note
     # local note_file="~/Documents/notes/$(date +%Y-%m-%d).md"
    
   if [ "$#" -lt 1 ]; then
-    nvim ~/Documents/notes/$(date +%m-%d-%Y).md
+    nvim "$notes_folder"/$(date +%m-%d-%Y).md
   else  
-    nvim ~/documents/notes/$(to_snake_case "$@").md
+    nvim "$notes_folder"/$(to_snake_case "$@").md
   fi
 }
 
@@ -25,7 +24,7 @@ function quick_note() {
 alias qn="quick_note"
 
 
-# Function: notesbash function to print a list of files
+# Function: notes function to print a list of files
 # Description: shows notes in notes folder
 # Usage: notes
 
@@ -71,13 +70,12 @@ alias vqn="v ~/Documents/notes"
 
 function notes_grep() {
   local search_query="$*"
-  local notes_path=$(eval echo "$notes_folder")
   # Escape single quotes in search query for lua
   local escaped_query=$(echo "$search_query" | sed "s/'/''/g")
   if [ -n "$search_query" ]; then
-    nvim "$notes_path" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_path' }); vim.defer_fn(function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('$escaped_query', true, false, true), 't', false) end, 200) end, 100)"
+    nvim "$notes_folder" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_folder' }); vim.defer_fn(function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('$escaped_query', true, false, true), 't', false) end, 200) end, 100)"
   else
-    nvim "$notes_path" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_path' }) end, 100)"
+    nvim "$notes_folder" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_folder' }) end, 100)"
   fi
 }
 
