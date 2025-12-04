@@ -82,10 +82,14 @@ vim.keymap.set("n", "<M-s>", "<CMD>write<CR>", { silent = true })
 vim.keymap.set("i", "<M-s>", "<CMD>write<CR>", { silent = true })
 
 -- Quit
-vim.keymap.set("n", "<M-q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("n", "<M-Q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("i", "<M-q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("i", "<M-Q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("n", "<C-q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("n", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("i", "<C-q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("i", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("n", "<C-q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("n", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("i", "<C-q>", "<CMD>quitall<CR>", { silent = true })
+vim.keymap.set("i", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
 
 -- Reload file
 vim.keymap.set("n", "<M-r>", "<CMD>e!<CR>", {
@@ -225,4 +229,3 @@ vim.keymap.set("v", "<leader>pf", function()
   vim.fn.setreg("+", content)
   vim.notify("Copied: " .. content, vim.log.levels.INFO)
 end, { desc = "Copy file path and line range" })
-
