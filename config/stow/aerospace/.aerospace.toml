@@ -46,6 +46,7 @@ after-startup-command = ['exec-and-forget sketchybar']
 #     9 = 'secondary'
 #     0 = 'secondary'
 
+
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
@@ -304,6 +305,8 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 # alt-shift-semicolon = 'mode service'
 alt-shift-semicolon = ['mode service']
+alt-shift-quote = ['mode resize']
+
 alt-shift-cmd-f = 'layout floating tiling'
 
 # 'service' binding mode declaration.
@@ -315,7 +318,22 @@ f = [
   'layout floating tiling',
   'mode main',
 ] # Toggle between floating and tiling layout
+1 = ['summon-workspace 1', 'mode main']
+2 = ['summon-workspace 2', 'mode main']
+3 = ['summon-workspace 3', 'mode main']
+4 = ['summon-workspace 4', 'mode main']
+5 = ['summon-workspace 5', 'mode main']
+
 backspace = ['close-all-windows-but-current', 'mode main']
+
+[mode.resize.binding]
+h = 'resize smart -50'
+l = 'resize smart +50'
+j = 'resize smart -50'
+k = 'resize smart +50'
+b = ['balance-sizes', 'mode main']
+f = ['fullscreen', 'mode main']
+esc = 'mode main'
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
