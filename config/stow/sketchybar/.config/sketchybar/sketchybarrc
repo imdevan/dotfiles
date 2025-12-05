@@ -23,8 +23,8 @@ bar=(
   color=0x40000000
   border_color=0x40000000
   border_width=1
-  padding_left=2
-  padding_right=6
+  padding_left=8
+  padding_right=8
 )
 sketchybar --bar "${bar[@]}"
 
@@ -61,19 +61,19 @@ sketchybar --default "${default[@]}"
 ##### Adding Left Items #####
 # https://felixkratz.github.io/SketchyBar/config/items
 #
+sketchybar --add item chevron left \
+  --set chevron icon= \
+  label.drawing=off \
+  icon.font="FiraCode Nerd Font:Normal:16.0" \
+  padding_right=0 \
+  --add item front_app left \
+  --set front_app script="$PLUGIN_DIR/front_app.sh" \
+  --subscribe front_app front_app_switched
+
 # Active app
 sketchybar --add item front_app left \
   --set front_app script="$PLUGIN_DIR/front_app.sh" \
   --subscribe front_app front_app_switched
-
-# sketchybar --add item chevron left \
-#   --set chevron icon= \
-#   label.drawing=off \
-#   icon.font="FiraCode Nerd Font:Normal:16.0" \
-#   padding_right=0 \
-#   --add item front_app left \
-#   --set front_app script="$PLUGIN_DIR/front_app.sh" \
-#   --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
