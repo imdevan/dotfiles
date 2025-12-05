@@ -115,6 +115,7 @@ alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
 alias vk="v ~/dotfiles/config/stow/kitty/.config/kitty/kitty.conf"
 alias vw="v ~/dotfiles/config/stow/wezterm/.wezterm.lua"
 alias vsk="v ~/dotfiles/config/stow/skhd/.config/skhd/skhdrc"
+alias vcoms="v ~/dotfiles/config/stow/cursor/.cursor/commands/"
 
 # Git
 # Overhead
