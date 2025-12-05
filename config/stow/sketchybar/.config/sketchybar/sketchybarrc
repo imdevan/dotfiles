@@ -101,7 +101,7 @@ sketchybar --add item clock right \
 #   background.corner_radius=2 \
 #   background.drawing=off \
 
-sketchybar --add event aerospace_workspace_change
+# sketchybar --add event aerospace_workspace_change
 
 sketchybar --add item dash right \
   --set dash \
@@ -122,7 +122,7 @@ sketchybar --add item dash right \
 # done
 # sketchybar --set space.1 drawing=on label.drawing=on
 
-sketchybar --add item aerospace_workspace right --set aerospace_workspace label="1" icon.drawing=off
+sketchybar --add item aerospace_workspace right --set aerospace_workspace label="1" label.padding_right=0 icon.drawing=off
 sketchybar --add item aerospace_mode right --set aerospace_mode label="" icon.drawing=off
 
 ##### Force all scripts to run the first time (never do this in a script) #####
