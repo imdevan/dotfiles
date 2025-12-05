@@ -109,33 +109,21 @@ sketchybar --add item dash right \
   icon.drawing=off
 
 # Aerospace config
-for sid in $(aerospace list-workspaces --all); do
-  sketchybar --add item space.$sid right \
-    --subscribe space.$sid aerospace_workspace_change \
-    --set space.$sid \
-    label="$sid" \
-    label.padding_right=0 \
-    icon.drawing=off \
-    click_script="aerospace workspace $sid" \
-    script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-done
+#
+# for sid in $(aerospace list-workspaces --all); do
+#   sketchybar --add item space.$sid right \
+#     --subscribe space.$sid aerospace_workspace_change \
+#     --set space.$sid \
+#     label="$sid" \
+#     label.padding_right=0 \
+#     icon.drawing=off \
+#     click_script="aerospace workspace $sid" \
+#     script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+# done
+# sketchybar --set space.1 drawing=on label.drawing=on
 
-sketchybar --set space.1 label="1" drawing=on label.drawing=on
-
-# Currently undecided if i want to do border highlight or label color highlight
-if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set $NAME drawing=on
-  sketchybar --set $NAME label.drawing=on
-  # sketchybar --set $NAME background.drawing=on
-  # sketchybar --set $NAME background.color=0xfff74f9e
-  # sketchybar --set $NAME label.color=0xfff74f9e
-  # sketchybar --set $NAME label.color=0xffce02d0
-else
-  sketchybar --set $NAME drawing=off
-  sketchybar --set $NAME label.drawing=off
-  # sketchybar --set $NAME background.drawing=off
-  # sketchybar --set $NAME label.color=0xffffffff
-fi
+sketchybar --add item aerospace_workspace right --set aerospace_workspace label="1" icon.drawing=off
+sketchybar --add item aerospace_mode right --set aerospace_mode label="" icon.drawing=off
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
