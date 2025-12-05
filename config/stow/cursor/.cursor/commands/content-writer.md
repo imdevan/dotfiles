@@ -177,6 +177,7 @@ End sections with natural next steps:
 ## What to Avoid
 
 - **Generic phrases**: "cutting-edge", "leverage synergies", "passionate about technology"
+- **No diving**: "dove", "delve", or any phrases like that
 - **Passive constructions**: "The project was completed" → "I shipped the project"
 - **Vague claims**: "Improved performance" → "Reduced load time from 4s to 800ms"
 - **Wall of text**: Break up content with headings, lists, and visual breathing room
