@@ -230,6 +230,9 @@ U   - undo all last line changes
 "   - access registers
 "0  - last yanked register
 
+^a  - increment a number # or next in line
+^x  - decrement a number # or next in line
+
 <!-- read more: https://learnvim.irian.to/basics/registers -->
 
 ### nvim-surround
