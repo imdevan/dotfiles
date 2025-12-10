@@ -1,0 +1,28 @@
+{
+  "latest-preset": {
+    // Equal to `presentation` below
+  },
+  "presentation": {
+    "theme": "base16-light",
+    "backgroundColor": "rgba(48, 52, 70, 0)",
+    "windowTheme": "none",
+    "windowControls": true,
+    "fontFamily": "FiraCode Nerd Font Mono",
+    "fontSize": "18px",
+    "lineNumbers": false,
+    "firstLineNumber": 1,
+    "selectedLines": "*",
+    "dropShadow": false,
+    "dropShadowOffsetY": "20px",
+    "dropShadowBlurRadius": "68px",
+    "widthAdjustment": true,
+    "width": "1080px",
+    "lineHeight": "140%",
+    "paddingVertical": "35px",
+    "paddingHorizontal": "35px",
+    "squaredImage": false,
+    "watermark": false,
+    "exportSize": "2x",
+    "type": "png"
+  }
+}
