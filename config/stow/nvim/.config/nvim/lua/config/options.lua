@@ -15,3 +15,7 @@ vim.opt.autoread = true
 
 -- Show column at 80 chars
 vim.opt.colorcolumn = "80"
+
+-- Reduce timeout for key sequences (fixes space key delay)
+-- TODO: figure what this is
+vim.opt.timeoutlen = 200
