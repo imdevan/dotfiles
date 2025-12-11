@@ -9,15 +9,21 @@
 
 ## Things to figure out
 
+- Open file in vim from InsertVSCodeFork
 - How to move file to a directory and have it update file references; like vs code
 - tmux double stack all left side status bar layout
 - move homebrew config to stow?
 - how can I make this a one line install?
 - should I convert my alaises + alias_utils into a go-commander app?https://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.htmlhttps://wezterm.org/config/appearance.html
 - the notch https://notes.alinpanaitiu.com/Fullscreen-apps-above-the-MacBook-notch
+- install https://github.com/FelixKratz/dotfiles/blob/master/.install.sh
+- https://dooit-org.github.io/dooit/extra/dooit_extras.html
+- Slow whitespace typing on nvim 
+- Slightly slow zsh load times kkkkkk
 
 
 ## Things to check out
+
 - https://github.com/NvChad/NvChad
 - https://github.com/twpayne/chezmoi or nix
 - https://github.com/holman/dotfiles/tree/master
@@ -25,6 +31,21 @@
 - https://github.com/paulirish/dotfiles
 - https://github.com/PatrickJS/awesome-cursorrules
 - https://pastebin.com/wLX4cZu6
+- https://terminaltrove.com/explore/
+
+## things to change
+
+- Auto suggestions form lsp offten add things i may not want to 
+  - when going to a new line? -> could map shift enter to next line in inert mode...
+    or enter defaults to newline and shift enter accepts change
+- jb color
+- sketchybar show tmux status info  ... hide tmux window in terminal
+- finish ark skip macro
+- tmux status: 
+  - swap left and right side or add both to left
+  - implement location to truncate all parent folder names
+    - e.g. dance-partner/dance-partner-app/app/expo -> dp/dpa/a/expo
+    - maybe even a more dynamic solution based on length
 
 ### Considerations of tools to add
 
@@ -47,6 +68,13 @@
 - [ ] - with search => could solve the ghostty "no search" issue
 - [x] consider switching to alacritty eventually - landed on wezterm
 - [ ] presentations in terminal https://github.com/museslabs/kyma
+- [ ] nnn https://github.com/jarun/nnn
+- [ ] starship https://starship.rs/
+- [ ] https://github.com/jj-vcs/jj
+- [ ] lulu https://formulae.brew.sh/cask/lulu#default
+- [ ] wireguard-go
+- [ ] shell check for scripts
+- [ ] squall https://terminaltrove.com/squall/
 
 
 ### Additional dotfile insipiration
