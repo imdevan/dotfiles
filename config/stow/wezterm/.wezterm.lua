@@ -7,6 +7,15 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- Needed for click to open hyperlinks
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+
+-- Custom rule for .git URLs - strip the .git extension when opening
+table.insert(config.hyperlink_rules, {
+	regex = [[(https?://[^\s]+)\.git\b]],
+	format = "$1",
+})
+
 -- Color Scheme
 -- -------------------------------------------------------------------------
 -- https://github.com/catppuccin/wezterm
@@ -26,8 +35,8 @@ config.color_scheme = "Catppuccin Macchiato"
 -- window_decorations = "TITLE | RESIZE | NONE" -- none is same as resize but breaks aerospace
 -- config.window_decorations = "RESIZE"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_SQUARE_CORNERS"
--- config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
-config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_FORCE_SQUARE_CORNERS"
+config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
+-- config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_FORCE_SQUARE_CORNERS"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 80
 config.window_close_confirmation = "NeverPrompt"
