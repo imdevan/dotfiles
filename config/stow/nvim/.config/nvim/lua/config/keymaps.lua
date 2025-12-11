@@ -81,6 +81,55 @@ vim.keymap.set("n", "<M-a>", "ggVG")
 vim.keymap.set("n", "<M-s>", "<CMD>write<CR>", { silent = true })
 vim.keymap.set("i", "<M-s>", "<CMD>write<CR>", { silent = true })
 
+-- Toggle highlight colors (background and foreground)
+vim.keymap.set("n", "<leader>pch", function()
+  local hl_groups = { "Visual", "Search", "IncSearch", "CurSearch", "Substitute" }
+  local hl_state = vim.w.hl_toggle_state or {}
+  
+  -- Custom colors
+  local custom_bg = "#181926"
+  local custom_fg = "#b7bdf8"
+  
+  -- Check if custom colors are currently applied
+  local is_custom = hl_state.custom or false
+  
+  for _, group in ipairs(hl_groups) do
+    local hl_def = vim.api.nvim_get_hl(0, { name = group })
+    
+    if is_custom then
+      -- Restore original colors
+      if hl_state[group] then
+        vim.api.nvim_set_hl(0, group, {
+          bg = hl_state[group].bg,
+          fg = hl_state[group].fg,
+          reverse = hl_state[group].reverse,
+        })
+      end
+    else
+      -- Store original colors if not stored
+      if not hl_state[group] then
+        hl_state[group] = {
+          bg = hl_def.bg,
+          fg = hl_def.fg,
+          reverse = hl_def.reverse,
+        }
+      end
+      -- Set custom background and foreground colors
+      vim.api.nvim_set_hl(0, group, {
+        bg = custom_bg,
+        fg = custom_fg,
+        reverse = false,
+      })
+    end
+  end
+  
+  hl_state.custom = not is_custom
+  vim.w.hl_toggle_state = hl_state
+  
+  local msg = is_custom and "Highlight colors: restored" or "Highlight colors: custom (#181926/#b7bdf8)"
+  vim.notify(msg, vim.log.levels.INFO)
+end, { desc = "Toggle highlight colors (background/foreground)" })
+
 -- Quit
 vim.keymap.set("n", "<C-q>", "<CMD>quitall<CR>", { silent = true })
 vim.keymap.set("n", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
