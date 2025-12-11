@@ -10,8 +10,8 @@ cmd + ⌃ + ␣   - Emoji keyboard
 
 # Keyboard Maestro
 
-cmd shft G   - Search the web
-^ `     - Open ghostty
+cmd N   - New group
+cmd n   - New Macro
 
 # Vs Code / Cursor
 
@@ -84,6 +84,7 @@ G   - Go To command (prefix with number - 5G goes to line 5)
 :#  - Also works as to command
 "   - see register context
 "0p - paste the "yank register"
+"#y - yank to register
 
 {   - go to beginning of paragraph
 {w  - go to first word of paragraph
