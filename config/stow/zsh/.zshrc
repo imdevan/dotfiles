@@ -1,28 +1,66 @@
+# Add this to the TOP of your .zshrc to profile
+zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+# cach brew shellenv
+if [[ -f ~/.brew_shellenv.zsh ]]; then
+  source ~/.brew_shellenv.zsh
+else
+  /opt/homebrew/bin/brew shellenv > ~/.brew_shellenv.zsh
+  source ~/.brew_shellenv.zsh
+fi
+# Must be before loading .oh-my-zsh
+# Skip expensive security checks - useful in multi-user systems, but unnecessary on your personal
+ZSH_DISABLE_COMPFIX=true
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# # Use cached completions (rebuild only once per day)
+# autoload -Uz compinit
+# if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+#   compinit
+# else
+#   compinit -C
+# fi
+
 # Oh My Posh!
 # eval "$(oh-my-posh init zsh)"
+# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+#   # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/hunk.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubbles.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/1_shell.omp.json)"
+#   eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml)"
+#   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
+#   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
+# fi
+
+# cache oh-my-posh
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/hunk.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/1_shell.omp.json)"
-  eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
+  if [[ ! -f ~/.oh-my-posh-init.zsh ]] || [[ ~/dotfiles/config/oh-my-posh/themes/bubbles.toml -nt ~/.oh-my-posh-init.zsh ]]; then
+    oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml > ~/.oh-my-posh-init.zsh
+  fi
+  source ~/.oh-my-posh-init.zsh
 fi
 
 # Add a blank line after the prompt
-echo ''
+# echo ''
+
 # function add_blank_line_after_prompt() {
 #   echo ''
 # }
+# precmd() {
+#   echo ''
+# }
+
+preexec(){
+  echo
+}
+
 # precmd_functions+=(add_blank_line_after_prompt)
 
 # Set name of the theme to load --- if set to "random", it will
@@ -46,8 +84,8 @@ echo ''
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -93,7 +131,16 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # custom plugin added: https://github.com/jeffreytse/zsh-vi-mode
-plugins=(web-search zsh-vi-mode)
+
+# needed for nvm to be lazyloaded MUST come before plugins are loaded
+export NVM_LAZY_LOAD=true
+
+plugins=(zsh-vi-mode nvm)
+
+# Only load zsh-vi-mode if you want vi keybindings
+# Option 1: Load on first ESC press (vi mode trigger)
+# bindkey -v  # Enable vi mode built-in
+# autoload -Uz zsh-vi-mode
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,15 +174,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/dotfiles/index.sh
 
-# nvm
-# export NVM_DIR="$HOME/.nvm"
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
+# with cache:
+if [[ ! -f ~/.zoxide-init.zsh ]]; then
+  zoxide init zsh > ~/.zoxide-init.zsh
+fi
+source ~/.zoxide-init.zsh
 
 # Start tmux automatically if not already inside tmux
 # if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
@@ -148,9 +195,24 @@ export PATH="${HOME}/.cargo/bin:${PATH}"
 
 # Add aerospace to path
 export PATH="/Applications/Aerospace.app/Contents/MacOS:$PATH"
+
+## Python
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+# # lazyload
+# pyenv() {
+#   unfunction pyenv
+#   eval "$(command pyenv init - zsh)"
+#   pyenv "$@"
+# }
+#
+# python() {
+#   unfunction pyenv python
+#   eval "$(command pyenv init - zsh)"
+#   python "$@"
+# }
 
 # Add android paths 
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -166,3 +228,11 @@ export PATH="/Users/devy/.antigravity/antigravity/bin:$PATH"
 # ZSH syntax highlight plugin
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Created by `pipx` on 2025-12-05 21:23:32
+export PATH="$PATH:/Users/devy/.local/bin"
+export PATH="/Users/devy/.bun/bin:$PATH"
+
+
+# For output testing 
+zprof > ~/.zsh_profile
