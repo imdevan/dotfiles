@@ -46,6 +46,7 @@ after-startup-command = ['exec-and-forget sketchybar']
 #     9 = 'secondary'
 #     0 = 'secondary'
 
+
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
@@ -190,11 +191,21 @@ alt-cmd-j = 'focus down'
 alt-cmd-k = 'focus up'
 alt-cmd-l = 'focus right'
 
+alt-cmd-left = 'focus left'
+alt-cmd-down = 'focus down'
+alt-cmd-up = 'focus up'
+alt-cmd-right = 'focus right'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-cmd-h = 'move left'
 alt-shift-cmd-j = 'move down'
 alt-shift-cmd-k = 'move up'
 alt-shift-cmd-l = 'move right'
+
+alt-shift-cmd-left = 'move left'
+alt-shift-cmd-down = 'move down'
+alt-shift-cmd-up = 'move up'
+alt-shift-cmd-right = 'move right'
 
 ctrl-alt-cmd-h = 'join-with left'
 ctrl-alt-cmd-j = 'join-with down'
@@ -215,6 +226,12 @@ alt-shift-cmd-enter = 'macos-native-fullscreen'
 
 shift-cmd-h = 'workspace prev'
 shift-cmd-l = 'workspace next'
+
+alt-shift-h = 'move-node-to-workspace prev --focus-follows-window'
+alt-shift-l = 'move-node-to-workspace next --focus-follows-window'
+
+alt-shift-k = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-j = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-ctrl-cmd-h = 'move-node-to-workspace prev'
 alt-shift-ctrl-cmd-l = 'move-node-to-workspace next'
@@ -262,6 +279,11 @@ alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
 alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
 alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+alt-shift-cmd-1 = 'move-node-to-workspace 1'
+alt-shift-cmd-2 = 'move-node-to-workspace 2'
+alt-shift-cmd-3 = 'move-node-to-workspace 3'
+alt-shift-cmd-4 = 'move-node-to-workspace 4'
+alt-shift-cmd-5 = 'move-node-to-workspace 5'
 # alt-shift-6 = 'move-node-to-workspace 6'
 # alt-shift-7 = 'move-node-to-workspace 7'
 # alt-shift-8 = 'move-node-to-workspace 8'
@@ -297,6 +319,8 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 # alt-shift-semicolon = 'mode service'
 alt-shift-semicolon = ['mode service']
+alt-shift-quote = ['mode resize']
+
 alt-shift-cmd-f = 'layout floating tiling'
 
 # 'service' binding mode declaration.
@@ -308,7 +332,22 @@ f = [
   'layout floating tiling',
   'mode main',
 ] # Toggle between floating and tiling layout
+1 = ['summon-workspace 1', 'mode main']
+2 = ['summon-workspace 2', 'mode main']
+3 = ['summon-workspace 3', 'mode main']
+4 = ['summon-workspace 4', 'mode main']
+5 = ['summon-workspace 5', 'mode main']
+
 backspace = ['close-all-windows-but-current', 'mode main']
+
+[mode.resize.binding]
+h = 'resize smart -50'
+l = 'resize smart +50'
+j = 'resize smart -50'
+k = 'resize smart +50'
+b = ['balance-sizes', 'mode main']
+f = ['fullscreen', 'mode main']
+esc = 'mode main'
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
