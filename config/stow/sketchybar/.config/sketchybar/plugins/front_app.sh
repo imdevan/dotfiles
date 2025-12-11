@@ -20,6 +20,7 @@ messages=🤗
 whatsapp=🙌🏼
 kitty=😸
 finder=👀
+antigravity=🛸
 "
 
 lower() {
