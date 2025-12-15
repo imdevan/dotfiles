@@ -35,8 +35,8 @@ config.color_scheme = "Catppuccin Macchiato"
 -- window_decorations = "TITLE | RESIZE | NONE" -- none is same as resize but breaks aerospace
 -- config.window_decorations = "RESIZE"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_SQUARE_CORNERS"
-config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
--- config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_FORCE_SQUARE_CORNERS"
+-- config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
+config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_FORCE_SQUARE_CORNERS"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 80
 config.window_close_confirmation = "NeverPrompt"
@@ -57,6 +57,35 @@ config.window_frame = {
 	border_right_color = "#484848",
 	border_bottom_color = "#484848",
 	border_top_color = "#484848",
+}
+
+-- Key assignments
+-- -------------------------------------------------------------------------
+-- https://wezterm.org/config/keys.html#configuring-key-assignments
+-- https://wezterm.org/config/default-keys.html
+config.keys = {
+	-- Turn off the default CMD-m Hide action, allowing CMD-m to
+	-- be potentially recognized and handled by the tab
+	{
+		key = "m",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "h",
+		mods = "CMD",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "h",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "l",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
 }
 
 -- config.window_frame = {
