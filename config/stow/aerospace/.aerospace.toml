@@ -96,13 +96,13 @@ automatically-unhide-macos-hidden-apps = false
 
 [gaps]
 # 6 gcc
-inner.horizontal = 16
-inner.vertical = 16
-outer.bottom = 16
-outer.left = 16
+inner.horizontal = 5
+inner.vertical = 5
+outer.bottom = 0
+outer.left = 1
 # outer.top = 0
-outer.top = [{ monitor."Built-in Retina Display" = 16 }, 46]
-outer.right = 16
+outer.top = [{ monitor."Built-in Retina Display" = 0 }, 30]
+outer.right = 1
 
 # enable_for_floating = true  # this is the key line
 # inner_gap = 8         # space between tiled windows
