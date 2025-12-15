@@ -62,3 +62,5 @@ source $dotfile_dir/functions/multi-agent-search.sh
 source $dotfile_dir/functions/sh_utils.sh
 
 source $dotfile_dir/functions/docker_utils.sh
+
+source $dotfile_dir/functions/to_log.sh
