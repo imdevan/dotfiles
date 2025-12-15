@@ -2,6 +2,8 @@
 # https://qutebrowser.org/doc/help/configuring.html
 # https://github.com/news-s/Qutebrowser-config/blob/main/config.py
 # https://qutebrowser.org/doc/help/settings.html
+# Defualt bindings
+# https://qutebrowser.org/doc/help/settings.html#bindings.default
 
 import catppuccin
 
@@ -69,6 +71,33 @@ c.editor.command = ["code", "{}"]
 # last argument (optional, default is False): enable the plain look for the menu rows
 catppuccin.setup(c, "macchiato", True)
 
+
+# hints {{{
+## Background color for hints. Note that you can use a `rgba(...)` value
+## for transparency.
+c.colors.hints.bg = "#f5bde6"
+# c.colors.hints.bg = "#1e2030"
+
+## Font color for hints.
+c.colors.hints.fg = "#1e2030"
+# c.colors.hints.fg = "#cad3f5"
+
+## Hints
+c.hints.border = "1px solid " + "#ed8796"
+
+## Font color for the matched part of hints.
+c.colors.hints.match.fg = "#ed8796"
+# }}}
+# keyhints {{{
+## Background color of the keyhint widget.
+# c.colors.keyhint.bg = palette["mantle"]
+
+## Text color for the keyhint widget.
+# c.colors.keyhint.fg = palette["text"]
+
+## Highlight color for keys to complete the current keychain.
+# c.colors.keyhint.suffix.fg = palette["subtext1"]
+# }}}
 
 # Docs:
 # https://qutebrowser.org/doc/help/configuring.html
