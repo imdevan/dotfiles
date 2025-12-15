@@ -273,5 +273,6 @@
   "vscode_vibrancy.preferedDarkTheme": "Catppuccin Mocha",
   "terminal.integrated.gpuAcceleration": "off",
   "window.systemColorTheme": "dark",
-  "window.autoDetectColorScheme": false
+  "window.autoDetectColorScheme": false,
+  "cursor.inlineDiff.mode": "unified"
 }
