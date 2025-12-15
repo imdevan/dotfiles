@@ -23,17 +23,17 @@ local notify = vim.notify
 -- =====================================================================================================================
 -- Global (escaped)
 -- =====================================================================================================================
+local silent_opts = { silent = true }
 
 -- Save
-keymap_set("n", "<M-s>", "<CMD>write<CR>", { silent = true })
-keymap_set("i", "<M-s>", "<CMD>write<CR>", { silent = true })
+keymap_set("n", "<M-s>", "<CMD>write<CR>", silent_opts)
+keymap_set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
 
 -- Quit (consolidated duplicates)
-local quit_opts = { silent = true }
-keymap_set("n", "<C-q>", "<CMD>quitall<CR>", quit_opts)
-keymap_set("n", "<C-Q>", "<CMD>quitall<CR>", quit_opts)
-keymap_set("i", "<C-q>", "<CMD>quitall<CR>", quit_opts)
-keymap_set("i", "<C-Q>", "<CMD>quitall<CR>", quit_opts)
+keymap_set("n", "<C-q>", "<CMD>quitall<CR>", silent_opts)
+keymap_set("n", "<C-Q>", "<CMD>quitall<CR>", silent_opts)
+keymap_set("i", "<C-q>", "<CMD>quitall<CR>", silent_opts)
+keymap_set("i", "<C-Q>", "<CMD>quitall<CR>", silent_opts)
 
 -- Reload file
 keymap_set("n", "<M-r>", "<CMD>e!<CR>", {
@@ -104,10 +104,9 @@ end, { desc = "Next error/warning todo comment" })
 -- Glance
 -- https://github.com/dnlhc/glance.nvim
 -- TODO: move to glance.lua
-local glance_opts = { silent = true }
-keymap_set("n", "gR", "<CMD>Glance references<CR>", glance_opts)
-keymap_set("n", "gY", "<CMD>Glance type_definitions<CR>", glance_opts)
-keymap_set("n", "gM", "<CMD>Glance implementations<CR>", glance_opts)
+keymap_set("n", "gR", "<CMD>Glance references<CR>", silent_opts)
+keymap_set("n", "gY", "<CMD>Glance type_definitions<CR>", silent_opts)
+keymap_set("n", "gM", "<CMD>Glance implementations<CR>", silent_opts)
 
 -- Utils
 -- =====================================================================================================================
