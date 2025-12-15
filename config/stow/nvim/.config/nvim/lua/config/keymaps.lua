@@ -8,31 +8,35 @@
 --
 -- Custom keymaps
 
+-- Cache frequently used modules
 local log = require("utils.logger").log
 local open_in_editor = require("utils.open_in_editor").open_in_editor
-local open_in_editor = require("utils.open_in_editor").open_in_editor
 local js_console_log = require("utils.js_console_log").js_console_log
+
+-- Cache vim functions for better performance
+local keymap_set = vim.keymap.set
+local api = vim.api
+local fn = vim.fn
+local cmd = vim.cmd
+local notify = vim.notify
 
 -- =====================================================================================================================
 -- Global (escaped)
 -- =====================================================================================================================
 
 -- Save
-vim.keymap.set("n", "<M-s>", "<CMD>write<CR>", { silent = true })
-vim.keymap.set("i", "<M-s>", "<CMD>write<CR>", { silent = true })
+keymap_set("n", "<M-s>", "<CMD>write<CR>", { silent = true })
+keymap_set("i", "<M-s>", "<CMD>write<CR>", { silent = true })
 
--- Quit
-vim.keymap.set("n", "<C-q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("n", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("i", "<C-q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("i", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("n", "<C-q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("n", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("i", "<C-q>", "<CMD>quitall<CR>", { silent = true })
-vim.keymap.set("i", "<C-Q>", "<CMD>quitall<CR>", { silent = true })
+-- Quit (consolidated duplicates)
+local quit_opts = { silent = true }
+keymap_set("n", "<C-q>", "<CMD>quitall<CR>", quit_opts)
+keymap_set("n", "<C-Q>", "<CMD>quitall<CR>", quit_opts)
+keymap_set("i", "<C-q>", "<CMD>quitall<CR>", quit_opts)
+keymap_set("i", "<C-Q>", "<CMD>quitall<CR>", quit_opts)
 
 -- Reload file
-vim.keymap.set("n", "<M-r>", "<CMD>e!<CR>", {
+keymap_set("n", "<M-r>", "<CMD>e!<CR>", {
   desc = "Reload file from disk",
   remap = true,
 })
@@ -49,193 +53,186 @@ vim.keymap.set("n", "<M-r>", "<CMD>e!<CR>", {
 -- Full page motions
 -- =====================================================================================================================
 
--- Clear whole page
-vim.keymap.set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page" })
-
--- Full page paste
-vim.keymap.set("n", "<leader>pop", 'ggVG"0p', { desc = "Paste whole page", remap = true })
-vim.keymap.set("n", "<leader>poy", "ggVGy", { desc = "Yank whole page", remap = true })
-
--- Select all - escaped
-vim.keymap.set("n", "<M-a>", "ggVG")
+-- Full page operations
+keymap_set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page" })
+keymap_set("n", "<leader>pop", 'ggVG"0p', { desc = "Paste whole page", remap = true })
+keymap_set("n", "<leader>poy", "ggVGy", { desc = "Yank whole page", remap = true })
+keymap_set("n", "<M-a>", "ggVG", { desc = "Select all" })
 
 -- Full word motions
 -- =====================================================================================================================
 
 -- Copy / Paste full word
-vim.keymap.set("n", "<leader>py", "bvEy", { desc = "Copy word (from anywhere in word)", remap = true })
-vim.keymap.set("n", "<leader>pY", "BvEy", { desc = "Copy Full word (from anywhere in word)", remap = true })
-vim.keymap.set("n", "<leader>pp", "bvEp", { desc = "Paste word", remap = true })
-vim.keymap.set("n", "<leader>pP", "BvEp", { desc = "Paste Full word", remap = true })
+local word_opts = { remap = true }
+keymap_set(
+  "n",
+  "<leader>py",
+  "bvEy",
+  vim.tbl_extend("force", word_opts, { desc = "Copy word (from anywhere in word)" })
+)
+keymap_set(
+  "n",
+  "<leader>pY",
+  "BvEy",
+  vim.tbl_extend("force", word_opts, { desc = "Copy Full word (from anywhere in word)" })
+)
+keymap_set("n", "<leader>pp", "bvEp", vim.tbl_extend("force", word_opts, { desc = "Paste word" }))
+keymap_set("n", "<leader>pP", "BvEp", vim.tbl_extend("force", word_opts, { desc = "Paste Full word" }))
 
 -- Todo comments
 -- =====================================================================================================================
 
+-- Todo comments
 -- https://github.com/folke/todo-comments.nvim
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
+local todo_comments = require("todo-comments")
+keymap_set("n", "]t", function()
+  todo_comments.jump_next()
 end, { desc = "Next todo comment" })
 
-vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
+keymap_set("n", "[t", function()
+  todo_comments.jump_prev()
 end, { desc = "Previous todo comment" })
 
--- You can also specify a list of valid jump keywords
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
+-- Error/warning specific (use different key)
+keymap_set("n", "]T", function()
+  todo_comments.jump_next({ keywords = { "ERROR", "WARNING" } })
 end, { desc = "Next error/warning todo comment" })
 
 -- Glance
 -- =====================================================================================================================
 
+-- Glance
 -- https://github.com/dnlhc/glance.nvim
 -- TODO: move to glance.lua
-vim.keymap.set("n", "gR", "<CMD>Glance references<CR>")
-vim.keymap.set("n", "gY", "<CMD>Glance type_definitions<CR>")
-vim.keymap.set("n", "gM", "<CMD>Glance implementations<CR>")
+local glance_opts = { silent = true }
+keymap_set("n", "gR", "<CMD>Glance references<CR>", glance_opts)
+keymap_set("n", "gY", "<CMD>Glance type_definitions<CR>", glance_opts)
+keymap_set("n", "gM", "<CMD>Glance implementations<CR>", glance_opts)
 
 -- Utils
 -- =====================================================================================================================
 
 -- Case (toggle)
 -- TODO: validate and probably remap for convience
-vim.keymap.set("i", "<leader>pcc", "~", { desc = "Toggle case" })
+keymap_set("i", "<leader>pcc", "~", { desc = "Toggle case" })
 
--- Navigation
--- FIX: this
+-- Context-aware navigation
+local tmux_dirs = {
+  h = "-L",
+  j = "-D",
+  k = "-U",
+  l = "-R",
+}
+
 local function ctx_move(dir)
-  local tmux_dirs = {
-    h = "-L",
-    j = "-D",
-    k = "-U",
-    l = "-R",
-  }
-
-  local before = vim.api.nvim_get_current_win()
-
-  vim.cmd("wincmd " .. dir)
-
-  local after = vim.api.nvim_get_current_win()
+  local before = api.nvim_get_current_win()
+  cmd("wincmd " .. dir)
+  local after = api.nvim_get_current_win()
 
   if before == after then
-    vim.fn.system({ "tmux", "select-pane", tmux_dirs[dir] })
+    fn.system({ "tmux", "select-pane", tmux_dirs[dir] })
   end
 end
 
-vim.keymap.set("n", "<C-H>", function()
-  ctx_move("h")
-end)
-vim.keymap.set("n", "<C-J>", function()
-  ctx_move("j")
-end)
-vim.keymap.set("n", "<C-K>", function()
-  ctx_move("k")
-end)
-vim.keymap.set("n", "<C-L>", function()
-  ctx_move("l")
-end)
+-- Create navigation keymaps efficiently
+local nav_keys = { "H", "J", "K", "L" }
+local nav_dirs = { "h", "j", "k", "l" }
+
+for i, key in ipairs(nav_keys) do
+  keymap_set("n", "<C-" .. key .. ">", function()
+    ctx_move(nav_dirs[i])
+  end, { desc = "Navigate " .. nav_dirs[i] })
+end
 
 -- Navigation end
 
 -- Logger
 -- TODO: find a better logging solution similar to turbo console_log
-vim.keymap.set("n", "<leader>pcl", js_console_log, { desc = "[C]onsole [L]og variable" })
+keymap_set("n", "<leader>pcl", js_console_log, { desc = "[C]onsole [L]og variable" })
 
 -- Create space
-vim.keymap.set("n", "<leader>ps", function()
-  -- Using 'o' enters insert mode, so we must return to normal mode
-  vim.cmd("5normal o")
-  -- Then move up 5 lines
-  vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1] - 5, 0 })
+keymap_set("n", "<leader>ps", function()
+  cmd("5normal o")
+  local current_line = api.nvim_win_get_cursor(0)[1]
+  api.nvim_win_set_cursor(0, { current_line - 5, 0 })
 end, { desc = "Create 5 lines below and move to the first" })
 
-vim.keymap.set("n", "<leader>pS", function()
-  -- Use "normal O" to insert lines above the current line
-  vim.cmd("5normal O")
-  -- The cursor is already on the top-most new line after this
+keymap_set("n", "<leader>pS", function()
+  cmd("5normal O")
 end, { desc = "Create 5 lines above and move to the first" })
 
 -- Do math!
-vim.keymap.set("n", "<leader>pm", function()
-  -- Enter insert mode, then trigger the expression register
-  local keys = vim.api.nvim_replace_termcodes("i<C-r>=", true, false, true)
-  vim.api.nvim_feedkeys(keys, "n", false)
+keymap_set("n", "<leader>pm", function()
+  local keys = api.nvim_replace_termcodes("i<C-r>=", true, false, true)
+  api.nvim_feedkeys(keys, "n", false)
 end, { desc = "Evaluate expression and insert result" })
 
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
-vim.keymap.set("n", "<leader>pf", function()
-  local filepath = vim.fn.expand("%:.")
-  local line_num = vim.api.nvim_win_get_cursor(0)[1]
+keymap_set("n", "<leader>pf", function()
+  local filepath = fn.expand("%:.")
+  local line_num = api.nvim_win_get_cursor(0)[1]
   local content = filepath .. ":" .. line_num
-  vim.fn.setreg("+", content)
-  vim.notify("Copied: " .. content, vim.log.levels.INFO)
+  fn.setreg("+", content)
+  notify("Copied: " .. content, vim.log.levels.INFO)
 end, { desc = "Copy file path and line number" })
 
 -- Multiline
-vim.keymap.set("v", "<leader>pf", function()
-  local filepath = vim.fn.expand("%:.")
-  -- Get visual selection range
-  -- 'v' is the start of visual selection, '.' is current cursor position
-  local start_line = vim.fn.line("v")
-  local end_line = vim.fn.line(".")
+keymap_set("v", "<leader>pf", function()
+  local filepath = fn.expand("%:.")
+  local start_line = fn.line("v")
+  local end_line = fn.line(".")
 
-  -- Ensure start_line is less than or equal to end_line
   if start_line > end_line then
     start_line, end_line = end_line, start_line
   end
 
-  local content
-  if start_line == end_line then
-    content = filepath .. ":" .. start_line
-  else
-    content = filepath .. ":" .. start_line .. "-" .. end_line
-  end
+  local content = start_line == end_line and filepath .. ":" .. start_line
+    or filepath .. ":" .. start_line .. "-" .. end_line
 
-  vim.fn.setreg("+", content)
-  vim.notify("Copied: " .. content, vim.log.levels.INFO)
+  fn.setreg("+", content)
+  notify("Copied: " .. content, vim.log.levels.INFO)
 end, { desc = "Copy file path and line range" })
 
 -- Open in
 -- =====================================================================================================================
 
--- Open in Vscode
-vim.keymap.set("n", "<leader>ov", function()
-  open_in_editor("code")
-end, { desc = "Open file and parent folder in VS Code" })
+-- Open in external editor
+local editors = {
+  { key = "v", cmd = "code", desc = "Open file and parent folder in VS Code" },
+  { key = "c", cmd = "cursor", desc = "Open in Cursor at line" },
+  { key = "k", cmd = "kiro", desc = "Open in Kiro at line" },
+}
 
--- Open in Cursor
-vim.keymap.set("n", "<leader>oc", function()
-  open_in_editor("cursor")
-end, { desc = "Open in Cursor at line" })
+for _, editor in ipairs(editors) do
+  keymap_set("n", "<leader>o" .. editor.key, function()
+    open_in_editor(editor.cmd)
+  end, { desc = editor.desc })
+end
 
--- Open in Kiro
-vim.keymap.set("n", "<leader>ok", function()
-  open_in_editor("kiro")
-end, { desc = "Open in Kiro at line" })
-
--- Open parent folder in Finder
-vim.keymap.set("n", "<leader>of", function()
-  local parent_dir = vim.fn.expand("%:p:h")
-  vim.fn.system({ "open", parent_dir })
-  vim.notify("Opened parent folder in Finder: " .. parent_dir, vim.log.levels.INFO)
+-- Open parent folder in finder
+keymap_set("n", "<leader>of", function()
+  local parent_dir = fn.expand("%:p:h")
+  fn.system({ "open", parent_dir })
+  notify("Opened parent folder in Finder: " .. parent_dir, vim.log.levels.INFO)
 end, { desc = "Open parent folder in Finder" })
 
 -- =====================================================================================================================
 -- UI toggles (t)
 -- =====================================================================================================================
 
--- Default disable line indention indicators cuz im weird like that
+-- Snacks setup
 local snacks = require("snacks")
+
+-- Default disable line indention indicators cuz im weird like that
 snacks.indent.disable()
 
 -- Toggle indent lines
-vim.keymap.set("n", "<leader>tn", function()
+keymap_set("n", "<leader>tn", function()
   vim.wo.list = not vim.wo.list
   vim.opt.list = not vim.opt.list
-  local current = snacks.indent.enabled
 
-  if current then
+  if snacks.indent.enabled then
     snacks.indent.disable()
   else
     snacks.indent.enable()
@@ -243,45 +240,32 @@ vim.keymap.set("n", "<leader>tn", function()
 end, { desc = "Toggle indent lines", remap = true })
 
 -- Toggle rainbow delimiters
-vim.keymap.set("n", "<leader>td", function()
-  require("rainbow-delimiters").toggle(0)
+local rainbow_delimiters = require("rainbow-delimiters")
+keymap_set("n", "<leader>td", function()
+  rainbow_delimiters.toggle(0)
 end, { desc = "Toggle rainbow delimiters", remap = true })
 
--- Toggle highlight colors (background and foreground)
-vim.keymap.set("n", "<leader>th", function()
-  local hl_groups = { "Visual", "Search", "IncSearch", "CurSearch", "Substitute" }
+-- Toggle highlight colors
+local hl_groups = { "Visual", "Search", "IncSearch", "CurSearch", "Substitute" }
+local custom_bg = "#181926"
+local custom_fg = "#b7bdf8"
+
+keymap_set("n", "<leader>th", function()
   local hl_state = vim.w.hl_toggle_state or {}
-
-  -- Custom colors
-  local custom_bg = "#181926"
-  local custom_fg = "#b7bdf8"
-
-  -- Check if custom colors are currently applied
   local is_custom = hl_state.custom or false
 
   for _, group in ipairs(hl_groups) do
-    local hl_def = vim.api.nvim_get_hl(0, { name = group })
-
     if is_custom then
       -- Restore original colors
       if hl_state[group] then
-        vim.api.nvim_set_hl(0, group, {
-          bg = hl_state[group].bg,
-          fg = hl_state[group].fg,
-          reverse = hl_state[group].reverse,
-        })
+        api.nvim_set_hl(0, group, hl_state[group])
       end
     else
-      -- Store original colors if not stored
+      -- Store and set custom colors
       if not hl_state[group] then
-        hl_state[group] = {
-          bg = hl_def.bg,
-          fg = hl_def.fg,
-          reverse = hl_def.reverse,
-        }
+        hl_state[group] = api.nvim_get_hl(0, { name = group })
       end
-      -- Set custom background and foreground colors
-      vim.api.nvim_set_hl(0, group, {
+      api.nvim_set_hl(0, group, {
         bg = custom_bg,
         fg = custom_fg,
         reverse = false,
@@ -293,30 +277,27 @@ vim.keymap.set("n", "<leader>th", function()
   vim.w.hl_toggle_state = hl_state
 
   local msg = is_custom and "Highlight colors: restored" or "Highlight colors: custom (#181926/#b7bdf8)"
-  vim.notify(msg, vim.log.levels.INFO)
+  notify(msg, vim.log.levels.INFO)
 end, { desc = "Toggle highlight colors (background/foreground)" })
 
-local Snacks = require("snacks")
+-- Toggle snacks ignored files
+keymap_set("n", "<leader>ti", function()
+  local current = snacks.config.picker.ignored
+  -- local currentH = snacks.config.picker.hidden
+  snacks.config.picker.ignored = not current
 
--- Toggle snacks ignored and hidden
-vim.keymap.set("n", "<leader>ti", function()
-  local currentI = Snacks.config.picker.ignored
-  -- local currentH = Snacks.config.picker.hidden
-
-  Snacks.config.picker.ignored = not currentI
-  -- Snacks.config.picker.hidden = not currentH
-
-  msg = Snacks.config.picker.ignored and "Snacks: ignored ON" or "Snacks: ignored OFF"
-  Snacks.notify(msg)
+  local msg = snacks.config.picker.ignored and "Snacks: ignored ON" or "Snacks: ignored OFF"
+  snacks.notify(msg)
 end, { desc = "Toggle Snacks ignored files" })
 
 -- Toggle color column
-vim.keymap.set("n", "<leader>tc", function()
-  if vim.opt.colorcolumn:get() == "" then
-    vim.opt.colorcolumn = "80" -- Set your desired column number
-    vim.notify("ColorColumn: ON (80)", vim.log.levels.INFO)
+keymap_set("n", "<leader>tc", function()
+  local current = vim.opt.colorcolumn:get()
+  if current == "" then
+    vim.opt.colorcolumn = "80"
+    notify("ColorColumn: ON (80)", vim.log.levels.INFO)
   else
     vim.opt.colorcolumn = ""
-    vim.notify("ColorColumn: OFF", vim.log.levels.INFO)
+    notify("ColorColumn: OFF", vim.log.levels.INFO)
   end
 end, { desc = "Toggle colorcolumn" })
