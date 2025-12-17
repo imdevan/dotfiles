@@ -23,7 +23,7 @@ function jobbies() {
       
     local glassdoor="https://www.glassdoor.com/Job/"
     local glassdoor_query="seattle-wa-us-"
-    local glassdoor_post_query="-jobs-SRCH_IL.0,13_IC1150505_KO14,22.htm"
+    local glassdoor_post_query="-jobs-SRCH_IL.0,13_IC1150505_KO14,22.htm?fromAge=3"
 
     # Define array of URLs
     local urls=(
