@@ -58,8 +58,12 @@ cmd K         - in line ai chat
 shift cmd k   - file context ai
 
 # Vim Motions
-
 <https://www.worldtimzone.com/res/vi.html7>
+
+## Global 
+
+crtl o  - move backward in jump list (gd, gg, etc.)
+
 
 ## Cursor movement - Normal mode
 
