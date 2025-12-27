@@ -185,6 +185,29 @@ else
   echo "${yellow}Warning: src/App.tsx not found${reset}"
 fi
 
+# Remove og:image, twitter:image meta tags, and favicon links from index.html
+if [ -f "index.html" ]; then
+  # Remove og:image meta tags (handles any attribute order)
+  perl -i -pe 's/<meta\s+[^>]*property=["\047]og:image["\047][^>]*>//gi' index.html
+  # Remove twitter:image meta tags (handles any attribute order)
+  perl -i -pe 's/<meta\s+[^>]*name=["\047]twitter:image["\047][^>]*>//gi' index.html
+  # Remove favicon links (handles icon, shortcut icon, apple-touch-icon, etc.)
+  perl -i -pe 's/<link\s+[^>]*rel=["\047](?:icon|shortcut\s+icon|apple-touch-icon)["\047][^>]*>//gi' index.html
+  echo "${green}✓ Removed og:image, twitter:image meta tags, and favicon links from index.html${reset}"
+else
+  echo "${yellow}Warning: index.html not found${reset}"
+fi
+
+# Delete favicon.ico file from public directory
+if [ -f "public/favicon.ico" ]; then
+  rm "public/favicon.ico"
+  echo "${green}✓ Deleted public/favicon.ico${reset}"
+elif [ -f "favicon.ico" ]; then
+  # Also check root directory in case favicon is there
+  rm "favicon.ico"
+  echo "${green}✓ Deleted favicon.ico${reset}"
+fi
+
 echo ""
 echo "${green}${bold}✓ Setup complete!${reset}"
 echo "${blue}  Project name: ${bold}${PROJECT_NAME}${reset}"
