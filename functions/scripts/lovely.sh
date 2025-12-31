@@ -278,7 +278,7 @@ if [ -f "index.html" ]; then
   if ([ "$NEEDS_OG_UPDATE" = true ] && [ -n "$OG_IMAGE_URL" ]) || ([ "$NEEDS_FAVICON_UPDATE" = true ] && [ -n "$FAVICON_URL" ]); then
     TEMP_FILE=$(mktemp)
     INSERTED=0
-    
+   c 
     while IFS= read -r line || [ -n "$line" ]; do
       if [[ "$line" =~ "</head>" ]] && [ "$INSERTED" -eq 0 ]; then
         # Insert og:image and twitter:image if needed
@@ -288,7 +288,7 @@ if [ -f "index.html" ]; then
         fi
         # Insert favicon if needed
         if [ "$NEEDS_FAVICON_UPDATE" = true ] && [ -n "$FAVICON_URL" ]; then
-          echo "  <link rel=\"icon\" href=\"${FAVICON_URL}\" />" >> "$TEMP_FILE"
+          echo -e "\t<link rel=\"icon\" href=\"${FAVICON_URL}\" />" >> "$TEMP_FILE"
         fi
         INSERTED=1
       fi
