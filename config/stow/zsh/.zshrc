@@ -233,6 +233,9 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="$PATH:/Users/devy/.local/bin"
 export PATH="/Users/devy/.bun/bin:$PATH"
 
+# NU shell config
+
+export NU_CONFIG_DIR="$HOME/.config/nushell"
 
 # For output testing 
 zprof > ~/.zsh_profile
