@@ -35,7 +35,7 @@ get_flag_value() {
   local flag="$1"
   shift
   local args=("$@")
-  
+
   for i in "${!args[@]}"; do
     if [ "${args[$i]}" = "$flag" ] && [ $((i + 1)) -lt ${#args[@]} ]; then
       echo "${args[$((i + 1))]}"
@@ -151,7 +151,7 @@ export default defineConfig(({ mode }) => ({
   },
 }));
 EOF
-    echo -e "${green}✓ Created vite.config.ts${reset}"
+  echo -e "${green}✓ Created vite.config.ts${reset}"
 else
   # Modify existing vite.config.ts
   # Check if the base configuration already exists with the correct project name
@@ -242,22 +242,22 @@ if [ -f "index.html" ]; then
   NEEDS_FAVICON_UPDATE=true
   OG_REMOVED=false
   FAVICON_REMOVED=false
-  
+
   if [ -n "$OG_IMAGE_URL" ]; then
     # Check if both og:image and twitter:image exist with correct values
-    if grep -q "property=\"og:image\".*content=\"${OG_IMAGE_URL}\"" index.html 2>/dev/null && \
-       grep -q "name=\"twitter:image\".*content=\"${OG_IMAGE_URL}\"" index.html 2>/dev/null; then
+    if grep -q "property=\"og:image\".*content=\"${OG_IMAGE_URL}\"" index.html 2>/dev/null &&
+      grep -q "name=\"twitter:image\".*content=\"${OG_IMAGE_URL}\"" index.html 2>/dev/null; then
       NEEDS_OG_UPDATE=false
     fi
   fi
-  
+
   if [ -n "$FAVICON_URL" ]; then
     # Check if favicon exists with correct value
     if grep -q "rel=\"icon\".*href=\"${FAVICON_URL}\"" index.html 2>/dev/null; then
       NEEDS_FAVICON_UPDATE=false
     fi
   fi
-  
+
   # Remove existing tags that need updating (in one pass)
   if [ "$NEEDS_OG_UPDATE" = true ]; then
     if grep -q "property=\"og:image\"" index.html 2>/dev/null || grep -q "name=\"twitter:image\"" index.html 2>/dev/null; then
@@ -266,37 +266,37 @@ if [ -f "index.html" ]; then
       OG_REMOVED=true
     fi
   fi
-  
+
   if [ "$NEEDS_FAVICON_UPDATE" = true ]; then
     if grep -q "rel=\"icon\"" index.html 2>/dev/null || grep -q "rel=\"shortcut icon\"" index.html 2>/dev/null; then
       perl -i -pe 's/<link\s+[^>]*rel=["\047](?:icon|shortcut\s+icon|apple-touch-icon)["\047][^>]*>//gi' index.html
       FAVICON_REMOVED=true
     fi
   fi
-  
+
   # Insert all new tags in a single pass if any are needed
   if ([ "$NEEDS_OG_UPDATE" = true ] && [ -n "$OG_IMAGE_URL" ]) || ([ "$NEEDS_FAVICON_UPDATE" = true ] && [ -n "$FAVICON_URL" ]); then
     TEMP_FILE=$(mktemp)
     INSERTED=0
-   c 
+
     while IFS= read -r line || [ -n "$line" ]; do
       if [[ "$line" =~ "</head>" ]] && [ "$INSERTED" -eq 0 ]; then
         # Insert og:image and twitter:image if needed
         if [ "$NEEDS_OG_UPDATE" = true ] && [ -n "$OG_IMAGE_URL" ]; then
-          echo "  <meta property=\"og:image\" content=\"${OG_IMAGE_URL}\" />" >> "$TEMP_FILE"
-          echo "  <meta name=\"twitter:image\" content=\"${OG_IMAGE_URL}\" />" >> "$TEMP_FILE"
+          echo "  <meta property=\"og:image\" content=\"${OG_IMAGE_URL}\" />" >>"$TEMP_FILE"
+          echo "  <meta name=\"twitter:image\" content=\"${OG_IMAGE_URL}\" />" >>"$TEMP_FILE"
         fi
         # Insert favicon if needed
         if [ "$NEEDS_FAVICON_UPDATE" = true ] && [ -n "$FAVICON_URL" ]; then
-          echo -e "\t<link rel=\"icon\" href=\"${FAVICON_URL}\" />" >> "$TEMP_FILE"
+          echo -e "\t<link rel=\"icon\" href=\"${FAVICON_URL}\" />" >>"$TEMP_FILE"
         fi
         INSERTED=1
       fi
-      echo "$line" >> "$TEMP_FILE"
-    done < index.html
-    
+      echo "$line" >>"$TEMP_FILE"
+    done <index.html
+
     mv "$TEMP_FILE" index.html
-    
+
     # Report what was done
     if [ "$NEEDS_OG_UPDATE" = true ] && [ -n "$OG_IMAGE_URL" ]; then
       echo -e "${green}✓ Updated og:image and twitter:image meta tags in index.html${reset}"
@@ -311,7 +311,7 @@ if [ -f "index.html" ]; then
     elif [ -n "$OG_IMAGE_URL" ]; then
       echo -e "${blue}ℹ og:image and twitter:image meta tags already set correctly${reset}"
     fi
-    
+
     if [ "$FAVICON_REMOVED" = true ]; then
       echo -e "${green}✓ Removed favicon links from index.html${reset}"
     elif [ -n "$FAVICON_URL" ]; then
