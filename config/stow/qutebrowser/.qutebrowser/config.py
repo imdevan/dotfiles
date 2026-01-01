@@ -21,6 +21,7 @@ config.bind("X", "undo")
 config.bind("<Cmd-Alt-i>", "devtools right")
 config.bind("<Cmd-Alt-b>", "devtools bottom")
 config.bind("<Ctrl-t>", f"open {path_to_start_page}")
+config.bind("<Cmd-Shift-W>", "close")  # For macOS
 
 # Window Styles
 c.window.hide_decoration = True
@@ -40,6 +41,8 @@ c.url.searchengines = {
     "yt": "https://www.youtube.com/results?search_query={}",
     "git": "https://github.com/search?q={}",
     "stack": "https://stackoverflow.com/search?q={}",
+    "gpt": "https://chat.openai.com/?q={}",
+    "cla": "https://claude.ai/new?q={}",
     "lol": "u.gg/lol/champions/{}/build",
 }
 
