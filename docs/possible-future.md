@@ -20,6 +20,8 @@
 - https://dooit-org.github.io/dooit/extra/dooit_extras.html
 - Slow whitespace typing on nvim 
 - Slightly slow zsh load times kkkkkk
+- how can i integrate nushell features where needed? 
+- swtich to fish as default? 
 
 
 ## Things to check out
@@ -32,6 +34,10 @@
 - https://github.com/PatrickJS/awesome-cursorrules
 - https://pastebin.com/wLX4cZu6
 - https://terminaltrove.com/explore/
+- tldr
+- configure ls to eza https://github.com/eza-community/eza
+- yazi
+- jq for json viewing and querying https://jqlang.org/
 
 ## things to change
 
