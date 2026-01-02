@@ -1,1 +1,4 @@
-return {}
+return {
+  "davidmh/cspell.nvim",
+  enabled = false,
+}
