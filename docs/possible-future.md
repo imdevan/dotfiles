@@ -38,6 +38,7 @@
 - configure ls to eza https://github.com/eza-community/eza
 - yazi
 - jq for json viewing and querying https://jqlang.org/
+- espanso https://espanso.org/
 
 ## things to change
 
