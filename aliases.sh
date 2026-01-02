@@ -34,7 +34,7 @@ alias bb="cd -"   # Go back to last dirctory
 
 # Suffix aliases
 # Open various files types in editor
-alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,go,py}="$editor"
+alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py}="$editor"
 alias -s git="git_clone" # open git urls with custom function
 
 # Home Brew
@@ -69,7 +69,6 @@ alias ze="z ./app/expo"
 alias bil="eas build --platform ios --profile development --local"
 
 # Docker
-alias dcd="docker compose down"
 alias dcu="docker compose up"
 alias dcw="docker compose watch"
 alias dcubd="ducb -d" # build up and detatch
@@ -77,7 +76,7 @@ alias dcd="docker compose down -v"
 alias dcub="docker compose up --build"
 alias prune_all="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r docker rm && docker system prune -a --volumes -f"
 alias drm="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r docker rm"
-alias dcr="dcd && dcub -d" # full reset
+alias dcr="dcd && dcubd" # restart db
 
 alias cs="colima start"
 alias csd="cs && dcw"
@@ -432,7 +431,6 @@ alias harkeys="harlequin --config-path ~/.harlequin.toml --profile default --key
 alias dpv2="cd ~/Documents/Projects/dance-partner/dpv2"
 alias dcubd="docker compose up -bd"
 alias dcubd="docker compose up --build -d"
-alias dcr="dcd && dcubd"
 alias cr="colima stop && colima delete && colima start"
 alias bt="bun test"
 alias brt="bun run test"
@@ -446,3 +444,4 @@ alias pro="cd ~/Documents/Projects"
 alias gdp="cd ~/Documents/Projects/dance-partner/get-dance-partner"
 alias pbis="pnpm build:ios:sim"
 alias nu="nu --config $HOME/.config/nushell/config.nu"
+alias srd="./scripts/reset-db.sh"
