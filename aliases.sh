@@ -4,7 +4,7 @@
 # alias <name>=<string>
 
 # Variables used in file
-editor="cursor"
+editor="nvim"
 
 # Navigation
 alias ..="cd .."
@@ -23,6 +23,7 @@ alias dot="cd $dotfile_dir"
 # Terminal Navigation
 alias la="ls -a" # List all in directory
 alias lsa="ls -a"
+alias lfa="ls -ARFh"
 alias o="open ./"  # Open - in finder
 alias cpr="cp -rf" # Copy recursive
 alias cf="cp -rf"
@@ -30,6 +31,11 @@ alias rf="rm -rf" # Remove recursive
 alias t="touch"   # Make file
 alias ex="exit"   # Exit terminal
 alias bb="cd -"   # Go back to last dirctory
+
+# Suffix aliases
+# Open various files types in editor
+alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,go,py}="$editor"
+alias -s git="git_clone" # open git urls with custom function
 
 # Home Brew
 alias bri="brew install"
