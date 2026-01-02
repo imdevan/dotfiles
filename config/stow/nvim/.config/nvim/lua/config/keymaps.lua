@@ -15,10 +15,27 @@ local js_console_log = require("utils.js_console_log").js_console_log
 
 -- Cache vim functions for better performance
 local keymap_set = vim.keymap.set
+local del = vim.keymap.del
 local api = vim.api
 local fn = vim.fn
 local cmd = vim.cmd
 local notify = vim.notify
+
+-- restore colon for normal mode
+-- keep for restoring later if needed
+-- keymap_set("n", ":", ":", { noremap = true })
+
+-- output normal mode keymaps to file. keep for testing
+-- vim.schedule(function()
+--   local maps = vim.api.nvim_get_keymap("n")
+--   local out = {}
+--
+--   for _, m in ipairs(maps) do
+--     table.insert(out, string.format("lhs=%s rhs=%s expr=%s", m.lhs or "", m.rhs or "", tostring(m.expr)))
+--   end
+--
+--   vim.fn.writefile(out, "/tmp/nmap_dump.txt")
+-- end)
 
 -- =====================================================================================================================
 -- Global (escaped)
@@ -114,34 +131,33 @@ keymap_set("n", "gM", "<CMD>Glance implementations<CR>", silent_opts)
 -- Case (toggle)
 -- TODO: validate and probably remap for convience
 keymap_set("i", "<leader>pcc", "~", { desc = "Toggle case" })
-
 -- Context-aware navigation
-local tmux_dirs = {
-  h = "-L",
-  j = "-D",
-  k = "-U",
-  l = "-R",
-}
-
-local function ctx_move(dir)
-  local before = api.nvim_get_current_win()
-  cmd("wincmd " .. dir)
-  local after = api.nvim_get_current_win()
-
-  if before == after then
-    fn.system({ "tmux", "select-pane", tmux_dirs[dir] })
-  end
-end
-
--- Create navigation keymaps efficiently
-local nav_keys = { "H", "J", "K", "L" }
-local nav_dirs = { "h", "j", "k", "l" }
-
-for i, key in ipairs(nav_keys) do
-  keymap_set("n", "<C-" .. key .. ">", function()
-    ctx_move(nav_dirs[i])
-  end, { desc = "Navigate " .. nav_dirs[i] })
-end
+-- local tmux_dirs = {
+--   h = "-L",
+--   j = "-D",
+--   k = "-U",
+--   l = "-R",
+-- }
+--
+-- local function ctx_move(dir)
+--   local before = api.nvim_get_current_win()
+--   cmd("wincmd " .. dir)
+--   local after = api.nvim_get_current_win()
+--
+--   if before == after then
+--     fn.system({ "tmux", "select-pane", tmux_dirs[dir] })
+--   end
+-- end
+--
+-- -- Create navigation keymaps efficiently
+-- local nav_keys = { "H", "J", "K", "L" }
+-- local nav_dirs = { "h", "j", "k", "l" }
+--
+-- for i, key in ipairs(nav_keys) do
+--   keymap_set("n", "<C-" .. key .. ">", function()
+--     ctx_move(nav_dirs[i])
+--   end, { desc = "Navigate " .. nav_dirs[i] })
+-- end
 
 -- Navigation end
 
