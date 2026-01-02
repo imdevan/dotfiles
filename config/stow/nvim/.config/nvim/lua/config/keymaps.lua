@@ -289,6 +289,26 @@ keymap_set("n", "<leader>ti", function()
   snacks.notify(msg)
 end, { desc = "Toggle Snacks ignored files" })
 
+-- Toggle type hints
+keymap_set("n", "<leader>ty", function()
+  local bufnr = api.nvim_get_current_buf()
+  local enabled = vim.b.inlay_hints_enabled
+  if enabled == nil then
+    -- First time: default to true (hints are usually on by default)
+    enabled = true
+  end
+
+  if enabled then
+    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+    vim.b.inlay_hints_enabled = false
+    notify("Type hints: OFF", vim.log.levels.INFO)
+  else
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    vim.b.inlay_hints_enabled = true
+    notify("Type hints: ON", vim.log.levels.INFO)
+  end
+end, { desc = "Toggle type hints", remap = true })
+
 -- Toggle color column
 keymap_set("n", "<leader>tc", function()
   local current = vim.opt.colorcolumn:get()
