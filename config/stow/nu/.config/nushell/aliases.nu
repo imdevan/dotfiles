@@ -3,5 +3,7 @@
 # Query app.db
 def q [query: string] { open app.db | query db $query }
 
+alias e = exit
+
 
 
