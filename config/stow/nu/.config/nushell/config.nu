@@ -1,4 +1,6 @@
 # https://www.nushell.sh/book/configuration.html
+# also see:
+# https://github.com/nushell/awesome-nu#plugins
 
 # Hide the welcome prompt (equivalent to fish_greeting = '')
 $env.config.show_banner = false
@@ -67,3 +69,5 @@ $env.config = ($env.config | upsert completions {
   partial: true
 })
 
+# Source aliases
+source ~/.config/nushell/aliases.nu
