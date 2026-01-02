@@ -110,7 +110,7 @@ export def main [] {
         shape_table: { fg: $color_palette.blue attr: "b" }
         shape_variable: $color_palette.pink
 
-        background: $color_palette.base
+        background: none
         foreground: $color_palette.text
         cursor: $color_palette.blue
     }

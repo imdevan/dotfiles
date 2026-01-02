@@ -71,3 +71,4 @@ $env.config = ($env.config | upsert completions {
 
 # Source aliases
 source ~/.config/nushell/aliases.nu
+
