@@ -48,13 +48,13 @@ fi
 # fi
 
 # Add a blank line after the prompt
-# echo ''
+# echo ""
 
 # function add_blank_line_after_prompt() {
-#   echo ''
+#   echo ""
 # }
 # precmd() {
-#   echo ''
+#   echo ""
 # }
 
 preexec(){
@@ -84,12 +84,12 @@ preexec(){
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
-zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ":omz:update" mode disabled  # disable automatic updates
+# zstyle ":omz:update" mode auto      # update automatically without asking
+# zstyle ":omz:update" mode reminder  # just remind me to update when it"s time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# zstyle ":omz:update" frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -119,7 +119,7 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
+# see "man strftime" for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -135,7 +135,7 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # needed for nvm to be lazyloaded MUST come before plugins are loaded
 export NVM_LAZY_LOAD=true
 
-plugins=(zsh-vi-mode nvm)
+plugins=(zsh-vi-mode nvm web-search)
 
 # Only load zsh-vi-mode if you want vi keybindings
 # Option 1: Load on first ESC press (vi mode trigger)
@@ -153,9 +153,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#   export EDITOR="vim"
 # else
-#   export EDITOR='nvim'
+#   export EDITOR="nvim"
 # fi
 
 # Compilation flags
@@ -237,5 +237,14 @@ export PATH="/Users/devy/.bun/bin:$PATH"
 
 export NU_CONFIG_DIR="$HOME/.config/nushell"
 
+# Bind keys to widgets
+# Apply to the global/main keymap
+bindkey -M main " " magic-space
+
+# Apply specifically to emacs and vi-insert modes
+bindkey -M emacs " " magic-space
+bindkey -M viins " " magic-space
+
 # For output testing 
 zprof > ~/.zsh_profile
+
