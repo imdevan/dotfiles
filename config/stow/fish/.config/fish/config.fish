@@ -1,4 +1,7 @@
 # https://fishshell.com/docs/current/language.html#configuration
+# also see:
+# https://github.com/jorgebucaran/awsm.fish
+# https://github.com/IlanCosman/tide
 
 if status is-interactive
     # Apply the Catppuccin theme
