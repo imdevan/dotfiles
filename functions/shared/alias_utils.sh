@@ -104,7 +104,11 @@ function is_alias() {
         local alias_value=$(echo "$line" | sed -E 's/alias [^=]+=(.*)/\1/')
         alias_value=$(echo "$alias_value" | sed 's/#.*$//')
         local alias_comment=$(echo "$line" | sed -E 's/.*#(.*)/\1/' | sed 's/^[[:space:]]*//')
-        printf "${orange}%-${max_length}s${reset} = ${purple}%s${reset} ${yellow}%s${reset}\n" "$alias_name" "$alias_value" "# $alias_comment"
+        if [ -n "$alias_comment" ] && [[ "$line" =~ \# ]]; then
+          printf "${orange}%-${max_length}s${reset} = ${purple}%s${reset} ${yellow}%s${reset}\n" "$alias_name" "$alias_value" "# $alias_comment"
+        else
+          printf "${orange}%-${max_length}s${reset} = ${purple}%s${reset}\n" "$alias_name" "$alias_value"
+        fi
       done
       echo ""
     done <<<"$files"
