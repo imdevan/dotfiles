@@ -128,6 +128,42 @@ keymap_set("n", "gM", "<CMD>Glance implementations<CR>", silent_opts)
 -- Utils
 -- =====================================================================================================================
 
+-- Evaluate math expression from selected text
+keymap_set("v", "<leader>pm", function()
+  -- Save current selection to register
+  cmd('normal! "vy')
+  local selected_text = fn.getreg("v")
+
+  if selected_text == "" then
+    notify("No selection", vim.log.levels.WARN)
+    return
+  end
+
+  -- Trim whitespace and newlines
+  selected_text = selected_text:gsub("^%s+", ""):gsub("%s+$", ""):gsub("\n", "")
+
+  -- Evaluate using Lua with math environment
+  local success, result = pcall(function()
+    local math_env = setmetatable({}, { __index = math })
+    math_env.pi = math.pi
+    math_env.e = math.exp(1)
+    local func = load("return " .. selected_text, "math_eval", "t", math_env)
+    if func then
+      return func()
+    end
+    return nil
+  end)
+
+  if success and result ~= nil then
+    local result_str = tostring(result)
+    -- Replace selection with result
+    cmd("normal! gvc" .. result_str)
+    notify("Evaluated: " .. selected_text .. " = " .. result_str, vim.log.levels.INFO)
+  else
+    notify("Failed to evaluate: " .. selected_text, vim.log.levels.ERROR)
+  end
+end, { desc = "Evaluate math expression from selected text" })
+
 -- Case (toggle)
 -- TODO: validate and probably remap for convience
 keymap_set("i", "<leader>pcc", "~", { desc = "Toggle case" })
