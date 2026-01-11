@@ -365,6 +365,49 @@ keymap_set("n", "<leader>ty", function()
   end
 end, { desc = "Toggle type hints", remap = true })
 
+-- Terminal shinanigans
+-- ============================================================================
+
+-- Single line terminal
+-- local function toggle_single_line_terminal()
+--   snacks.terminal.toggle({
+--     id = "single-line",
+--     shell = vim.o.shell,
+--     style = "float",
+--     height = 1,
+--     width = math.floor(vim.o.columns * 0.5),
+--     border = "rounded",
+--   })
+-- end
+--
+-- keymap_set("n", "<M-/>", toggle_single_line_terminal, {
+--   desc = "Toggle Single Line Terminal",
+-- })
+-- keymap_set("t", "<M-/>", toggle_single_line_terminal, {
+--   desc = "Toggle Single Line Terminal",
+-- })
+--
+-- -- Multi line terminal
+-- local function toggle_multi_line_terminal()
+--   -- snacks.terminal.toggle()
+-- snacks.terminal.toggle({
+--   id = "multi-line",
+--   shell = vim.o.shell,
+--   style = "float",
+--   height = 15,
+--   width = math.floor(vim.o.columns * 0.5),
+--   border = "rounded",
+-- })
+-- end
+
+keymap_set("n", "<C-x>", snacks.terminal.toggle, {
+  desc = "Toggle multi Line Terminal",
+})
+
+keymap_set("t", "<C-x>", snacks.terminal.toggle, {
+  desc = "Toggle multi Line Terminal",
+})
+
 -- Toggle color column
 keymap_set("n", "<leader>tc", function()
   local current = vim.opt.colorcolumn:get()
