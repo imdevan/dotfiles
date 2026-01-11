@@ -254,6 +254,11 @@ keymap_set("n", "<leader>tn", function()
   end
 end, { desc = "Toggle indent lines", remap = true })
 
+-- Toggle lazygit
+keymap_set("n", "<C-g>", snacks.lazygit.open, {
+  desc = "Toggle lazygit",
+})
+
 -- Toggle rainbow delimiters
 local rainbow_delimiters = require("rainbow-delimiters")
 keymap_set("n", "<leader>td", function()
