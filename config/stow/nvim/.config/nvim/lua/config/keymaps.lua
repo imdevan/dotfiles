@@ -239,10 +239,9 @@ end, { desc = "Open parent folder in Finder" })
 -- Snacks setup
 local snacks = require("snacks")
 
+-- Toggle indent lines
 -- Default disable line indention indicators cuz im weird like that
 snacks.indent.disable()
-
--- Toggle indent lines
 keymap_set("n", "<leader>tn", function()
   vim.wo.list = not vim.wo.list
   vim.opt.list = not vim.opt.list
