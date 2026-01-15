@@ -19,3 +19,7 @@ vim.opt.colorcolumn = ""
 -- Reduce timeout for key sequences (fixes space key delay)
 -- TODO: figure what this is
 vim.opt.timeoutlen = 200
+
+vim.opt.scrolloff = 18
+-- vim.opt.scrolloff = 24
+-- vim.opt.scrolloff = 32
