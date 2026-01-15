@@ -316,7 +316,7 @@ gpt - peek Type Definition
 alt-cmd-k - move line (or selection in visual) up
 alt-cmd-j - move line (or selection in visual) down
 
-## Vimium
+## Vimiu
 
 contrl p  - custom
 
@@ -342,6 +342,13 @@ alt + down  - move into the first child directory by alphabetical order
 ## tmux
 
 see [./config/stow/tmux/.tmux.config](./config/stow/tmux/.tmux.config)
+
+leader L = C-f
+
+L : - tmux command prompt
+L s - save session
+L C-r - load session
+
 
 ## aerospace
 
