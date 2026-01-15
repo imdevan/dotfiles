@@ -44,6 +44,9 @@ c.url.searchengines = {
     "gpt": "https://chat.openai.com/?q={}",
     "cla": "https://claude.ai/new?q={}",
     "lol": "u.gg/lol/champions/{}/build",
+    "l": "localhost:{}",
+    "l3": "localhost:3000?q={}",
+    "lo": "localhost:{}000",
 }
 
 # Aliases
