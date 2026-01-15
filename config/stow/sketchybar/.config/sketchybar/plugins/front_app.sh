@@ -4,6 +4,8 @@
 # focused application in the $INFO variable:
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 #
+# SUBSTITUTES=""
+
 SUBSTITUTES="
 chrome=🦄
 arc=🌈
@@ -12,7 +14,7 @@ wezterm=👾
 code=🧑🏻‍💻
 kiro=👻
 cursor=🐁
-keyboard= 
+keyboard=
 karabiner=🧗🏻‍♀️
 system=⚙️
 streamlabs=🎬
@@ -21,6 +23,7 @@ whatsapp=🙌🏼
 kitty=😸
 finder=👀
 antigravity=🛸
+simulator=📱
 "
 
 lower() {
