@@ -61,19 +61,6 @@ sketchybar --default "${default[@]}"
 ##### Adding Left Items #####
 # https://felixkratz.github.io/SketchyBar/config/items
 #
-sketchybar --add item chevron left \
-  --set chevron icon= \
-  label.drawing=off \
-  icon.font="FiraCode Nerd Font:Normal:16.0" \
-  padding_right=0 \
-  --add item front_app left \
-  --set front_app script="$PLUGIN_DIR/front_app.sh" \
-  --subscribe front_app front_app_switched
-
-# Active app
-sketchybar --add item front_app left \
-  --set front_app script="$PLUGIN_DIR/front_app.sh" \
-  --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
@@ -89,17 +76,14 @@ sketchybar --add item front_app left \
 # Right items
 sketchybar --add item clock right \
   --set clock update_freq=10 icon= icon.font="Hack Nerd Font:Normal:12.0" script="$PLUGIN_DIR/clock.sh" \
-  --add item volume right \
-  --set volume script="$PLUGIN_DIR/volume.sh" \
-  --subscribe volume volume_change \
   --add item battery right \
   --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
   --subscribe battery system_woke power_source_change
 
-#   background.border_width=1 \
-#   background.height=20 \
-#   background.corner_radius=2 \
-#   background.drawing=off \
+background.border_width=1 \
+  background.height=20 \
+  background.corner_radius=2 \
+  background.drawing=off
 
 # sketchybar --add event aerospace_workspace_change
 
