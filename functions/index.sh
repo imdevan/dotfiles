@@ -64,3 +64,5 @@ source $dotfile_dir/functions/sh_utils.sh
 source $dotfile_dir/functions/docker_utils.sh
 
 source $dotfile_dir/functions/to_log.sh
+
+source $dotfile_dir/functions/which_lock.sh
