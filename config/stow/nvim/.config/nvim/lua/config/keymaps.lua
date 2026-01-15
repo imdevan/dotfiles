@@ -128,6 +128,15 @@ keymap_set("n", "gM", "<CMD>Glance implementations<CR>", silent_opts)
 -- Utils
 -- =====================================================================================================================
 
+-- Reset git hunk under cursor
+keymap_set("n", "<leader>pgd", function()
+  require("gitsigns").reset_hunk()
+end, { desc = "Discard git hunk under cursor" })
+
+keymap_set("n", "<leader>gz", function()
+  require("gitsigns").reset_hunk()
+end, { desc = "Discard git hunk under cursor" })
+
 -- Evaluate math expression from selected text
 keymap_set("v", "<leader>pm", function()
   -- Save current selection to register
@@ -364,6 +373,17 @@ keymap_set("n", "<leader>ty", function()
     notify("Type hints: ON", vim.log.levels.INFO)
   end
 end, { desc = "Toggle type hints", remap = true })
+
+-- Remap comments
+-- Use LazyVim's default comment keymaps (gcc for line, gc for visual)
+keymap_set("n", "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
+keymap_set("x", "<C-c>", "gc", { desc = "Toggle comment (visual)", remap = true })
+
+-- Zen mode
+-- Note: C-z is often intercepted by terminals for suspend (sends SIGTSTP)
+-- If this doesn't work, the terminal is likely intercepting it before Neovim
+keymap_set("n", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
+keymap_set("x", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
 
 -- Terminal shinanigans
 -- ============================================================================
