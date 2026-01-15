@@ -26,18 +26,44 @@ export ZSH="$HOME/.oh-my-zsh"
 #   compinit -C
 # fi
 
-# Oh My Posh!
-eval "$(oh-my-posh init zsh)"
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/hunk.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/1_shell.omp.json)"
-  eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
-fi
+# OMP zsh-vi-mode integration
+# _omp_redraw-prompt() {
+#     zle -R
+# }
+#
+# export POSH_VI_MODE="I"
+#
+# function zvm_after_select_vi_mode() {
+#   case $ZVM_MODE in
+#     $ZVM_MODE_NORMAL)      POSH_VI_MODE="N" ;;
+#     $ZVM_MODE_INSERT)      POSH_VI_MODE="I" ;;
+#     $ZVM_MODE_VISUAL)      POSH_VI_MODE="V" ;;
+#     $ZVM_MODE_VISUAL_LINE) POSH_VI_MODE="V-L" ;;
+#     $ZVM_MODE_REPLACE)     POSH_VI_MODE="R" ;;
+#   esac
+#   _omp_redraw-prompt
+# }
+
+# function zvm_after_select_vi_mode() {
+#   case $ZVM_MODE in
+#   $ZVM_MODE_NORMAL)
+#     POSH_VI_MODE="N"
+#     ;;
+#   $ZVM_MODE_INSERT)
+#     POSH_VI_MODE="I"
+#     ;;
+#   $ZVM_MODE_VISUAL)
+#     POSH_VI_MODE="V"
+#     ;;
+#   $ZVM_MODE_VISUAL_LINE)
+#     POSH_VI_MODE="V-L"
+#     ;;
+#   $ZVM_MODE_REPLACE)
+#     POSH_VI_MODE="R"
+#     ;;
+#   esac
+#   _omp_redraw-prompt
+# }
 
 # cache oh-my-posh
 # if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
@@ -57,9 +83,9 @@ fi
 #   echo ""
 # }
 
-preexec(){
-  echo
-}
+# preexec(){
+#   echo
+# }
 
 # precmd_functions+=(add_blank_line_after_prompt)
 
@@ -136,6 +162,7 @@ zstyle ":omz:update" mode disabled  # disable automatic updates
 export NVM_LAZY_LOAD=true
 
 plugins=(zsh-vi-mode nvm web-search)
+# plugins=(nvm web-search)
 
 # Only load zsh-vi-mode if you want vi keybindings
 # Option 1: Load on first ESC press (vi mode trigger)
@@ -145,6 +172,44 @@ plugins=(zsh-vi-mode nvm web-search)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# enable vi mode for ZLE
+# bindkey -v
+
+# Oh My Posh!
+# eval "$(oh-my-posh init zsh)"
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
+  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/hunk.omp.json)"
+  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
+  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubbles.omp.json)"
+  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/1_shell.omp.json)"
+  eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml)"
+  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
+  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
+fi
+#
+# export SHELL_PROMPT='❯'
+# _omp_redraw-prompt() {
+#   local precmd
+#   for precmd in "${precmd_functions[@]}"; do
+#     "$precmd"
+#   done
+#
+#   zle .reset-prompt
+# }
+# function zle-line-init zle-keymap-select {
+#     case ${KEYMAP} in
+#        (vicmd)       SHELL_PROMPT='❮' ;;
+#        (main|viins)  SHELL_PROMPT='❯' ;;
+#        (*)           SHELL_PROMPT='❮' ;;
+#     esac
+#     _omp_redraw-prompt
+# }
+#
+#
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
