@@ -37,6 +37,9 @@ alias bb="cd -"   # Go back to last dirctory
 alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py}="$editor"
 alias -s git="git_clone" # open git urls with custom function
 
+# Global aliases
+alias -g T="| tee output.log"
+
 # Home Brew
 alias bri="brew install"
 alias bric="brew install --cask"
@@ -71,12 +74,13 @@ alias bil="eas build --platform ios --profile development --local"
 # Docker
 alias dcu="docker compose up"
 alias dcw="docker compose watch"
-alias dcubd="ducb -d" # build up and detatch
 alias dcd="docker compose down -v"
 alias dcub="docker compose up --build"
 alias prune_all="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r docker rm && docker system prune -a --volumes -f"
 alias drm="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r docker rm"
-alias dcr="dcd && dcubd" # restart db
+# alias ds="dcub -d"       # build up and detatch aka docker start
+alias bds="bdpv && cs && dcub -d" # ds but navigate to backend first
+alias dcr="dcd && dcubd"          # restart db
 
 alias cs="colima start"
 alias csd="cs && dcw"
@@ -124,12 +128,12 @@ alias vq="v ~/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
 alias vg="v /Users/devy/dotfiles/functions/github.sh"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
+alias vns="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/plugins/snacks.lua"
 alias vk="v ~/dotfiles/config/stow/kitty/.config/kitty/kitty.conf"
 alias vw="v ~/dotfiles/config/stow/wezterm/.wezterm.lua"
 alias vsk="v ~/dotfiles/config/stow/skhd/.config/skhd/skhdrc"
 alias vcoms="v ~/dotfiles/config/stow/cursor/.cursor/commands/"
 alias vhar="v ~/dotfiles/config/stow/harlequin/.harlequin.toml"
-
 # Harlequin
 alias har="export VISUAL=nvim export EDITOR=nvim harlequin app.db"
 
@@ -445,3 +449,19 @@ alias gdp="cd ~/Documents/Projects/dance-partner/get-dance-partner"
 alias pbis="pnpm build:ios:sim"
 alias nu="nu --config $HOME/.config/nushell/config.nu"
 alias srd="./scripts/reset-db.sh"
+alias ll="ls | grep lock" # List lock files
+alias nei="npx expo install"
+alias t3app="bun create t3-app@latest"
+alias vits="v $HOME/Documents/Projects/dance-partner/dance-partner-vibes/app/expo/app/screens/ItemsScreen.tsx:73"
+alias vits="v $HOME/Documents/Projects/dance-partner/dance-partner-vibes/app/expo/app/screens/ItemsScreen.tsx"
+alias x="exit"
+alias ppro="p prompts"
+alias ebbis="edpv && bbis"
+alias qu="p -p q"
+alias blc="bun lint:check"
+alias bf="bun format"
+alias gmx="git merge -X theirs"
+alias bbi="rf build-* *.app && bbis"
+alias bls="bun lint-staged"
+alias blc="bun lint:changed"
+alias blc="bun lint:check"
