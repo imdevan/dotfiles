@@ -3,212 +3,265 @@ version = 3
 final_space = true
 
 [palette]
-  base = '#eff1f5'
-  blue = '#8AADF4'
-  green = '#40c4ff'
-  lavender = '#B7BDF8'
-  maroon = '#e64553'
-  mauve = '#8839ef'
-  orange = '#fe640b'
-  os = '#ACB0BE'
-  pink = '#F5BDE6'
-  red = '#e64553'
-  rosewater = '#dc8a78'
-  sky = '#04a5e5'
-  teal = '#40c4ff'
-  text = '#494D64'
-  violet = '#8839ef'
-  wight = '#FFFFFF'
-  yellow = '#e6c35c'
+base = '#eff1f5'
+blue = '#8AADF4'
+green = '#a6da95'
+lavender = '#B7BDF8'
+maroon = '#e64553'
+mauve = '#8839ef'
+orange = '#fe640b'
+os = '#ACB0BE'
+pink = '#F5BDE6'
+red = '#e64553'
+rosewater = '#dc8a78'
+peach = '#f5a97f'
+sky = '#04a5e5'
+teal = '#40c4ff'
+text = '#494D64'
+violet = '#8839ef'
+wight = '#FFFFFF'
+yellow = '#e6c35c'
 
 [upgrade]
-  source = 'cdn'
-  interval = '168h'
-  auto = false
-  notice = false
+source = 'cdn'
+interval = '168h'
+auto = false
+notice = false
 
 [[blocks]]
-  type = 'prompt'
-  alignment = 'left'
-  newline = true
-  force = true
+type = 'prompt'
+alignment = 'left'
+newline = true
+force = true
 
-  [[blocks.segments]]
-    template = ' '
-    type = 'text'
-    style = 'plain'
-
-[[blocks]]
-  type = 'prompt'
-  alignment = 'left'
-
-  [[blocks.segments]]
-    leading_diamond = ''
-    trailing_diamond = ' '
-    template = '{{ .UserName }}'
-    foreground = 'p:text'
-    background = 'p:blue'
-    type = 'session'
-    style = 'diamond'
-
-  # [var]
-  #   LocationVar = '{{ if eq .Path .Home }}~{{ else if .Parent }}{{ .Parent }}/{{ .Folder }}{{ else }}{{ .Folder }}{{ end }}'
-
-  [[blocks.segments]]
-    leading_diamond = ''
-    trailing_diamond = ''
-    # template = ' {{ if ge (len .PathSegments) 2 }}{{ index .PathSegments (sub (len .PathSegments) 2) }}/{{ index .PathSegments (sub (len .PathSegments) 1) }}{{ else }}{{ .Folder }}{{ end }}'
-    # template = ' {{ if eq .Path .Home }}~{{ else if .Parent }}{{ .Parent }}/{{ .Folder }}{{ else }}{{ .Folder }}{{ end }}'  
-    # template = ' {{ .PWD }}'
-    template = ' {{ .Folder }}'
-    foreground = 'p:text'
-    background = 'p:pink'
-    type = 'path'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      style = 'folder'
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ .HEAD }}'
-    foreground = 'p:text'
-    background = 'p:lavender'
-    type = 'git'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      branch_icon = ' '
-      cherry_pick_icon = ' '
-      commit_icon = ' '
-      fetch_status = false
-      fetch_upstream_icon = false
-      merge_icon = ' '
-      no_commits_icon = ' '
-      rebase_icon = ' '
-      revert_icon = ' '
-      tag_icon = ' '
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}'
-    foreground = '#E4F34A'
-    background = '#29315A'
-    type = 'python'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      fetch_version = false
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
-    foreground = '#7FD5EA'
-    background = '#29315A'
-    type = 'go'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      fetch_version = false
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}'
-    foreground = '#42E66C'
-    background = '#29315A'
-    type = 'node'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      fetch_version = false
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
-    foreground = '#E64747'
-    background = '#29315A'
-    type = 'ruby'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      fetch_version = false
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
-    foreground = '#E64747'
-    background = '#29315A'
-    type = 'java'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      fetch_version = false
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
-    foreground = '#9B6BDF'
-    background = '#29315A'
-    type = 'julia'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      fetch_version = false
-
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ''
-    template = '{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}'
-    foreground = 'p:base'
-    background = 'p:sky'
-    type = 'battery'
-    style = 'diamond'
-
-    [blocks.segments.properties]
-      charged_icon = ' '
-      charging_icon = '⇡ '
-      discharging_icon = '⇣ '
+[[blocks.segments]]
+template = ' '
+type = 'text'
+style = 'plain'
 
 [[blocks]]
-  type = 'prompt'
-  alignment = 'left'
-  newline = true
-  force = true
+type = 'prompt'
+alignment = 'left'
 
-  [[blocks.segments]]
-    template = ' '
-    type = 'text'
-    style = 'plain'
+# User
+# [[blocks.segments]]
+# leading_diamond = ''
+# trailing_diamond = ' '
+# template = '{{ .UserName }}'
+# foreground = 'p:text'
+# background = 'p:blue'
+# type = 'session'
+# style = 'diamond'
+
+# [var]
+#   LocationVar = '{{ if eq .Path .Home }}~{{ else if .Parent }}{{ .Parent }}/{{ .Folder }}{{ else }}{{ .Folder }}{{ end }}'
+
+[[blocks.segments]]
+leading_diamond = ''
+trailing_diamond = ''
+# template = ' {{ if ge (len .PathSegments) 2 }}{{ index .PathSegments (sub (len .PathSegments) 2) }}/{{ index .PathSegments (sub (len .PathSegments) 1) }}{{ else }}{{ .Folder }}{{ end }}'
+# template = ' {{ if eq .Path .Home }}~{{ else if .Parent }}{{ .Parent }}/{{ .Folder }}{{ else }}{{ .Folder }}{{ end }}'  
+# template = ' {{ .PWD }}'
+template = ' {{ .Folder }}'
+foreground = 'p:text'
+background = 'p:pink'
+type = 'path'
+style = 'diamond'
+
+[blocks.segments.properties]
+style = 'folder'
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ''
+template = '{{ .HEAD }}'
+foreground = 'p:text'
+background = 'p:lavender'
+type = 'git'
+style = 'diamond'
+
+[blocks.segments.properties]
+branch_icon = ' '
+cherry_pick_icon = ' '
+commit_icon = ' '
+fetch_status = false
+fetch_upstream_icon = false
+merge_icon = ' '
+no_commits_icon = ' '
+rebase_icon = ' '
+revert_icon = ' '
+tag_icon = ' '
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ''
+template = '{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}'
+foreground = '#E4F34A'
+background = '#29315A'
+type = 'python'
+style = 'diamond'
+
+[blocks.segments.properties]
+fetch_version = false
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ''
+template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+foreground = '#7FD5EA'
+background = '#29315A'
+type = 'go'
+style = 'diamond'
+
+[blocks.segments.properties]
+fetch_version = false
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ''
+template = '{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}'
+foreground = '#42E66C'
+background = '#29315A'
+type = 'node'
+style = 'diamond'
+
+[blocks.segments.properties]
+fetch_version = false
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ''
+template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+foreground = '#E64747'
+background = '#29315A'
+type = 'ruby'
+style = 'diamond'
+
+[blocks.segments.properties]
+fetch_version = false
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ''
+template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+foreground = '#E64747'
+background = '#29315A'
+type = 'java'
+style = 'diamond'
+
+[blocks.segments.properties]
+fetch_version = false
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ''
+template = '{{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+foreground = '#9B6BDF'
+background = '#29315A'
+type = 'julia'
+style = 'diamond'
+
+[blocks.segments.properties]
+fetch_version = false
+
+# charged_icon = ' '# Battery
+# [[blocks.segments]]
+# leading_diamond = ' '
+# trailing_diamond = ''
+# template = '{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}'
+# foreground = 'p:base'
+# background = 'p:sky'
+# type = 'battery'
+# style = 'diamond'
+#
+# [blocks.segments.properties]
+# charging_icon = '⇡ '
+# discharging_icon = '⇣ '
 
 [[blocks]]
-  type = 'prompt'
-  alignment = 'left'
-  newline = true
+type = 'prompt'
+alignment = 'left'
+newline = true
+force = true
 
-  [[blocks.segments]]
-    leading_diamond = ''
-    trailing_diamond = ' '
-    template = '{{ .FormattedMs }}'
-    foreground = '#AEA4BF'
-    background = '#29315A'
-    type = 'executiontime'
-    style = 'diamond'
+[[blocks.segments]]
+template = ' '
+type = 'text'
+style = 'plain'
 
-    [blocks.segments.properties]
-      style = 'austin'
-      threshold = 150
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
 
-  [[blocks.segments]]
-    leading_diamond = ' '
-    trailing_diamond = ' '
-    template = '❯'
-    foreground = 'p:pink'
-    type = 'text'
-    style = 'diamond'
+[[blocks.segments]]
+leading_diamond = ''
+trailing_diamond = ' '
+template = '{{ .FormattedMs }}'
+foreground = '#AEA4BF'
+background = '#29315A'
+type = 'executiontime'
+style = 'diamond'
+
+[blocks.segments.properties]
+style = 'austin'
+threshold = 150
+
+# [[blocks.segments]]
+# type = "vi_mode"
+# style = "plain"
+#
+# foreground_templates = [
+#   '{{ if eq .Mode "insert" }}p:green{{ end }}',
+#   '{{ if eq .Mode "normal" }}p:blue{{ end }}',
+#   '{{ if or (eq .Mode "visual") (eq .Mode "visual_line") }}p:peach{{ end }}',
+# ]
+#
+# [blocks.segments.properties]
+# insert = "❱"
+# normal = "❰"
+# visual = "❰"
+# visual_line = "❰"
+# replace = "❰"
+#
+# [[blocks.segments]]
+# leading_diamond = ''
+# trailing_diamond = ''
+# type = 'text'
+# style = 'diamond'
+#
+# template = '{{ if contains "I" .Env.POSH_VI_MODE }}❱{{ else if or (contains "N" .Env.POSH_VI_MODE) (contains "V" .Env.POSH_VI_MODE) (contains "V-L" .Env.POSH_VI_MODE) }}❰{{ end }}'
+#
+# foreground_templates = [
+#   '{{ if contains "I" .Env.POSH_VI_MODE }}p:green{{ end }}',
+#   '{{ if contains "N" .Env.POSH_VI_MODE }}p:blue{{ end }}',
+#   '{{ if or (contains "V" .Env.POSH_VI_MODE) (contains "V-L" .Env.POSH_VI_MODE) }}p:peach{{ end }}',
+# ]
+
+# template = '{{ if contains "I" .Env.POSH_VI_MODE }}❯{{ else if or (contains "N" .Env.POSH_VI_MODE) (contains "V" .Env.POSH_VI_MODE) (contains "V-L" .Env.POSH_VI_MODE) }}❮{{ end }}'
+# '{{ if contains "I" .Env.POSH_VI_MODE }}p:pink{{ end }}',
+
+# [[blocks.segments]]
+# leading_diamond = ''
+# trailing_diamond = ' '
+# template = '{{ if .Env.POSH_VI_MODE }}{{ .Env.POSH_VI_MODE }}{{ end }}'
+# foreground = 'red'
+# background = '#3C3836'
+# type = 'text'
+# style = 'diamond'
+# foreground_templates = [
+#   "{{if contains \"N\" .Env.POSH_VI_MODE}}blue{{end}}",
+#   "{{if contains \"I\" .Env.POSH_VI_MODE}}magenta{{end}}",
+#   "{{if contains \"V\" .Env.POSH_VI_MODE}}cyan{{end}}",
+#   "{{if contains \"V-L\" .Env.POSH_VI_MODE}}cyan{{end}}",
+#   "{{if contains \"R\" .Env.POSH_VI_MODE}}yellow{{end}}",
+# ]
+#
+
+[[blocks.segments]]
+leading_diamond = ' '
+trailing_diamond = ' '
+template = '❯'
+foreground = 'p:blue'
+type = 'text'
+style = 'diamond'
