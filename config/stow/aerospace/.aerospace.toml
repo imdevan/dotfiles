@@ -96,13 +96,13 @@ automatically-unhide-macos-hidden-apps = false
 
 [gaps]
 # 6 gcc
-inner.horizontal = 5
-inner.vertical = 5
+inner.horizontal = 8
+inner.vertical = 8
 outer.bottom = 0
-outer.left = 1
-# outer.top = 0
-outer.top = [{ monitor."Built-in Retina Display" = 0 }, 30]
-outer.right = 1
+outer.left = 0
+outer.top = 0
+# outer.top = [{ monitor."Built-in Retina Display" = 0 }, 30]
+outer.right = 0
 
 # enable_for_floating = true  # this is the key line
 # inner_gap = 8         # space between tiled windows
@@ -207,6 +207,7 @@ alt-shift-cmd-down = 'move down'
 alt-shift-cmd-up = 'move up'
 alt-shift-cmd-right = 'move right'
 
+# Merge
 ctrl-alt-cmd-h = 'join-with left'
 ctrl-alt-cmd-j = 'join-with down'
 ctrl-alt-cmd-k = 'join-with up'

@@ -247,9 +247,6 @@
     "markdown"
   ],
   "python.createEnvironment.trigger": "off",
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   "git.openRepositoryInParentFolders": "always",
   "[dockercompose]": {
     "editor.insertSpaces": true,
@@ -274,5 +271,9 @@
   "terminal.integrated.gpuAcceleration": "off",
   "window.systemColorTheme": "dark",
   "window.autoDetectColorScheme": false,
-  "cursor.inlineDiff.mode": "unified"
+  "cursor.inlineDiff.mode": "unified",
+  "cursor.composer.queueMessageDefaultBehavior": "send",
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "update.releaseTrack": "prerelease",
+  "cursor.composer.usageSummaryDisplay": "always"
 }
