@@ -221,6 +221,29 @@ keymap_set("n", "<leader>pS", function()
   cmd("5normal O")
 end, { desc = "Create 5 lines above and move to the first" })
 
+-- Insert line (language-specific)
+keymap_set("n", "<leader>pl", function()
+  local filetype = vim.bo.filetype
+  local current_line = api.nvim_win_get_cursor(0)[1]
+
+  if filetype == "markdown" or filetype == "mdx" then
+    -- Insert 80 dashes for Markdown/MDX
+    local dash_line = string.rep("-", 80)
+    api.nvim_buf_set_lines(0, current_line, current_line, false, { dash_line })
+    api.nvim_win_set_cursor(0, { current_line + 1, 0 })
+  else
+    -- Insert 80 equals and comment for other languages
+    local equals_line = string.rep("=", 80)
+    api.nvim_buf_set_lines(0, current_line, current_line, false, { equals_line })
+    -- Move to the new line and comment it
+    api.nvim_win_set_cursor(0, { current_line + 1, 0 })
+    -- Use schedule to ensure buffer update completes before commenting
+    vim.schedule(function()
+      cmd("normal gcc")
+    end)
+  end
+end, { desc = "Insert line (80 dashes for Markdown/MDX, 80 equals + comment for others)" })
+
 -- Do math!
 keymap_set("n", "<leader>pm", function()
   local keys = api.nvim_replace_termcodes("i<C-r>=", true, false, true)
@@ -262,6 +285,7 @@ local editors = {
   { key = "v", cmd = "code", desc = "Open file and parent folder in VS Code" },
   { key = "c", cmd = "cursor", desc = "Open in Cursor at line" },
   { key = "k", cmd = "kiro", desc = "Open in Kiro at line" },
+  { key = "g", cmd = "antigravity", desc = "Open in Antigravity at line" },
 }
 
 for _, editor in ipairs(editors) do
