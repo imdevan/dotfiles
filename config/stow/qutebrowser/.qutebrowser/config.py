@@ -10,7 +10,8 @@ import catppuccin
 # Must load first
 config.load_autoconfig()
 
-path_to_start_page = "http://localhost:8081/"
+path_to_start_page = "https://chat.openai.com"
+# path_to_start_page = "http://localhost:8081/"
 # path_to_start_page = "https://github.com/news-s/Qutebrowser-config/blob/main/config.py"
 # path_to_start_page = "https://qutebrowser.org/doc/quickstart.html"
 
@@ -27,7 +28,7 @@ config.bind("<Cmd-Shift-W>", "close")  # For macOS
 c.window.hide_decoration = True
 # c.window.transparent = True
 # c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.preferred_color_scheme = "dark"
+# c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.show = "in-mode"
 c.tabs.show = "switching"
 c.tabs.position = "top"
