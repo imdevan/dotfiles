@@ -19,16 +19,16 @@ table.insert(config.hyperlink_rules, {
 -- Color Scheme
 -- -------------------------------------------------------------------------
 -- https://github.com/catppuccin/wezterm
--- function scheme_for_appearance(appearance)
--- 	if appearance:find("Dark") then
--- 		return "Catppuccin Mocha"
--- 	else
--- 		return "Catppuccin Latte"
--- 	end
--- end
--- config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
-config.color_scheme = "Catppuccin Macchiato"
+local appearance = wezterm.gui.get_appearance()
+local is_dark_mode = appearance:find("Dark") ~= nil
 
+-- Set color scheme based on mode
+config.color_scheme = is_dark_mode and "Catppuccin Macchiato" or "Catppuccin Latte"
+
+-- Set colors based on mode (can customize background colors here if needed)
+config.colors = {
+	background = is_dark_mode and "#1e1e2e" or "#eff1f5",
+}
 -- Window Styles
 -- -------------------------------------------------------------------------
 -- https://wezterm.org/config/lua/config/window_decorations.html#window_decorations-title-resize
@@ -37,27 +37,43 @@ config.color_scheme = "Catppuccin Macchiato"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_SQUARE_CORNERS"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW"
 config.window_decorations = "RESIZE|MACOS_FORCE_ENABLE_SHADOW|MACOS_FORCE_SQUARE_CORNERS"
-config.window_background_opacity = 0.8
-config.macos_window_background_blur = 80
+-- config.window_background_opacity = 0.97
+config.window_background_opacity = is_dark_mode and 0.8 or 0.9
+config.macos_window_background_blur = is_dark_mode and 12 or 60
 config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
+
+-- config.window_padding = {
+-- 	left = 64,
+-- 	right = 128,
+-- 	top = 64,
+-- 	bottom = 62,
+-- }
+
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 128,
+	right = 128,
+	top = 128,
+	bottom = 128,
 }
 
-config.window_frame = {
-	border_left_width = "1px",
-	border_right_width = "1px",
-	border_bottom_height = "1px",
-	border_top_height = "1px",
-	border_left_color = "#484848",
-	border_right_color = "#484848",
-	border_bottom_color = "#484848",
-	border_top_color = "#484848",
-}
+-- config.window_padding = {
+-- 	left = 0,
+-- 	right = 0,
+-- 	top = 0,
+-- 	bottom = 0,
+-- }
+
+-- config.window_frame = {
+-- 	border_left_width = "1px",
+-- 	border_right_width = "1px",
+-- 	border_bottom_height = "1px",
+-- 	border_top_height = "1px",
+-- 	border_left_color = "#484848",
+-- 	border_right_color = "#484848",
+-- 	border_bottom_color = "#484848",
+-- 	border_top_color = "#484848",
+-- }
 
 -- Key assignments
 -- -------------------------------------------------------------------------
