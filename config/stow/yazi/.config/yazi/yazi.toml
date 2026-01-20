@@ -1,0 +1,13 @@
+# yazi.toml
+# https://yazi-rs.github.io/docs/configuration/yazi
+[mgr]
+show_hidden = true
+
+# https://github.com/catppuccin/yazi
+# https://yazi-rs.github.io/docs/configuration/theme
+[flavor]
+dark = "catppuccin-macchiato-pink"
+light = "catppuccin-latte-pink"
+
+[opener]
+edit = [{ run = "nvim %s", block = true }]
