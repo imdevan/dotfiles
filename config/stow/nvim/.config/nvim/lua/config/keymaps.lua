@@ -21,6 +21,15 @@ local fn = vim.fn
 local cmd = vim.cmd
 local notify = vim.notify
 
+-- which-key group labels
+pcall(function()
+  local wk = require("which-key")
+  wk.add({
+    { "<leader>p", group = "Personal" },
+    { "<leader>ph", group = "Convert to header" },
+  })
+end)
+
 -- restore colon for normal mode
 -- keep for restoring later if needed
 -- keymap_set("n", ":", ":", { noremap = true })
@@ -173,6 +182,154 @@ keymap_set("v", "<leader>pm", function()
   end
 end, { desc = "Evaluate math expression from selected text" })
 
+-- Evaluate math expression on all numbers in selection
+keymap_set("v", "<leader>pM", function()
+  -- Save current selection to register
+  cmd('normal! "vy')
+  local selected_text = fn.getreg("v")
+
+  if selected_text == "" then
+    notify("No selection", vim.log.levels.WARN)
+    return
+  end
+
+  -- Prompt for math expression
+  local expr = fn.input("Math expression (e.g., 16, +16, *2, -5, /3): ")
+  if expr == "" then
+    notify("No expression provided", vim.log.levels.WARN)
+    return
+  end
+
+  -- Determine operator and value
+  -- If expression starts with operator, use it; otherwise default to addition
+  local operator, value_str
+  if expr:match("^[+%-*/]") then
+    operator = expr:sub(1, 1)
+    value_str = expr:sub(2)
+  else
+    -- Default to addition if just a number is provided
+    operator = "+"
+    value_str = expr
+  end
+
+  local success, value = pcall(function()
+    return tonumber(value_str)
+  end)
+
+  if not success or not value then
+    notify("Invalid number: " .. value_str, vim.log.levels.ERROR)
+    return
+  end
+
+  -- Function to apply math operation to a number
+  local function apply_operation(num_str)
+    local num = tonumber(num_str)
+    if not num then
+      return num_str -- Return original if not a number
+    end
+
+    local result
+    if operator == "+" then
+      result = num + value
+    elseif operator == "-" then
+      result = num - value
+    elseif operator == "*" then
+      result = num * value
+    elseif operator == "/" then
+      if value == 0 then
+        notify("Division by zero", vim.log.levels.ERROR)
+        return num_str
+      end
+      result = num / value
+    else
+      return num_str
+    end
+
+    -- Preserve format: if original was integer and result is whole, return integer
+    -- Otherwise preserve decimal precision
+    if num_str:match("^%-?%d+$") and result == math.floor(result) then
+      -- Was integer, result is whole number
+      return tostring(math.floor(result))
+    elseif num_str:match("%.") then
+      -- Had decimal point, try to preserve similar precision
+      local decimals = num_str:match("%.(%d+)")
+      local precision = decimals and #decimals or 2
+      return string.format("%." .. precision .. "f", result)
+    else
+      -- Integer input but fractional result
+      return tostring(result)
+    end
+  end
+
+  -- Replace all numbers in the selected text
+  -- Pattern: matches numbers (including negative and decimal)
+  local processed_text = selected_text:gsub("([%-%+]?%d+%.?%d*)", apply_operation)
+
+  -- Check if text was actually modified
+  if processed_text == selected_text then
+    notify("No numbers found in selection", vim.log.levels.WARN)
+    return
+  end
+
+  -- Get visual selection boundaries
+  local start_pos = api.nvim_buf_get_mark(0, "<")
+  local end_pos = api.nvim_buf_get_mark(0, ">")
+  local start_line, start_col = start_pos[1] - 1, start_pos[2] -- Convert to 0-indexed
+  local end_line, end_col = end_pos[1] - 1, end_pos[2]
+
+  -- Split processed text into lines
+  local processed_lines = vim.split(processed_text, "\n", { plain = true })
+
+  -- Get current lines
+  local lines = api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
+
+  if #lines == 0 then
+    notify("No lines to process", vim.log.levels.WARN)
+    return
+  end
+
+  -- Handle replacement based on selection type
+  if start_line == end_line then
+    -- Single line: replace portion between start_col and end_col
+    local line = lines[1]
+    -- start_col is 0-indexed, Lua strings are 1-indexed
+    -- before: characters 1 to start_col (inclusive)
+    local before = start_col > 0 and line:sub(1, start_col) or ""
+    -- after: characters after end_col (end_col is inclusive, so +2 for next char)
+    local after = line:sub(end_col + 2)
+    lines[1] = before .. processed_lines[1] .. after
+  else
+    -- Multi-line: replace first line from start_col, middle lines entirely, last line up to end_col
+    if #processed_lines > 0 then
+      -- First line
+      local first_line = lines[1]
+      local before = start_col > 0 and first_line:sub(1, start_col) or ""
+      lines[1] = before .. processed_lines[1]
+      table.remove(processed_lines, 1)
+
+      -- Middle lines
+      for i = 2, #lines - 1 do
+        if #processed_lines > 0 then
+          lines[i] = processed_lines[1]
+          table.remove(processed_lines, 1)
+        end
+      end
+
+      -- Last line
+      if #processed_lines > 0 and #lines > 1 then
+        local last_line = lines[#lines]
+        local after = last_line:sub(end_col + 2)
+        lines[#lines] = processed_lines[1] .. after
+      end
+    end
+  end
+
+  -- Replace the lines in the buffer
+  api.nvim_buf_set_lines(0, start_line, end_line + 1, false, lines)
+
+  notify("Applied " .. (operator == "+" and expr or operator .. value_str) .. " to all numbers", vim.log.levels.INFO)
+end, { desc = "Apply math expression to all numbers in selection" })
+
 -- Case (toggle)
 -- TODO: validate and probably remap for convience
 keymap_set("i", "<leader>pcc", "~", { desc = "Toggle case" })
@@ -244,6 +401,91 @@ keymap_set("n", "<leader>pl", function()
   end
 end, { desc = "Insert line (80 dashes for Markdown/MDX, 80 equals + comment for others)" })
 
+-- Copy markdown headers by level
+local function copy_headers_by_level(level)
+  -- Validate level is between 1 and 6
+  if level < 1 or level > 6 then
+    vim.notify("Header level must be between 1 and 6", vim.log.levels.ERROR)
+    return
+  end
+
+  -- Build the header pattern (e.g., "^## " for level 2)
+  local hashes = string.rep("#", level)
+  local pattern = "^" .. hashes .. " "
+
+  -- Clear register a
+  vim.fn.setreg("a", "")
+
+  -- Save cursor position
+  local save_pos = vim.fn.getpos(".")
+
+  -- Search for headers and collect text after them
+  vim.cmd(string.format([[g/%s/s/%s\(.*\)/\=setreg('A', submatch(1)."\n")/n]], pattern, pattern))
+
+  -- Restore cursor position
+  vim.fn.setpos(".", save_pos)
+
+  -- Paste the collected content
+  vim.cmd('normal! "ap')
+
+  vim.notify(string.format("Copied all level %d headers to cursor", level), vim.log.levels.INFO)
+end
+
+-- Create keymaps for ph1 through ph6
+for i = 1, 6 do
+  keymap_set("n", "<leader>pph" .. i, function()
+    copy_headers_by_level(i)
+  end, { desc = "Paste header level " .. i .. " content at cursor" })
+end
+
+-- Convert line/selection into markdown header (levels 0-9)
+local function convert_lines_to_header(level, start_line, end_line)
+  if level < 0 or level > 9 then
+    notify("Header level must be between 0 and 9", vim.log.levels.ERROR)
+    return
+  end
+
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  local bufnr = 0
+  local lines = api.nvim_buf_get_lines(bufnr, start_line - 1, end_line, false)
+  local hashes = level > 0 and string.rep("#", level) or nil
+
+  for idx, line in ipairs(lines) do
+    local indent = line:match("^%s*") or ""
+    local rest = line:sub(#indent + 1)
+    local title = rest:gsub("^#+%s*", ""):gsub("^%s+", ""):gsub("%s+$", "")
+
+    if level == 0 then
+      -- Strip any existing markdown header prefix.
+      lines[idx] = title == "" and indent or (indent .. title)
+    else
+      if title == "" then
+        lines[idx] = indent .. hashes
+      else
+        lines[idx] = indent .. hashes .. " " .. title
+      end
+    end
+  end
+
+  api.nvim_buf_set_lines(bufnr, start_line - 1, end_line, false, lines)
+end
+
+for i = 0, 9 do
+  keymap_set("n", "<leader>ph" .. i, function()
+    local line = api.nvim_win_get_cursor(0)[1]
+    convert_lines_to_header(i, line, line)
+  end, { desc = "Convert line to header (H" .. i .. ")" })
+
+  keymap_set("v", "<leader>ph" .. i, function()
+    local start_line = fn.line("v")
+    local end_line = fn.line(".")
+    convert_lines_to_header(i, start_line, end_line)
+  end, { desc = "Convert selection to header (H" .. i .. ")" })
+end
+
 -- Do math!
 keymap_set("n", "<leader>pm", function()
   local keys = api.nvim_replace_termcodes("i<C-r>=", true, false, true)
@@ -277,6 +519,71 @@ keymap_set("v", "<leader>pf", function()
   notify("Copied: " .. content, vim.log.levels.INFO)
 end, { desc = "Copy file path and line range" })
 
+-- Spell checking
+-- =====================================================================================================================
+
+-- Helper function to show spell suggestions (built-in prompt)
+local function show_spell_suggestions()
+  -- `z=` opens the built-in suggestions list for the word under cursor
+  cmd("normal! z=")
+end
+
+-- Navigate to next spelling error and show suggestions
+keymap_set("n", "<leader>pa", function()
+  -- Enable spell checking if not already enabled
+  if not vim.wo.spell then
+    vim.wo.spell = true
+    notify("Spell checking enabled", vim.log.levels.INFO)
+  end
+
+  -- Simply execute ]s to jump to next error, then show suggestions
+  -- The ]s command will move to the next error or stay put if none found
+  cmd("normal! ]s")
+  vim.schedule(function()
+    cmd("normal z=")
+  end)
+end, { desc = "Next spelling error and show suggestions" })
+
+-- Navigate to previous spelling error and show suggestions
+keymap_set("n", "<leader>sN", function()
+  -- Enable spell checking if not already enabled
+  if not vim.wo.spell then
+    vim.wo.spell = true
+    notify("Spell checking enabled", vim.log.levels.INFO)
+  end
+
+  -- Simply execute [s to jump to previous error, then show suggestions
+  cmd("normal! [s")
+
+  show_spell_suggestions()
+end, { desc = "Previous spelling error and show suggestions" })
+
+-- Show suggestions for word under cursor
+keymap_set("n", "<leader>ss", function()
+  if not vim.wo.spell then
+    vim.wo.spell = true
+    notify("Spell checking enabled", vim.log.levels.INFO)
+  end
+  show_spell_suggestions()
+end, { desc = "Show spelling suggestions for word under cursor" })
+
+-- Toggle spell checking
+keymap_set("n", "<leader>st", function()
+  vim.wo.spell = not vim.wo.spell
+  local status = vim.wo.spell and "ON" or "OFF"
+  notify("Spell checking: " .. status, vim.log.levels.INFO)
+end, { desc = "Toggle spell checking" })
+
+-- Word count
+-- =====================================================================================================================
+vim.keymap.set("v", "<leader>pc", function()
+  vim.cmd('normal! "zy')
+  local text = vim.fn.getreg("z")
+  local chars = vim.fn.strlen(text)
+  local words = #vim.split(text, "%s+", { trimempty = true })
+  print("Words: " .. words .. " | Characters: " .. chars)
+end, { desc = "Word and character count of selection" })
+
 -- Open in
 -- =====================================================================================================================
 
@@ -309,7 +616,7 @@ end, { desc = "Open parent folder in Finder" })
 local snacks = require("snacks")
 
 -- Toggle indent lines
--- Default disable line indention indicators cuz im weird like that
+-- Default disable line indention indicators cuz I'm weird like that
 snacks.indent.disable()
 keymap_set("n", "<leader>tn", function()
   vim.wo.list = not vim.wo.list
@@ -371,7 +678,7 @@ end, { desc = "Toggle highlight colors (background/foreground)" })
 -- Toggle snacks ignored files
 keymap_set("n", "<leader>ti", function()
   local current = snacks.config.picker.ignored
-  -- local currentH = snacks.config.picker.hidden
+  -- local current = snacks.config.picker.hidden
   snacks.config.picker.ignored = not current
 
   local msg = snacks.config.picker.ignored and "Snacks: ignored ON" or "Snacks: ignored OFF"
