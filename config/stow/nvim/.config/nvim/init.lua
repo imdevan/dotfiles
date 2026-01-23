@@ -3,7 +3,7 @@ require("config.lazy")
 
 if not vim.g.vscode then
   -- Load colorscheme and UI-related plugins
-  vim.cmd("colorscheme catppuccin-macchiato") -- or your preferred theme
+  vim.cmd("colorscheme catppuccin") -- or your preferred theme
 end
 
 -- vim.opt.spellfile = "~/.config/nvim/spell/en.utf-8.add"
