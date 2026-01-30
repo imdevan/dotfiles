@@ -1,0 +1,26 @@
+-- local tmux_dirs = {
+--   h = "-L",
+--   j = "-D",
+--   k = "-U",
+--   l = "-R",
+-- }
+--
+-- local function ctx_move(dir)
+--   local before = api.nvim_get_current_win()
+--   cmd("wincmd " .. dir)
+--   local after = api.nvim_get_current_win()
+--
+--   if before == after then
+--     fn.system({ "tmux", "select-pane", tmux_dirs[dir] })
+--   end
+-- end
+--
+-- -- Create navigation keymaps efficiently
+-- local nav_keys = { "H", "J", "K", "L" }
+-- local nav_dirs = { "h", "j", "k", "l" }
+--
+-- for i, key in ipairs(nav_keys) do
+--   keymap_set("n", "<C-" .. key .. ">", function()
+--     ctx_move(nav_dirs[i])
+--   end, { desc = "Navigate " .. nav_dirs[i] })
+-- end

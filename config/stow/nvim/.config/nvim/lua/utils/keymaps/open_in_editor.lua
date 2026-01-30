@@ -107,4 +107,13 @@ function M.open_in_editor(editor_cmd, opts)
   vim.fn.jobstart(args, { detach = true })
 end
 
+-- Open parent folder in finder
+function M.open_parent_folder()
+  local fn = vim.fn
+  local notify = vim.notify
+  local parent_dir = fn.expand("%:p:h")
+  fn.system({ "open", parent_dir })
+  notify("Opened parent folder in Finder: " .. parent_dir, vim.log.levels.INFO)
+end
+
 return M
