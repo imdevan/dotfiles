@@ -7,12 +7,16 @@
 -- TODO:: fix unknown word issue and default diagnostics to enabled
 vim.diagnostic.enable(false)
 
--- Show all content - notably in markdown
+-- Show all content - notably markdown comments
 vim.opt.conceallevel = 0
 
 -- Reload files on save
 vim.opt.autoread = true
 
+-- Trigger checktime on focus gain for better responsiveness
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = "if mode() != 'c' | checktime | endif",
+})
 -- Show column at 80 chars
 vim.opt.colorcolumn = ""
 
