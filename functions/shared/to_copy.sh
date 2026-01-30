@@ -20,8 +20,8 @@ function copy_text() {
 alias ct="copy_text"
 
 function copy_pwd() {
-  pwd | pbcopy
+  pwd | sed "s|^$HOME|~|" | pbcopy
 }
 
 # Create alias
-alias cpwd="copy_pwd"
+alias cpw="copy_pwd"
