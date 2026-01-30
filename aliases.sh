@@ -21,7 +21,6 @@ alias sdown="sudo shutdown -h now"
 alias dot="cd $dotfile_dir"
 
 # Terminal Navigation
-alias la="ls -a" # List all in directory
 alias lsa="ls -a"
 alias lfa="ls -ARFh"
 alias o="open ./"  # Open - in finder
@@ -38,7 +37,14 @@ alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py}="$editor"
 alias -s git="git_clone" # open git urls with custom function
 
 # Global aliases
-alias -g T="| tee output.log"
+#
+alias -g T="| tee output.log"        # copy output to output.log
+alias -g C="| tee /dev/tty | pbcopy" # copy output to clipboard and terminal
+alias -g G="| grep --color=auto"     # grep output
+alias -g B="| boxes -d ansi-rounded" # https://boxes.thomasjensen.com/examples.html
+alias -g L="| lolcat -f"             # https://github.com/busyloop/lolcat
+alias -g Q="| quick_note"            # https://github.com/busyloop/lolcat
+alias -g COW="| cowsay"
 
 # Home Brew
 alias bri="brew install"
@@ -76,6 +82,7 @@ alias dcu="docker compose up"
 alias dcw="docker compose watch"
 alias dcd="docker compose down -v"
 alias dcub="docker compose up --build"
+alias dex="docker exec -it" # Docker execute consider adding container-name zsh
 alias prune_all="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r docker rm && docker system prune -a --volumes -f"
 alias drm="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r docker rm"
 # alias ds="dcub -d"       # build up and detatch aka docker start
@@ -96,7 +103,7 @@ alias cgen="scripts/generate-client.sh"
 # Code editors
 alias co="code ."
 alias c="cursor ."
-alias v="nvim"
+# alias v="nvim"
 alias k="kiro ./"
 
 # Bookmarks
@@ -122,8 +129,6 @@ alias vn="v ~/dotfiles/config/stow/nvim/.config/nvim"
 alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
 alias vb="v ~/dotfiles/config/stow/borders/.config/borders/bordersrc"
 alias val="v ~/dotfiles/config/stow/alacritty/.alacritty.toml"
-# alias vf="" now handled by function_utils/vim_function
-alias fv="fzf --bind 'enter:become(nvim {})'" # fzf file search then open in nvim
 alias vq="v ~/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
 alias vg="v /Users/devy/dotfiles/functions/github.sh"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
@@ -234,7 +239,7 @@ alias pnb="pnpm build"
 alias pnr="pnpm run"
 
 # Yarn
-alias y="yarn"
+# alias y="yarn"
 alias yb="yarn build"
 alias yys="yarn && yarn start"
 alias yc="yarn clean"
@@ -465,3 +470,11 @@ alias bbi="rf build-* *.app && bbis"
 alias bls="bun lint-staged"
 alias blc="bun lint:changed"
 alias blc="bun lint:check"
+alias vo="v ~/Documents/obsidian_notes/" # Open obsidian notes
+alias obs="~/Documents/obsidian_notes/"
+alias re="readme.md" # Open readme
+alias vncs="v $HOME/dotfiles/config/stow/nvim/.config/nvim/lua/plugins/colorscheme.lua"
+alias lsa="nu -c 'ls -a'"
+alias ob="open -a Obsidian" # Open with obsidian
+alias pre="p -p resume"
+alias pb="pbpaste"
