@@ -66,3 +66,13 @@ source $dotfile_dir/functions/docker_utils.sh
 source $dotfile_dir/functions/to_log.sh
 
 source $dotfile_dir/functions/which_lock.sh
+
+source $dotfile_dir/functions/fzf_vim.sh
+
+source $dotfile_dir/functions/list_all.sh
+
+source $dotfile_dir/functions/query_db.sh
+
+source $dotfile_dir/functions/yaz.sh
+
+source $dotfile_dir/functions/query_db.sh
