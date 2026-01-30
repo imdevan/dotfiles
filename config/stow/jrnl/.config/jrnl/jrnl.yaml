@@ -1,0 +1,23 @@
+# Jrnl config
+# https://jrnl.sh/en/stable/
+
+colors:
+  body: none
+  date: black
+  tags: yellow
+  title: cyan
+default_hour: 9
+default_minute: 0
+editor: ''
+encrypt: false
+highlight: true
+indent_character: '|'
+journals:
+  default:
+    journal: /Users/devy/Documents/obsidian_notes/jrnl.md
+    display_format: markdown 
+linewrap: 79
+tagsymbols: '#@'
+template: false
+timeformat: '%F %r'
+version: v4.2.1
