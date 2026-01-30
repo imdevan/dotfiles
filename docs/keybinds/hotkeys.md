@@ -665,3 +665,9 @@ prompt:
 <Shift-Tab>: prompt-item-focus prev
 <Tab>: prompt-item-focus next
 <Up>: prompt-item-focus prev
+
+
+# Omarchy
+
+Hot key docs
+https://learn.omacom.io/2/the-omarchy-manual/53/hotkeys

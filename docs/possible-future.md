@@ -39,6 +39,22 @@
 - yazi
 - jq for json viewing and querying https://jqlang.org/
 - espanso https://espanso.org/
+- https://github.com/hzqtc/taproom
+- Atuin: https://docs.atuin.sh  
+- Branchlet: https://github.com/raghavpillai/branchlet  
+- Superfile: https://github.com/yorukot/superfile  
+- Pastel: https://github.com/sharkdp/pastel  
+- Taproom: https://github.com/hzqtc/taproom  
+- Navi: https://github.com/denisidoro/navi  
+- Tealdeer: https://github.com/tealdeer-rs/tealdeer  
+- Cargo Seek: https://github.com/tareqimbasher/cargo-seek  
+- Stormy: https://github.com/ashish0kumar/stormy  
+- Hygg: https://github.com/kruseio/hygg  
+- Smassh: https://github.com/kraanzu/smassh
+- cbonsai: https://gitlab.com/jallbrit/cbonsai
+- asciinema: https://asciinema.org/
+
+
 
 ## things to change
 

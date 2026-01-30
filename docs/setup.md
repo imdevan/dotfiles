@@ -8,6 +8,11 @@
 Install homebrew (https://brew.sh/)[https://brew.sh/]
 https://docs.brew.sh/Installation
 
+Install packages
+```
+brew bundle insetall --file=~/dotfiles/config/homebrew/Brewfile
+```
+
 ### zsh + dotfiles
 
 Zsh https://ohmyz.sh/#install
@@ -18,26 +23,32 @@ Zsh https://ohmyz.sh/#install
 cd ~
 git clone https://github.com/imdevan/dotfiles.git
 ```
-
-### connect zsh
+### connect GNU stow
 
 ```sh
 cd ~/dotfiles/config/stow
-stow -t ~/ zsh
+stow -t ~/ stow
 ```
 
-### ghostty
 
-https://ghostty.org/download
+### connect everything else
 
 ```sh
-brew install --cask ghostty
-
+cd ~/dotfiles/config/stow
+stow *
 ```
+
+### wezterm
+
+https://wezterm.org/installation.html
+
+```sh
+brew install --cask wezterm
+```
+
 ### theme - oh-my-posh
 https://ohmyposh.dev/docs/installation/macos
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
-
 
 ### font
 
