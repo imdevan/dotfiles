@@ -1,22 +1,51 @@
 #!/bin/sh
 
+
 # Function: quick_note
 # Description: A quick note in the right folder
 # Usage: quick_note [arguments]
 # Alias: qn
+#
+# TODO: consider replacing with https://jrnl.sh/en/stable/overview/
 
-notes_folder="$HOME/Documents/notes/"
+notes_folder="$HOME/Documents/obsidian_notes/quick_notes"
 
+# # How it started
+# function quick_note() {
+#   if [ "$#" -lt 1 ]; then
+#     nvim "$notes_folder"/$(date +%m-%d-%Y).md
+#   else  
+#     nvim "$notes_folder"/$(to_snake_case "$@").md
+#   fi
+# }
+
+# How it's going
 function quick_note() {
-    # Function implementation goes here
-    # Possible improvements:
-    # - pass an argument as a string containing the note
-    # local note_file="~/Documents/notes/$(date +%Y-%m-%d).md"
-   
+  local quick_note_to_open=""
+
   if [ "$#" -lt 1 ]; then
-    nvim "$notes_folder"/$(date +%m-%d-%Y).md
+    quick_note_to_open="$notes_folder"/$(date +%m-%d-%Y).md
   else  
-    nvim "$notes_folder"/$(to_snake_case "$@").md
+    quick_note_to_open="$notes_folder"/$(to_snake_case "$@").md
+  fi
+
+  # Check if text is being piped in (stdin is not a terminal)
+  if [ ! -t 0 ]; then
+    # Text is being piped: append it to the file
+    if [ -f "$quick_note_to_open" ]; then
+      # File exists: add a blank line separator, then append piped text
+      echo "" >> "$quick_note_to_open"
+    fi
+    cat >> "$quick_note_to_open"
+  else
+    # No piped text: open in nvim as usual
+    if [ -f "$quick_note_to_open" ]; then
+      # File exists: go to last line and open in insert mode
+      nvim +'normal G2o' +'startinsert' "$quick_note_to_open"
+    else
+      # File doesn't exist: open in insert mode at the beginning
+      nvim +'startinsert' "$quick_note_to_open"
+    fi
   fi
 }
 
@@ -24,15 +53,15 @@ function quick_note() {
 alias qn="quick_note"
 
 
-# Function: notes function to print a list of files
+# Function: quick_notes_list function to print a list of files
 # Description: shows notes in notes folder
-# Usage: notes
+# Usage: quick_notes_list
 
-function notes() {
+function quick_notes_list() {
   local named=()
   local dated=()
 
-  for file in "$notes_folder"*; do
+  for file in "$notes_folder"/*; do
     [ -f "$file" ] || continue
     local basename=$(basename "$file")
 
@@ -47,20 +76,30 @@ function notes() {
     fi
   done
 
-  named_notes=$(printf "%s\n" "${named[@]}")
-  dated_notes=$(printf "%s\n" "${dated[@]}")
-
   echo ""
   echo "Named:"
   echo "--------------------------------"
-  echo -e "${yellow}${named_notes}${reset}"
+  if [ ${#named[@]} -eq 0 ]; then
+    echo "  (no named notes)"
+  else
+    for note in "${named[@]}"; do
+      echo -e "${yellow}  $note${reset}"
+    done
+  fi
   echo "--------------------------------"
   echo ""
   echo "Dated:"
   echo "--------------------------------"
-  echo -e "${green}${dated_notes}${reset}"
+  if [ ${#dated[@]} -eq 0 ]; then
+    echo "  (no dated notes)"
+  else
+    for note in "${dated[@]}"; do
+      echo -e "${green}  $note${reset}"
+    done
+  fi
   echo "--------------------------------"
 }
+alias qnl="quick_notes_list"
 
 alias vqn="v ~/Documents/notes"
 
