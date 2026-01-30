@@ -101,7 +101,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: npm run build:gh-pages
         env:
           NODE_ENV: production
 
@@ -138,7 +138,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/${PROJECT_NAME}/" : "/",
+  base: process.env.VITE_BASE_PATH || "/",
   server: {
     host: "::",
     port: 8080,
@@ -154,15 +154,14 @@ EOF
   echo -e "${green}✓ Created vite.config.ts${reset}"
 else
   # Modify existing vite.config.ts
-  # Check if the base configuration already exists with the correct project name
-  if grep -q "base: mode === \"production\" ? \"/${PROJECT_NAME}/\"" vite.config.ts; then
-    echo -e "${blue}ℹ Base path in vite.config.ts already set to '/${PROJECT_NAME}/'${reset}"
-  elif grep -q 'base:.*production' vite.config.ts; then
-    # Replace existing base configuration - replace any project name in the base line
-    # Pattern matches: base: mode === "production" ? "/ANYTHING/" : "/"
-    # Use perl for more reliable pattern matching across platforms
-    perl -i -pe "s|(base: mode === \"production\" ? \"/)[^\"]*(\" : \"/\")|\1${PROJECT_NAME}\2|" vite.config.ts
-    echo -e "${green}✓ Updated base path in vite.config.ts to '/${PROJECT_NAME}/'${reset}"
+  # Check if the base configuration already exists with the new pattern
+  if grep -q "base: process\.env\.VITE_BASE_PATH || \"/\"" vite.config.ts; then
+    echo -e "${blue}ℹ Base path in vite.config.ts already set correctly${reset}"
+  elif grep -q 'base:.*production' vite.config.ts || grep -q 'base:.*VITE_BASE_PATH' vite.config.ts; then
+    # Replace existing base configuration with the new pattern
+    # Pattern matches: base: mode === "production" ? "/ANYTHING/" : "/" or base: process.env.VITE_BASE_PATH || ...
+    perl -i -pe 's|base:.*?\|.*?\|.*?;|base: process.env.VITE_BASE_PATH || "/",|' vite.config.ts
+    echo -e "${green}✓ Updated base path in vite.config.ts to use VITE_BASE_PATH${reset}"
   else
     # Check if there's a defineConfig call - if so, add the base config
     if grep -q "defineConfig" vite.config.ts; then
@@ -174,7 +173,7 @@ else
         # Check if this is the opening brace line after defineConfig
         if [[ "$line" =~ "=> ({" ]] && [[ "$FOUND_OPENING" -eq 0 ]]; then
           echo "$line"
-          echo "  base: mode === \"production\" ? \"/${PROJECT_NAME}/\" : \"/\","
+          echo "  base: process.env.VITE_BASE_PATH || \"/\","
           FOUND_OPENING=1
         else
           echo "$line"
@@ -186,7 +185,7 @@ else
     else
       echo -e "${yellow}Warning: vite.config.ts doesn't match expected format. Please check manually.${reset}"
       echo -e "${yellow}Please manually add this line inside the defineConfig object:${reset}"
-      echo -e "${yellow}  base: mode === \"production\" ? \"/${PROJECT_NAME}/\" : \"/\",${reset}"
+      echo -e "${yellow}  base: process.env.VITE_BASE_PATH || \"/\",${reset}"
     fi
   fi
 fi
@@ -216,16 +215,16 @@ echo -e "${green}✓ Created/updated README.md${reset}"
 if [ -f "src/App.tsx" ]; then
   # Check if BrowserRouter exists
   if grep -q "<BrowserRouter" src/App.tsx; then
-    # Check if basename already exists with the correct project name
-    if grep -q "basename=\{import\.meta\.env\.PROD \? \"/${PROJECT_NAME}\"" src/App.tsx; then
-      echo -e "${blue}ℹ Basename in src/App.tsx already set to '/${PROJECT_NAME}'${reset}"
+    # Check if basename already exists with the new pattern
+    if grep -q "basename=\{import\.meta\.env\.BASE_URL\.replace" src/App.tsx; then
+      echo -e "${blue}ℹ Basename in src/App.tsx already set correctly${reset}"
     elif grep -q "basename=" src/App.tsx; then
-      # Update existing basename - replace the project name in the basename
-      perl -i -pe "s|(basename=\{import\.meta\.env\.PROD \? \"/)[^\"]*(\" : \"\"\})|\1${PROJECT_NAME}\2|g" src/App.tsx
-      echo -e "${green}✓ Updated basename in src/App.tsx${reset}"
+      # Update existing basename to use BASE_URL
+      perl -i -pe 's|basename=\{.*?\}|basename={import.meta.env.BASE_URL.replace(/\/$/, "")}|g' src/App.tsx
+      echo -e "${green}✓ Updated basename in src/App.tsx to use BASE_URL${reset}"
     else
       # Add basename to BrowserRouter - match <BrowserRouter> or <BrowserRouter ...>
-      perl -i -pe "s|<BrowserRouter([^>]*)>|<BrowserRouter\1 basename={import.meta.env.PROD ? \"/${PROJECT_NAME}\" : \"\"}>|g" src/App.tsx
+      perl -i -pe 's|<BrowserRouter([^>]*)>|<BrowserRouter\1 basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>|g' src/App.tsx
       echo -e "${green}✓ Added basename to BrowserRouter in src/App.tsx${reset}"
     fi
   else
@@ -233,6 +232,29 @@ if [ -f "src/App.tsx" ]; then
   fi
 else
   echo -e "${yellow}Warning: src/App.tsx not found${reset}"
+fi
+
+# Add build:gh-pages script to package.json if it doesn't exist
+if [ -f "package.json" ]; then
+  if grep -q "\"build:gh-pages\"" package.json; then
+    # Update existing build:gh-pages script if it doesn't match
+    if ! grep -q "VITE_BASE_PATH=/${PROJECT_NAME}/" package.json; then
+      perl -i -pe "s|\"build:gh-pages\": \".*?\"|\"build:gh-pages\": \"VITE_BASE_PATH=/${PROJECT_NAME}/ vite build\"|" package.json
+      echo -e "${green}✓ Updated build:gh-pages script in package.json${reset}"
+    else
+      echo -e "${blue}ℹ build:gh-pages script already set correctly in package.json${reset}"
+    fi
+  else
+    # Add build:gh-pages script after the build script
+    if grep -q "\"build\"" package.json; then
+      perl -i -pe "s|(\"build\": \".*?\")|\1,\n    \"build:gh-pages\": \"VITE_BASE_PATH=/${PROJECT_NAME}/ vite build\"|" package.json
+      echo -e "${green}✓ Added build:gh-pages script to package.json${reset}"
+    else
+      echo -e "${yellow}Warning: Could not find 'build' script in package.json to add build:gh-pages${reset}"
+    fi
+  fi
+else
+  echo -e "${yellow}Warning: package.json not found${reset}"
 fi
 
 # Handle og:image, twitter:image meta tags, and favicon links in index.html
