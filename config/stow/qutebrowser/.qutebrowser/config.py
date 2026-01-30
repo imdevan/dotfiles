@@ -28,7 +28,7 @@ config.bind("<Cmd-Shift-W>", "close")  # For macOS
 c.window.hide_decoration = True
 # c.window.transparent = True
 # c.colors.webpage.darkmode.enabled = True
-# c.colors.webpage.preferred_color_scheme = "dark"
+c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.show = "in-mode"
 c.tabs.show = "switching"
 c.tabs.position = "top"
