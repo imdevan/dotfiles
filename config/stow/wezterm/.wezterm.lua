@@ -50,11 +50,25 @@ config.hide_tab_bar_if_only_one_tab = true
 -- 	bottom = 62,
 -- }
 
+-- config.window_padding = {
+-- 	left = 128,
+-- 	right = 128,
+-- 	top = 128,
+-- 	bottom = 128,
+-- }
+
+-- config.window_padding = {
+-- 	left = 32,
+-- 	right = 32,
+-- 	top = 32,
+-- 	bottom = 32,
+-- }
+
 config.window_padding = {
-	left = 128,
-	right = 128,
-	top = 128,
-	bottom = 128,
+	left = 16,
+	right = 16,
+	top = 16,
+	bottom = 16,
 }
 
 -- config.window_padding = {
