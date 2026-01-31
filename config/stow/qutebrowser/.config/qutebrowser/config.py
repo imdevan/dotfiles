@@ -10,8 +10,8 @@ import catppuccin
 # Must load first
 config.load_autoconfig()
 
-path_to_start_page = "https://chat.openai.com"
-# path_to_start_page = "http://localhost:8081/"
+path_to_start_page = "https://devan.gg/cosmic"
+# path_to_start_page = "https://chatgpt.com/chat"
 # path_to_start_page = "https://github.com/news-s/Qutebrowser-config/blob/main/config.py"
 # path_to_start_page = "https://qutebrowser.org/doc/quickstart.html"
 
@@ -42,12 +42,13 @@ c.url.searchengines = {
     "yt": "https://www.youtube.com/results?search_query={}",
     "git": "https://github.com/search?q={}",
     "stack": "https://stackoverflow.com/search?q={}",
-    "gpt": "https://chat.openai.com/?q={}",
+    "gpt": "https://chatgpt.com/?q={}",
     "cla": "https://claude.ai/new?q={}",
     "lol": "u.gg/lol/champions/{}/build",
-    "l": "localhost:{}",
-    "l3": "localhost:3000?q={}",
-    "lo": "localhost:{}000",
+    "re": "https://github.com/imdevan/{}",
+    "ll": "localhost:{}000",
+    "l8": "localhost:8080?q={}",
+    "wall": "https://wallhaven.cc/search?q={}&categories=110&purity=111&atleast=1920x1080&ratios=landscape&sorting=views&order=desc",
 }
 
 # Aliases
