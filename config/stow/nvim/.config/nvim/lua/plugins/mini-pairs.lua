@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     opts = function(_, opts)
       opts.modes = {
         insert = true,
