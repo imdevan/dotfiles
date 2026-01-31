@@ -47,7 +47,6 @@ require("lazy").setup({
         "tohtml",
         "tutor",
         "zipPlugin",
-        "render-markdown",
       },
     },
   },

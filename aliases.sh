@@ -6,6 +6,9 @@
 # Variables used in file
 editor="nvim"
 
+# Globals
+alias -g G="| grep"
+alias -g C="| wl-copy"
 # Navigation
 alias ..="cd .."
 
@@ -33,7 +36,7 @@ alias bb="cd -"   # Go back to last dirctory
 
 # Suffix aliases
 # Open various files types in editor
-alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py}="$editor"
+alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py,conf,desktop}="$editor"
 alias -s git="git_clone" # open git urls with custom function
 
 # Global aliases
@@ -122,14 +125,15 @@ alias vs="v ~/dotfiles/setup.md"
 alias vpf="v ~/dotfiles/docs/possible-future.md"
 
 alias vd="v ~/dotfiles"
-alias vt="v ~/dotfiles/config/stow/tmux/.tmux.conf"
+alias vt="v ~/dotfiles/config/stow/tmux/.config/tmux/tmux.conf"
 alias vs="v ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
-alias vn="v ~/dotfiles/config/stow/nvim/.config/nvim"
-alias vn="v ~/dotfiles/config/stow/nvim/.config/nvim"
+alias vn="z ~/dotfiles/config/stow/nvim/.config/nvim && v"
 alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
 alias vb="v ~/dotfiles/config/stow/borders/.config/borders/bordersrc"
 alias val="v ~/dotfiles/config/stow/alacritty/.alacritty.toml"
-alias vq="v ~/dotfiles/config/stow/qutebrowser/.qutebrowser/config.py"
+# alias vf="" now handled by function_utils/vim_function
+alias fv="fzf --bind 'enter:become(nvim {})'" # fzf file search then open in nvim
+alias vq="v ~/dotfiles/config/stow/qutebrowser/.config/qutebrowser/config.py"
 alias vg="v /Users/devy/dotfiles/functions/github.sh"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
@@ -325,7 +329,7 @@ alias rge='rg --files | sk --preview="bat {} --color=always" --bind "enter:execu
 alias t="tmux"
 alias tks="tmux kill-server"
 alias ta="tmux attach -t"
-alias tms="tmux source-file ~/.tmux.conf"
+alias tms="tmux source-file ~/.config/tmux/tmux.conf"
 # alias tmr="tmux rename-window -t"
 alias tls="tmux list-sessions"
 alias tt="tmux attach -t 0" # add after ta alias
@@ -454,27 +458,34 @@ alias gdp="cd ~/Documents/Projects/dance-partner/get-dance-partner"
 alias pbis="pnpm build:ios:sim"
 alias nu="nu --config $HOME/.config/nushell/config.nu"
 alias srd="./scripts/reset-db.sh"
-alias ll="ls | grep lock" # List lock files
-alias nei="npx expo install"
-alias t3app="bun create t3-app@latest"
-alias vits="v $HOME/Documents/Projects/dance-partner/dance-partner-vibes/app/expo/app/screens/ItemsScreen.tsx:73"
-alias vits="v $HOME/Documents/Projects/dance-partner/dance-partner-vibes/app/expo/app/screens/ItemsScreen.tsx"
-alias x="exit"
-alias ppro="p prompts"
-alias ebbis="edpv && bbis"
-alias qu="p -p q"
-alias blc="bun lint:check"
-alias bf="bun format"
-alias gmx="git merge -X theirs"
-alias bbi="rf build-* *.app && bbis"
-alias bls="bun lint-staged"
-alias blc="bun lint:changed"
-alias blc="bun lint:check"
-alias vo="v ~/Documents/obsidian_notes/" # Open obsidian notes
-alias obs="~/Documents/obsidian_notes/"
-alias re="readme.md" # Open readme
-alias vncs="v $HOME/dotfiles/config/stow/nvim/.config/nvim/lua/plugins/colorscheme.lua"
-alias lsa="nu -c 'ls -a'"
-alias ob="open -a Obsidian" # Open with obsidian
-alias pre="p -p resume"
-alias pb="pbpaste"
+alias w="z ~/Work"
+alias pp="cd ~/Work/portfolio"
+alias kiro-downl="cd ~/Downloads/kiro-ide-0.8.140-stable-linux-x64/Kiro"
+alias omc="cd ~/.config/omarchy"
+alias hc="z ~/.config/hypr"
+alias dhc="z ~/dotfiles/config/stow/hypr/.config/hypr"
+alias hcd="z ~/.local/share/omarchy/default/hypr/"
+alias hcdu='z ~/.local/share/omarchy/default/hypr/bindings && v utilities.conf'
+alias vot="v $HOME/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf"
+alias play="cd ~/Projects/playground"
+alias hr="hyprctl reload"
+alias hm="hyprctl monitors"
+alias hcb="dhc && bindings.conf"
+alias hci="dhc && input.conf"
+alias hcm="dhc && monitors.conf"
+alias pacs="pacseek"
+alias dpv="cd ~/Projects/dance-partner-vibes"
+alias todo="~/Work/todo.md"
+alias pc="pacseek"
+
+# Gcal cli
+alias gc="gcalcli"
+alias gcq="gcalcli quick"
+alias gca="gcalcli add"
+
+alias wee="gc calw"
+alias mt="make test"
+alias share="cd ~/.local/share"
+alias conf="cd ~/.config"
+alias mb="make build"
+alias mtv="make test-verbose"
