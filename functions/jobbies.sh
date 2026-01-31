@@ -94,7 +94,16 @@ function jobbies() {
     done
   else
     # Open all URLs in one new Chrome window as separate tabs
-    open -na "Google Chrome" --args --new-window "${urls[@]}"
+    # Detect OS and use appropriate command
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      # macOS
+      open -na "Google Chrome" --args --new-window "${urls[@]}"
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+      chromium --new-window "${urls[@]}" &>/dev/null &
+    else
+      echo "Error: Unsupported OS: $OSTYPE"
+      return 1
+    fi
   fi
 }
 
