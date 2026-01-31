@@ -102,6 +102,15 @@ ctrl+space  - select current block level and optionally more
 
 Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
 
+### Markers
+
+ma  - local marker at 'a'
+mA  - global marker at 'A'
+'_  - go to marker
+:delm a - delete mark
+:delm!  - delete all local marks
+:delm! | delm A-Z0-9 - delete all marks
+
 ### Word affects
 
 r     - replace hovered character
