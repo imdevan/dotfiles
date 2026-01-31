@@ -1,0 +1,6 @@
+- [ ] create shared function omni-browser 
+  - [ ] update jobbies to use
+  - [ ] check for other uses
+- [ ] create shared function omni-copy
+  - [ ] update to copy and alias global 
+  - [ ] check for other uses
