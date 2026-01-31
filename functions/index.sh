@@ -76,3 +76,6 @@ source $dotfile_dir/functions/query_db.sh
 source $dotfile_dir/functions/yaz.sh
 
 source $dotfile_dir/functions/query_db.sh
+source $dotfile_dir/functions/real_fake_person.sh
+
+source $dotfile_dir/functions/reverse_stow.sh
