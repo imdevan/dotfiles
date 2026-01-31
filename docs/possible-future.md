@@ -22,12 +22,24 @@
 - Slightly slow zsh load times kkkkkk
 - how can i integrate nushell features where needed? 
 - swtich to fish as default? 
+  - would like to, but not worth right now. 
+- Consider adding a deeper dotfiles mgmt system
+  - options: chezmoi, nix, mise-en-place
+  - misahttps://github.com/twpayne/chezmoi or nix
+- consider swaping tmux with z
+
+
 
 
 ## Things to check out
 
+- tmux config with centered info 
+  - https://github.com/Sin-cy/dotfiles/blob/main/tmux/.config/tmux/tmux.conf
+  - featured here https://www.youtube.com/watch?v=TLFsee7DDSI
+- gcalcli https://github.com/insanum/gcalcli
+- atuin - better terminal history
+- swap ctrl and shift with keyd https://github.com/rvaiya/keyd
 - https://github.com/NvChad/NvChad
-- https://github.com/twpayne/chezmoi or nix
 - https://github.com/holman/dotfiles/tree/master
 - https://github.com/gh0stzk/dotfiles
 - https://github.com/paulirish/dotfiles
@@ -63,15 +75,17 @@
     or enter defaults to newline and shift enter accepts change
 - jb color
 - sketchybar show tmux status info  ... hide tmux window in terminal
-- finish ark skip macro
-- tmux status: 
-  - swap left and right side or add both to left
+- finish ark skip macro tmux status: swap left and right side or add both to left
   - implement location to truncate all parent folder names
     - e.g. dance-partner/dance-partner-app/app/expo -> dp/dpa/a/expo
     - maybe even a more dynamic solution based on length
 
 ### Considerations of tools to add
 
+- [ ] gum to scripts https://github.com/charmbracelet/gum
+- [ ] gh-dash https://www.gh-dash.dev/getting-started/usage/
+- [ ] pavu audio manager
+- [ ] possible text to speech engine https://github.com/mkiol/dsnote
 - [ ] consider adding marta config (e.g. <https://github.com/agenttank/dotfiles_macos/blob/main/marta/conf.marco>)
 - [ ] consider using just <https://github.com/casey/just> for non-js projects
 - [ ] janky borders <https://github.com/FelixKratz/JankyBorders>
