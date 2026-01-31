@@ -5,3 +5,9 @@ keymaps
 Multiline
 keymap
 noremap
+init
+DefaultConfig
+bubbletea
+charmbracelet
+ui
+cli
