@@ -159,7 +159,36 @@ function list_all() {
       if ($rows | is-empty) {
         ["🧙🏼‍♂️ nothing here"] | table -i false
       } else {
-        $rows | table -i false
+        $rows 
+        | each {|it|
+            let now = (date now)
+            let age = ($now - $it.modified)
+            let age_color = if $age < 1hr {
+              "green_bold"
+            } else if $age < 1day {
+              "green"
+            } else if $age < 1wk {
+              "yellow"
+            } else if $age < 4wk {
+              "red"
+            } else {
+              "red_dimmed"
+            }
+            
+            let relative_date = ($it.modified | date humanize)
+            
+            {
+              name: (if $it.type == "dir" { 
+                $"(ansi blue_bold)($it.name)(ansi reset)" 
+              } else { 
+                $it.name 
+              })
+              type: $it.type
+              size: $it.size
+              modified: $"(ansi ($age_color))($relative_date)(ansi reset)"
+            }
+          }
+        | table -i false
       }
     '
 
