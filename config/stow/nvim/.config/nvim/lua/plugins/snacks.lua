@@ -61,8 +61,12 @@ return {
       },
       win = {
         height = math.floor(vim.o.lines - 6),
-        width = 180,
-        -- minimal = true,
+        width = 120,
+        minimal = true,
+        backdrop = {
+          transparent = false,
+          blend = 99,
+        },
       },
       on_open = function()
         vim.wo.number = false
