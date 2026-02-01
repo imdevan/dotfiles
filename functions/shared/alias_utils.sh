@@ -8,7 +8,6 @@
 #
 
 # Default editor
-editor="code"
 aliases_file=$dotfile_dir/aliases.sh
 
 # Restarts shell
