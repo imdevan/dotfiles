@@ -42,4 +42,5 @@ with_vim() {
   fi
 }
 
+alias wv="with_vim"
 alias v="with_vim"
