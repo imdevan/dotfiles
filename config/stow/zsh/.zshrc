@@ -1,6 +1,10 @@
 # Add this to the TOP of your .zshrc to profile
+# Uncomment to track load times
 zmodload zsh/zprof
 
+# load zsh defer
+# https://github.com/romkatv/zsh-defer
+source ~/zsh-defer/zsh-defer.plugin.zsh
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -19,18 +23,19 @@ zmodload zsh/zprof
 [[ $- != *i* ]] && return
 
 # Load omarchy-zsh configuration
-if [[ -d /usr/share/omarchy-zsh/conf.d ]]; then
+if [[ -d $HOME/dotfiles/config/omarchy-zsh/conf.d ]]; then
   for config in /usr/share/omarchy-zsh/conf.d/*.zsh; do
     [[ -f "$config" ]] && source "$config"
   done
 fi
 
 # Load omarchy-zsh functions and aliases
-if [[ -d /usr/share/omarchy-zsh/functions ]]; then
+if [[ -d $HOME/dotfiles/config/omarchy-zsh/functions ]]; then
   for func in /usr/share/omarchy-zsh/functions/*.zsh; do
     [[ -f "$func" ]] && source "$func"
   done
 fi
+
 
 # Add your own customizations below
 alias lnf="n ~/.config/hypr/looknfeel.conf"
@@ -44,6 +49,16 @@ ZSH_DISABLE_COMPFIX=true
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Speed up compinit by only checking cache once per day
+autoload -Uz compinit
+if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+# Tell OMZ to skip compinit since we already did it
+skip_global_compinit=1
+
 # # Use cached completions (rebuild only once per day)
 # autoload -Uz compinit
 # if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
@@ -51,9 +66,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # else
 #   compinit -C
 # fi
-
-# https://ohmyposh.dev/docs/installation/linux
-# Oh My Posh!
+#
+# # https://ohmyposh.dev/docs/installation/linux
+# # Oh My Posh!
 # eval "$(oh-my-posh init zsh)"
 # if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 #   # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
@@ -65,9 +80,9 @@ export ZSH="$HOME/.oh-my-zsh"
 #   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
 #   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
 # fi
-#
 
-# cache oh-my-posh
+
+# # cache oh-my-posh
 # if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 #   if [[ ! -f ~/.oh-my-posh-init.zsh ]] || [[ ~/dotfiles/config/oh-my-posh/themes/bubbles.toml -nt ~/.oh-my-posh-init.zsh ]]; then
 #     oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml > ~/.oh-my-posh-init.zsh
@@ -140,7 +155,11 @@ zstyle ":omz:update" mode disabled  # disable automatic updates
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Speed up OMZ by disabling unnecessary features
+DISABLE_AUTO_UPDATE="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -161,10 +180,12 @@ zstyle ":omz:update" mode disabled  # disable automatic updates
 # custom plugin added: https://github.com/jeffreytse/zsh-vi-mode
 
 # needed for nvm to be lazyloaded MUST come before plugins are loaded
-export NVM_LAZY_LOAD=true
+# export NVM_LAZY_LOAD=true
 
-plugins=(zsh-vi-mode nvm web-search)
-# plugins=(nvm web-search)
+# Minimal plugins for faster startup
+plugins=(web-search)
+# Load zsh-vi-mode async if needed
+# plugins=(zsh-vi-mode web-search)
 
 # Only load zsh-vi-mode if you want vi keybindings
 # Option 1: Load on first ESC press (vi mode trigger)
@@ -177,41 +198,6 @@ source $ZSH/oh-my-zsh.sh
 
 # enable vi mode for ZLE
 # bindkey -v
-
-# Oh My Posh!
-# eval "$(oh-my-posh init zsh)"
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/hunk.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/1_shell.omp.json)"
-  eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
-fi
-#
-# export SHELL_PROMPT='❯'
-# _omp_redraw-prompt() {
-#   local precmd
-#   for precmd in "${precmd_functions[@]}"; do
-#     "$precmd"
-#   done
-#
-#   zle .reset-prompt
-# }
-# function zle-line-init zle-keymap-select {
-#     case ${KEYMAP} in
-#        (vicmd)       SHELL_PROMPT='❮' ;;
-#        (main|viins)  SHELL_PROMPT='❯' ;;
-#        (*)           SHELL_PROMPT='❮' ;;
-#     esac
-#     _omp_redraw-prompt
-# }
-#
-#
-# zle -N zle-line-init
-# zle -N zle-keymap-select
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -240,12 +226,14 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/dotfiles/index.sh
+zsh-defer source ~/dotfiles/index.sh
 
+# todo: go is managed by omarchy seperate mac deps
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+# export PATH="$HOME/go/bin:$PATH"
 
-# eval "$(zoxide init zsh)"
+# zoxide
+# zsh-defer eval "$(zoxide init zsh)"
 # with cache:
 # if [[ ! -f ~/.zoxide-init.zsh ]]; then
 #   zoxide init zsh > ~/.zoxide-init.zsh
@@ -269,18 +257,18 @@ export PATH="${HOME}/.cargo/bin:${PATH}"
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init - zsh)"
 
-# # lazyload
-# pyenv() {
-#   unfunction pyenv
-#   eval "$(command pyenv init - zsh)"
-#   pyenv "$@"
-# }
-#
-# python() {
-#   unfunction pyenv python
-#   eval "$(command pyenv init - zsh)"
-#   python "$@"
-# }
+# lazyload
+pyenv() {
+  unfunction pyenv
+  eval "$(command pyenv init - zsh)"
+  pyenv "$@"
+}
+
+python() {
+  unfunction pyenv python
+  eval "$(command pyenv init - zsh)"
+  python "$@"
+}
 
 # Add android paths 
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -288,7 +276,8 @@ export PATH=$PATH:$ANDROID_HOME/emulatorand
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-export JAVA_HOME=$(brew --prefix)/opt/openjdk@17
+# todo: conslidate mac configs
+# export JAVA_HOME=$(brew --prefix)/opt/openjdk@17
 
 # Added by Antigravity
 export PATH="/Users/devy/.antigravity/antigravity/bin:$PATH"
@@ -327,7 +316,8 @@ zstyle ':completion:*' verbose no
 zstyle ':fzf-tab:*' continuous-trigger ''
 
 # For output testing 
+# Uncomment to track load times
 zprof > ~/.zsh_profile
 
 
-. "$HOME/.local/share/../bin/env"
+# . "$HOME/.local/bin/env"
