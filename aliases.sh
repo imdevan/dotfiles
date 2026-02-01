@@ -9,11 +9,12 @@ editor="nvim"
 # Globals
 alias -g G="| grep"
 alias -g C="| wl-copy"
+
 # Navigation
 alias ..="cd .."
 
-alias dotfiles="${editor} $dotfile_dir"
-alias aliases="${editor} $dotfile_dir/aliases.sh"
+alias dotfiles="$EDITOR $dotfile_dir"
+alias aliases="$EDITOR $dotfile_dir/aliases.sh"
 
 ## Aliases shortcut
 alias a="aliases"
@@ -456,7 +457,7 @@ alias p="prompter"
 alias pro="cd ~/Documents/Projects"
 alias gdp="cd ~/Documents/Projects/dance-partner/get-dance-partner"
 alias pbis="pnpm build:ios:sim"
-alias nu="nu --config $HOME/.config/nushell/config.nu"
+# alias nu="nu --config $HOME/.config/nushell/config.nu"
 alias srd="./scripts/reset-db.sh"
 alias w="z ~/Work"
 alias pp="cd ~/Work/portfolio"
@@ -489,3 +490,8 @@ alias share="cd ~/.local/share"
 alias conf="cd ~/.config"
 alias mb="make build"
 alias mtv="make test-verbose"
+alias t0="ta 0"
+alias vzp="v $HOME/.zsh_profile"
+alias ob="cd ~/Documents/obsidian_notes"
+alias ob="cd ~/Documents/Obsidian Vault"
+alias vob="nvim '~/Documents/Obsidian Vault'"
