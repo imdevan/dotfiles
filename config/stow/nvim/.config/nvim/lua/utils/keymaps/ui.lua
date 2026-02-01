@@ -111,4 +111,50 @@ function M.toggle_bufferline()
   end
 end
 
+-- Toggle cursor style
+local cursor_underline = false
+
+local underline_everywhere = table.concat({
+  "n-v:hor100",
+  "c-i:ver20",
+  "r:block",
+  "o:hor100",
+}, ",")
+
+local block_everywhere = table.concat({
+  "n-v:block",
+  "c-i:ver20",
+  "r:hor20",
+  "o:block",
+}, ",")
+
+function M.toggle_cursor_style()
+  if cursor_underline then
+    vim.opt.guicursor = block_everywhere
+    pcall(function()
+      require("smear_cursor").enabled = true
+    end)
+  else
+    vim.opt.guicursor = underline_everywhere
+    pcall(function()
+      require("smear_cursor").enabled = false
+    end)
+  end
+
+  cursor_underline = not cursor_underline
+end
+
+-- Toggle render markdown
+local render_markdown_enabled = true
+
+function M.toggle_render_markdown()
+  if render_markdown_enabled then
+    vim.cmd("RenderMarkdown disable")
+  else
+    vim.cmd("RenderMarkdown enable")
+  end
+
+  render_markdown_enabled = not render_markdown_enabled
+end
+
 return M

@@ -323,53 +323,11 @@ keymap_set("n", "<leader>tc", ui_utils.toggle_colorcolumn, { desc = "Toggle colo
 keymap_set("n", "<leader>tb", ui_utils.toggle_bufferline, { desc = "Toggle bufferline / tab bar" })
 
 -- Toggle cursor
-local cursor_underline = false
-
-local underline_everywhere = table.concat({
-  "n-v:hor100",
-  "c-i:ver20",
-  "r:block",
-  "o:hor100",
-}, ",")
-
-local block_everywhere = table.concat({
-  "n-v:block",
-  "c-i:ver20",
-  "r:hor20",
-  "o:block",
-}, ",")
-
-local function toggle_cursor_style()
-  if cursor_underline then
-    vim.opt.guicursor = block_everywhere
-    pcall(function()
-      require("smear_cursor").enabled = true
-    end)
-  else
-    vim.opt.guicursor = underline_everywhere
-    pcall(function()
-      require("smear_cursor").enabled = false
-    end)
-  end
-
-  cursor_underline = not cursor_underline
-end
-
-keymap_set("n", "<leader>tc", toggle_cursor_style, {
+keymap_set("n", "<leader>tc", ui_utils.toggle_cursor_style, {
   desc = "Toggle cursor underline | block ",
 })
 
 -- Render markdown
-local render_markdown_enabled = true
-
-keymap_set("n", "<leader>pr", function()
-  if render_markdown_enabled then
-    vim.cmd("RenderMarkdown disable")
-  else
-    vim.cmd("RenderMarkdown enable")
-  end
-
-  render_markdown_enabled = not render_markdown_enabled
-end, {
+keymap_set("n", "<leader>pr", ui_utils.toggle_render_markdown, {
   desc = "Toggle render markdown",
 })
