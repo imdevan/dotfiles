@@ -6,10 +6,6 @@
 # Variables used in file
 editor="nvim"
 
-# Globals
-alias -g G="| grep"
-alias -g C="| wl-copy"
-
 # Navigation
 alias ..="cd .."
 
@@ -43,12 +39,15 @@ alias -s git="git_clone" # open git urls with custom function
 # Global aliases
 #
 alias -g T="| tee output.log"        # copy output to output.log
-alias -g C="| tee /dev/tty | pbcopy" # copy output to clipboard and terminal
 alias -g G="| grep --color=auto"     # grep output
 alias -g B="| boxes -d ansi-rounded" # https://boxes.thomasjensen.com/examples.html
 alias -g L="| lolcat -f"             # https://github.com/busyloop/lolcat
 alias -g Q="| quick_note"            # https://github.com/busyloop/lolcat
 alias -g COW="| cowsay"
+alias -g G="| grep"
+alias -g C="| wl-copy"
+# todo: implement omni-copy
+# alias -g C="| tee /dev/tty | pbcopy" # copy output to clipboard and terminal
 
 # Home Brew
 alias bri="brew install"
@@ -495,3 +494,6 @@ alias vzp="v $HOME/.zsh_profile"
 alias ob="cd ~/Documents/obsidian_notes"
 alias ob="cd ~/Documents/Obsidian Vault"
 alias vob="nvim '~/Documents/Obsidian Vault'"
+alias prmpt="./bin/prompter"
+alias mbr="make build-run"
+alias p="./bin/prompt"
