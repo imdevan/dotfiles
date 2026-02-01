@@ -97,4 +97,50 @@ function M.toggle_render_markdown()
   render_markdown_enabled = not render_markdown_enabled
 end
 
+function M.toggle_checkbox()
+  local bufnr = 0
+  local cursor = api.nvim_win_get_cursor(0)
+  local current_line = cursor[1]
+  
+  -- Get the line content
+  local line = api.nvim_buf_get_lines(bufnr, current_line - 1, current_line, false)[1]
+  
+  if not line or line == "" then
+    return
+  end
+  
+  -- Capture leading whitespace and optional comment string
+  local indent, comment, rest = line:match("^(%s*)(/%*%*?%s*|//%s*|<!%-%-%-?%s*|#%s*)?(.*)$")
+  indent = indent or ""
+  comment = comment or ""
+  rest = rest or line
+  
+  -- Check if there's already a checkbox
+  local checkbox_unchecked = "^%- %[ %] "
+  local checkbox_checked = "^%- %[x%] "
+  
+  local new_rest
+  if rest:match(checkbox_checked) then
+    -- Toggle from checked to unchecked
+    new_rest = rest:gsub("^%- %[x%] ", "- [ ] ")
+  elseif rest:match(checkbox_unchecked) then
+    -- Toggle from unchecked to checked
+    new_rest = rest:gsub("^%- %[ %] ", "- [x] ")
+  else
+    -- No checkbox found, add unchecked checkbox
+    -- Remove leading "- " if it exists (plain list item)
+    local content = rest:gsub("^%-%s*", "")
+    new_rest = "- [ ] " .. content
+  end
+  
+  -- Reconstruct the line
+  local new_line = indent .. comment .. new_rest
+  
+  -- Set the new line
+  api.nvim_buf_set_lines(bufnr, current_line - 1, current_line, false, { new_line })
+  
+  -- Restore cursor position (adjust for potential line length change)
+  api.nvim_win_set_cursor(0, cursor)
+end
+
 return M
