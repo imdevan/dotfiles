@@ -290,32 +290,6 @@ keymap_set("n", "<leader>ti", ui_utils.toggle_snacks_ignored, { desc = "Toggle S
 -- Toggle type hints
 keymap_set("n", "<leader>ty", ui_utils.toggle_type_hints, { desc = "Toggle type hints", remap = true })
 
--- Remap comments
--- Use LazyVim's default comment keymaps (gcc for line, gc for visual)
-keymap_set("n", "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
-keymap_set("x", "<C-c>", "gc", { desc = "Toggle comment (visual)", remap = true })
-
--- Zen mode
--- Note: C-z is often intercepted by terminals for suspend (sends SIGTSTP)
--- If this doesn't work, the terminal is likely intercepting it before Neovim
-keymap_set("n", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
-keymap_set("x", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
-
--- Terminal shinanigans
--- ============================================================================
-
-keymap_set("n", "<C-x>", snacks.terminal.toggle, {
-  desc = "Toggle multi Line Terminal",
-})
-
-keymap_set("t", "<C-x>", snacks.terminal.toggle, {
-  desc = "Toggle multi Line Terminal",
-})
-
--- Noice
--- =====================================================================================================================
-keymap_set("n", "<leader>pi", "<CMD>Noice history<CR>", { desc = "Noice history" })
-
 -- Toggle color column
 keymap_set("n", "<leader>tc", ui_utils.toggle_colorcolumn, { desc = "Toggle colorcolumn" })
 
@@ -331,3 +305,29 @@ keymap_set("n", "<leader>tc", ui_utils.toggle_cursor_style, {
 keymap_set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
   desc = "Toggle render markdown",
 })
+
+-- Toggle comment
+-- Use LazyVim's default comment keymaps (gcc for line, gc for visual)
+keymap_set("n", "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
+keymap_set("x", "<C-c>", "gc", { desc = "Toggle comment (visual)", remap = true })
+
+-- Zen mode
+-- Note: C-z is often intercepted by terminals for suspend (sends SIGTSTP)
+-- If this doesn't work, the terminal is likely intercepting it before Neovim
+keymap_set("n", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
+keymap_set("x", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
+
+-- Terminal
+-- ============================================================================
+
+keymap_set("n", "<C-x>", snacks.terminal.toggle, {
+  desc = "Toggle multi Line Terminal",
+})
+
+keymap_set("t", "<C-x>", snacks.terminal.toggle, {
+  desc = "Toggle multi Line Terminal",
+})
+
+-- Noice
+-- =====================================================================================================================
+keymap_set("n", "<leader>pi", "<CMD>Noice history<CR>", { desc = "Noice history" })
