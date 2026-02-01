@@ -7,9 +7,9 @@ local notify = vim.notify
 
 -- Evaluate math expression from selected text
 function M.evaluate_math_expression()
-  -- Save current selection to register
-  cmd('normal! "vy')
-  local selected_text = fn.getreg("v")
+  -- Save current selection to register m
+  cmd('normal! "my')
+  local selected_text = fn.getreg("m")
 
   if selected_text == "" then
     notify("No selection", vim.log.levels.WARN)
@@ -43,9 +43,9 @@ end
 
 -- Apply math expression to all numbers in selection
 function M.apply_math_to_numbers()
-  -- Save current selection to register
-  cmd('normal! "vy')
-  local selected_text = fn.getreg("v")
+  -- Save current selection to register m
+  cmd('normal! "my')
+  local selected_text = fn.getreg("m")
 
   if selected_text == "" then
     notify("No selection", vim.log.levels.WARN)
