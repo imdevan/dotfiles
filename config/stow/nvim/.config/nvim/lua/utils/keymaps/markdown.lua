@@ -99,48 +99,83 @@ end
 
 function M.toggle_checkbox()
   local bufnr = 0
-  local cursor = api.nvim_win_get_cursor(0)
-  local current_line = cursor[1]
+  local mode = vim.fn.mode()
   
-  -- Get the line content
-  local line = api.nvim_buf_get_lines(bufnr, current_line - 1, current_line, false)[1]
+  local start_line, end_line
+  local single_blank_line = false
   
-  if not line or line == "" then
-    return
-  end
-  
-  -- Capture leading whitespace and optional comment string
-  local indent, comment, rest = line:match("^(%s*)(/%*%*?%s*|//%s*|<!%-%-%-?%s*|#%s*)?(.*)$")
-  indent = indent or ""
-  comment = comment or ""
-  rest = rest or line
-  
-  -- Check if there's already a checkbox
-  local checkbox_unchecked = "^%- %[ %] "
-  local checkbox_checked = "^%- %[x%] "
-  
-  local new_rest
-  if rest:match(checkbox_checked) then
-    -- Toggle from checked to unchecked
-    new_rest = rest:gsub("^%- %[x%] ", "- [ ] ")
-  elseif rest:match(checkbox_unchecked) then
-    -- Toggle from unchecked to checked
-    new_rest = rest:gsub("^%- %[ %] ", "- [x] ")
+  if mode == 'v' or mode == 'V' or mode == '\22' then
+    -- Visual mode - get selection range
+    local start_pos = vim.fn.getpos("'<")
+    local end_pos = vim.fn.getpos("'>")
+    start_line = start_pos[2]
+    end_line = end_pos[2]
   else
-    -- No checkbox found, add unchecked checkbox
-    -- Remove leading "- " if it exists (plain list item)
-    local content = rest:gsub("^%-%s*", "")
-    new_rest = "- [ ] " .. content
+    -- Normal mode - just current line
+    local cursor = api.nvim_win_get_cursor(0)
+    start_line = cursor[1]
+    end_line = cursor[1]
+    
+    -- Check if it's a single blank line
+    local line = api.nvim_buf_get_lines(bufnr, start_line - 1, start_line, false)[1]
+    if line and (line == "" or line:match("^%s*$")) then
+      single_blank_line = true
+    end
   end
   
-  -- Reconstruct the line
-  local new_line = indent .. comment .. new_rest
+  -- Process each line in the range
+  for line_num = start_line, end_line do
+    local line = api.nvim_buf_get_lines(bufnr, line_num - 1, line_num, false)[1]
+    
+    if not line then
+      goto continue
+    end
+
+    local new_line
+    -- Handle blank line
+    if line == "" or line:match("^%s*$") then
+      local indent = line:match("^%s*") or ""
+      new_line = indent .. "- [ ] "
+    else
+      -- Capture leading whitespace
+      local indent = line:match("^%s*") or ""
+      local rest = line:sub(#indent + 1)
+
+      local new_rest
+      -- Check if there's a checked checkbox
+      if rest:match("^%- %[x%]") then
+        -- Toggle from checked to unchecked
+        new_rest = rest:gsub("^%- %[x%]", "- [ ]")
+      -- Check if there's an unchecked checkbox
+      elseif rest:match("^%- %[ %]") then
+        -- Toggle from unchecked to checked
+        new_rest = rest:gsub("^%- %[ %]", "- [x]")
+      else
+        -- No checkbox found, add unchecked checkbox
+        -- Remove leading "- " if it exists (plain list item)
+        local content = rest:gsub("^%-%s*", "")
+        new_rest = "- [ ] " .. content
+      end
+
+      -- Reconstruct the line
+      new_line = indent .. new_rest
+    end
+
+    -- Set the new line
+    api.nvim_buf_set_lines(bufnr, line_num - 1, line_num, false, { new_line })
+    
+    ::continue::
+  end
   
-  -- Set the new line
-  api.nvim_buf_set_lines(bufnr, current_line - 1, current_line, false, { new_line })
+  -- If in visual mode, exit visual mode
+  if mode == 'v' or mode == 'V' or mode == '\22' then
+    api.nvim_feedkeys(api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
+  end
   
-  -- Restore cursor position (adjust for potential line length change)
-  api.nvim_win_set_cursor(0, cursor)
+  -- If it was a single blank line, enter insert mode at the end
+  if single_blank_line then
+    vim.cmd('startinsert!')
+  end
 end
 
 return M
