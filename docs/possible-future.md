@@ -33,6 +33,7 @@
 
 ## Things to check out
 
+- [ ] breadonPinguin dotfiles notably qutebrowser config https://github.com/BreadOnPenguins/dots/tree/master/.config/qutebrowser 
 - tmux config with centered info 
   - https://github.com/Sin-cy/dotfiles/blob/main/tmux/.config/tmux/tmux.conf
   - featured here https://www.youtube.com/watch?v=TLFsee7DDSI
