@@ -14,10 +14,6 @@
 # preserve_separators:
 # - false (default): treat -, _, and spaces as boundaries but do NOT keep them
 # - true: keep separators when abbreviating (e.g. "dance-partner" -> "d-p")
-#
-# Test scripts
-# sh "config/stow/tmux/.tmux/scripts/status_path.sh" "Obsidian/quickNotes" 10; echo; sh "config/stow/tmux/.tmux/scripts/status_path.sh" "dots/myHTTPServer/config/stow" 18; echo; sh "config/stow/tmux/.tmux/scripts/status_path.sh" "dancePartner/dancePartnerVibes" 24; echo; sh "config/stow/tmux/.tmux/scripts/status_path.sh" "dance-partner/dance-partner-vibes" 24; echo; sh "config/stow/tmux/.tmux/scripts/status_path.sh" "P/obsidianNotes/quickNotes" 10
-# sh -n "config/stow/tmux/.tmux/scripts/status_path.sh" && echo '---' && sh "config/stow/tmux/.tmux/scripts/status_path.sh" "O/quick_notes" 10 false && sh "config/stow/tmux/.tmux/scripts/status_path.sh" "O/quick_notes" 10 true && sh "config/stow/tmux/.tmux/scripts/status_path.sh" "dots/config/stow" 12 false && sh "config/stow/tmux/.tmux/scripts/status_path.sh" "dots/config/stow" 12 true && sh "config/stow/tmux/.tmux/scripts/status_path.sh" "d-p/dance-partner-vibes" 12 false && sh "config/stow/tmux/.tmux/scripts/status_path.sh" "d-p/dance-partner-vibes" 12 true && sh "config/stow/tmux/.tmux/scripts/status_path.sh" "Obsidian/very_long_current_dir_name" 18 false
 
 path="${1:-}"
 max_chars="${2:-32}"
@@ -76,6 +72,11 @@ apply_alias "~/dotfiles" "dots"
 
 printf "%s" "$path" | awk -v max="$max_chars" -v keep_seps="$keep_seps" '
 function parent_abbr(s,   i,c,out,in_word) {
+  # Handle dotfiles: if string starts with dot, include dot + first letter (.config -> .c)
+  if (substr(s, 1, 1) == "." && length(s) > 1) {
+    return "." substr(s, 2, 1)
+  }
+  
   # Abbreviate to the unique first characters of each "word" within this
   # directory component.
   # Word boundaries:
