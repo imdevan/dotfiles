@@ -53,7 +53,7 @@ function M.apply_math_to_numbers()
   end
 
   -- Prompt for math expression
-  local expr = fn.input("Math expression (e.g., 16, +16, *2, -5, /3, =2): ")
+  local expr = fn.input("Math expression (e.g., 16, +16, *2, -5, /3, =2, =2+3*4): ")
   if expr == "" then
     notify("No expression provided", vim.log.levels.WARN)
     return
@@ -71,12 +71,44 @@ function M.apply_math_to_numbers()
     value_str = expr
   end
 
-  local success, value = pcall(function()
-    return tonumber(value_str)
-  end)
+  local success, value
+  
+  -- If operator is "=", evaluate the expression using the same logic as evaluate_math_expression
+  if operator == "=" then
+    success, value = pcall(function()
+      -- Trim whitespace
+      local expr_to_eval = value_str:gsub("^%s+", ""):gsub("%s+$", "")
+      
+      -- Try to evaluate as expression first
+      local math_env = setmetatable({}, { __index = math })
+      math_env.pi = math.pi
+      math_env.e = math.exp(1)
+      local func = load("return " .. expr_to_eval, "math_eval", "t", math_env)
+      if func then
+        return func()
+      end
+      return nil
+    end)
+    
+    -- If expression evaluation failed, try as simple number
+    if not success or not value then
+      success, value = pcall(function()
+        return tonumber(value_str)
+      end)
+    end
+  else
+    -- For other operators, just convert to number
+    success, value = pcall(function()
+      return tonumber(value_str)
+    end)
+  end
 
   if not success or not value then
-    notify("Invalid number: " .. value_str, vim.log.levels.ERROR)
+    if operator == "=" then
+      notify("Invalid expression or number: " .. value_str, vim.log.levels.ERROR)
+    else
+      notify("Invalid number: " .. value_str, vim.log.levels.ERROR)
+    end
     return
   end
 
@@ -143,7 +175,7 @@ function M.apply_math_to_numbers()
   -- Use vim.paste which handles multi-line text correctly
   vim.paste(processed_lines, -1)
 
-  notify("Applied " .. (operator == "+" and expr or (operator == "=" and "=" or operator) .. value_str) .. " to all numbers", vim.log.levels.INFO)
+  notify("Applied " .. (operator == "+" and expr or (operator == "=" and ("=" .. value_str .. " (=" .. value .. ")") or operator) .. value_str) .. " to all numbers", vim.log.levels.INFO)
 end
 
 -- Evaluate expression and insert result (normal mode)
