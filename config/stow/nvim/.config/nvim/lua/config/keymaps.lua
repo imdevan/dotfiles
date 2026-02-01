@@ -134,6 +134,40 @@ keymap_set("n", "gR", "<CMD>Glance references<CR>", silent_opts)
 keymap_set("n", "gY", "<CMD>Glance type_definitions<CR>", silent_opts)
 keymap_set("n", "gM", "<CMD>Glance implementations<CR>", silent_opts)
 
+-- =====================================================================================================================
+-- Markdown
+-- =====================================================================================================================
+
+-- Insert line (language-specific)
+keymap_set(
+  "n",
+  "<leader>pl",
+  text_utils.insert_line,
+  { desc = "Insert line (80 dashes for Markdown/MDX, 80 equals + comment for others)" }
+)
+
+-- Copy markdown headers by level
+for i = 1, 6 do
+  keymap_set("n", "<leader>phh" .. i, function()
+    markdown_utils.copy_headers_by_level(i)
+  end, { desc = "Paste header level " .. i .. " content at cursor" })
+end
+
+-- Convert line/selection into markdown header (levels 0-9)
+for i = 0, 9 do
+  keymap_set("n", "<leader>ph" .. i, function()
+    markdown_utils.convert_line_to_header(i)
+  end, { desc = "Convert line to header (H" .. i .. ")" })
+
+  keymap_set("v", "<leader>ph" .. i, function()
+    markdown_utils.convert_selection_to_header(i)
+  end, { desc = "Convert selection to header (H" .. i .. ")" })
+end
+
+-- Toggle checkbox
+keymap_set("n", "<leader>pC", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
+keymap_set("x", "<leader>pC", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
+
 -- Utils
 -- =====================================================================================================================
 
@@ -170,32 +204,6 @@ keymap_set("n", "<leader>pcl", js_console_log, { desc = "[C]onsole [L]og variabl
 -- Create space
 keymap_set("n", "<leader>ps", text_utils.create_space_below, { desc = "Create 5 lines below and move to the first" })
 keymap_set("n", "<leader>pS", text_utils.create_space_above, { desc = "Create 5 lines above and move to the first" })
-
--- Insert line (language-specific)
-keymap_set(
-  "n",
-  "<leader>pl",
-  text_utils.insert_line,
-  { desc = "Insert line (80 dashes for Markdown/MDX, 80 equals + comment for others)" }
-)
-
--- Copy markdown headers by level
-for i = 1, 6 do
-  keymap_set("n", "<leader>phh" .. i, function()
-    markdown_utils.copy_headers_by_level(i)
-  end, { desc = "Paste header level " .. i .. " content at cursor" })
-end
-
--- Convert line/selection into markdown header (levels 0-9)
-for i = 0, 9 do
-  keymap_set("n", "<leader>ph" .. i, function()
-    markdown_utils.convert_line_to_header(i)
-  end, { desc = "Convert line to header (H" .. i .. ")" })
-
-  keymap_set("v", "<leader>ph" .. i, function()
-    markdown_utils.convert_selection_to_header(i)
-  end, { desc = "Convert selection to header (H" .. i .. ")" })
-end
 
 -- Do math!
 keymap_set("n", "<leader>pm", math_utils.evaluate_and_insert, { desc = "Evaluate expression and insert result" })
