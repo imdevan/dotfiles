@@ -130,61 +130,16 @@ function M.apply_math_to_numbers()
     return
   end
 
-  -- Get visual selection boundaries
-  local start_pos = api.nvim_buf_get_mark(0, "<")
-  local end_pos = api.nvim_buf_get_mark(0, ">")
-  local start_line, start_col = start_pos[1] - 1, start_pos[2] -- Convert to 0-indexed
-  local end_line, end_col = end_pos[1] - 1, end_pos[2]
-
-  -- Split processed text into lines
+  -- Replace selection with result using a more reliable method
+  -- Split processed text into lines for proper handling
   local processed_lines = vim.split(processed_text, "\n", { plain = true })
-
-  -- Get current lines
-  local lines = api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
-
-  if #lines == 0 then
-    notify("No lines to process", vim.log.levels.WARN)
-    return
-  end
-
-  -- Handle replacement based on selection type
-  if start_line == end_line then
-    -- Single line: replace portion between start_col and end_col
-    local line = lines[1]
-    -- start_col is 0-indexed, Lua strings are 1-indexed
-    -- before: characters 1 to start_col (inclusive)
-    local before = start_col > 0 and line:sub(1, start_col) or ""
-    -- after: characters after end_col (end_col is inclusive, so +2 for next char)
-    local after = line:sub(end_col + 2)
-    lines[1] = before .. processed_lines[1] .. after
-  else
-    -- Multi-line: replace first line from start_col, middle lines entirely, last line up to end_col
-    if #processed_lines > 0 then
-      -- First line
-      local first_line = lines[1]
-      local before = start_col > 0 and first_line:sub(1, start_col) or ""
-      lines[1] = before .. processed_lines[1]
-      table.remove(processed_lines, 1)
-
-      -- Middle lines
-      for i = 2, #lines - 1 do
-        if #processed_lines > 0 then
-          lines[i] = processed_lines[1]
-          table.remove(processed_lines, 1)
-        end
-      end
-
-      -- Last line
-      if #processed_lines > 0 and #lines > 1 then
-        local last_line = lines[#lines]
-        local after = last_line:sub(end_col + 2)
-        lines[#lines] = processed_lines[1] .. after
-      end
-    end
-  end
-
-  -- Replace the lines in the buffer
-  api.nvim_buf_set_lines(0, start_line, end_line + 1, false, lines)
+  
+  -- Use vim.paste to replace the selection
+  -- First, reselect the visual selection
+  cmd('normal! gv')
+  
+  -- Use vim.paste which handles multi-line text correctly
+  vim.paste(processed_lines, -1)
 
   notify("Applied " .. (operator == "+" and expr or operator .. value_str) .. " to all numbers", vim.log.levels.INFO)
 end
