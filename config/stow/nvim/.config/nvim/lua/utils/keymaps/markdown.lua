@@ -84,4 +84,17 @@ function M.convert_selection_to_header(level)
   M.convert_lines_to_header(level, start_line, end_line)
 end
 
+-- Toggle render markdown
+local render_markdown_enabled = true
+
+function M.toggle_render_markdown()
+  if render_markdown_enabled then
+    vim.cmd("RenderMarkdown disable")
+  else
+    vim.cmd("RenderMarkdown enable")
+  end
+
+  render_markdown_enabled = not render_markdown_enabled
+end
+
 return M

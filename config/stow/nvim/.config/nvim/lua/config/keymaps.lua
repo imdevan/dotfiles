@@ -328,6 +328,6 @@ keymap_set("n", "<leader>tc", ui_utils.toggle_cursor_style, {
 })
 
 -- Render markdown
-keymap_set("n", "<leader>pr", ui_utils.toggle_render_markdown, {
+keymap_set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
   desc = "Toggle render markdown",
 })

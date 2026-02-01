@@ -144,17 +144,4 @@ function M.toggle_cursor_style()
   cursor_underline = not cursor_underline
 end
 
--- Toggle render markdown
-local render_markdown_enabled = true
-
-function M.toggle_render_markdown()
-  if render_markdown_enabled then
-    vim.cmd("RenderMarkdown disable")
-  else
-    vim.cmd("RenderMarkdown enable")
-  end
-
-  render_markdown_enabled = not render_markdown_enabled
-end
-
 return M
