@@ -164,9 +164,14 @@ for i = 0, 9 do
   end, { desc = "Convert selection to header (H" .. i .. ")" })
 end
 
+-- Render markdown
+keymap_set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
+  desc = "Toggle render markdown",
+})
+
 -- Toggle checkbox
-keymap_set("n", "<leader>pC", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
-keymap_set("x", "<leader>pC", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
+keymap_set("n", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
+keymap_set("x", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
 
 -- Utils
 -- =====================================================================================================================
@@ -199,7 +204,7 @@ keymap_set("i", "<leader>pcc", "~", { desc = "Toggle case" })
 
 -- Logger
 -- TODO: find a better logging solution similar to turbo console_log
-keymap_set("n", "<leader>pcl", js_console_log, { desc = "[C]onsole [L]og variable" })
+keymap_set("n", "<leader>pL", js_console_log, { desc = "[C]onsole [L]og variable" })
 
 -- Create space
 keymap_set("n", "<leader>ps", text_utils.create_space_below, { desc = "Create 5 lines below and move to the first" })
@@ -242,7 +247,7 @@ keymap_set("n", "<leader>st", spell_utils.toggle_spell, { desc = "Toggle spell c
 
 -- Word count
 -- =====================================================================================================================
-keymap_set("v", "<leader>pc", text_utils.word_count, { desc = "Word and character count of selection" })
+keymap_set("v", "<leader>pwc", text_utils.word_count, { desc = "Word and character count of selection" })
 
 -- Open in
 -- =====================================================================================================================
@@ -307,11 +312,6 @@ keymap_set("n", "<leader>tb", ui_utils.toggle_bufferline, { desc = "Toggle buffe
 -- Toggle cursor
 keymap_set("n", "<leader>tc", ui_utils.toggle_cursor_style, {
   desc = "Toggle cursor underline | block ",
-})
-
--- Render markdown
-keymap_set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
-  desc = "Toggle render markdown",
 })
 
 -- Toggle comment
