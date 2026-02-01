@@ -2,7 +2,7 @@
 
 # Function: reverse_stow
 # Description: Put current directory in dotfiles/stow directory with name
-# Usage: reverse_stow [arguments]
+# Usage: reverse_stow [stow_name]
 # Alias: rs
 
 function reverse_stow() {
@@ -54,7 +54,7 @@ function reverse_stow() {
         return 1
     fi
     
-    # Calculate relative path from HOME to current directory
+    # Calculate relative path from HOME to current directory; fall back to root
     local relative_path=""
     if [[ "$current_dir" == "$HOME"* ]]; then
         relative_path="${current_dir#$HOME/}"
@@ -63,10 +63,11 @@ function reverse_stow() {
             relative_path="."
         fi
     else
-        echo "Error: Current directory must be under $HOME"
-        echo "Current: $current_dir"
-        echo "HOME: $HOME"
-        return 1
+        relative_path="${current_dir#/}"
+        # Handle case where we're exactly in /
+        if [ -z "$relative_path" ]; then
+            relative_path="."
+        fi
     fi
     
     # Create target directory path
