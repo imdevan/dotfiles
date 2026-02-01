@@ -53,7 +53,7 @@ function M.apply_math_to_numbers()
   end
 
   -- Prompt for math expression
-  local expr = fn.input("Math expression (e.g., 16, +16, *2, -5, /3): ")
+  local expr = fn.input("Math expression (e.g., 16, +16, *2, -5, /3, =2): ")
   if expr == "" then
     notify("No expression provided", vim.log.levels.WARN)
     return
@@ -62,7 +62,7 @@ function M.apply_math_to_numbers()
   -- Determine operator and value
   -- If expression starts with operator, use it; otherwise default to addition
   local operator, value_str
-  if expr:match("^[+%-*/]") then
+  if expr:match("^[+%-*/=]") then
     operator = expr:sub(1, 1)
     value_str = expr:sub(2)
   else
@@ -100,6 +100,8 @@ function M.apply_math_to_numbers()
         return num_str
       end
       result = num / value
+    elseif operator == "=" then
+      result = value
     else
       return num_str
     end
@@ -141,7 +143,7 @@ function M.apply_math_to_numbers()
   -- Use vim.paste which handles multi-line text correctly
   vim.paste(processed_lines, -1)
 
-  notify("Applied " .. (operator == "+" and expr or operator .. value_str) .. " to all numbers", vim.log.levels.INFO)
+  notify("Applied " .. (operator == "+" and expr or (operator == "=" and "=" or operator) .. value_str) .. " to all numbers", vim.log.levels.INFO)
 end
 
 -- Evaluate expression and insert result (normal mode)
