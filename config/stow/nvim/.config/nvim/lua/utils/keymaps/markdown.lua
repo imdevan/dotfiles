@@ -100,11 +100,11 @@ end
 function M.toggle_checkbox()
   local bufnr = 0
   local mode = vim.fn.mode()
-  
+
   local start_line, end_line
   local single_blank_line = false
-  
-  if mode == 'v' or mode == 'V' or mode == '\22' then
+
+  if mode == "v" or mode == "V" or mode == "\22" then
     -- Visual mode - get selection range
     local start_pos = vim.fn.getpos("'<")
     local end_pos = vim.fn.getpos("'>")
@@ -115,18 +115,18 @@ function M.toggle_checkbox()
     local cursor = api.nvim_win_get_cursor(0)
     start_line = cursor[1]
     end_line = cursor[1]
-    
+
     -- Check if it's a single blank line
     local line = api.nvim_buf_get_lines(bufnr, start_line - 1, start_line, false)[1]
     if line and (line == "" or line:match("^%s*$")) then
       single_blank_line = true
     end
   end
-  
+
   -- Process each line in the range
   for line_num = start_line, end_line do
     local line = api.nvim_buf_get_lines(bufnr, line_num - 1, line_num, false)[1]
-    
+
     if not line then
       goto continue
     end
@@ -163,18 +163,18 @@ function M.toggle_checkbox()
 
     -- Set the new line
     api.nvim_buf_set_lines(bufnr, line_num - 1, line_num, false, { new_line })
-    
+
     ::continue::
   end
-  
+
   -- If in visual mode, exit visual mode
-  if mode == 'v' or mode == 'V' or mode == '\22' then
-    api.nvim_feedkeys(api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
+  if mode == "v" or mode == "V" or mode == "\22" then
+    api.nvim_feedkeys(api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
   end
-  
+
   -- If it was a single blank line, enter insert mode at the end
   if single_blank_line then
-    vim.cmd('startinsert!')
+    vim.cmd("startinsert!")
   end
 end
 
