@@ -8,9 +8,10 @@ for file in $dotfile_dir/functions/**/*.sh(N) $dotfile_dir/aliases.sh; do
     fi
 done
 
-# Removed in favor of caching
-# Import functions
-source $dotfile_dir/functions/index.sh
-
 # A bunch of aliases
 source $dotfile_dir/aliases.sh
+
+# Removed in favor of caching
+# Import functions
+zsh-defer source $dotfile_dir/functions/index.sh
+
