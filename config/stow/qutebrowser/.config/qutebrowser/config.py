@@ -23,6 +23,7 @@ config.bind("<Cmd-Alt-i>", "devtools right")
 config.bind("<Cmd-Alt-b>", "devtools bottom")
 config.bind("<Ctrl-t>", f"open {path_to_start_page}")
 config.bind("<Cmd-Shift-W>", "close")  # For macOS
+config.bind("<Ctrl-w>", "spawn --userscript download-wallhaven")  # Download wallhaven wallpaper
 
 # Window Styles
 c.window.hide_decoration = True

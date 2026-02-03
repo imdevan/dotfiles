@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Qutebrowser userscript to download wallpapers from wallhaven.cc
+# This script gets the current URL from qutebrowser and passes it to the download script
+
+# Get the current URL from qutebrowser environment variable
+current_url="$QUTE_URL"
+
+# Path to your download script
+script_path="$HOME/dotfiles/functions/scripts/download-wallhaven.sh"
+
+# Check if we're on a wallhaven page
+if [[ "$current_url" =~ ^https://wallhaven\.cc/w/[a-zA-Z0-9]+$ ]]; then
+  # Execute the download script with the current URL
+  "$script_path" "$current_url"
+  echo "message-info 'Downloading wallpaper from: $current_url'" >>"$QUTE_FIFO"
+elif [[ "$current_url" =~ wallhaven\.cc ]]; then
+  echo "message-warning 'Please navigate to a specific wallpaper page (https://wallhaven.cc/w/[id])'" >>"$QUTE_FIFO"
+else
+  echo "message-error 'Not on a wallhaven.cc page'" >>"$QUTE_FIFO"
+fi
+
