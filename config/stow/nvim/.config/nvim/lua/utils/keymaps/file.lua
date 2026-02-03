@@ -2,7 +2,6 @@ local M = {}
 
 local fn = vim.fn
 local api = vim.api
-local notify = vim.notify
 
 -- Copy file path and line number
 function M.copy_file_path()
@@ -10,7 +9,7 @@ function M.copy_file_path()
   local line_num = api.nvim_win_get_cursor(0)[1]
   local content = filepath .. ":" .. line_num
   fn.setreg("+", content)
-  notify("Copied: " .. content, vim.log.levels.INFO)
+  vim.notify("File and line copied", vim.log.levels.INFO)
 end
 
 -- Copy file path and line range (for visual selection)
@@ -27,7 +26,7 @@ function M.copy_file_path_range()
     or filepath .. ":" .. start_line .. "-" .. end_line
 
   fn.setreg("+", content)
-  notify("Copied: " .. content, vim.log.levels.INFO)
+  vim.notify("File and lines copied", vim.log.levels.INFO)
 end
 
 -- Delete file
