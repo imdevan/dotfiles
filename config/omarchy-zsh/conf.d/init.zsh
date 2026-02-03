@@ -12,7 +12,7 @@ if command -v try &> /dev/null; then
 fi
 
 if command -v starship &> /dev/null; then
-  zsh-defer eval "$(starship init zsh)"
+  eval "$(starship init zsh)"
 fi
 
 # fzf integration
