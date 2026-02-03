@@ -317,7 +317,8 @@ keymap_set("n", "<leader>tc", ui_utils.toggle_cursor_style, {
 -- Toggle comment
 -- Use LazyVim's default comment keymaps (gcc for line, gc for visual)
 keymap_set("n", "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
-keymap_set("x", "<C-c>", "gc", { desc = "Toggle comment (visual)", remap = true })
+-- keymap_set("x", "<C-c>", "gc", { desc = "Toggle comment (visual)", remap = true })
+keymap_set("v", "<C-c>", text_utils.comment_swap, { desc = "Toggle comment (swap)", remap = true })
 
 -- Zen mode
 -- Note: C-z is often intercepted by terminals for suspend (sends SIGTSTP)
