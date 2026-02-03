@@ -179,6 +179,7 @@ keymap_set("x", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle c
 -- Reset git hunk under cursor
 keymap_set("n", "<leader>pgd", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
 keymap_set("n", "<leader>gz", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
+keymap_set("n", "<leader>ga", git_utils.lazy_commit, { desc = "Lazy add & commit" })
 
 -- Evaluate math expression from selected text
 keymap_set(
