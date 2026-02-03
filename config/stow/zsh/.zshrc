@@ -24,15 +24,15 @@ source ~/zsh-defer/zsh-defer.plugin.zsh
 
 # Load omarchy-zsh configuration
 if [[ -d $HOME/dotfiles/config/omarchy-zsh/conf.d ]]; then
-  for config in /usr/share/omarchy-zsh/conf.d/*.zsh; do
+  for config in $HOME/dotfiles/config/omarchy-zsh/conf.d/*.zsh; do
     [[ -f "$config" ]] && source "$config"
   done
 fi
 
 # Load omarchy-zsh functions and aliases
 if [[ -d $HOME/dotfiles/config/omarchy-zsh/functions ]]; then
-  for func in /usr/share/omarchy-zsh/functions/*.zsh; do
-    [[ -f "$func" ]] && source "$func"
+  for func in $HOME/dotfiles/config/omarchy-zsh/functions/*.zsh; do
+    [[ -f "$func" ]] && zsh-defer source "$func"
   done
 fi
 
