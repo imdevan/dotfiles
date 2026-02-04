@@ -79,10 +79,7 @@ set("n", "<M-s>", "<CMD>write<CR>", silent_opts)
 set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
 
 -- Quit (consolidated duplicates)
-set("n", "<C-q>", "<CMD>quitall<CR>", silent_opts)
-set("n", "<C-Q>", "<CMD>quitall<CR>", silent_opts)
-set("i", "<C-q>", "<CMD>quitall<CR>", silent_opts)
-set("i", "<C-Q>", "<CMD>quitall<CR>", silent_opts)
+multi_set("n,i", "<C-q>,<C-Q>", "<CMD>quitall<CR>", silent_opts)
 
 -- Reload file
 set("n", "<M-r>", "<CMD>e!<CR>", {
@@ -175,8 +172,7 @@ set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
 })
 
 -- Toggle checkbox
-set("n", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
-set("x", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
+multi_set("n,x", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
 
 -- Toggle boldness
 multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggle boldness" })
@@ -185,9 +181,13 @@ multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggl
 -- =====================================================================================================================
 
 -- Reset git hunk under cursor
-set("n", "<leader>pgd", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
-set("n", "<leader>gz", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
+multi_set("n", "<leader>pgd,<leader>gz", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
+
+-- Quick commit
 set("n", "<leader>ga", git_utils.lazy_commit, { desc = "Lazy add & commit" })
+
+-- Calculator
+set("n", "<leader>pm", math_utils.evaluate_and_insert, { desc = "Evaluate expression and insert result" })
 
 -- Evaluate math expression from selected text
 set("v", "<leader>pm", math_utils.evaluate_math_expression, { desc = "Evaluate math expression from selected text" })
@@ -206,11 +206,9 @@ set("i", "<leader>pcc", "~", { desc = "Toggle case" })
 set("n", "<leader>pL", js_console_log, { desc = "[C]onsole [L]og variable" })
 
 -- Create space
+-- TODO: fix
 set("n", "<leader>ps", text_utils.create_space_below, { desc = "Create 5 lines below and move to the first" })
 set("n", "<leader>pS", text_utils.create_space_above, { desc = "Create 5 lines above and move to the first" })
-
--- Do math!
-set("n", "<leader>pm", math_utils.evaluate_and_insert, { desc = "Evaluate expression and insert result" })
 
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
