@@ -59,10 +59,10 @@ return {
         -- diagnostics = false,
         -- inlay_hints = false,
       },
+      wo = {},
       win = {
         height = math.floor(vim.o.lines - 6),
         width = 120,
-        minimal = true,
         backdrop = {
           transparent = false,
           blend = 99,
@@ -70,10 +70,12 @@ return {
       },
       on_open = function()
         vim.wo.number = false
+        vim.wo.wrap = false
         vim.wo.relativenumber = false
       end,
       on_close = function()
         vim.wo.number = true
+        vim.wo.wrap = true
         vim.wo.relativenumber = true
       end,
     }
