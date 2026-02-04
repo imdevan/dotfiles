@@ -36,12 +36,6 @@ if [[ -d $HOME/dotfiles/config/omarchy-zsh/functions ]]; then
   done
 fi
 
-
-# Add your own customizations below
-alias lnf="n ~/.config/hypr/looknfeel.conf"
-alias vz="n ~/.zshrc"
-alias r="source ~/.zshrc"
-
 # Must be before loading .oh-my-zsh
 # Skip expensive security checks - useful in multi-user systems, but unnecessary on your personal
 ZSH_DISABLE_COMPFIX=true
@@ -182,15 +176,8 @@ DISABLE_UPDATE_PROMPT="true"
 # needed for nvm to be lazyloaded MUST come before plugins are loaded
 # export NVM_LAZY_LOAD=true
 
-# Minimal plugins for faster startup
-plugins=(web-search)
-# Load zsh-vi-mode async if needed
-# plugins=(zsh-vi-mode web-search)
-
-# Only load zsh-vi-mode if you want vi keybindings
-# Option 1: Load on first ESC press (vi mode trigger)
-# bindkey -v  # Enable vi mode built-in
-# autoload -Uz zsh-vi-mode
+# Plugins
+plugins=(zsh-vi-mode web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -226,7 +213,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-zsh-defer source ~/dotfiles/index.sh
+source ~/dotfiles/index.sh
 
 # todo: go is managed by omarchy seperate mac deps
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
