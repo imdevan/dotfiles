@@ -188,6 +188,9 @@ keymap_set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
 keymap_set("n", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
 keymap_set("x", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
 
+-- Toggle boldness
+multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggle boldness" })
+
 -- Utils
 -- =====================================================================================================================
 

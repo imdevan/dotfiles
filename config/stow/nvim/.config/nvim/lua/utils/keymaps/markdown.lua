@@ -97,6 +97,218 @@ function M.toggle_render_markdown()
   render_markdown_enabled = not render_markdown_enabled
 end
 
+-- Toggle boldness
+function M.toggle_bold()
+  local mode = vim.fn.mode()
+
+  if mode == "v" or mode == "V" or mode == "\22" then
+    -- Visual mode - use visual function
+    M.toggle_bold_v()
+  else
+    -- Normal mode - use normal function
+    M.toggle_bold_n()
+  end
+end
+
+-- Toggle boldness in normal mode (current word)
+function M.toggle_bold_n()
+  local bufnr = 0
+  local cursor = api.nvim_win_get_cursor(0)
+  local line_num = cursor[1]
+  local col_num = cursor[2] + 1 -- Convert to 1-based indexing
+  local line = api.nvim_buf_get_lines(bufnr, line_num - 1, line_num, false)[1]
+
+  if not line then
+    return
+  end
+
+  -- Find word boundaries around cursor
+  local before_cursor = line:sub(1, col_num - 1)
+  local after_cursor = line:sub(col_num)
+  
+  -- Find start of word (go backwards from cursor)
+  local word_start = col_num
+  for i = col_num - 1, 1, -1 do
+    local char = line:sub(i, i)
+    if char:match("%W") then
+      word_start = i + 1
+      break
+    end
+    if i == 1 then
+      word_start = 1
+    end
+  end
+  
+  -- Find end of word (go forwards from cursor)
+  local word_end = col_num
+  for i = col_num, #line do
+    local char = line:sub(i, i)
+    if char:match("%W") then
+      word_end = i - 1
+      break
+    end
+    if i == #line then
+      word_end = #line
+    end
+  end
+  
+  -- Extract the word
+  local word = line:sub(word_start, word_end)
+  
+  if word == "" then
+    return
+  end
+  
+  local new_line
+  local new_cursor_pos
+  
+  -- Check if word is already bold
+  local bold_start = word_start - 2
+  local bold_end = word_end + 2
+  
+  if bold_start >= 1 and bold_end <= #line and 
+     line:sub(bold_start, bold_start + 1) == "**" and 
+     line:sub(bold_end - 1, bold_end) == "**" then
+    -- Remove bold formatting
+    new_line = line:sub(1, bold_start - 1) .. word .. line:sub(bold_end + 1)
+    new_cursor_pos = col_num - 2 -- Adjust cursor position
+  else
+    -- Add bold formatting
+    new_line = line:sub(1, word_start - 1) .. "**" .. word .. "**" .. line:sub(word_end + 1)
+    new_cursor_pos = col_num + 2 -- Adjust cursor position
+  end
+  
+  -- Set the new line
+  api.nvim_buf_set_lines(bufnr, line_num - 1, line_num, false, { new_line })
+  
+  -- Update cursor position
+  api.nvim_win_set_cursor(0, { line_num, new_cursor_pos - 1 }) -- Convert back to 0-based
+end
+
+-- Toggle boldness in visual mode (selected text)
+function M.toggle_bold_v()
+  local bufnr = 0
+  
+  -- Get visual selection range
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  local start_line = start_pos[2]
+  local start_col = start_pos[3]
+  local end_line = end_pos[2]
+  local end_col = end_pos[3]
+  
+  -- Handle single line selection
+  if start_line == end_line then
+    local line = api.nvim_buf_get_lines(bufnr, start_line - 1, start_line, false)[1]
+    if not line then
+      return
+    end
+    
+    -- Get selected text
+    local selected_text = line:sub(start_col, end_col)
+    
+    local new_line
+    local cursor_adjustment = 0
+    
+    -- Check if selection is already bold
+    local bold_start = start_col - 2
+    local bold_end = end_col + 2
+    
+    if bold_start >= 1 and bold_end <= #line and 
+       line:sub(bold_start, bold_start + 1) == "**" and 
+       line:sub(bold_end - 1, bold_end) == "**" then
+      -- Remove bold formatting
+      new_line = line:sub(1, bold_start - 1) .. selected_text .. line:sub(bold_end + 1)
+      cursor_adjustment = -2
+    else
+      -- Add bold formatting
+      new_line = line:sub(1, start_col - 1) .. "**" .. selected_text .. "**" .. line:sub(end_col + 1)
+      cursor_adjustment = 2
+    end
+    
+    -- Set the new line
+    api.nvim_buf_set_lines(bufnr, start_line - 1, start_line, false, { new_line })
+    
+  else
+    -- Handle multi-line selection
+    local lines = api.nvim_buf_get_lines(bufnr, start_line - 1, end_line, false)
+    
+    -- Get the selected text across multiple lines
+    local selected_lines = {}
+    for i, line in ipairs(lines) do
+      if i == 1 and i == #lines then
+        -- Single line case (shouldn't happen here, but just in case)
+        selected_lines[i] = line:sub(start_col, end_col)
+      elseif i == 1 then
+        -- First line
+        selected_lines[i] = line:sub(start_col)
+      elseif i == #lines then
+        -- Last line
+        selected_lines[i] = line:sub(1, end_col)
+      else
+        -- Middle lines
+        selected_lines[i] = line
+      end
+    end
+    
+    local selected_text = table.concat(selected_lines, "\n")
+    
+    -- Check if the selection is already bold by looking at the boundaries
+    local first_line = lines[1]
+    local last_line = lines[#lines]
+    
+    local is_bold = false
+    if start_col >= 3 and first_line:sub(start_col - 2, start_col - 1) == "**" and
+       end_col <= #last_line - 2 and last_line:sub(end_col + 1, end_col + 2) == "**" then
+      is_bold = true
+    end
+    
+    local new_lines = {}
+    
+    if is_bold then
+      -- Remove bold formatting
+      for i, line in ipairs(lines) do
+        if i == 1 and i == #lines then
+          -- Single line
+          new_lines[i] = line:sub(1, start_col - 3) .. selected_text .. line:sub(end_col + 3)
+        elseif i == 1 then
+          -- First line - remove ** from the beginning
+          new_lines[i] = line:sub(1, start_col - 3) .. line:sub(start_col)
+        elseif i == #lines then
+          -- Last line - remove ** from the end
+          new_lines[i] = line:sub(1, end_col) .. line:sub(end_col + 3)
+        else
+          -- Middle lines remain unchanged
+          new_lines[i] = line
+        end
+      end
+    else
+      -- Add bold formatting
+      for i, line in ipairs(lines) do
+        if i == 1 and i == #lines then
+          -- Single line
+          new_lines[i] = line:sub(1, start_col - 1) .. "**" .. selected_text .. "**" .. line:sub(end_col + 1)
+        elseif i == 1 then
+          -- First line - add ** at the beginning of selection
+          new_lines[i] = line:sub(1, start_col - 1) .. "**" .. line:sub(start_col)
+        elseif i == #lines then
+          -- Last line - add ** at the end of selection
+          new_lines[i] = line:sub(1, end_col) .. "**" .. line:sub(end_col + 1)
+        else
+          -- Middle lines remain unchanged
+          new_lines[i] = line
+        end
+      end
+    end
+    
+    -- Set the new lines
+    api.nvim_buf_set_lines(bufnr, start_line - 1, end_line, false, new_lines)
+  end
+  
+  -- Exit visual mode
+  api.nvim_feedkeys(api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end
+
 -- Toggle checkbox for a single line
 function M.toggle_checkbox_single_line()
   local bufnr = 0
