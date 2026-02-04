@@ -23,6 +23,21 @@ local ui_utils = require("utils.keymaps.ui")
 -- Cache vim functions for better performance
 local keymap_set = vim.keymap.set
 
+-- Multi set util
+local function multi_set(modes, keys, action, opts)
+  -- Split by comma
+  local seperator = ","
+  local mode_list = vim.split(modes, seperator, { trimempty = true })
+  local key_list = vim.split(keys, seperator, { trimempty = true })
+
+  -- Set keymap for each mode and key combination
+  for _, mode in ipairs(mode_list) do
+    for _, key in ipairs(key_list) do
+      keymap_set(mode, key, action, opts)
+    end
+  end
+end
+
 -- which-key group labels
 -- Use vim.schedule to ensure keymaps are registered before counting
 vim.schedule(function()
