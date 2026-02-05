@@ -314,17 +314,12 @@ set("v", "<C-c>", text_utils.comment_swap, { desc = "Toggle comment (swap)", rem
 -- Zen mode
 -- Note: C-z is often intercepted by terminals for suspend (sends SIGTSTP)
 -- If this doesn't work, the terminal is likely intercepting it before Neovim
-set("n", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
-set("x", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
+multi_set("n,x", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
 
 -- Terminal
 -- ============================================================================
 
-set("n", "<C-x>", snacks.terminal.toggle, {
-  desc = "Toggle multi Line Terminal",
-})
-
-set("t", "<C-x>", snacks.terminal.toggle, {
+multi_set("n,t", "<C-x>", snacks.terminal.toggle, {
   desc = "Toggle multi Line Terminal",
 })
 
