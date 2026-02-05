@@ -216,6 +216,12 @@ set("n", "<leader>pS", text_utils.create_space_above, { desc = "Create 5 lines a
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
 set("n", "<leader>pf", file_utils.copy_file_path, { desc = "Copy file path and line number" })
+set(
+  "n",
+  "<leader>pfi",
+  file_utils.implement_at_file_path,
+  { desc = 'Copy file path and line number adds the word "implement"' }
+)
 
 -- Multiline
 set("v", "<leader>pf", file_utils.copy_file_path_range, { desc = "Copy file path and line range" })
