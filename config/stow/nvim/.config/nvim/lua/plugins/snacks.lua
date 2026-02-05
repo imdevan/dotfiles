@@ -47,6 +47,7 @@ return {
     opts.indent = { enabled = false }
 
     -- Zen Mode options
+    -- https://github.com/folke/snacks.nvim/blob/main/docs/styles.md#zen
     opts.zen = {
       -- You can add any `Snacks.toggle` id here.
       -- Toggle state is restored when the window is closed.
