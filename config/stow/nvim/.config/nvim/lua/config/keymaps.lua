@@ -81,6 +81,9 @@ set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
 -- Quit (consolidated duplicates)
 multi_set("n,i", "<C-q>,<C-Q>", "<CMD>quitall<CR>", silent_opts)
 
+-- Close current buffer
+set("n", ";", "<CMD>bd<CR>", silent_opts)
+
 -- Reload file
 set("n", "<M-r>", "<CMD>e!<CR>", {
   desc = "Reload file from disk",
