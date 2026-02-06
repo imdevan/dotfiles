@@ -19,6 +19,7 @@ local file_utils = require("utils.keymaps.file")
 local git_utils = require("utils.keymaps.git")
 local todo_utils = require("utils.keymaps.todo")
 local ui_utils = require("utils.keymaps.ui")
+local terminal_utils = require("utils.keymaps.terminal")
 
 -- Cache vim functions for better performance
 local set = vim.keymap.set
@@ -117,10 +118,12 @@ set("n", "<M-a>", "ggVG", { desc = "Select all" })
 
 -- Copy / Paste full word
 local word_opts = { remap = true }
-set("n", "<leader>py", "bvEy", vim.tbl_extend("force", word_opts, { desc = "Copy word (from anywhere in word)" }))
-set("n", "<leader>pY", "BvEy", vim.tbl_extend("force", word_opts, { desc = "Copy Full word (from anywhere in word)" }))
+set("n", "<leader>py", "bvey", vim.tbl_extend("force", word_opts, { desc = "Copy word (from anywhere in word)" }))
 set("n", "<leader>pp", "bvEp", vim.tbl_extend("force", word_opts, { desc = "Paste word" }))
-set("n", "<leader>pP", "BvEp", vim.tbl_extend("force", word_opts, { desc = "Paste Full word" }))
+
+-- To end of line
+set("n", "<leader>pY", "v$gey", vim.tbl_extend("force", word_opts, { desc = "Yank to end of line" }))
+set("n", "<leader>pP", "v$gep", vim.tbl_extend("force", word_opts, { desc = "Paste to end of line" }))
 
 -- Todo comments
 -- =====================================================================================================================
@@ -322,6 +325,8 @@ multi_set("n,x", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
 multi_set("n,t", "<C-x>", snacks.terminal.toggle, {
   desc = "Toggle multi Line Terminal",
 })
+
+set("t", "<C-t>", terminal_utils.toggle_terminal_size, { desc = "Toggle Terminal Size" })
 
 -- Noice
 -- =====================================================================================================================
