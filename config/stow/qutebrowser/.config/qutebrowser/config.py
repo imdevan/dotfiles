@@ -23,12 +23,15 @@ config.bind("<Cmd-Alt-i>", "devtools right")
 config.bind("<Cmd-Alt-b>", "devtools bottom")
 config.bind("<Ctrl-t>", f"open {path_to_start_page}")
 config.bind("<Cmd-Shift-W>", "close")  # For macOS
-config.bind("<Ctrl-w>", "spawn --userscript download-wallhaven")  # Download wallhaven wallpaper
+config.bind(
+    "<Ctrl-w>", "spawn --userscript download-wallhaven ;; later 2000 tab-close"
+)  # Download wallhaven wallpaper and close tab after 2 seconds
 
 # Window Styles
 c.window.hide_decoration = True
 # c.window.transparent = True
-# c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.bg = "rgba(0,0,0,0)"
 c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.show = "in-mode"
 c.tabs.show = "switching"
