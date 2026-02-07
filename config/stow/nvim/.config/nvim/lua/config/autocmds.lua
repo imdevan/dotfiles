@@ -26,3 +26,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.bo.commentstring = "# %s"
   end,
 })
+
+-- Trigger checktime on focus for better checking file changes
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = "if mode() != 'c' | checktime | endif",
+})
