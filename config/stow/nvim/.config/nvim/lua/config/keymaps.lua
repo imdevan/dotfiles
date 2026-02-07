@@ -118,8 +118,8 @@ set("n", "<M-a>", "ggVG", { desc = "Select all" })
 
 -- Copy / Paste full word
 local word_opts = { remap = true }
-set("n", "<leader>py", "bvey", vim.tbl_extend("force", word_opts, { desc = "Copy word (from anywhere in word)" }))
-set("n", "<leader>pp", "bvEp", vim.tbl_extend("force", word_opts, { desc = "Paste word" }))
+set("n", "<leader>py", "gbvey", vim.tbl_extend("force", word_opts, { desc = "Copy word (from anywhere in word)" }))
+set("n", "<leader>pp", "gbvep", vim.tbl_extend("force", word_opts, { desc = "Paste word" }))
 
 -- To end of line
 set("n", "<leader>pY", "v$gey", vim.tbl_extend("force", word_opts, { desc = "Yank to end of line" }))
@@ -218,10 +218,11 @@ set("n", "<leader>pS", text_utils.create_space_above, { desc = "Create 5 lines a
 
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
-set("n", "<leader>pf", file_utils.copy_file_path, { desc = "Copy file path and line number" })
+set("n", "<leader>fp", file_utils.copy_file_path, { desc = "Copy file path and line number" })
+
 set(
   "n",
-  "<leader>pfi",
+  "<leader>fi",
   file_utils.implement_at_file_path,
   { desc = 'Copy file path and line number adds the word "implement"' }
 )
