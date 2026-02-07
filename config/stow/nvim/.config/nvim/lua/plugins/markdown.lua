@@ -37,6 +37,7 @@ return {
       -- above = "󰺵",
       -- below = "󰺵",
     },
+    pipe_table = { preset = "round" },
     bullet = {
       icons = { "󰮯", "󰊠", "󱙝" },
       -- icons = { "○", "●", "◆", "◇" },
