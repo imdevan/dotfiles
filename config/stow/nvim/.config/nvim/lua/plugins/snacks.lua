@@ -30,7 +30,7 @@ return {
         -- height = 10,
         height = 15,
         -- height = 20,
-        width = math.floor(vim.o.columns * 0.5),
+        width = math.max(45, math.floor(vim.o.columns * 0.5)),
         border = "rounded",
       },
     }
