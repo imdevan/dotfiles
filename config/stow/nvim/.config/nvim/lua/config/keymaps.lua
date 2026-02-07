@@ -299,7 +299,7 @@ set("n", "<leader>ti", ui_utils.toggle_snacks_ignored, { desc = "Toggle Snacks i
 set("n", "<leader>ty", ui_utils.toggle_type_hints, { desc = "Toggle type hints", remap = true })
 
 -- Toggle color column
-set("n", "<leader>tc", ui_utils.toggle_colorcolumn, { desc = "Toggle colorcolumn" })
+set("n", "<leader>tu", ui_utils.toggle_colorcolumn, { desc = "Toggle colorcolumn" })
 
 -- Toggle bufferline / tab bar
 set("n", "<leader>tb", ui_utils.toggle_bufferline, { desc = "Toggle bufferline / tab bar" })
