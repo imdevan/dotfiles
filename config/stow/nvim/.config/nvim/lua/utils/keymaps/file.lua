@@ -16,7 +16,7 @@ end
 function M.implement_at_file_path()
   local filepath = fn.expand("%:p")
   local line_num = api.nvim_win_get_cursor(0)[1]
-  local content = "implement " .. filepath .. ":" .. line_num
+  local content = "implement and mark complete if appropriate: " .. filepath .. ":" .. line_num
   fn.setreg("+", content)
   vim.notify("Implement at file path copied", vim.log.levels.INFO)
 end
