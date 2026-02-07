@@ -180,9 +180,64 @@ end
 
 -- Evaluate expression and insert result (normal mode)
 function M.evaluate_and_insert()
-  local api = vim.api
-  local keys = api.nvim_replace_termcodes("i<C-r>=", true, false, true)
-  api.nvim_feedkeys(keys, "n", false)
+  -- Get current line
+  local line = api.nvim_get_current_line()
+  
+  -- Check if line ends with = (with optional whitespace)
+  local trimmed = line:match("^(.-)%s*$")
+  if trimmed and trimmed:match("=$") then
+    -- Delegate to evaluate_line_with_equals
+    M.evaluate_line_with_equals()
+  else
+    -- Original behavior: insert expression mode
+    local keys = api.nvim_replace_termcodes("i<C-r>=", true, false, true)
+    api.nvim_feedkeys(keys, "n", false)
+  end
+end
+
+-- Evaluate line ending with = and insert result after the equal sign
+function M.evaluate_line_with_equals()
+  -- Get current line
+  local line = api.nvim_get_current_line()
+  
+  -- Check if line ends with = (with optional whitespace)
+  local trimmed = line:match("^(.-)%s*$")
+  if not trimmed:match("=$") then
+    notify("Line doesn't end with =", vim.log.levels.WARN)
+    return
+  end
+  
+  -- Extract the expression before the =
+  local expr = trimmed:match("^(.-)%s*=$")
+  if not expr or expr == "" then
+    notify("No expression found before =", vim.log.levels.WARN)
+    return
+  end
+  
+  -- Trim whitespace from expression
+  expr = expr:gsub("^%s+", ""):gsub("%s+$", "")
+  
+  -- Evaluate using Lua with math environment
+  local success, result = pcall(function()
+    local math_env = setmetatable({}, { __index = math })
+    math_env.pi = math.pi
+    math_env.e = math.exp(1)
+    local func = load("return " .. expr, "math_eval", "t", math_env)
+    if func then
+      return func()
+    end
+    return nil
+  end)
+  
+  if success and result ~= nil then
+    local result_str = tostring(result)
+    -- Ensure space before = and append result after
+    local new_line = expr .. " = " .. result_str
+    api.nvim_set_current_line(new_line)
+    notify("Evaluated: " .. expr .. " = " .. result_str, vim.log.levels.INFO)
+  else
+    notify("Failed to evaluate: " .. expr, vim.log.levels.ERROR)
+  end
 end
 
 return M
