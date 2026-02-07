@@ -7,6 +7,9 @@
 -- TODO:: fix unknown word issue and default diagnostics to enabled
 vim.diagnostic.enable(false)
 
+-- Disable inlay hints by default
+vim.g.inlay_hints_enabled = false
+
 -- Show all content - notably markdown comments
 vim.opt.conceallevel = 0
 
@@ -17,13 +20,21 @@ vim.opt.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
   command = "if mode() != 'c' | checktime | endif",
 })
--- Show column at 80 chars
-vim.opt.colorcolumn = ""
+
+-- Uncomment to show column at 80 chars
+-- vim.opt.colorcolumn = "80"
 
 -- Reduce timeout for key sequences (fixes space key delay)
 -- TODO: figure what this is
 vim.opt.timeoutlen = 200
 
-vim.opt.scrolloff = 18
+vim.opt.scrolloff = 12
 -- vim.opt.scrolloff = 24
 -- vim.opt.scrolloff = 32
+
+-- Hide tabs
+vim.opt.showtabline = 0
+
+-- Hide whitespace characters (tabs, spaces, etc.)
+vim.opt.list = false
+vim.opt.listchars = ""
