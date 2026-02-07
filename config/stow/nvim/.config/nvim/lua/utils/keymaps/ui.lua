@@ -72,8 +72,8 @@ function M.toggle_type_hints()
   local bufnr = api.nvim_get_current_buf()
   local enabled = vim.b.inlay_hints_enabled
   if enabled == nil then
-    -- First time: default to true (hints are usually on by default)
-    enabled = true
+    -- First time: check global default setting
+    enabled = vim.g.inlay_hints_enabled or false
   end
 
   if enabled then
