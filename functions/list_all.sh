@@ -6,7 +6,7 @@
 # Alias: la
 #
 # ... this started as "nu -c 'ls -a'"
-
+# todo: fix nested list behavior
 
 function list_all() {
   local sort="name"
