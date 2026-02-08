@@ -48,6 +48,7 @@ function M.convert_lines_to_header(level, start_line, end_line)
   local bufnr = 0
   local lines = api.nvim_buf_get_lines(bufnr, start_line - 1, end_line, false)
   local hashes = level > 0 and string.rep("#", level) or nil
+  local single_empty_line = (#lines == 1 and (lines[1] == "" or lines[1]:match("^%s*$")))
 
   for idx, line in ipairs(lines) do
     local indent = line:match("^%s*") or ""
@@ -59,7 +60,13 @@ function M.convert_lines_to_header(level, start_line, end_line)
       lines[idx] = title == "" and indent or (indent .. title)
     else
       if title == "" then
-        lines[idx] = indent .. hashes
+        -- For empty lines, add header markers
+        if level >= 1 then
+          -- Add space after header markers for level >= 1
+          lines[idx] = indent .. hashes .. " "
+        else
+          lines[idx] = indent .. hashes
+        end
       else
         lines[idx] = indent .. hashes .. " " .. title
       end
@@ -67,6 +74,11 @@ function M.convert_lines_to_header(level, start_line, end_line)
   end
 
   api.nvim_buf_set_lines(bufnr, start_line - 1, end_line, false, lines)
+
+  -- If it was a single empty line, enter insert mode at the end
+  if single_empty_line and level > 0 then
+    vim.cmd("startinsert!")
+  end
 end
 
 -- Convert current line to header
