@@ -14,6 +14,7 @@ source $dotfile_dir/functions/shared/join_args.sh
 source $dotfile_dir/functions/shared/has_flag.sh
 source $dotfile_dir/functions/shared/alias_utils.sh
 source $dotfile_dir/functions/shared/to_copy.sh
+source $dotfile_dir/functions/shared/gummy.sh
 
 # Global function handler for zsh
 source $dotfile_dir/functions/command_not_found_handler.sh
