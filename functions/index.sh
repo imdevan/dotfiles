@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Auto-compile all function files on first load or when changed
 for func_file in $dotfile_dir/functions/**/*.sh(N); do
     if [[ ! -f "${func_file}.zwc" ]] || [[ "$func_file" -nt "${func_file}.zwc" ]]; then
@@ -78,3 +80,7 @@ source $dotfile_dir/functions/query_db.sh
 source $dotfile_dir/functions/real_fake_person.sh
 
 source $dotfile_dir/functions/reverse_stow.sh
+
+source $dotfile_dir/functions/nu_db_summary.sh
+
+source $dotfile_dir/functions/brighten.sh
