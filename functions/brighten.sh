@@ -18,11 +18,12 @@ elif '$4' == 'b': print(int(b * 255))
 }
 
 function brighten() {
-    if [ $# -lt 2 ]; then
+    if [ $# -lt 1 ]; then
         g_dang "Usage: brighten [color] [brightness]
   color: hex (#fff or fff), rgb(r,g,b), rgba(r,g,b,a), hsl(h,s,l), hsla(h,s,l,a)
   
   brightness modes (all formats):
+    (no value): auto-brighten until max channel reached
     percent (50%): increase by percentage
     fraction (0.5, 1.5): multiply by fraction
     integer (10, -5): add/subtract value
@@ -37,10 +38,19 @@ function brighten() {
     local color="$1"
     local brightness="$2"
     local alpha=""
+    local auto_brighten=false
+    
+    # If no brightness specified, auto-brighten to max
+    if [ -z "$brightness" ]; then
+        auto_brighten=true
+    fi
     
     # Detect brightness format
     local brightness_mode brightness_value
-    if [[ "$brightness" =~ ^-?[0-9]+%$ ]]; then
+    if [ "$auto_brighten" = true ]; then
+        brightness_mode="auto"
+        brightness_value=""
+    elif [[ "$brightness" =~ ^-?[0-9]+%$ ]]; then
         # Percent format: 50% -> increase by 50%
         brightness_mode="percent"
         brightness_value="${brightness%\%}"
@@ -108,7 +118,10 @@ function brighten() {
         new_h="$h"
         new_s="$s"
         
-        if [ "$brightness_mode" = "percent" ]; then
+        if [ "$brightness_mode" = "auto" ]; then
+            # Auto-brighten to max lightness
+            new_l=100
+        elif [ "$brightness_mode" = "percent" ]; then
             # Increase L by percentage: L + (L * percent/100)
             new_l=$(echo "scale=0; l=$l * (1 + $brightness_value / 100); if (l > 100) 100 else if (l < 0) 0 else l / 1" | bc)
         elif [ "$brightness_mode" = "fraction" ]; then
@@ -129,7 +142,25 @@ function brighten() {
         
     elif [ "$format" = "hex" ]; then
         # For hex, brightness is 0-16 (0-F) added to each color pair
-        if [ "$brightness_mode" = "percent" ]; then
+        if [ "$brightness_mode" = "auto" ]; then
+            # Find the max channel and calculate multiplier to reach 255
+            local max_channel=$r
+            [ $g -gt $max_channel ] && max_channel=$g
+            [ $b -gt $max_channel ] && max_channel=$b
+            
+            if [ $max_channel -eq 0 ]; then
+                # All channels are 0, can't auto-brighten
+                new_r=0
+                new_g=0
+                new_b=0
+            else
+                # Calculate multiplier to bring max channel to 255
+                local multiplier=$(echo "scale=10; 255 / $max_channel" | bc)
+                new_r=$(echo "scale=0; r=$r * $multiplier; if (r > 255) 255 else r / 1" | bc)
+                new_g=$(echo "scale=0; g=$g * $multiplier; if (g > 255) 255 else g / 1" | bc)
+                new_b=$(echo "scale=0; b=$b * $multiplier; if (b > 255) 255 else b / 1" | bc)
+            fi
+        elif [ "$brightness_mode" = "percent" ]; then
             # Increase by percentage
             new_r=$(echo "scale=0; r=$r * (1 + $brightness_value / 100); if (r > 255) 255 else if (r < 0) 0 else r / 1" | bc)
             new_g=$(echo "scale=0; g=$g * (1 + $brightness_value / 100); if (g > 255) 255 else if (g < 0) 0 else g / 1" | bc)
@@ -148,7 +179,25 @@ function brighten() {
         
     else
         # For RGB, brightness is 0-255 added to all values
-        if [ "$brightness_mode" = "percent" ]; then
+        if [ "$brightness_mode" = "auto" ]; then
+            # Find the max channel and calculate multiplier to reach 255
+            local max_channel=$r
+            [ $g -gt $max_channel ] && max_channel=$g
+            [ $b -gt $max_channel ] && max_channel=$b
+            
+            if [ $max_channel -eq 0 ]; then
+                # All channels are 0, can't auto-brighten
+                new_r=0
+                new_g=0
+                new_b=0
+            else
+                # Calculate multiplier to bring max channel to 255
+                local multiplier=$(echo "scale=10; 255 / $max_channel" | bc)
+                new_r=$(echo "scale=0; r=$r * $multiplier; if (r > 255) 255 else r / 1" | bc)
+                new_g=$(echo "scale=0; g=$g * $multiplier; if (g > 255) 255 else g / 1" | bc)
+                new_b=$(echo "scale=0; b=$b * $multiplier; if (b > 255) 255 else b / 1" | bc)
+            fi
+        elif [ "$brightness_mode" = "percent" ]; then
             # Increase by percentage
             new_r=$(echo "scale=0; r=$r * (1 + $brightness_value / 100); if (r > 255) 255 else if (r < 0) 0 else r / 1" | bc)
             new_g=$(echo "scale=0; g=$g * (1 + $brightness_value / 100); if (g > 255) 255 else if (g < 0) 0 else g / 1" | bc)
