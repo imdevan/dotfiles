@@ -22,14 +22,57 @@ function yes_or_no() {
 alias yon="yes_or_no"
 
 # Same as above but flip a coin instead
+# If a number is passed, flip the coin that many times with delay and summary
 function flip_coin() {
-  generate_random 0 1
-  local answer=$?
+  local flips=${1:-1}
+  local heads_count=0
+  local tails_count=0
 
-  if [ $answer -eq "1" ]; then
-    echo "${green}Heads!${reset}"
+  if [ "$flips" -eq 1 ]; then
+    # Single flip - original behavior
+    generate_random 0 1
+    local answer=$?
+
+    if [ $answer -eq "1" ]; then
+      echo "${green}Heads!${reset}"
+    else
+      echo "${red}Tails!${reset}"
+    fi
   else
-    echo "${red}Tails!${reset}"
+    # Multiple flips with delay and summary
+    echo "Flipping coin ${blue}$flips${reset} times..."
+    echo ""
+
+    for ((i = 1; i <= flips; i++)); do
+      generate_random 0 1
+      local answer=$?
+
+      if [ $answer -eq "1" ]; then
+        echo "Flip $i: ${green}Heads${reset}"
+        ((heads_count++))
+      else
+        echo "Flip $i: ${red}Tails${reset}"
+        ((tails_count++))
+      fi
+
+      # Small delay between flips (except for the last one)
+      if [ $i -lt $flips ]; then
+        sleep 1
+      fi
+    done
+
+    echo ""
+    echo "=== Summary ==="
+    echo "${green}Heads: $heads_count${reset}"
+    echo "${red}Tails: $tails_count${reset}"
+
+    if [ $heads_count -gt $tails_count ]; then
+      echo "Winner: ${green}Heads!${reset}"
+    elif [ $tails_count -gt $heads_count ]; then
+      echo "Winner: ${red}Tails!${reset}"
+    else
+      echo "Result: ${blue}It's a tie!${reset}"
+    fi
   fi
 }
 alias flip="flip_coin"
