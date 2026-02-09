@@ -236,6 +236,9 @@ set("v", "<leader>pf", file_utils.copy_file_path_range, { desc = "Copy file path
 -- Spell checking
 -- =====================================================================================================================
 
+-- Autofix spelling
+set("n", "<M-z>", "1z=", { desc = "Autofix spelling" })
+
 -- Navigate to next spelling error and show suggestions
 set("n", "<leader>pa", spell_utils.next_spelling_error, { desc = "Next spelling error and show suggestions" })
 
