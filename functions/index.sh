@@ -82,6 +82,4 @@ source $dotfile_dir/functions/real_fake_person.sh
 
 source $dotfile_dir/functions/reverse_stow.sh
 
-source $dotfile_dir/functions/nu_db_summary.sh
-
 source $dotfile_dir/functions/brighten.sh
