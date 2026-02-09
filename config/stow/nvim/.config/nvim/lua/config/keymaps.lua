@@ -122,8 +122,11 @@ set("n", "<leader>py", "gbvey", vim.tbl_extend("force", word_opts, { desc = "Cop
 set("n", "<leader>pp", "gbvep", vim.tbl_extend("force", word_opts, { desc = "Paste word" }))
 
 -- To end of line
-set("n", "<leader>pY", "v$gey", vim.tbl_extend("force", word_opts, { desc = "Yank to end of line" }))
-set("n", "<leader>pP", "v$gep", vim.tbl_extend("force", word_opts, { desc = "Paste to end of line" }))
+multi_set("n", "<leader>pY", "v$gey,<C-Y>", vim.tbl_extend("force", word_opts, { desc = "Yank to end of line" }))
+multi_set("n", "<leader>pP,<C-P>", "v$gep", vim.tbl_extend("force", word_opts, { desc = "Paste to end of line" }))
+
+-- Copy between `---`
+set("n", "<leader>p<M-y>", text_utils.yank_between_seperators, { desc = "Yank between seperators" })
 
 -- Todo comments
 -- =====================================================================================================================
