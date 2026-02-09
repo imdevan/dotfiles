@@ -24,6 +24,7 @@ function brighten() {
   
   brightness modes (all formats):
     (no value): auto-brighten until max channel reached
+    -: auto-darken until min channel reaches 0
     percent (50%): increase by percentage
     fraction (0.5, 1.5): multiply by fraction
     integer (10, -5): add/subtract value
@@ -39,16 +40,22 @@ function brighten() {
   local brightness="$2"
   local alpha=""
   local auto_brighten=false
+  local auto_darken=false
 
   # If no brightness specified, auto-brighten to max
   if [ -z "$brightness" ]; then
     auto_brighten=true
+  elif [ "$brightness" = "-" ]; then
+    auto_darken=true
   fi
 
   # Detect brightness format
   local brightness_mode brightness_value
   if [ "$auto_brighten" = true ]; then
     brightness_mode="auto"
+    brightness_value=""
+  elif [ "$auto_darken" = true ]; then
+    brightness_mode="auto_darken"
     brightness_value=""
   elif [[ "$brightness" =~ ^-?[0-9]+%$ ]]; then
     # Percent format: 50% -> increase by 50%
@@ -121,6 +128,9 @@ function brighten() {
     if [ "$brightness_mode" = "auto" ]; then
       # Auto-brighten to max lightness
       new_l=100
+    elif [ "$brightness_mode" = "auto_darken" ]; then
+      # Auto-darken to min lightness
+      new_l=0
     elif [ "$brightness_mode" = "percent" ]; then
       # Increase L by percentage: L + (L * percent/100)
       new_l=$(echo "scale=0; l=$l * (1 + $brightness_value / 100); if (l > 100) 100 else if (l < 0) 0 else l / 1" | bc)
@@ -177,6 +187,44 @@ function brighten() {
         [ "$max_is_g" = true ] && new_g=255
         [ "$max_is_b" = true ] && new_b=255
       fi
+    elif [ "$brightness_mode" = "auto_darken" ]; then
+      # Find the min channel and calculate multiplier to reach 0
+      local min_channel=$r
+      local min_is_r=true
+      local min_is_g=false
+      local min_is_b=false
+      
+      if [ $g -lt $min_channel ]; then
+        min_channel=$g
+        min_is_r=false
+        min_is_g=true
+      fi
+      if [ $b -lt $min_channel ]; then
+        min_channel=$b
+        min_is_g=false
+        min_is_b=true
+      fi
+
+      if [ $min_channel -eq 255 ]; then
+        # All channels are 255, can't auto-darken
+        new_r=255
+        new_g=255
+        new_b=255
+      else
+        # Calculate how much to scale down from 255
+        # Formula: new = 255 - ((255 - old) * 255 / (255 - min))
+        new_r=$(echo "scale=0; (255 - $r) * 255 / (255 - $min_channel)" | bc)
+        new_r=$(echo "scale=0; 255 - $new_r" | bc)
+        new_g=$(echo "scale=0; (255 - $g) * 255 / (255 - $min_channel)" | bc)
+        new_g=$(echo "scale=0; 255 - $new_g" | bc)
+        new_b=$(echo "scale=0; (255 - $b) * 255 / (255 - $min_channel)" | bc)
+        new_b=$(echo "scale=0; 255 - $new_b" | bc)
+        
+        # Ensure the min channel is exactly 0 (fix floating point precision)
+        [ "$min_is_r" = true ] && new_r=0
+        [ "$min_is_g" = true ] && new_g=0
+        [ "$min_is_b" = true ] && new_b=0
+      fi
     elif [ "$brightness_mode" = "percent" ]; then
       # Increase by percentage
       new_r=$(echo "scale=0; r=$r * (1 + $brightness_value / 100); if (r > 255) 255 else if (r < 0) 0 else r / 1" | bc)
@@ -230,6 +278,44 @@ function brighten() {
         [ "$max_is_r" = true ] && new_r=255
         [ "$max_is_g" = true ] && new_g=255
         [ "$max_is_b" = true ] && new_b=255
+      fi
+    elif [ "$brightness_mode" = "auto_darken" ]; then
+      # Find the min channel and calculate multiplier to reach 0
+      local min_channel=$r
+      local min_is_r=true
+      local min_is_g=false
+      local min_is_b=false
+      
+      if [ $g -lt $min_channel ]; then
+        min_channel=$g
+        min_is_r=false
+        min_is_g=true
+      fi
+      if [ $b -lt $min_channel ]; then
+        min_channel=$b
+        min_is_g=false
+        min_is_b=true
+      fi
+
+      if [ $min_channel -eq 255 ]; then
+        # All channels are 255, can't auto-darken
+        new_r=255
+        new_g=255
+        new_b=255
+      else
+        # Calculate how much to scale down from 255
+        # Formula: new = 255 - ((255 - old) * 255 / (255 - min))
+        new_r=$(echo "scale=0; (255 - $r) * 255 / (255 - $min_channel)" | bc)
+        new_r=$(echo "scale=0; 255 - $new_r" | bc)
+        new_g=$(echo "scale=0; (255 - $g) * 255 / (255 - $min_channel)" | bc)
+        new_g=$(echo "scale=0; 255 - $new_g" | bc)
+        new_b=$(echo "scale=0; (255 - $b) * 255 / (255 - $min_channel)" | bc)
+        new_b=$(echo "scale=0; 255 - $new_b" | bc)
+        
+        # Ensure the min channel is exactly 0 (fix floating point precision)
+        [ "$min_is_r" = true ] && new_r=0
+        [ "$min_is_g" = true ] && new_g=0
+        [ "$min_is_b" = true ] && new_b=0
       fi
     elif [ "$brightness_mode" = "percent" ]; then
       # Increase by percentage
