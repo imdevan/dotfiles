@@ -47,6 +47,89 @@ function M.insert_line()
   end
 end
 
+-- Yank text between separator lines (e.g., ---, ===, etc.)
+function M.yank_between_seperators()
+  local current_line = api.nvim_win_get_cursor(0)[1]
+  local total_lines = api.nvim_buf_line_count(0)
+  
+  -- Common separator patterns
+  local separator_patterns = {
+    "^%-%-%-+%s*$",  -- --- (3 or more dashes)
+    "^===+%s*$",     -- === (3 or more equals)
+    "^___+%s*$",     -- ___ (3 or more underscores)
+    "^%*%*%*+%s*$",  -- *** (3 or more asterisks)
+  }
+  
+  -- Function to check if a line is a separator
+  local function is_separator(line_num)
+    if line_num < 1 or line_num > total_lines then
+      return false
+    end
+    local line = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)[1]
+    if not line then
+      return false
+    end
+    for _, pattern in ipairs(separator_patterns) do
+      if line:match(pattern) then
+        return true
+      end
+    end
+    return false
+  end
+  
+  -- Find the separator above current line
+  local start_line = nil
+  for line_num = current_line - 1, 1, -1 do
+    if is_separator(line_num) then
+      start_line = line_num
+      break
+    end
+  end
+  
+  -- Find the separator below current line
+  local end_line = nil
+  for line_num = current_line + 1, total_lines do
+    if is_separator(line_num) then
+      end_line = line_num
+      break
+    end
+  end
+  
+  -- Check if we found both separators
+  if not start_line or not end_line then
+    print("Could not find separators above and below cursor")
+    return
+  end
+  
+  -- Yank the content between separators (excluding the separator lines)
+  local content_start = start_line + 1
+  local content_end = end_line - 1
+  
+  if content_start > content_end then
+    print("No content between separators")
+    return
+  end
+  
+  -- Get the lines and yank them
+  local lines = api.nvim_buf_get_lines(0, content_start - 1, content_end, false)
+  
+  if #lines == 0 then
+    print("No content between separators")
+    return
+  end
+  
+  local text = table.concat(lines, "\n")
+  
+  -- Copy to multiple registers for maximum compatibility
+  vim.fn.setreg("+", text, "l")  -- System clipboard (linewise)
+  vim.fn.setreg("*", text, "l")  -- Selection clipboard (linewise)
+  vim.fn.setreg('"', text, "l")  -- Unnamed register (linewise)
+  vim.fn.setreg("0", text, "l")  -- Yank register (linewise)
+  
+  local line_count = #lines
+  print("Yanked " .. line_count .. " line(s) between separators to clipboard")
+end
+
 -- Toggle comment state for each line individually in visual selection
 function M.comment_swap()
   local start_line = vim.fn.line("'<")
