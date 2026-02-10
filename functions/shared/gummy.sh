@@ -44,16 +44,24 @@ g_info() { _gum_log info "$@"; }
 g_warn() { _gum_log warn "$@"; }
 g_error() { _gum_log error "$@"; }
 
-# Input function
-g_input() {
-  local prompt="${1:-Enter value}"
-  local default="${2:-}"
+# Confirmation dialog
+# Usage: g_confirm [prompt] [affirmative] [negative]
+# Examples:
+#   g_confirm
+#   g_confirm "Delete files?"
+#   g_confirm "Continue?" "Yes" "No"
+#   if g_confirm "Proceed?"; then echo "Confirmed"; fi
+g_confirm() {
+  local prompt="${1:-Are you sure?}"
+  local affirmative="${2:-Yes}"
+  local negative="${3:-No}"
   
-  if [[ -n "$default" ]]; then
-    gum input --placeholder "$prompt" --value "$default"
-  else
-    gum input --placeholder "$prompt"
-  fi
+  echo ""
+  gum confirm "$prompt" \
+    --affirmative "$affirmative" \
+    --negative "$negative" \
+    --padding "1 2"
+  echo ""
 }
 
 alias gu=gummy
