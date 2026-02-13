@@ -35,39 +35,25 @@ local M = {}
 -- Track terminal size state
 local is_fullscreen = false
 
--- Helper function to set small terminal size
-local function set_small(win)
-  local height = 15
-  local width = math.max(45, math.floor(vim.o.columns * 0.5))
+-- Small terminal config (matches snacks.lua default)
+local small_config = {
+  win = {
+    style = "float",
+    height = 15,
+    width = math.max(45, math.floor(vim.o.columns * 0.5)),
+    border = "rounded",
+  },
+}
 
-  vim.api.nvim_win_set_height(win, height)
-  vim.api.nvim_win_set_width(win, width)
-
-  -- Center the window
-  local config = vim.api.nvim_win_get_config(win)
-  local row = math.floor((vim.o.lines - height) / 2)
-  local col = math.floor((vim.o.columns - width) / 2)
-  config.row = row
-  config.col = col
-  vim.api.nvim_win_set_config(win, config)
-end
-
--- Helper function to set large terminal size
-local function set_large(win)
-  local padding_y = 4
-  local padding_x = 8
-  local height = vim.o.lines - (padding_y * 2)
-  local width = vim.o.columns - (padding_x * 2)
-
-  vim.api.nvim_win_set_height(win, height)
-  vim.api.nvim_win_set_width(win, width)
-
-  -- Center the window
-  local config = vim.api.nvim_win_get_config(win)
-  config.row = padding_y
-  config.col = padding_x
-  vim.api.nvim_win_set_config(win, config)
-end
+-- Large terminal config
+local large_config = {
+  win = {
+    style = "float",
+    height = vim.o.lines - 8,
+    width = vim.o.columns - 16,
+    border = "rounded",
+  },
+}
 
 function M.toggle_terminal_size()
   local snacks = require("snacks")
@@ -75,20 +61,27 @@ function M.toggle_terminal_size()
   -- Get the current terminal instance
   local term = snacks.terminal.get()
 
-  if not term or not term.win then
-    -- No terminal open, just open with default size
-    snacks.terminal.toggle()
-    return
-  end
+  -- if not term or not term.win then
+  --   -- No terminal open, just open with default size
+  --   snacks.terminal.toggle()
+  --   return
+  -- end
 
-  -- Get the window
-  local win = term.win
+  -- Close current terminal (suppress errors)
+  pcall(function()
+    term:close()
+  end)
 
+  -- Reopen with new size
   if is_fullscreen then
-    set_small(win)
+    pcall(function()
+      snacks.terminal.toggle(nil, small_config)
+    end)
     is_fullscreen = false
   else
-    set_large(win)
+    pcall(function()
+      snacks.terminal.toggle(nil, large_config)
+    end)
     is_fullscreen = true
   end
 end
