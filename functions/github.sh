@@ -104,9 +104,18 @@ function git_clone() {
   repo_url="${repo_url%%#*}"  # Remove everything from # onwards
   repo_url="${repo_url%%\?*}"  # Remove everything from ? onwards
   
-  # If repo URL starts with "https://github.com" and doesn't end in ".git", add ".git"
-  if [[ "$repo_url" == https://github.com* ]] && [[ "$repo_url" != *.git ]]; then
-    repo_url="${repo_url}.git"
+  # If repo URL starts with "https://github.com", convert to SSH format
+  if [[ "$repo_url" == https://github.com* ]]; then
+    # Add .git if not present
+    if [[ "$repo_url" != *.git ]]; then
+      repo_url="${repo_url}.git"
+    fi
+
+    # Extract the path part (e.g., "user/repo" or "user/repo.git")
+    local path_part="${repo_url#https://github.com/}"
+    
+    # Convert to SSH URL
+    repo_url="git@github.com:${path_part}"
   fi
 
   # Navigate to the directory
