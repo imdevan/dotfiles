@@ -78,7 +78,7 @@ function brighten() {
   local r g b h s l format
   local -a matches # For zsh compatibility
 
-  if [[ "$color" =~ ^#([0-9a-fA-F]{6})([0-9a-fA-F]{2})?$ ]]; then
+  if [[ "$color" =~ ^#?([0-9a-fA-F]{6})([0-9a-fA-F]{2})?$ ]]; then
     # Hex format with optional alpha (must start with #)
     # Use match array for zsh, BASH_REMATCH for bash
     matches=("${match[@]:-${BASH_REMATCH[@]}}")
