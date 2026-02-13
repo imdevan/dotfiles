@@ -150,6 +150,9 @@ set("n", "gM", "<CMD>Glance implementations<CR>", silent_opts)
 -- Markdown
 -- =====================================================================================================================
 
+-- Insert front matter
+set("n", "<leader>pf", markdown_utils.insert_front_matter, { desc = "Insert front matter" })
+
 -- Insert line (language-specific)
 set(
   "n",

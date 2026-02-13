@@ -564,4 +564,29 @@ function M.toggle_checkbox()
   end
 end
 
+-- Insert front matter at the top of the file
+function M.insert_front_matter()
+  local bufnr = 0
+
+  -- Go to the top of the file
+  api.nvim_win_set_cursor(0, { 1, 0 })
+
+  -- Insert the front matter template
+  local front_matter = {
+    "---",
+    "",
+    "---",
+  }
+
+  -- Insert at the beginning of the file
+  api.nvim_buf_set_lines(bufnr, 0, 0, false, front_matter)
+
+  -- Position cursor in the middle (line 2, which is the empty line between the dashes)
+  api.nvim_win_set_cursor(0, { 2, 0 })
+
+  -- Enter insert mode
+  vim.cmd("startinsert!")
+end
+
 return M
+
