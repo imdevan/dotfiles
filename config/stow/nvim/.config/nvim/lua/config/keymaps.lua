@@ -80,7 +80,8 @@ set("n", "<M-s>", "<CMD>write<CR>", silent_opts)
 set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
 
 -- Quit (consolidated duplicates)
-multi_set("n,i", "<C-q>,<C-Q>", "<CMD>quitall<CR>", silent_opts)
+multi_set("n,i", "<C-q>", "<CMD>quitall<CR>", silent_opts)
+multi_set("n,i", "<M-q>", "<CMD>wqall<CR>", silent_opts)
 
 -- Close current buffer
 set("n", ";", "<CMD>bd<CR>", silent_opts)
@@ -188,6 +189,10 @@ multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggl
 
 -- Utils
 -- =====================================================================================================================
+
+-- Togglr
+local togglr = require("togglr")
+set("n", "<leader>pt", togglr.toggle_word, { desc = "Togglr" })
 
 -- Reset git hunk under cursor
 multi_set("n", "<leader>pgd,<leader>gz", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
