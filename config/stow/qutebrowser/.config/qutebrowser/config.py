@@ -30,8 +30,9 @@ config.bind(
 # Window Styles
 c.window.hide_decoration = True
 # c.window.transparent = True
-c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.bg = "rgba(0,0,0,0)"
+# c.colors.webpage.darkmode.enabled = True
+# c.colors.webpage.bg = "rgba(0,0,0,0)"
+
 c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.show = "in-mode"
 c.tabs.show = "switching"
@@ -51,6 +52,7 @@ c.url.searchengines = {
     "lol": "u.gg/lol/champions/{}/build",
     "re": "https://github.com/imdevan/{}",
     "ll": "localhost:{}000",
+    "l": "localhost:{}",
     "l8": "localhost:8080?q={}",
     "wall": "https://wallhaven.cc/search?q={}&categories=110&purity=111&atleast=1920x1080&ratios=landscape&sorting=views&order=desc",
 }
