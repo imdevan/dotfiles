@@ -70,7 +70,7 @@ with_vim() {
         # Not found, in god's hands
         nvim "$@"
       fi
-      # Else open in nvim
+    # Else open in nvim
     else
       # If line number was specified, open at that line
       if [[ -n "$line_number" ]]; then
