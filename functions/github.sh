@@ -87,35 +87,24 @@ alias gr!="git_reset"
 function git_clone() {
   one_arg_required "$@" || return 1
 
-  # TODO: accommodate for ssh
-  # Clone the repo
-  # if [[ $1 == *"git@"* ]]; then
-  #   echo $(git clone ${1})
-  #   git clone ${1}
-  # else
-  #   echo $(git clone ${GIT_SSH_URL}${1}.git)
-  #   git clone ${GIT_SSH_URL}${1}.git
-  # fi
-
-  # Process the repo URL (first argument)
   local repo_url="${1}"
-  
+  local branch=""
+
   # Strip query parameters and hash fragments from the URL
   repo_url="${repo_url%%#*}"  # Remove everything from # onwards
   repo_url="${repo_url%%\?*}"  # Remove everything from ? onwards
-  
-  # If repo URL starts with "https://github.com", convert to SSH format
-  if [[ "$repo_url" == https://github.com* ]]; then
-    # Add .git if not present
-    if [[ "$repo_url" != *.git ]]; then
-      repo_url="${repo_url}.git"
-    fi
 
-    # Extract the path part (e.g., "user/repo" or "user/repo.git")
+  # If /tree/ is present, extract the branch and strip it from the URL
+  if [[ "$repo_url" == */tree/* ]]; then
+    branch="${repo_url#*/tree/}"
+    repo_url="${repo_url%%/tree/*}"
+  fi
+
+  # Convert https://github.com URLs to SSH format
+  if [[ "$repo_url" == https://github.com* ]]; then
     local path_part="${repo_url#https://github.com/}"
-    
-    # Convert to SSH URL
-    repo_url="git@github.com:${path_part}"
+    path_part="${path_part%.git}"
+    repo_url="git@github.com:${path_part}.git"
   fi
 
   # Navigate to the directory
@@ -132,7 +121,12 @@ function git_clone() {
   fi
 
   # Navigate to repo
-  cd $repo_name
+  cd "$repo_name" || return 1
+
+  # If a branch was specified in the URL, check it out
+  if [[ -n "$branch" ]]; then
+    git checkout "$branch" && git pull
+  fi
 }
 alias gcl="git_clone"
 
@@ -293,6 +287,97 @@ function checkout_and_set_upstream () {
 
   git push --set-upstream upstream "$1"
 }
-
 alias casu="checkout_and_set_upstream"
 
+
+# Function: create_repo
+# Description: 
+#   Creates a new repo for the current project
+#     then moves the current remote origin to upstream if present
+#     then sets the current branch to origin / main of the new repo
+#     then enables github pages a -p flag is passed
+# Usage:
+#   create_repo new-repo-name [-p] # Creates new repo "new-repo-name"
+#   create_repo -p new-repo-name   # Creates repo with pages enabled
+#
+#   Todo: should set main as defualt branch
+#         enable github-pages deployment from main
+function create_repo () {
+  local repo_name=""
+  local enable_pages=false
+  
+  # Parse arguments for repo name and -p flag
+  for arg in "$@"; do
+    if [[ "$arg" == "-p" ]]; then
+      enable_pages=true
+    else
+      repo_name="$arg"
+    fi
+  done
+  
+  if [ -z "$repo_name" ]; then
+    echo "Usage: create_repo <repo-name> [-p]"
+    return 1
+  fi
+  
+  
+  # 1. Set current origin to upstream if present (before creating new origin)
+  if git remote get-url origin > /dev/null 2>&1; then
+    local old_origin=$(git remote get-url origin)
+    git remote rename origin upstream 2>/dev/null
+    echo "Moved existing origin to upstream: $old_origin"
+  fi
+
+  # 2. Create the repo and set SSH remote
+  gh repo create "$repo_name" --public --source=. --remote=origin --push
+  
+  if [ $? -ne 0 ]; then
+    echo "Failed to create repository"
+    return 1
+  fi
+  
+  # Ensure origin uses SSH URL
+  local username=$(gh api user --jq '.login')
+  git remote set-url origin "git@github.com:${username}/${repo_name}.git"
+  
+  # 3. Set created repo to origin main
+  # The gh repo create command already sets up origin, so we just need to ensure main branch
+  local current_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+  if [ "$current_branch" != "main" ]; then
+    git branch -M main
+  fi
+  git push -u origin main
+  
+  # 4. Optionally enable pages on repo if flag present
+  if [ "$enable_pages" = true ]; then
+    enable_pages "$repo_name"
+  fi
+  
+  echo "Repository created successfully: ${repo_name}"
+}
+
+function enable_pages () {
+  local repo_name="$1"
+  
+  if [ -z "$repo_name" ]; then
+    echo "Usage: enable_pages <repo-name>"
+    return 1
+  fi
+  
+  local username=$(gh api user --jq '.login')
+  
+  gh api \
+    --method POST \
+    -H "Accept: application/vnd.github+json" \
+    "/repos/${username}/${repo_name}/pages" \
+    -f build_type="workflow"
+  
+  if [ $? -eq 0 ]; then
+    echo "GitHub Pages enabled from GitHub Actions at https://${username}.github.io/${repo_name}"
+  else
+    echo "Failed to enable GitHub Pages. It may already be enabled."
+  fi
+}
+
+alias copy_branch="git branch --show-current OC"
+alias cb=copy_branch
