@@ -91,14 +91,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install
 
       - name: Build
         run: npm run build:gh-pages
@@ -220,11 +217,11 @@ if [ -f "src/App.tsx" ]; then
       echo -e "${blue}ℹ Basename in src/App.tsx already set correctly${reset}"
     elif grep -q "basename=" src/App.tsx; then
       # Update existing basename to use BASE_URL
-      perl -i -pe 's|basename=\{.*?\}|basename={import.meta.env.BASE_URL.replace(/\/$/, "")}|g' src/App.tsx
+      perl -i -pe 's|basename=\{.*?\}|basename={import.meta.env.BASE_URL.replace(/\/\$/, "")}|g' src/App.tsx
       echo -e "${green}✓ Updated basename in src/App.tsx to use BASE_URL${reset}"
     else
       # Add basename to BrowserRouter - match <BrowserRouter> or <BrowserRouter ...>
-      perl -i -pe 's|<BrowserRouter([^>]*)>|<BrowserRouter\1 basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>|g' src/App.tsx
+      perl -i -pe 's|<BrowserRouter([^>]*)>|<BrowserRouter\1 basename={import.meta.env.BASE_URL.replace(/\/\$/, "")}>|g' src/App.tsx
       echo -e "${green}✓ Added basename to BrowserRouter in src/App.tsx${reset}"
     fi
   else
