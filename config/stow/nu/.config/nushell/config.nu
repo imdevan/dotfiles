@@ -6,6 +6,8 @@
 $env.config.show_banner = false
 $env.config.table.mode = 'rounded'
 
+source ~/.bookmarks/bookmarks.nu
+
 source ~/.config/nushell/themes/catppucin.nu
 
 # Custom prompt matching fish shell config
@@ -71,4 +73,5 @@ $env.config = ($env.config | upsert completions {
 
 # Source aliases
 source ~/.config/nushell/aliases.nu
+source ~/.config/nushell/functions/list_all.nu
 
