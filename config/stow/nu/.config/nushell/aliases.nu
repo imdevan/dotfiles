@@ -22,5 +22,7 @@ alias user = open app.db | query db "select * from item"
 
 alias e = exit
 
-
-
+def reload  [] {
+  exec nu
+}
+alias r = reload
