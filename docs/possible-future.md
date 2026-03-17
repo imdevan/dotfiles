@@ -6,6 +6,14 @@
 ## Top priorities
 
 - [ ] use variables for git hub, files, and other psersonal variablizable information
+- [ ] re organize aliases
+```
+alises
+```
+- aliases.sh
+- deferred.sh
+- bookmarks.sh
+
 
 ## Things to figure out
 
@@ -66,6 +74,8 @@
 - Smassh: https://github.com/kraanzu/smassh
 - cbonsai: https://gitlab.com/jallbrit/cbonsai
 - asciinema: https://asciinema.org/
+- multi terminal alternative to snacks.term https://github.com/akinsho/toggleterm.nvim
+- zi-shell https://wiki.zshell.dev/docs
 
 
 
@@ -94,8 +104,8 @@
 - [ ] eza <https://github.com/eza-community/eza>
 - [ ] nix package manager / nixos
 - [ ] nu shell <https://github.com/nushell/nushell> has some nice navigation features
-- [ ] yazi <https://github.com/sxyazi/yazi>
-- [ ] zed <https://zed.dev/q>
+- [x] yazi <https://github.com/sxyazi/yazi>
+- [x] zed <https://zed.dev/q>
 - [ ] indent blank line colors <https://github.com/lukas-reineke/indent-blankline.nvim>
 - [ ] nvim better function folding <https://github.com/kevinhwang91/nvim-ufo>
 - [ ] <https://github.com/koekeishiya/skhd>

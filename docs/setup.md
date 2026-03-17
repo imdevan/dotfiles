@@ -1,21 +1,7 @@
 # Manual Setup Steps
 
-## Terimal
+## Terminal
 ------------------------------------------------------------------------
-
-### homebrew 
-
-Install homebrew (https://brew.sh/)[https://brew.sh/]
-https://docs.brew.sh/Installation
-
-Install packages
-```
-brew bundle insetall --file=~/dotfiles/config/homebrew/Brewfile
-```
-
-### zsh + dotfiles
-
-Zsh https://ohmyz.sh/#install
 
 ### clone dotfiles 
 
@@ -23,7 +9,31 @@ Zsh https://ohmyz.sh/#install
 cd ~
 git clone https://github.com/imdevan/dotfiles.git
 ```
-### connect GNU stow
+
+### homebrew 
+
+Install homebrew (https://brew.sh/)[https://brew.sh/]
+https://docs.brew.sh/Installation
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+Install packages
+
+```bash
+brew bundle install --file=~/dotfiles/config/homebrew/Brewfile
+```
+
+### oh my zsh 
+
+Zsh https://ohmyz.sh/#install
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+```
+
+### GNU stow
 
 ```sh
 cd ~/dotfiles/config/stow
@@ -50,16 +60,6 @@ brew install --cask wezterm
 https://ohmyposh.dev/docs/installation/macos
 brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
-### font
-
-```sh
-brew install --cask font-fira-code-nerd-font
-
-### helpful homebrew
-
-todo: setup brewfile in config
-```
-```
 
 ## Editors
 ------------------------------------------------------------------------
@@ -141,4 +141,4 @@ note: I like aerospace but cautious of performance
 - - is it possible to use STOW for this? 
 - - or should I just make the name the same and source it? 
 
-- Add keyboard maestro config exports to dotfiles- 
+- Add keyboard maestro config exports to d1otfiles- 
