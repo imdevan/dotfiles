@@ -300,8 +300,6 @@ alias casu="checkout_and_set_upstream"
 #   create_repo new-repo-name [-p] # Creates new repo "new-repo-name"
 #   create_repo -p new-repo-name   # Creates repo with pages enabled
 #
-#   Todo: should set main as defualt branch
-#         enable github-pages deployment from main
 function create_repo () {
   local repo_name=""
   local enable_pages=false
@@ -339,6 +337,9 @@ function create_repo () {
   # Ensure origin uses SSH URL
   local username=$(gh api user --jq '.login')
   git remote set-url origin "git@github.com:${username}/${repo_name}.git"
+  
+  # Set main as default branch on GitHub
+  gh repo edit "${username}/${repo_name}" --default-branch main
   
   # 3. Set created repo to origin main
   # The gh repo create command already sets up origin, so we just need to ensure main branch
