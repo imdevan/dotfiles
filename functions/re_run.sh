@@ -18,7 +18,7 @@ function re_run() {
     
     # Execute the last command with any additional arguments
     echo "\nReloading ..."
-    source ~/.zshrc &&
+    exec zsh &&
     echo "${light_blue}Re-running:${reset} $last_command $*"
     eval "$last_command $*"
     echo ""
