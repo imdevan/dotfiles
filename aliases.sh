@@ -8,6 +8,7 @@ editor="nvim"
 
 # Navigation
 alias ..="cd .."
+alias ...="cd ../.."
 
 alias dotfiles="$EDITOR $dotfile_dir"
 alias aliases="$EDITOR $dotfile_dir/aliases.sh"
@@ -15,11 +16,10 @@ alias aliases="$EDITOR $dotfile_dir/aliases.sh"
 ## Aliases shortcut
 alias a="aliases"
 alias dots="~/dotfiles"
-alias r="source ~/.zshrc"
-alias ra="source ~/dotfiles/aliases.sh"
+alias r="exec zsh"                      # Reload zsh config
+alias ra="source ~/dotfiles/aliases.sh" # Reload aliases
 alias restart="sudo shutdown -r now"
 alias sdown="sudo shutdown -h now"
-alias dot="cd $dotfile_dir"
 
 # Terminal Navigation
 alias lsa="ls -a"
@@ -34,7 +34,7 @@ alias bb="cd -"   # Go back to last dirctory
 
 # Suffix aliases
 # Open various files types in editor
-alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py,conf,desktop}="$editor"
+alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py,conf,desktop,justfile}="$EDITOR"
 alias -s git="git_clone" # open git urls with custom function
 
 # Global aliases
@@ -44,15 +44,19 @@ alias -g B="| boxes -d ansi-rounded" # https://boxes.thomasjensen.com/examples.h
 alias -g L="| lolcat -f"             # https://github.com/busyloop/lolcat
 alias -g Q="| quick_note"            # https://github.com/busyloop/lolcat
 alias -g COW="| cowsay"
-alias -g G="| grep"
-alias -g C="| wl-copy"
+# alias -g G="| grep"
+# alias -g C="| wl-copy"
+alias -g C=""
 alias -g K="|& wl-copy"
-alias -g P="| prmpt"
-alias -g E="| prmpt -l -t clipboard"
+alias -g P="| prompter"
+alias -g F="| tee >(prompter -Y -f)"
+# alias -g E="| prmpt -l -t clipboard"
 alias -g V="| nvim"
+alias -g H="| head"
+alias -g H2="| head -25"
+alias -g A="| tail"
 
-# todo: implement omni-copy
-# alias -g C="| tee /dev/tty | pbcopy" # copy output to clipboard and terminal
+alias -g OC="| tee /dev/tty | omni_copy" # copy output to clipboard and terminal
 
 # Home Brew
 alias bri="brew install"
@@ -96,9 +100,6 @@ alias drm="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r dock
 # alias ds="dcub -d"       # build up and detatch aka docker start
 alias bds="bdpv && cs && dcub -d" # ds but navigate to backend first
 alias dcr="dcd && dcubd"          # restart db
-
-alias cs="colima start"
-alias csd="cs && dcw"
 
 alias ved="deactivate"
 alias vdcw="ve && dcw"
@@ -184,7 +185,7 @@ alias gcof="git checkout --" # Checkout file
 alias conflicts="git diff --name-only --diff-filter=U"
 alias no-edit="git commit --amend --no-edit"                             # Does not push
 alias last="git log -1"                                                  # Show last change
-alias rebase="git fetch upstream && git rebase upstream/master"          # Fetch and rebase
+alias rebase="git fetch upstream && git rebase upstream/main"            # Fetch and rebase
 alias gcane!="git add -A && git commit --amend --no-edit && git push -f" # Git commit ammend no edit and force push
 alias grc="git rebase --continue"
 alias gfu="git fetch upstream"
@@ -342,18 +343,6 @@ alias ld="lazydocker"
 alias dl="docker logs"
 alias dli="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}'"
 alias dliv="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}' | nvim"
-alias ved="deactivate"
-alias dlb="docker logs backend-backend-1"
-alias cols="colima start"
-# Particularly lazy python + docker scripts
-alias vdcw="ve && dcw"
-alias vcd="ve && cs && dcw"
-alias vcd="ve && cs && dcw"
-alias mdr="make docker.run"
-
-# Grep
-alias gre="grep -rl"
-alias rge='rg --files | sk --preview="bat {} --color=always" --bind "enter:execute(nvim {})"'
 
 # Tmux
 alias t="tmux"
@@ -396,13 +385,13 @@ alias ppt="rf output2 && pt -d ./tests2 -o ./output2"
 alias count="v /Users/devy/Documents/Projects/playground/scripts/userStylesCount.js"
 alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
 alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
-alias asdf="cowsay 'hang in there!'" # use incase of frustration
+alias asdf="cowsay 'hang in there!' L" # use incase of frustration
 alias weather="curl http://wttr.in/Seattle"
 
 # Bookmarks
 # Pinned - go and rename
 alias zd="~/dotfiles/ && tmux rename-window dot"
-alias zp="~/Projects/playground/prompter-cli && tmux rename-window prmpt"
+alias zp="~/Projects/prompter/prompter-cli && tmux rename-window prmpt"
 alias zv="~/Work/visual_studio_agent/ && tmux rename-window vsa"
 alias zh="~/dotfiles/config/stow/hypr/.config/hypr && tmux rename-window hypr"
 alias zdp="~/Projects/dance-partner-vibes/ && tmux rename-window dpv"
@@ -429,7 +418,6 @@ alias iefb="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/back
 alias eief="cd ~/Documents/Projects/project-ignite-go-fast/ignite-expo-fast/expo"
 alias devy="cd ~/Documents/Projects/project-ignite-go-fast/devy"
 alias de="cd ~/Documents/Projects/project-ignite-go-fast/devy"
-alias pypo="cd ~/Documents/Projects/project-ignite-go-fast/pypo"
 alias epy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/expo"
 alias bpy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/backend"
 alias epy="cd ~/Documents/Projects/project-ignite-go-fast/pypo/app/expo"
@@ -465,7 +453,7 @@ alias skst="skhd --start-service"
 alias git_org="git remote get-url origin"
 alias goc="git remote get-url origin | pbcopy"
 alias pypo2="cd ~/Documents/Projects/pypo/pypo"
-alias pypo="cd ~/Documents/Projects/pypo/pypo"
+alias pypo="cd ~/Projects/pypo"
 alias bpy="cd ~/Documents/Projects/pypo/pypo/app/backend"
 alias epy="cd ~/Documents/Projects/pypo/pypo/app/expo"
 alias gn="open https://github.com/new"
@@ -487,15 +475,11 @@ alias bt="bun test"
 alias brt="bun run test"
 alias mad="make build"
 alias mab="make build"
-alias prmpt="./prompter"
-alias pro="prompter"
 alias bid="bi && bd"
-alias pro="cd ~/Documents/Projects"
 alias gdp="cd ~/Documents/Projects/dance-partner/get-dance-partner"
 alias pbis="pnpm build:ios:sim"
 # alias nu="nu --config $HOME/.config/nushell/config.nu"
 alias srd="./scripts/reset-db.sh"
-alias w="z ~/Work"
 alias pp="cd ~/Work/portfolio"
 alias kiro-downl="cd ~/Downloads/kiro-ide-0.8.140-stable-linux-x64/Kiro"
 alias omc="cd ~/.config/omarchy"
@@ -508,6 +492,12 @@ alias gc="gcalcli"
 alias gcq="gcalcli quick"
 alias gca="gcalcli add"
 
+# Prompter
+alias p="prompter"
+alias ph="prompter history"
+alias prm="ph prmpt -n"
+alias pls="p list"
+
 alias wee="gc calw"
 alias mt="make test"
 alias share="cd ~/.local/share"
@@ -518,10 +508,8 @@ alias t0="ta 0"
 alias ob="cd ~/Documents/obsidian_notes"
 alias ob="cd ~/Documents/Obsidian Vault"
 alias vob="nvim '~/Documents/Obsidian Vault'"
-alias prmpt="./bin/prompter"
 alias mbr="make build-run"
 alias trs="tmux rename-session"
-alias prmpt="/home/devy/Projects/playground/prompter-cli/bin/prompter"
 alias dpv="cd ~/Projects/dance-partner-vibes && tmux rename-window dpv"
 alias jt="just test"
 alias jt="just test"
@@ -530,13 +518,9 @@ alias pl="v plan.md"
 alias cr="codex resume"
 alias bdpv="cd ~/Projects/dance-partner-vibes/app/backend"
 alias edpv="cd ~/Projects/dance-partner-vibes/app/expo"
-alias pls="prmpt list"
 alias jw="just watch"
-alias ph="prmpt history"
 alias jf="v justfile"
 alias jv="just test-verbose"
-alias p="~/Projects/playground/prompter-cli/bin/prompter"
-alias w="cd ~/Wallpapers"
 alias wal="cd ~/Wallpapers"
 alias jtv="just test-verbose"
 alias jbi="jb && prmpt asdf -i -t stdout"
@@ -548,7 +532,6 @@ alias pa="p add"
 alias jbw="jb && jw"
 alias jp="jb && p"
 alias jph="jp history"
-alias prm="ph prmpt -n"
 alias jba="jb && p add"
 alias jba="jb && p add"
 alias skills="cd ~/.opencode/skills"
@@ -556,3 +539,38 @@ alias brc="bun run compile"
 alias wor="cd ~/Work"
 alias play="cd ~/Work/playground"
 alias pe="p edit"
+alias jr="just release-all"
+alias jpa="just publish-aur"
+alias p1="ph 1 -n"
+alias pwrg="pwr get"
+alias butt="cd ~/dotfiles"
+alias dow="~/Downloads && yazi"
+alias gocli="cd ~/Projects/playground/go-cli-template"
+alias jbr="just build-run"
+alias js="just sync"
+alias sync-test="cd .. && rf go-cli-sync-test && cf go-cli-template go-cli-sync-test && cd go-cli-sync-test && rm internal/package/package.toml && cp ../bookmarker/package.toml internal/package/package.toml && just sync"
+alias j="just"
+alias play="cd ~/Projects/playground"
+# alias b="~/Projects/playground/bookmark/bin/bookmark"
+alias b="bookmark"
+alias jbi="just build && just install"
+alias bc="b config"
+alias bci="rm ~/.config/bookmark/config.toml && b config init -f"
+alias vnu="nvim ~/dotfiles/config/stow/nushell/.config/nushell/config.nu"
+alias pq="p -E -Y"
+alias nt="nua tables"
+alias jbi="just build && sudo just install"
+alias nl="nu --login -c"
+alias bl="b list"
+alias js="jbi && source ./bm.sh && bm"
+alias yx="yt-dlp -x"
+alias ju="v justfile"
+alias cl="claude"
+alias jdd="just docs-dev"
+alias gs="grep -rni --exclude-dir='pypo' --exclude-dir='pypo'"
+alias gv="grem -v"
+alias grv="git remote -v"
+alias pe="p -E -I -G"
+alias nkey="p -E -G vnk -v"
+alias bnotes="bun build-notes && cd ./notes && git add index.html && git commit -m 'build notes' && git push && cd ../"
+alias tk="tmux kill-session"
