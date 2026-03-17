@@ -2,9 +2,14 @@
 # Uncomment to track load times
 zmodload zsh/zprof
 
+# Homebrew for linux
+# un comment when needed
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # load zsh defer
 # https://github.com/romkatv/zsh-defer
 source ~/zsh-defer/zsh-defer.plugin.zsh
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -175,9 +180,12 @@ DISABLE_UPDATE_PROMPT="true"
 
 # needed for nvm to be lazyloaded MUST come before plugins are loaded
 # export NVM_LAZY_LOAD=true
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 
 # Plugins
-plugins=(zsh-vi-mode web-search)
+plugins=(zsh-vi-mode web-search zsh-autosuggestions)
+
+bindkey '^ ' autosuggest-accept
 
 source $ZSH/oh-my-zsh.sh
 
@@ -214,6 +222,23 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/dotfiles/index.sh
+
+source ~/.bookmarks/bookmarks.sh
+
+# bookmark() {
+#   command bookmark "$@" && source ~/.bookmarks/bookmarks.sh
+# }
+
+# bm() {
+# 	local cmd
+# 	# Run bookmark in interactive mode with TTY access and capture only the final line
+# 	cmd=$(bookmark -i </dev/tty)
+#
+# 	# Check if a command was returned and execute it
+# 	if [[ -n "$cmd" ]]; then
+# 		eval "$cmd"
+# 	fi
+# }
 
 # todo: go is managed by omarchy seperate mac deps
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -302,9 +327,12 @@ bindkey -M viins " " magic-space
 zstyle ':completion:*' verbose no
 zstyle ':fzf-tab:*' continuous-trigger ''
 
+
+# . "$HOME/.local/bin/env"
+
+source ~/.github_token
+
 # For output testing 
 # Uncomment to track load times
 zprof > ~/.zsh_profile
 
-
-# . "$HOME/.local/bin/env"
