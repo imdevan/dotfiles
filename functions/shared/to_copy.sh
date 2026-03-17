@@ -15,6 +15,16 @@ function omni_copy() {
 
 alias oc="omni_copy"
 
+
+function omni_paste() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    pbpaste
+  else
+    wl-paste
+  fi
+}
+
+alias op="omni_paste"
 # Function: to_copy
 # Description: Copy output
 # Usage: copy [arguments]
@@ -40,3 +50,11 @@ function copy_pwd() {
 
 # Create alias
 alias cpw="copy_pwd"
+
+
+function copy_directory() {
+  basename "$(pwd)" | omni_copy
+}
+
+# Create alias
+alias cpd="copy_directory"
