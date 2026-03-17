@@ -137,4 +137,4 @@ function docker_logs_vim() {
   nvim "$log_file"
 }
 
-alias dlv="docker_logs_vim"
+alias dlo="docker_logs_vim"
