@@ -16,7 +16,7 @@ alias refresh="source ~/.oh-my-zsh && clear"
 alias r="refresh"
 
 # Function to create new aliases
-function new_alias() {
+function add_alias() {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "${red}Invalid alias provided${reset}"
   else
@@ -32,21 +32,21 @@ function new_alias() {
     source $aliases_file
   fi
 }
-alias na="new_alias"
+alias aa="add_alias"
 
-# Bookmark position
-function bookmark() {
-  if [ -z "$1" ]; then
-    echo 'No name provided'
-  else
-    # local current_dir=$(pwd | sed 's/ /\\ /g')
-    local current_dir=$(pwd | sed "s|^$HOME|~|")
-    echo "alias ${1}=\"cd ${current_dir}\"" >>$aliases_file
-    source $aliases_file
-    echo "${green}Alias: ${pink}${1}${green}=${purple}\"${current_dir}\"${green} created!\n"
-  fi
-}
-alias b="bookmark"
+# # Bookmark position
+# function bookmark() {
+#   if [ -z "$1" ]; then
+#     echo 'No name provided'
+#   else
+#     # local current_dir=$(pwd | sed 's/ /\\ /g')
+#     local current_dir=$(pwd | sed "s|^$HOME|~|")
+#     echo "alias ${1}=\"cd ${current_dir}\"" >>$aliases_file
+#     source $aliases_file
+#     echo "${green}Alias: ${pink}${1}${green}=${purple}\"${current_dir}\"${green} created!\n"
+#   fi
+# }
+# alias b="bookmark"
 
 # Warning position
 # function warning() {
@@ -75,6 +75,17 @@ function is_alias() {
     -not -path "*/.git/*" \
     -not -path "*/.history/*" \
     -exec grep -l "^[^#]*alias.*${to_find}" {} \;)
+
+  # Also search in ~/.bookmarks/bookmarks.sh if it exists
+  if [ -f ~/.bookmarks/bookmarks.sh ]; then
+    if grep -q "^[^#]*alias.*${to_find}" ~/.bookmarks/bookmarks.sh 2>/dev/null; then
+      if [ -n "$files" ]; then
+        files="${files}"$'\n'"$HOME/.bookmarks/bookmarks.sh"
+      else
+        files="$HOME/.bookmarks/bookmarks.sh"
+      fi
+    fi
+  fi
 
   if [ -z "$files" ]; then
     echo "${red}No alias found "
