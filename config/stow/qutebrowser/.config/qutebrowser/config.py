@@ -43,7 +43,10 @@ c.content.fullscreen.window = True
 
 # Search Engines
 c.url.searchengines = {
-    "DEFAULT": "https://google.com/search?q={}",
+    "DEFAULT": "https://duckduckgo.com/?q={}",
+    "d": "https://devan.gg/{}",
+    "t": "https://devan.gg/t?{}",
+    "dh": "https://devanhuapaya.com/{}",
     "yt": "https://www.youtube.com/results?search_query={}",
     "git": "https://github.com/search?q={}",
     "stack": "https://stackoverflow.com/search?q={}",
@@ -51,10 +54,12 @@ c.url.searchengines = {
     "cla": "https://claude.ai/new?q={}",
     "lol": "u.gg/lol/champions/{}/build",
     "re": "https://github.com/imdevan/{}",
-    "ll": "localhost:{}000",
-    "l": "localhost:{}",
-    "l8": "localhost:8080?q={}",
+    "l": "localhost:{}000",
+    "ll": "localhost:{}",
+    "4": "localhost:432{}",
+    "l8": "localhost:808{}",
     "wall": "https://wallhaven.cc/search?q={}&categories=110&purity=111&atleast=1920x1080&ratios=landscape&sorting=views&order=desc",
+    "gt": "https://www.ultimate-guitar.com/search.php?title={}&type%5B0%5D=300&page=1&order=myweight",
 }
 
 # Aliases
