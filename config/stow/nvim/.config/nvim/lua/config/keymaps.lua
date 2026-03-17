@@ -20,6 +20,7 @@ local git_utils = require("utils.keymaps.git")
 local todo_utils = require("utils.keymaps.todo")
 local ui_utils = require("utils.keymaps.ui")
 local terminal_utils = require("utils.keymaps.terminal")
+local paragraph_utils = require("utils.keymaps.paragraph")
 
 -- Cache vim functions for better performance
 local set = vim.keymap.set
@@ -46,10 +47,11 @@ vim.schedule(function()
     local wk = require("which-key")
 
     wk.add({
+      { "<leader>o", group = " Open in editor" },
       { "<leader>p", group = " Personal" },
       { "<leader>ph", group = " Convert to header" },
       { "<leader>phh", group = " Copy headers" },
-      { "<leader>po", group = " Open in editor" },
+      { "<leader>po", group = " Whole page commands" },
     })
   end)
 end)
@@ -75,9 +77,15 @@ end)
 -- =====================================================================================================================
 local silent_opts = { silent = true }
 
+-- Exit insert mode
+set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
+
 -- Save
 set("n", "<M-s>", "<CMD>write<CR>", silent_opts)
 set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
+
+-- Redo
+set("n", "<C-u>", "<C-r>", { desc = "Redo" })
 
 -- Quit (consolidated duplicates)
 multi_set("n,i", "<C-q>", "<CMD>quitall<CR>", silent_opts)
@@ -87,7 +95,7 @@ multi_set("n,i", "<M-q>", "<CMD>wqall<CR>", silent_opts)
 set("n", ";", "<CMD>bd<CR>", silent_opts)
 
 -- Reload file
-set("n", "<M-r>", "<CMD>e!<CR>", {
+set("n", "<M-e>", "<CMD>e!<CR>", {
   desc = "Reload file from disk",
   remap = true,
 })
@@ -102,9 +110,24 @@ set("n", "<leader>fD", file_utils.delete_file_and_close, { desc = "Delete file a
 
 -- Navigation
 -- =====================================================================================================================
--- vim.keymap.set("n", "<C-h>", "<leader>wh", { desc = "window right", remap = true })
--- vim.keymap.set("n", "<C-l>", "<leader>wl", { desc = "window left", remap = true })
 
+-- Line navigation
+multi_set("n,v", "H", "^", { desc = "Go to beginning of line", noremap = true })
+multi_set("n,v", "L", "$", { desc = "Go to end of line", noremap = true })
+
+-- Paragraph navigation
+-- Note: We need to unmap K first to prevent LSP hover from triggering
+multi_set("n,v", "K", paragraph_utils.jump_up, { desc = "Jump to paragraph up", noremap = true })
+multi_set("n,v", "J", paragraph_utils.jump_down, { desc = "Jump to paragraph down", noremap = true })
+
+-- Remap hover documentation (originally K)
+set("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover documentation", noremap = true })
+
+-- Buffer navigation
+set("n", "<C-H>", "<cmd>bprevious<cr>", { desc = "Go to previous buffer", noremap = true })
+set("n", "<C-L>", "<cmd>bnext<cr>", { desc = "Go to next buffer", noremap = true })
+set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer", noremap = true })
+set("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Previous buffer", noremap = true })
 -- Full page motions
 -- =====================================================================================================================
 
@@ -187,6 +210,10 @@ set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
 -- Toggle checkbox
 multi_set("n,x", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle checkbox" })
 
+-- Navigate unchecked checkboxes
+set("n", "<leader>]", markdown_utils.jump_to_next_unchecked_checkbox, { desc = "Next unchecked checkbox" })
+set("n", "<leader>[", markdown_utils.jump_to_prev_unchecked_checkbox, { desc = "Previous unchecked checkbox" })
+
 -- Toggle boldness
 multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggle boldness" })
 
@@ -227,6 +254,15 @@ set("n", "<leader>pL", js_console_log, { desc = "[C]onsole [L]og variable" })
 set("n", "<leader>ps", text_utils.create_space_below, { desc = "Create 5 lines below and move to the first" })
 set("n", "<leader>pS", text_utils.create_space_above, { desc = "Create 5 lines above and move to the first" })
 
+set("n", "gt", text_utils.line_to_title_case, {
+  desc = "Convert line to title case",
+})
+
+-- Insert dash at beginning of line(s)
+multi_set("n,v", "<leader>p-", text_utils.insert_dash_at_line_start, {
+  desc = "Insert dash at beginning of line(s)",
+})
+
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
 set("n", "<leader>fp", file_utils.copy_file_path, { desc = "Copy file path and line number" })
@@ -235,6 +271,13 @@ set(
   "n",
   "<leader>fi",
   file_utils.implement_at_file_path,
+  { desc = 'Copy file path and line number adds the word "implement"' }
+)
+
+set(
+  "n",
+  "<leader>fk",
+  file_utils.implement_at_file_path_kiro,
   { desc = 'Copy file path and line number adds the word "implement"' }
 )
 
@@ -296,7 +339,10 @@ snacks.indent.disable()
 set("n", "<leader>tn", ui_utils.toggle_indent_lines, { desc = "Toggle indent lines", remap = true })
 
 -- Toggle lazygit
-set("n", "<C-g>", snacks.lazygit.open, {
+multi_set("n,i", "<C-g>", function()
+  vim.cmd("write")
+  snacks.lazygit.open()
+end, {
   desc = "Toggle lazygit",
 })
 
@@ -327,12 +373,17 @@ set("n", "<leader>tc", ui_utils.toggle_cursor_style, {
 -- Use LazyVim's default comment keymaps (gcc for line, gc for visual)
 set("n", "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
 -- set("x", "<C-c>", "gc", { desc = "Toggle comment (visual)", remap = true })
-set("v", "<C-c>", text_utils.comment_swap, { desc = "Toggle comment (swap)", remap = true })
+multi_set("x,v", "<C-c>", text_utils.comment_swap, { desc = "Toggle comment (swap)", remap = true })
 
 -- Zen mode
--- Note: C-z is often intercepted by terminals for suspend (sends SIGTSTP)
--- If this doesn't work, the terminal is likely intercepting it before Neovim
-multi_set("n,x", "<C-i>", snacks.zen.zen, { desc = "Toggle zen" })
+multi_set("n,x", "<M-CR>", snacks.zen.zen, { desc = "Toggle zen" })
+
+-- Debugging
+-- ============================================================================
+-- set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
+-- set("n", "<Leader>dc", ":DapContinue<CR>")
+-- set("n", "<Leader>dx", ":DapTerminate<CR>")
+-- set("n", "<Leader>do", ":DapStepOver<CR>")
 
 -- Terminal
 -- ============================================================================

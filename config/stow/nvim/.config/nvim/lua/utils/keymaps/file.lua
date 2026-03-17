@@ -3,6 +3,8 @@ local M = {}
 local fn = vim.fn
 local api = vim.api
 
+local IMPLEMENT_TASK_PROMPT = "implement this task, and only this task, and mark complete if appropriate: "
+
 -- Copy file path and line number
 function M.copy_file_path()
   local filepath = fn.expand("%:.")
@@ -13,12 +15,23 @@ function M.copy_file_path()
 end
 
 -- "Implement" at file path
-function M.implement_at_file_path()
+function M.implement_at_file_path(extra, extra_notif)
+  local extra_notif = extra_notif or ""
   local filepath = fn.expand("%:p")
   local line_num = api.nvim_win_get_cursor(0)[1]
-  local content = "implement and mark complete if appropriate: " .. filepath .. ":" .. line_num
+  local line_content = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)[1]
+  local content = IMPLEMENT_TASK_PROMPT .. "\n" .. filepath .. ":" .. line_num .. "\n" .. line_content .. "\n"
+
+  if extra and extra ~= "" then
+    content = content .. " " .. extra
+  end
+
   fn.setreg("+", content)
-  vim.notify("Implement at file path copied", vim.log.levels.INFO)
+  vim.notify("Implement at file path copied" .. extra_notif, vim.log.levels.INFO)
+end
+
+function M.implement_at_file_path_kiro()
+  M.implement_at_file_path("ignore .kiro/steering instructions", "(for kiro)")
 end
 
 -- Copy file path and line range (for visual selection)

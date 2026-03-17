@@ -1,0 +1,1 @@
+/home/devy/.config/omarchy/current/theme/neovim.lua

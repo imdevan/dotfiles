@@ -1,6 +1,17 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  -- config = function()
+  --   -- vim.filetype.add({
+  --   -- extension = { mdx = "mdx" },
+  --   -- })
+  --   -- vim.treesitter.language.register("markdown", "mdx")
+  --
+  --   require("render-markdown").setup({
+  --     file_types = { "markdown", "mdx" },
+  --   })
+  -- end,
   opts = {
+    file_types = { "markdown", "mdx" },
     render_modes = true,
     -- render_modes = { "n", "c", "t", "x", "v" },
     anti_conceal = { enabled = false },
@@ -30,12 +41,26 @@ return {
       border_prefix = true,
       -- above = "󰮯",
       -- below = "󱙝",
-      above = "󰮯",
+      -- above = "󰮯",
+      above = "",
       below = "󱙝",
       -- above = "",
       -- below = "",
       -- above = "󰺵",
       -- below = "󰺵",
+      -- Highlight for the heading icon and extends through the entire line.
+      -- Output is evaluated by `clamp(value, context.level)`.
+      backgrounds = {},
+      -- Highlight for the heading and sign icons.
+      -- Output is evaluated using the same logic as 'backgrounds'.
+      foregrounds = {
+        "RenderMarkdownH1",
+        "RenderMarkdownH2",
+        "RenderMarkdownH3",
+        "RenderMarkdownH4",
+        "RenderMarkdownH5",
+        "RenderMarkdownH6",
+      },
     },
     pipe_table = { preset = "round" },
     bullet = {

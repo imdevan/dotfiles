@@ -33,6 +33,8 @@ return {
         width = math.max(45, math.floor(vim.o.columns * 0.5)),
         border = "rounded",
       },
+      -- Suppress exit notifications
+      notify_on_exit = false,
     }
 
     opts.lazygit = {

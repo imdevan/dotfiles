@@ -51,15 +51,15 @@ end
 function M.yank_between_seperators()
   local current_line = api.nvim_win_get_cursor(0)[1]
   local total_lines = api.nvim_buf_line_count(0)
-  
+
   -- Common separator patterns
   local separator_patterns = {
-    "^%-%-%-+%s*$",  -- --- (3 or more dashes)
-    "^===+%s*$",     -- === (3 or more equals)
-    "^___+%s*$",     -- ___ (3 or more underscores)
-    "^%*%*%*+%s*$",  -- *** (3 or more asterisks)
+    "^%-%-%-+%s*$", -- --- (3 or more dashes)
+    "^===+%s*$", -- === (3 or more equals)
+    "^___+%s*$", -- ___ (3 or more underscores)
+    "^%*%*%*+%s*$", -- *** (3 or more asterisks)
   }
-  
+
   -- Function to check if a line is a separator
   local function is_separator(line_num)
     if line_num < 1 or line_num > total_lines then
@@ -76,7 +76,7 @@ function M.yank_between_seperators()
     end
     return false
   end
-  
+
   -- Find the separator above current line
   local start_line = nil
   for line_num = current_line - 1, 1, -1 do
@@ -85,7 +85,7 @@ function M.yank_between_seperators()
       break
     end
   end
-  
+
   -- Find the separator below current line
   local end_line = nil
   for line_num = current_line + 1, total_lines do
@@ -94,38 +94,38 @@ function M.yank_between_seperators()
       break
     end
   end
-  
+
   -- Check if we found both separators
   if not start_line or not end_line then
     print("Could not find separators above and below cursor")
     return
   end
-  
+
   -- Yank the content between separators (excluding the separator lines)
   local content_start = start_line + 1
   local content_end = end_line - 1
-  
+
   if content_start > content_end then
     print("No content between separators")
     return
   end
-  
+
   -- Get the lines and yank them
   local lines = api.nvim_buf_get_lines(0, content_start - 1, content_end, false)
-  
+
   if #lines == 0 then
     print("No content between separators")
     return
   end
-  
+
   local text = table.concat(lines, "\n")
-  
+
   -- Copy to multiple registers for maximum compatibility
-  vim.fn.setreg("+", text, "l")  -- System clipboard (linewise)
-  vim.fn.setreg("*", text, "l")  -- Selection clipboard (linewise)
-  vim.fn.setreg('"', text, "l")  -- Unnamed register (linewise)
-  vim.fn.setreg("0", text, "l")  -- Yank register (linewise)
-  
+  vim.fn.setreg("+", text, "l") -- System clipboard (linewise)
+  vim.fn.setreg("*", text, "l") -- Selection clipboard (linewise)
+  vim.fn.setreg('"', text, "l") -- Unnamed register (linewise)
+  vim.fn.setreg("0", text, "l") -- Yank register (linewise)
+
   local line_count = #lines
   print("Yanked " .. line_count .. " line(s) between separators to clipboard")
 end
@@ -134,42 +134,47 @@ end
 function M.comment_swap()
   local start_line = vim.fn.line("'<")
   local end_line = vim.fn.line("'>")
-  
+
+  -- Ensure start_line is always less than end_line (handles upward selection)
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
   -- Get comment string for current filetype
   local commentstring = vim.bo.commentstring
   if commentstring == "" then
     print("No comment string defined for this filetype")
     return
   end
-  
+
   -- Extract comment prefix (remove %s placeholder and trim whitespace)
   local comment_prefix = commentstring:gsub("%%s.*", ""):gsub("^%s*", ""):gsub("%s*$", "")
-  
+
   -- Get buffer line count to avoid accessing invalid lines
   local buf_line_count = api.nvim_buf_line_count(0)
-  
+
   -- Process each line in the selection
   for line_num = start_line, math.min(end_line, buf_line_count) do
     local lines = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)
     if #lines == 0 then
       goto continue
     end
-    
+
     local line_content = lines[1]
     if not line_content then
       goto continue
     end
-    
+
     -- Skip empty lines
     if line_content:match("^%s*$") then
       goto continue
     end
-    
+
     -- Check if line is commented (comment prefix appears after whitespace)
     local leading_space = line_content:match("^%s*") or ""
     local content_after_space = line_content:sub(#leading_space + 1)
     local is_commented = content_after_space:find("^" .. vim.pesc(comment_prefix))
-    
+
     if is_commented then
       -- Uncomment: remove comment prefix and optional following space
       local pattern = "^(%s*)" .. vim.pesc(comment_prefix) .. "%s?"
@@ -180,8 +185,53 @@ function M.comment_swap()
       local commented = leading_space .. comment_prefix .. " " .. content_after_space
       api.nvim_buf_set_lines(0, line_num - 1, line_num, false, { commented })
     end
-    
+
     ::continue::
+  end
+end
+
+-- Convert entire line to title case, ignoring special characters
+function M.line_to_title_case()
+  local current_line_num = api.nvim_win_get_cursor(0)[1]
+  local lines = api.nvim_buf_get_lines(0, current_line_num - 1, current_line_num, false)
+
+  if #lines == 0 then
+    return
+  end
+
+  local line = lines[1]
+
+  -- Convert to title case: capitalize first letter of each word
+  local title_cased = line:gsub("(%a)([%w_']*)", function(first, rest)
+    return first:upper() .. rest:lower()
+  end)
+
+  api.nvim_buf_set_lines(0, current_line_num - 1, current_line_num, false, { title_cased })
+end
+
+-- Insert dash at the beginning of each line in selection
+function M.insert_dash_at_line_start()
+  -- Get visual selection range
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  
+  -- Ensure start_line is always less than end_line
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  
+  -- Get buffer line count to avoid accessing invalid lines
+  local buf_line_count = api.nvim_buf_line_count(0)
+  
+  -- Process each line in the selection
+  for line_num = start_line, math.min(end_line, buf_line_count) do
+    local lines = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)
+    if #lines > 0 and lines[1] then
+      local line_content = lines[1]
+      -- Insert "- " at the beginning of the line
+      local new_line = "- " .. line_content
+      api.nvim_buf_set_lines(0, line_num - 1, line_num, false, { new_line })
+    end
   end
 end
 

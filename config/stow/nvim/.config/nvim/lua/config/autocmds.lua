@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+-- Comment definitions
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "skhdrc" },
   callback = function()

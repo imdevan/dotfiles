@@ -3,6 +3,7 @@ return {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
+      html = { "prettier" },
       -- Disable shell formatting since most scripts use zsh-specific syntax
       sh = {},
       bash = {},
@@ -17,3 +18,4 @@ return {
     },
   },
 }
+

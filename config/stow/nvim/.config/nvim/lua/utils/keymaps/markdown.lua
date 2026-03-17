@@ -588,5 +588,61 @@ function M.insert_front_matter()
   vim.cmd("startinsert!")
 end
 
+-- Jump to next unchecked checkbox
+function M.jump_to_next_unchecked_checkbox()
+  local bufnr = 0
+  local cursor = api.nvim_win_get_cursor(0)
+  local current_line = cursor[1]
+  local total_lines = api.nvim_buf_line_count(bufnr)
+  
+  -- Search from current line + 1 to end of file
+  for line_num = current_line + 1, total_lines do
+    local line = api.nvim_buf_get_lines(bufnr, line_num - 1, line_num, false)[1]
+    if line and line:match("%- %[ %]") then
+      api.nvim_win_set_cursor(0, { line_num, 0 })
+      return
+    end
+  end
+  
+  -- If not found, wrap around and search from beginning to current line
+  for line_num = 1, current_line do
+    local line = api.nvim_buf_get_lines(bufnr, line_num - 1, line_num, false)[1]
+    if line and line:match("%- %[ %]") then
+      api.nvim_win_set_cursor(0, { line_num, 0 })
+      return
+    end
+  end
+  
+  notify("No unchecked checkboxes found", vim.log.levels.INFO)
+end
+
+-- Jump to previous unchecked checkbox
+function M.jump_to_prev_unchecked_checkbox()
+  local bufnr = 0
+  local cursor = api.nvim_win_get_cursor(0)
+  local current_line = cursor[1]
+  
+  -- Search from current line - 1 to beginning of file
+  for line_num = current_line - 1, 1, -1 do
+    local line = api.nvim_buf_get_lines(bufnr, line_num - 1, line_num, false)[1]
+    if line and line:match("%- %[ %]") then
+      api.nvim_win_set_cursor(0, { line_num, 0 })
+      return
+    end
+  end
+  
+  -- If not found, wrap around and search from end to current line
+  local total_lines = api.nvim_buf_line_count(bufnr)
+  for line_num = total_lines, current_line, -1 do
+    local line = api.nvim_buf_get_lines(bufnr, line_num - 1, line_num, false)[1]
+    if line and line:match("%- %[ %]") then
+      api.nvim_win_set_cursor(0, { line_num, 0 })
+      return
+    end
+  end
+  
+  notify("No unchecked checkboxes found", vim.log.levels.INFO)
+end
+
 return M
 
