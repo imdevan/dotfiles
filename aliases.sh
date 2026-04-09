@@ -55,6 +55,7 @@ alias -g V="| nvim"
 alias -g H="| head"
 alias -g H2="| head -25"
 alias -g A="| tail"
+alias -g A2="| tail -25"
 
 alias -g OC="| tee /dev/tty | omni_copy" # copy output to clipboard and terminal
 
@@ -119,6 +120,9 @@ alias k="kiro ./"
 alias d="dotfiles"
 alias p="cd ~/Documents/Projects/"
 alias play="cd ~/Documents/Projects/playground"
+
+# Tmux Navigation
+alias wd="w 'dpv & sd'"
 
 # Open in Vim
 alias vz="nvim ~/.zshrc"
@@ -489,7 +493,7 @@ alias pc="pacseek"
 
 # Gcal cli
 alias gc="gcalcli"
-alias gcq="gcalcli quick"
+# alias gcq="gcalcli quick"
 alias gca="gcalcli add"
 
 # Prompter
@@ -574,3 +578,23 @@ alias pe="p -E -I -G"
 alias nkey="p -E -G vnk -v"
 alias bnotes="bun build-notes && cd ./notes && git add index.html && git commit -m 'build notes' && git push && cd ../"
 alias tk="tmux kill-session"
+
+alias prl="p -B -E -G linkedin -l -Y"
+alias prl="p -B -G linkedin -l -Y"
+alias dpw="dpv & sd & cw"
+alias yx="yt-dlp -x"
+alias e="exit"
+alias bgc="bun generate:client"
+alias guc="git reset --soft HEAD~1" # git undo commit
+alias bre="bun restart"
+alias pvnk="p -v -E -G vnk"
+alias pvnk="p -v -E -Y -G vnk"
+alias pvnk="p -k -E -Y -G vnk"
+alias br="brighten"
+alias tas="v task"
+alias tail20="op A2 OC"
+alias w2="wee '' 2" # 2 week calendar
+alias lin2="bun run lint A2 OC"
+alias brl="bun run lint"
+alias brr="bun run db:reset"
+alias brr="bun run reset"
