@@ -228,11 +228,31 @@ function M.insert_dash_at_line_start()
     local lines = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)
     if #lines > 0 and lines[1] then
       local line_content = lines[1]
-      -- Insert "- " at the beginning of the line
-      local new_line = "- " .. line_content
+      -- Capture leading whitespace and insert "- " after it
+      local leading_space = line_content:match("^%s*") or ""
+      local content_after_space = line_content:sub(#leading_space + 1)
+      local new_line = leading_space .. "- " .. content_after_space
       api.nvim_buf_set_lines(0, line_num - 1, line_num, false, { new_line })
     end
   end
+end
+
+-- Trim whitespace around selected text
+function M.trim_whitespace()
+  -- Yank the visual selection to register z
+  vim.cmd('normal! "zy')
+  local selected_text = vim.fn.getreg("z")
+  
+  -- Trim whitespace
+  local trimmed = selected_text:match("^%s*(.-)%s*$")
+  
+  if not trimmed or trimmed == selected_text then
+    return
+  end
+  
+  -- Delete selection and paste trimmed text
+  vim.fn.setreg("z", trimmed)
+  vim.cmd('normal! gv"zp')
 end
 
 return M

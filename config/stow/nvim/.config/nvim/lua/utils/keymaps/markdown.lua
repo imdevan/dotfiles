@@ -378,177 +378,150 @@ end
 function M.toggle_checkbox_multi_line()
   local bufnr = 0
   
-  -- Get visual selection range
-  local start_pos = vim.fn.getpos("'<")
-  local end_pos = vim.fn.getpos("'>")
-  local start_line = start_pos[2]
-  local end_line = end_pos[2]
-  
-  -- Ensure start_line is always less than or equal to end_line
-  if start_line > end_line then
-    start_line, end_line = end_line, start_line
-  end
-
-  -- Debug: validate line numbers
-  local total_lines = api.nvim_buf_line_count(bufnr)
-  if start_line < 1 or end_line > total_lines then
-    notify("Invalid line range: " .. start_line .. "-" .. end_line .. " (total: " .. total_lines .. ")", vim.log.levels.ERROR)
-    return
-  end
-
-  -- Get all lines in the selection at once
-  local lines = api.nvim_buf_get_lines(bufnr, start_line - 1, end_line, false)
-  local new_lines = {}
-
-  -- First pass: determine what action to take based on existing checkboxes
-  local has_checked = false
-  local has_unchecked = false
-  local has_no_checkbox = false
-
-  for _, line in ipairs(lines) do
-    if line and line ~= "" and not line:match("^%s*$") then
-      local indent = line:match("^%s*") or ""
-      local rest = line:sub(#indent + 1)
-      
-      if rest:match("^%- %[x%]") then
-        has_checked = true
-      elseif rest:match("^%- %[ %]") then
-        has_unchecked = true
-      else
-        has_no_checkbox = true
-      end
-    end
-  end
-
-  -- Determine action based on what we found
-  local action
-  if has_no_checkbox then
-    -- If any lines don't have checkboxes, add checkboxes to all
-    action = "add"
-  elseif has_checked and not has_unchecked then
-    -- If all checkboxes are checked, uncheck them
-    action = "uncheck"
-  elseif has_unchecked and not has_checked then
-    -- If all checkboxes are unchecked, check them
-    action = "check"
-  else
-    -- Mixed state: check all unchecked ones
-    action = "check"
-  end
-
-  -- Process each line based on the determined action
-  for idx, line in ipairs(lines) do
-    if not line then
-      new_lines[idx] = line
-      goto continue
-    end
-
-    local new_line
-    -- Handle blank line - always keep empty lines as-is in multi-line mode
-    if line == "" or line:match("^%s*$") then
-      new_line = line -- Keep blank lines unchanged
-    else
-      -- Capture leading whitespace
-      local indent = line:match("^%s*") or ""
-      local rest = line:sub(#indent + 1)
-
-      local new_rest
-      if action == "add" then
-        -- Add checkbox to lines that don't have one
-        if rest:match("^%- %[[ x]%]") then
-          new_rest = rest -- Already has checkbox
-        else
-          -- Handle different line types
-          if rest:match("^%d+%)") then
-            -- Numbered list item (e.g., "1) Item")
-            new_rest = "- [ ] " .. rest
-          elseif rest:match("^%-") then
-            -- Plain list item (e.g., "- Item")
-            local content = rest:gsub("^%-%s*", "")
-            new_rest = "- [ ] " .. content
-          elseif rest:match("^#+") then
-            -- Header (e.g., "## Title")
-            new_rest = "- [ ] " .. rest
-          else
-            -- Regular text
-            new_rest = "- [ ] " .. rest
-          end
-        end
-      elseif action == "check" then
-        -- Check unchecked boxes, add checkbox to lines without one
-        if rest:match("^%- %[ %]") then
-          new_rest = rest:gsub("^%- %[ %]", "- [x]")
-        elseif rest:match("^%- %[x%]") then
-          new_rest = rest -- Already checked
-        else
-          -- No checkbox, add checked one
-          if rest:match("^%d+%)") then
-            -- Numbered list item
-            new_rest = "- [x] " .. rest
-          elseif rest:match("^%-") then
-            -- Plain list item
-            local content = rest:gsub("^%-%s*", "")
-            new_rest = "- [x] " .. content
-          elseif rest:match("^#+") then
-            -- Header
-            new_rest = "- [x] " .. rest
-          else
-            -- Regular text
-            new_rest = "- [x] " .. rest
-          end
-        end
-      elseif action == "uncheck" then
-        -- Uncheck checked boxes
-        if rest:match("^%- %[x%]") then
-          new_rest = rest:gsub("^%- %[x%]", "- [ ]")
-        elseif rest:match("^%- %[ %]") then
-          new_rest = rest -- Already unchecked
-        else
-          -- No checkbox, add unchecked one
-          if rest:match("^%d+%)") then
-            -- Numbered list item
-            new_rest = "- [ ] " .. rest
-          elseif rest:match("^%-") then
-            -- Plain list item
-            local content = rest:gsub("^%-%s*", "")
-            new_rest = "- [ ] " .. content
-          elseif rest:match("^#+") then
-            -- Header
-            new_rest = "- [ ] " .. rest
-          else
-            -- Regular text
-            new_rest = "- [ ] " .. rest
-          end
-        end
-      end
-
-      -- Reconstruct the line
-      new_line = indent .. new_rest
-    end
-
-    new_lines[idx] = new_line
-
-    ::continue::
-  end
-
-  -- Validate indices before setting lines
-  local start_idx = start_line - 1
-  local end_idx = end_line
-  
-  if start_idx < 0 or end_idx < start_idx then
-    notify("Invalid buffer indices: start=" .. start_idx .. ", end=" .. end_idx, vim.log.levels.ERROR)
-    return
-  end
-
-  -- Set all lines at once
-  api.nvim_buf_set_lines(bufnr, start_idx, end_idx, false, new_lines)
-
-  -- Force buffer update and redraw to prevent timing issues
-  vim.cmd("silent! write")
-  vim.cmd("redraw!")
-
-  -- Exit visual mode
+  -- Exit visual mode first to ensure marks are set correctly
   api.nvim_feedkeys(api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+  
+  -- Small delay to ensure marks are updated
+  vim.defer_fn(function()
+    -- Get visual selection range from marks
+    local start_pos = vim.fn.getpos("'<")
+    local end_pos = vim.fn.getpos("'>")
+    local start_line = start_pos[2]
+    local end_line = end_pos[2]
+    
+    -- Ensure start_line is always less than or equal to end_line
+    if start_line > end_line then
+      start_line, end_line = end_line, start_line
+    end
+
+    -- Get all lines in the selection at once
+    local lines = api.nvim_buf_get_lines(bufnr, start_line - 1, end_line, false)
+    local new_lines = {}
+
+    -- First pass: determine what action to take based on existing checkboxes in non-blank lines
+    local has_checked = false
+    local has_unchecked = false
+    local has_no_checkbox = false
+
+    for _, line in ipairs(lines) do
+      if line and line ~= "" and not line:match("^%s*$") then
+        local indent = line:match("^%s*") or ""
+        local rest = line:sub(#indent + 1)
+        
+        if rest:match("^%- %[x%]") then
+          has_checked = true
+        elseif rest:match("^%- %[ %]") then
+          has_unchecked = true
+        else
+          has_no_checkbox = true
+        end
+      end
+    end
+
+    -- Determine action based on what we found
+    local action
+    if has_no_checkbox then
+      -- If any lines don't have checkboxes, add checkboxes to all
+      action = "add"
+    elseif has_checked and not has_unchecked then
+      -- If all checkboxes are checked, uncheck them
+      action = "uncheck"
+    elseif has_unchecked and not has_checked then
+      -- If all checkboxes are unchecked, check them
+      action = "check"
+    else
+      -- Mixed state: check all unchecked ones
+      action = "check"
+    end
+
+    -- Process each line based on the determined action
+    for idx, line in ipairs(lines) do
+      -- Handle blank line - always keep empty lines as-is in multi-line mode
+      if not line or line == "" or line:match("^%s*$") then
+        new_lines[idx] = line -- Keep blank lines unchanged
+      else
+        -- Capture leading whitespace
+        local indent = line:match("^%s*") or ""
+        local rest = line:sub(#indent + 1)
+
+        local new_rest
+        if action == "add" then
+          -- Add checkbox to lines that don't have one
+          if rest:match("^%- %[[ x]%]") then
+            new_rest = rest -- Already has checkbox
+          else
+            -- Handle different line types
+            if rest:match("^%d+%)") then
+              -- Numbered list item (e.g., "1) Item")
+              new_rest = "- [ ] " .. rest
+            elseif rest:match("^%-") then
+              -- Plain list item (e.g., "- Item")
+              local content = rest:gsub("^%-%s*", "")
+              new_rest = "- [ ] " .. content
+            elseif rest:match("^#+") then
+              -- Header (e.g., "## Title")
+              new_rest = "- [ ] " .. rest
+            else
+              -- Regular text
+              new_rest = "- [ ] " .. rest
+            end
+          end
+        elseif action == "check" then
+          -- Check unchecked boxes, add checkbox to lines without one
+          if rest:match("^%- %[ %]") then
+            new_rest = rest:gsub("^%- %[ %]", "- [x]")
+          elseif rest:match("^%- %[x%]") then
+            new_rest = rest -- Already checked
+          else
+            -- No checkbox, add checked one
+            if rest:match("^%d+%)") then
+              -- Numbered list item
+              new_rest = "- [x] " .. rest
+            elseif rest:match("^%-") then
+              -- Plain list item
+              local content = rest:gsub("^%-%s*", "")
+              new_rest = "- [x] " .. content
+            elseif rest:match("^#+") then
+              -- Header
+              new_rest = "- [x] " .. rest
+            else
+              -- Regular text
+              new_rest = "- [x] " .. rest
+            end
+          end
+        elseif action == "uncheck" then
+          -- Uncheck checked boxes
+          if rest:match("^%- %[x%]") then
+            new_rest = rest:gsub("^%- %[x%]", "- [ ]")
+          elseif rest:match("^%- %[ %]") then
+            new_rest = rest -- Already unchecked
+          else
+            -- No checkbox, add unchecked one
+            if rest:match("^%d+%)") then
+              -- Numbered list item
+              new_rest = "- [ ] " .. rest
+            elseif rest:match("^%-") then
+              -- Plain list item
+              local content = rest:gsub("^%-%s*", "")
+              new_rest = "- [ ] " .. content
+            elseif rest:match("^#+") then
+              -- Header
+              new_rest = "- [ ] " .. rest
+            else
+              -- Regular text
+              new_rest = "- [ ] " .. rest
+            end
+          end
+        end
+
+        -- Reconstruct the line
+        new_lines[idx] = indent .. new_rest
+      end
+    end
+
+    -- Set all lines at once
+    api.nvim_buf_set_lines(bufnr, start_line - 1, end_line, false, new_lines)
+  end, 10) -- 10ms delay
 end
 
 -- Main toggle checkbox function that determines mode and calls appropriate function
