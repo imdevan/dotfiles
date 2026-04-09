@@ -17,8 +17,10 @@ def tables [] {
   | table -i false
 }
 
-alias items = open app.db | query db "select * from item"
-alias user = open app.db | query db "select * from item"
+def items [] { open app.db | query db "select * from item" }
+def video [] { open app.db | query db "select * from video" }
+def recap [] { open app.db | query db "select * from recap" }
+def user [] { open app.db | query db "select * from user" }
 
 alias e = exit
 
