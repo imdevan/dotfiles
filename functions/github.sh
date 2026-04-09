@@ -87,36 +87,29 @@ alias gr!="git_reset"
 function git_clone() {
   one_arg_required "$@" || return 1
 
-  local repo_url="${1}"
+  local repo_input="${1}"
   local branch=""
 
   # Strip query parameters and hash fragments from the URL
-  repo_url="${repo_url%%#*}"  # Remove everything from # onwards
-  repo_url="${repo_url%%\?*}"  # Remove everything from ? onwards
+  repo_input="${repo_input%%#*}"  # Remove everything from # onwards
+  repo_input="${repo_input%%\?*}"  # Remove everything from ? onwards
 
   # If /tree/ is present, extract the branch and strip it from the URL
-  if [[ "$repo_url" == */tree/* ]]; then
-    branch="${repo_url#*/tree/}"
-    repo_url="${repo_url%%/tree/*}"
-  fi
-
-  # Convert https://github.com URLs to SSH format
-  if [[ "$repo_url" == https://github.com* ]]; then
-    local path_part="${repo_url#https://github.com/}"
-    path_part="${path_part%.git}"
-    repo_url="git@github.com:${path_part}.git"
+  if [[ "$repo_input" == */tree/* ]]; then
+    branch="${repo_input#*/tree/}"
+    repo_input="${repo_input%%/tree/*}"
   fi
 
   # Navigate to the directory
   local repo_name=""
 
-  # If only one argument is passed, use the URL and extract repo name from it
+  # If only one argument is passed, use the input and extract repo name from it
   if [ "$#" -eq 1 ]; then
-    git clone "$repo_url"
-    repo_name=$(get_repo_name "$repo_url")
-  # Otherwise use the first arg as repo URL and second arg as directory name
+    gh repo clone "$repo_input"
+    repo_name=$(get_repo_name "$repo_input")
+  # Otherwise use the first arg as repo input and second arg as directory name
   elif [ "$#" -eq 2 ]; then
-    git clone "$repo_url" "${2}"
+    gh repo clone "$repo_input" "${2}"
     repo_name="${2}"
   fi
 
@@ -349,13 +342,18 @@ function create_repo () {
   fi
   git push -u origin main
   
-  # 4. Optionally enable pages on repo if flag present
+  # 4. Enable GitHub Pages to build from GitHub Actions
+  enable_pages "$repo_name"
+  
+  # 5. Optionally enable pages on repo if flag present (legacy support)
   if [ "$enable_pages" = true ]; then
-    enable_pages "$repo_name"
+    echo "GitHub Pages already enabled"
   fi
   
   echo "Repository created successfully: ${repo_name}"
 }
+
+alias gcr="create_repo"
 
 function enable_pages () {
   local repo_name="$1"
@@ -380,5 +378,21 @@ function enable_pages () {
   fi
 }
 
+
+function git_origin() {
+  # get github origin url and copy to clipboard
+  local origin_url=$(git remote get-url origin 2>/dev/null)
+  
+  if [ -z "$origin_url" ]; then
+    echo "No origin remote found" >&2
+    return 1
+  fi
+  
+  echo "$origin_url" | omni_copy
+  g_suc "Origin URL copied to clipboard: $origin_url"
+}
+alias gio=git_origin
+
 alias copy_branch="git branch --show-current OC"
 alias cb=copy_branch
+

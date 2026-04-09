@@ -35,8 +35,8 @@ function work_set_up() {
         tmux select-pane -t work:1.1
         tmux split-window -t work:1.1 -v
         
-        # Send 'wee' to top right pane
-        tmux send-keys -t work:1.1 'wee' C-m
+        # Send 'w2' to top right pane
+        tmux send-keys -t work:1.1 'w2' C-m
         
         # Send 'cbonsai -li' to bottom right pane
         tmux send-keys -t work:1.2 'cbonsai -li' C-m
@@ -47,6 +47,11 @@ function work_set_up() {
         
         # Create window 3 (empty)
         tmux new-window -t work:3
+        
+        # if passed an arg pass through to window 3
+        if [ -n "$1" ]; then
+            tmux send-keys -t work:3 "$1" C-m
+        fi
         
         # Navigate back to window 1
         tmux select-window -t work:1

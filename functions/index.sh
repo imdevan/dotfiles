@@ -15,6 +15,7 @@ source $dotfile_dir/functions/shared/has_flag.sh
 source $dotfile_dir/functions/shared/alias_utils.sh
 source $dotfile_dir/functions/shared/to_copy.sh
 source $dotfile_dir/functions/shared/gummy.sh
+source $dotfile_dir/functions/shared/nu_alias.sh
 
 # Global function handler for zsh
 source $dotfile_dir/functions/command_not_found_handler.sh
@@ -83,3 +84,23 @@ source $dotfile_dir/functions/real_fake_person.sh
 source $dotfile_dir/functions/reverse_stow.sh
 
 source $dotfile_dir/functions/brighten.sh
+
+
+source $dotfile_dir/functions/double_trouble.sh
+
+
+source $dotfile_dir/functions/work_set_up.sh
+
+source $dotfile_dir/functions/split_dev.sh
+
+source $dotfile_dir/functions/claude_window.sh
+
+source $dotfile_dir/functions/devel.sh
+
+source $dotfile_dir/functions/tmuxinator.sh
+
+source $dotfile_dir/functions/split.sh
+
+source $dotfile_dir/functions/gcal.sh
+
+source $dotfile_dir/functions/tdpv.sh
