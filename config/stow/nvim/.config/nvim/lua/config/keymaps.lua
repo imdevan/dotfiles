@@ -52,6 +52,7 @@ vim.schedule(function()
       { "<leader>ph", group = " Convert to header" },
       { "<leader>phh", group = " Copy headers" },
       { "<leader>po", group = " Whole page commands" },
+      { "<leader>pt", group = " Toggle things" },
     })
   end)
 end)
@@ -222,7 +223,7 @@ multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggl
 
 -- Togglr
 local togglr = require("togglr")
-set("n", "<leader>pt", togglr.toggle_word, { desc = "Togglr" })
+set("n", "<leader>ptt", togglr.toggle_word, { desc = "Togglr" })
 
 -- Reset git hunk under cursor
 multi_set("n", "<leader>pgd,<leader>gz", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
@@ -336,7 +337,7 @@ local snacks = require("snacks")
 -- Toggle indent lines
 -- Default disable line indention indicators cuz I'm weird like that
 snacks.indent.disable()
-set("n", "<leader>tn", ui_utils.toggle_indent_lines, { desc = "Toggle indent lines", remap = true })
+set("n", "<leader>ptn", ui_utils.toggle_indent_lines, { desc = "Toggle indent lines", remap = true })
 
 -- Toggle lazygit
 multi_set("n,i", "<C-g>", function()
@@ -365,7 +366,7 @@ set("n", "<leader>tu", ui_utils.toggle_colorcolumn, { desc = "Toggle colorcolumn
 set("n", "<leader>tb", ui_utils.toggle_bufferline, { desc = "Toggle bufferline / tab bar" })
 
 -- Toggle cursor
-set("n", "<leader>tc", ui_utils.toggle_cursor_style, {
+set("n", "<leader>ptc", ui_utils.toggle_cursor_style, {
   desc = "Toggle cursor underline | block ",
 })
 
