@@ -4,7 +4,7 @@ local fn = vim.fn
 local api = vim.api
 
 local IMPLEMENT_TASK_PROMPT =
-  "implement this task, and only this task, and mark complete if appropriate: create sub tasks if neccessary to describe work completed"
+  "implement this task, and only this task, and mark complete if appropriate: create sub tasks if neccessary to describe work completed. list items should be converted to sub task if implemented."
 
 -- local IMPLEMENT_TASK_PROMPT = "implement this task, and only this task, and mark complete if appropriate: "
 
@@ -30,18 +30,18 @@ function M.implement_at_file_path(extra, extra_notif)
   local extra_notif = extra_notif or ""
   local filepath = fn.expand("%:p")
   local mode = api.nvim_get_mode().mode
-  
+
   local start_line, end_line, lines_content
-  
+
   -- Check if in visual mode
   if mode == "v" or mode == "V" or mode == "\22" then
     start_line = fn.line("v")
     end_line = fn.line(".")
-    
+
     if start_line > end_line then
       start_line, end_line = end_line, start_line
     end
-    
+
     lines_content = api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
   else
     -- Normal mode - single line
@@ -49,11 +49,17 @@ function M.implement_at_file_path(extra, extra_notif)
     end_line = start_line
     lines_content = api.nvim_buf_get_lines(0, start_line - 1, start_line, false)
   end
-  
-  local line_ref = start_line == end_line and tostring(start_line) 
-    or start_line .. "-" .. end_line
-  
-  local content = IMPLEMENT_TASK_PROMPT .. "\n" .. filepath .. ":" .. line_ref .. "\n" .. table.concat(lines_content, "\n") .. "\n"
+
+  local line_ref = start_line == end_line and tostring(start_line) or start_line .. "-" .. end_line
+
+  local content = IMPLEMENT_TASK_PROMPT
+    .. "\n"
+    .. filepath
+    .. ":"
+    .. line_ref
+    .. "\n"
+    .. table.concat(lines_content, "\n")
+    .. "\n"
 
   if extra and extra ~= "" then
     content = content .. " " .. extra
@@ -65,6 +71,47 @@ end
 
 function M.implement_at_file_path_kiro()
   M.implement_at_file_path("ignore .kiro/steering instructions", "(for kiro)")
+end
+
+local function build_feature_prompt(suffix, prefix)
+  local filepath = fn.expand("%:p")
+  local line_num = api.nvim_win_get_cursor(0)[1]
+  local lines_content = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)
+
+  return (prefix or "create tasks for this feature: ")
+    .. filepath
+    .. ":"
+    .. line_num
+    .. "\n"
+    .. table.concat(lines_content, "\n")
+    .. "\n"
+    .. (suffix or "")
+end
+
+function M.feature_task_prompt()
+  fn.setreg("+", build_feature_prompt())
+  vim.notify("Feature task prompt copied", vim.log.levels.INFO)
+end
+
+function M.implement_feature_prompt()
+  fn.setreg(
+    "+",
+    build_feature_prompt(
+      nil,
+      "implement this feature, create branch feature/feature-name no number, add tasks as needed and stub tasks if necessary to indicate work implemented: "
+    )
+  )
+  vim.notify("Implement feature prompt copied", vim.log.levels.INFO)
+end
+
+function M.feature_task_prompt_high_level()
+  fn.setreg(
+    "+",
+    build_feature_prompt(
+      "create high level tasks. do not think hard. if validation or verification is needed include that in the task. do not search beyond this file for context. format tasks: - [ ] {feature#}.{task#} to match others in this file"
+    )
+  )
+  vim.notify("High level feature task prompt copied", vim.log.levels.INFO)
 end
 
 -- Copy file path and line range (for visual selection)

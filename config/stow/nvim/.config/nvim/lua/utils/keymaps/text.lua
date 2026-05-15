@@ -237,6 +237,17 @@ function M.insert_dash_at_line_start()
   end
 end
 
+-- Insert a new line below with '- ' respecting current line's indentation
+function M.new_dash_line()
+  local row = api.nvim_win_get_cursor(0)[1]
+  local line = api.nvim_buf_get_lines(0, row - 1, row, false)[1] or ""
+  local indent = line:match("^%s*") or ""
+  local new_line = indent .. "- "
+  api.nvim_buf_set_lines(0, row, row, false, { new_line })
+  api.nvim_win_set_cursor(0, { row + 1, #new_line })
+  vim.cmd("startinsert!")
+end
+
 -- Trim whitespace around selected text
 function M.trim_whitespace()
   -- Yank the visual selection to register z
