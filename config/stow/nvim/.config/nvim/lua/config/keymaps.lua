@@ -21,6 +21,8 @@ local todo_utils = require("utils.keymaps.todo")
 local ui_utils = require("utils.keymaps.ui")
 local terminal_utils = require("utils.keymaps.terminal")
 local paragraph_utils = require("utils.keymaps.paragraph")
+local bookmark_utils = require("utils.keymaps.bookmark")
+local motions = require("utils.keymaps.motions")
 
 -- Cache vim functions for better performance
 local set = vim.keymap.set
@@ -79,7 +81,7 @@ end)
 local silent_opts = { silent = true }
 
 -- Exit insert mode
-set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
+-- set("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 
 -- Save
 set("n", "<M-s>", "<CMD>write<CR>", silent_opts)
@@ -113,7 +115,8 @@ set("n", "<leader>fD", file_utils.delete_file_and_close, { desc = "Delete file a
 -- =====================================================================================================================
 
 -- Line navigation
-multi_set("n,v", "H", "^", { desc = "Go to beginning of line", noremap = true })
+-- multi_set("n,v", "H", "^", { desc = "Go to beginning of line", noremap = true })
+multi_set("n,v", "H", motions.go_to_first_alpha, { desc = "Go to first alpha character on line", noremap = true })
 multi_set("n,v", "L", "$", { desc = "Go to end of line", noremap = true })
 
 -- Paragraph navigation
@@ -216,7 +219,8 @@ set("n", "<leader>]", markdown_utils.jump_to_next_unchecked_checkbox, { desc = "
 set("n", "<leader>[", markdown_utils.jump_to_prev_unchecked_checkbox, { desc = "Previous unchecked checkbox" })
 
 -- Toggle boldness
-multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggle boldness" })
+-- todo move to markdown only
+-- multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggle boldness" })
 
 -- Utils
 -- =====================================================================================================================
@@ -264,26 +268,35 @@ multi_set("n,v", "<leader>p-", text_utils.insert_dash_at_line_start, {
   desc = "Insert dash at beginning of line(s)",
 })
 
+-- New line with '- ' respecting indentation
+multi_set("n", "oo", text_utils.new_dash_line, { desc = "New line with dash (respects indent)" })
+
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
-set("n", "<leader>fp", file_utils.copy_file_path, { desc = "Copy file path and line number" })
+multi_set("n", "<leader>fp,<leader>il", file_utils.copy_file_path, { desc = "Copy file path and line number" })
+
+set("n", "<leader>ii", file_utils.implement_at_file_path, { desc = "implement task" })
 
 set(
   "n",
-  "<leader>fi",
-  file_utils.implement_at_file_path,
-  { desc = 'Copy file path and line number adds the word "implement"' }
-)
-
-set(
-  "n",
-  "<leader>fk",
+  "<leader>ik",
   file_utils.implement_at_file_path_kiro,
   { desc = 'Copy file path and line number adds the word "implement"' }
 )
 
+-- set("n", "<leader>il", file_utils.copy_file_path, { desc = "Copy file path and line number" })
+
+set("n", "<leader>ig", file_utils.implement_feature_prompt, { desc = "Implement feature with tasks" })
+set("n", "<leader>if", file_utils.feature_task_prompt, { desc = "Create tasks for feature" })
+set(
+  "n",
+  "<leader>iF",
+  file_utils.feature_task_prompt_high_level,
+  { desc = "Create high level tasks for feature at cursor" }
+)
+
 -- Multiline
-set("v", "<leader>pf", file_utils.copy_file_path_range, { desc = "Copy file path and line range" })
+multi_set("v", "<leader>pf,<leader>il", file_utils.copy_file_path_range, { desc = "Copy file path and line range" })
 
 -- Spell checking
 -- =====================================================================================================================
@@ -348,16 +361,16 @@ end, {
 })
 
 -- Toggle rainbow delimiters
-set("n", "<leader>td", ui_utils.toggle_rainbow_delimiters, { desc = "Toggle rainbow delimiters", remap = true })
+set("n", "<leader>ptd", ui_utils.toggle_rainbow_delimiters, { desc = "Toggle rainbow delimiters", remap = true })
 
 -- Toggle highlight colors
-set("n", "<leader>th", ui_utils.toggle_highlight_colors, { desc = "Toggle highlight colors (background/foreground)" })
+set("n", "<leader>pth", ui_utils.toggle_highlight_colors, { desc = "Toggle highlight colors (background/foreground)" })
 
 -- Toggle snacks ignored files
 set("n", "<leader>ti", ui_utils.toggle_snacks_ignored, { desc = "Toggle Snacks ignored files" })
 
 -- Toggle type hints
-set("n", "<leader>ty", ui_utils.toggle_type_hints, { desc = "Toggle type hints", remap = true })
+set("n", "<leader>pty", ui_utils.toggle_type_hints, { desc = "Toggle type hints", remap = true })
 
 -- Toggle color column
 set("n", "<leader>tu", ui_utils.toggle_colorcolumn, { desc = "Toggle colorcolumn" })
@@ -398,3 +411,6 @@ set("t", "<C-t>", terminal_utils.toggle_terminal_size, { desc = "Toggle Terminal
 -- Noice
 -- =====================================================================================================================
 set("n", "<leader>pi", "<CMD>Noice history<CR>", { desc = "Noice history" })
+
+-- Bookmark
+set("n", "<leader>pb", bookmark_utils.bookmark_file, { desc = "Bookmark file" })
