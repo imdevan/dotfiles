@@ -75,3 +75,4 @@ $env.config = ($env.config | upsert completions {
 source ~/.config/nushell/aliases.nu
 source ~/.config/nushell/functions/list_all.nu
 
+source "~/.cargo/env.nu"
