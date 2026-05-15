@@ -14,6 +14,37 @@ return {
 
     local dap, dapui = require("dap"), require("dapui")
 
+    -- Python: attach to debugpy running in Docker on port 5678
+    dap.adapters.python = {
+      type = "server",
+      host = "127.0.0.1",
+      port = 5678,
+    }
+
+    dap.configurations.python = {
+      {
+        type = "python",
+        request = "attach",
+        name = "Attach: Docker debugpy",
+        connect = {
+          host = "127.0.0.1",
+          port = 5678,
+        },
+        pathMappings = {
+          {
+            localRoot = (function()
+              local cwd = vim.fn.getcwd()
+              if vim.fn.isdirectory(cwd .. "/app/backend") == 1 then
+                return cwd .. "/app/backend"
+              end
+              return cwd
+            end)(),
+            remoteRoot = "/app",
+          },
+        },
+      },
+    }
+
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end

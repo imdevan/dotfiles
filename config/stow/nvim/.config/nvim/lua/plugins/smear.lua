@@ -17,6 +17,7 @@ return {
     damping_insert_mode = 0.8, -- 0.7      [0, 1]
     distance_stop_animating = 0.5, -- 0.1      > 0
     -- fire hazard
+
     -- cursor_color = "#ff4000",
     -- particles_enabled = true,
     -- stiffness = 0.5,

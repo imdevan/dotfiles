@@ -8,9 +8,9 @@ local js_like = {
 }
 
 local python_config = {
-  left_var = "print('",
-  mid_var = "'); __import__('wat').wat(", -- https://github.com/andrewferrier/debugprint.nvim/blob/main/SHOWCASE.md#use-wat-inspector-to-fully-dump-objects-in-python
-  right_var = ")",
+  left_var = 'print(f"',
+  mid_var = " {",
+  right_var = '}")',
 }
 return {
   "andrewferrier/debugprint.nvim",

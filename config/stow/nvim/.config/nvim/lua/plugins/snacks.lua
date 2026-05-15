@@ -28,9 +28,14 @@ return {
         -- height = math.floor(vim.o.lines * 0.5),
         -- height = 1,
         -- height = 10,
-        height = 15,
+
+        -- large layout
+        height = vim.o.lines - 8,
+        width = vim.o.columns - 16,
+
+        -- height = 15,
         -- height = 20,
-        width = math.max(45, math.floor(vim.o.columns * 0.5)),
+        -- width = math.max(45, math.floor(vim.o.columns * 0.5)),
         border = "rounded",
       },
       -- Suppress exit notifications
