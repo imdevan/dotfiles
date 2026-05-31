@@ -9,6 +9,7 @@ done
 
 # Shared functions
 source $dotfile_dir/functions/shared/colors.sh # colors should be loaded first
+source $dotfile_dir/functions/shared/tmux_utils.sh
 source $dotfile_dir/functions/shared/validators.sh
 source $dotfile_dir/functions/shared/join_args.sh
 source $dotfile_dir/functions/shared/has_flag.sh
@@ -93,7 +94,7 @@ source $dotfile_dir/functions/work_set_up.sh
 
 source $dotfile_dir/functions/split_dev.sh
 
-source $dotfile_dir/functions/claude_window.sh
+source $dotfile_dir/functions/breakout_windows.sh
 
 source $dotfile_dir/functions/devel.sh
 
@@ -104,3 +105,5 @@ source $dotfile_dir/functions/split.sh
 source $dotfile_dir/functions/gcal.sh
 
 source $dotfile_dir/functions/tdpv.sh
+
+source $dotfile_dir/functions/lazy-window.sh
