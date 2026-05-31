@@ -125,7 +125,7 @@ multi_set("n,v", "K", paragraph_utils.jump_up, { desc = "Jump to paragraph up", 
 multi_set("n,v", "J", paragraph_utils.jump_down, { desc = "Jump to paragraph down", noremap = true })
 
 -- Remap hover documentation (originally K)
-set("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover documentation", noremap = true })
+set("n", "<leader>k", function() vim.lsp.buf.hover() end, { desc = "Hover documentation", noremap = true })
 
 -- Buffer navigation
 set("n", "<C-H>", "<cmd>bprevious<cr>", { desc = "Go to previous buffer", noremap = true })
@@ -234,6 +234,7 @@ multi_set("n", "<leader>pgd,<leader>gz", git_utils.reset_hunk, { desc = "Discard
 
 -- Quick commit
 set("n", "<leader>ga", git_utils.lazy_commit, { desc = "Lazy add & commit" })
+set("n", "<leader>gA", git_utils.lazy_nested_commit, { desc = "Lazy add & commit (nested: parent dir + filename)" })
 
 -- Calculator
 set("n", "<leader>pm", math_utils.evaluate_and_insert, { desc = "Evaluate expression and insert result" })
@@ -319,6 +320,10 @@ set("n", "<leader>st", spell_utils.toggle_spell, { desc = "Toggle spell checking
 -- Word count
 -- =====================================================================================================================
 set("v", "<leader>pwc", text_utils.word_count, { desc = "Word and character count of selection" })
+
+-- Wrap lines in double quotes with trailing comma
+set("v", '<leader>pw"', [[:s/.*/"&",/<CR>]], { desc = 'Wrap selected lines: "line",' })
+set("n", '<leader>pw"', [[vip<Esc>:'<,'>s/.*/"&",/<CR>]], { desc = 'Wrap paragraph lines: "line",' })
 
 -- Open in
 -- =====================================================================================================================
