@@ -336,3 +336,7 @@ source ~/.github_token
 # Uncomment to track load times
 zprof > ~/.zsh_profile
 
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/devy/.local/bin:$PATH"
