@@ -34,11 +34,12 @@ alias bb="cd -"   # Go back to last dirctory
 
 # Suffix aliases
 # Open various files types in editor
-alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py,conf,desktop,justfile}="$EDITOR"
+alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py,conf,desktop,justfile,log}="$EDITOR"
 alias -s git="git_clone" # open git urls with custom function
 
 # Global aliases
-alias -g T="| tee output.log"        # copy output to output.log
+alias -g T="2>&1 | tee output.log" # copy output to output.log
+# alias -g T="| tee output.log"        # copy output to output.log
 alias -g G="| grep"                  # grep output
 alias -g B="| boxes -d ansi-rounded" # https://boxes.thomasjensen.com/examples.html
 alias -g L="| lolcat -f"             # https://github.com/busyloop/lolcat
@@ -598,3 +599,30 @@ alias lin2="bun run lint A2 OC"
 alias brl="bun run lint"
 alias brr="bun run db:reset"
 alias brr="bun run reset"
+alias jre="just reinstall"
+alias kl="kiro-cli"
+alias brs="bun run reset:seed"
+alias tms="tmuxinator start"
+alias tmo="tmuxinator open"
+alias dpa="tmuxinator start dpa"
+alias dp="tms dp"
+alias jbr="just build && sudo just reinstall"
+alias jbr="just build && sudo just uninstall && sudo just install"
+alias mc="mark-complete"
+alias pqv="pq -G vnk -v"
+alias pqd="pq -G dp"
+alias dpp="tms" # dpp
+alias dpp="tms dpp"
+alias blo="brl OC"
+alias rdl="tms rdl"
+alias pqv="pq -G vnk -v"
+alias brb="bun run build"
+alias dcd="docker compose down"
+alias dcd="docker compose -d"
+alias groc="git remote get-url origin OC"
+alias gruc="git remote get-url upstream OC"
+alias tr="tms tr"
+alias bad="bun add -d"
+alias ta="v tasks.md"
+alias ee="cd ./app/expo"
+alias bb="cd ./app/backend"
