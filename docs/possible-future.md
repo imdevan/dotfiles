@@ -17,6 +17,9 @@ alises
 
 ## Things to figure out
 
+- how the hell do lsps and ls's work? 
+  - like what the hell is this documentation: https://github.com/AstroNvim/astrolsp#%EF%B8%8F-configuration
+ - Configure own nvim from base
 - Open file in vim from InsertVSCodeFork
 - How to move file to a directory and have it update file references; like vs code
 - tmux double stack all left side status bar layout
