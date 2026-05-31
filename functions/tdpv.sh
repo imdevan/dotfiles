@@ -51,4 +51,4 @@ if tmux has-session -t "$session_name" 2>/dev/null; then
 }
 
 # Create alias
-alias t="tdpv"
+# alias t="tdpv"
