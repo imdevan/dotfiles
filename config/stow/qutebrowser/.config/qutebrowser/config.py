@@ -10,7 +10,8 @@ import catppuccin
 # Must load first
 config.load_autoconfig()
 
-path_to_start_page = "https://devan.gg/cosmic"
+path_to_start_page = "localhost:8081"
+# path_to_start_page = "https://devan.gg/cosmic"
 # path_to_start_page = "https://chatgpt.com/chat"
 # path_to_start_page = "https://github.com/news-s/Qutebrowser-config/blob/main/config.py"
 # path_to_start_page = "https://qutebrowser.org/doc/quickstart.html"
@@ -31,9 +32,9 @@ config.bind(
 c.window.hide_decoration = True
 # c.window.transparent = True
 # c.colors.webpage.darkmode.enabled = True
-# c.colors.webpage.bg = "rgba(0,0,0,0)"
+c.colors.webpage.bg = "rgba(0,0,0,0)"
 
-c.colors.webpage.preferred_color_scheme = "dark"
+# c.colors.webpage.preferred_color_scheme = "dark"
 c.statusbar.show = "in-mode"
 c.tabs.show = "switching"
 c.tabs.position = "top"
@@ -57,9 +58,10 @@ c.url.searchengines = {
     "l": "localhost:{}000",
     "ll": "localhost:{}",
     "4": "localhost:432{}",
-    "l8": "localhost:808{}",
+    "8": "localhost:808{}",
     "wall": "https://wallhaven.cc/search?q={}&categories=110&purity=111&atleast=1920x1080&ratios=landscape&sorting=views&order=desc",
     "gt": "https://www.ultimate-guitar.com/search.php?title={}&type%5B0%5D=300&page=1&order=myweight",
+    "fi": "https://feathericons.com/?query={}",
 }
 
 # Aliases
@@ -71,6 +73,9 @@ c.content.autoplay = False
 c.content.cookies.accept = "no-3rdparty"
 c.content.geolocation = False
 c.content.notifications.enabled = False
+
+with config.pattern("wallhaven.cc") as p:
+    p.content.cookies.accept = "all"
 
 # Adblock
 c.content.blocking.enabled = True
@@ -127,4 +132,3 @@ c.colors.hints.match.fg = "#ed8796"
 #
 # Inspiration:
 # https://github.com/news-s/Qutebrowser-config/blob/main/config.py
-#
