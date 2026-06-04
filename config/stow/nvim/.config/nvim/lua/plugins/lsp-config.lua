@@ -28,4 +28,27 @@ return {
       },
     },
   },
+  -- language specific lsps
+  {
+    "AstroNvim/astrolsp",
+    opts = {
+      -- set configuration options  as described below
+      -- Configure language servers with `vim.lsp.config` (`:h vim.lsp.config`)
+      config = {
+        -- Configure LSP defaults
+        ["*"] = {
+          -- Configure default capabilities
+          capabilities = {
+            textDocument = {
+              foldingRange = { dynamicRegistration = false },
+            },
+          },
+          -- Custom flags table to be passed to all language servers
+          flags = {
+            exit_timeout = 5000,
+          },
+        },
+      },
+    },
+  },
 }
