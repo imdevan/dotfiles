@@ -22,6 +22,7 @@ config.bind("K", "tab-next")
 config.bind("X", "undo")
 config.bind("<Cmd-Alt-i>", "devtools right")
 config.bind("<Cmd-Alt-b>", "devtools bottom")
+config.bind("<Cmd-Alt-w>", "devtools window")
 config.bind("<Ctrl-t>", f"open {path_to_start_page}")
 config.bind("<Cmd-Shift-W>", "close")  # For macOS
 config.bind(
