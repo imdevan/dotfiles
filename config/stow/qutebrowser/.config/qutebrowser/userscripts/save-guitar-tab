@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+
+# Qutebrowser userscript to save ultimate-guitar tabs as markdown notes
+# in the Obsidian vault. Names the file from the URL slug, e.g.
+#   https://tabs.ultimate-guitar.com/tab/the-postal-service/such-great-heights-chords-132535
+#   -> "Such Great Heights Chords by The Postal Service.md"
+#
+# Tab content extraction (QUTE_HTML is the rendered DOM, so the js-store
+# JSON blob from the raw source may be gone — try both):
+#   1. js-store data-content JSON blob
+#   2. rendered <pre> block containing [Intro]/[Verse]/... section headers
+
+import html
+import json
+import os
+import re
+from pathlib import Path
+
+VAULT_DIR = Path.home() / "Documents/Obsidian Vault/guitar_tabs"
+
+SECTION_RE = re.compile(r"^\[[^\]\n]+\]\s*$", re.M)
+
+
+def msg(level, text):
+    fifo = os.environ.get("QUTE_FIFO")
+    if not fifo:
+        return
+    with open(fifo, "w") as f:
+        f.write("message-{} '{}'\n".format(level, text.replace("'", "\\'")))
+
+
+def tab_from_json(raw):
+    """Pull tab text out of the js-store data-content JSON blob."""
+    for blob in re.findall(r'data-content="([^"]+)"', raw):
+        try:
+            data = json.loads(html.unescape(blob))
+            tab = data["store"]["page"]["data"]["tab_view"]["wiki_tab"]["content"]
+        except (json.JSONDecodeError, KeyError, TypeError):
+            continue
+        if tab:
+            # Strip ultimate-guitar markup, keep section headers
+            return re.sub(r"\[/?(?:tab|ch)\]", "", tab)
+    return ""
+
+
+def tab_from_pre(raw):
+    """Pull tab text from rendered <pre> blocks (post-JS DOM)."""
+    best = ""
+    for block in re.findall(r"<pre[^>]*>(.*?)</pre>", raw, re.S | re.I):
+        text = html.unescape(re.sub(r"<[^>]+>", "", block))
+        if SECTION_RE.search(text) and len(text) > len(best):
+            best = text
+    return best
+
+
+def extract_tab_content(html_path):
+    raw = Path(html_path).read_text(errors="ignore")
+    tab = tab_from_json(raw) or tab_from_pre(raw)
+    if not tab:
+        return ""
+
+    tab = tab.replace("\r\n", "\n")
+    # Start at the first bracketed section header if one exists
+    section = SECTION_RE.search(tab)
+    if section:
+        tab = tab[section.start():]
+    return tab.strip()
+
+
+def main():
+    url = os.environ.get("QUTE_URL", "")
+    if not re.match(r"https?://tabs\.ultimate-guitar\.com/tab/", url):
+        msg("error", "Not on an ultimate-guitar tab page")
+        return
+
+    # /tab/<artist>/<song>-<id> -> name from slugs;
+    # /tab/<id> -> name from page title ("<Song> Chords by <Artist> @ ...")
+    match = re.match(
+        r"https?://tabs\.ultimate-guitar\.com/tab/([^/?#]+)/([^/?#]+)", url
+    )
+    if match:
+        artist_slug, song_slug = match.groups()
+        song_slug = re.sub(r"-\d+$", "", song_slug)  # drop trailing tab id
+        name = "{} by {}".format(
+            song_slug.replace("-", " ").title(),
+            artist_slug.replace("-", " ").title(),
+        )
+    else:
+        title = os.environ.get("QUTE_TITLE", "")
+        name = re.sub(r"\s*@\s*Ultimate-Guitar\.Com.*$", "", title, flags=re.I)
+        name = name.replace("/", "-").strip()
+        if not name:
+            msg("error", "Could not determine song name from URL or title")
+            return
+
+    content = ""
+    html_path = os.environ.get("QUTE_HTML")
+    if html_path:
+        content = extract_tab_content(html_path)
+
+    body = "[source]({})\n\n".format(url)
+    if content:
+        body += content + "\n"
+    else:
+        body += "_Could not extract tab content automatically._\n"
+
+    VAULT_DIR.mkdir(parents=True, exist_ok=True)
+    out_file = VAULT_DIR / "{}.md".format(name)
+    out_file.write_text(body)
+    if content:
+        msg("info", "Saved tab: {}".format(out_file.name))
+    else:
+        msg("warning", "Saved {} but no tab content found".format(out_file.name))
+
+
+if __name__ == "__main__":
+    main()
