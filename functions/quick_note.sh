@@ -8,7 +8,9 @@
 #
 # TODO: consider replacing with https://jrnl.sh/en/stable/overview/
 
+vault_folder="$HOME/Documents/Obsidian Vault"
 notes_folder="$HOME/Documents/Obsidian Vault/quick_notes"
+journal_folder="$HOME/Documents/Obsidian Vault/journal"
 
 # # How it started
 # function quick_note() {

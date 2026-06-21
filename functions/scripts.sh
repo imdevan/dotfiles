@@ -6,27 +6,47 @@
 # Alias: sc
 
 function scripts() {
-    # Check if package.json exists
-    if [ ! -f "package.json" ]; then
-        echo "${red}Error: package.json not found${reset}"
+    if [ -f "package.json" ]; then
+        echo "\nScripts:"
+        echo "----------------------------------------"
+        cat package.json | jq -r '.scripts | to_entries[] | "\(.key)\t\(.value)"' | while IFS=$'\t' read -r key value; do
+            printf "  ${blue}%-12s${yellow}%-20s${reset}\n" "$key" "$value"
+        done
+        echo "----------------------------------------"
+    elif [ -f "justfile" ] || [ -f "Justfile" ]; then
+        local jfile
+        jfile=$([ -f "justfile" ] && echo "justfile" || echo "Justfile")
+        echo "\nScripts:"
+        echo "----------------------------------------"
+        awk '
+            # recipe header: starts with identifier then ":" not followed by "="
+            /^[a-zA-Z_-][a-zA-Z0-9_-]*:[^=]/ || /^[a-zA-Z_-][a-zA-Z0-9_-]*:$/ {
+                if (name != "" && cmd == "" && fallback != "")
+                    printf "  \033[34m%-12s\033[33m%-20s\033[0m\n", name, fallback
+                name = $0; sub(/:.*/, "", name)
+                cmd = ""; fallback = ""
+                next
+            }
+            name != "" && /^[[:space:]]/ {
+                line = $0; sub(/^[[:space:]]+/, "", line)
+                if (substr(line, 1, 1) == "@") {
+                    stripped = substr(line, 2); sub(/^[[:space:]]*/, "", stripped)
+                    if (fallback == "") fallback = stripped
+                } else if (cmd == "") {
+                    cmd = line
+                    printf "  \033[34m%-12s\033[33m%-20s\033[0m\n", name, cmd
+                }
+            }
+            END {
+                if (name != "" && cmd == "" && fallback != "")
+                    printf "  \033[34m%-12s\033[33m%-20s\033[0m\n", name, fallback
+            }
+        ' "$jfile"
+        echo "----------------------------------------"
+    else
+        echo "${red}Error: package.json or justfile not found${reset}"
         return 1
     fi
-
-    # Get the package.json file
-    local package_json=$(cat package.json)
-    
-    # Print header
-    echo "\nScripts:"
-    echo "----------------------------------------"
-    # Get and format the scripts using jq
-    # Print as a table with aligned columns
-    # printf "  ${blue}%-20s${yellow}%s${reset}\n" "Script" "Command"
-    # printf "  ${blue}%-20s${yellow}%s${reset}\n" "--------------------" "--------------------"
-    echo "$package_json" | jq -r '.scripts | to_entries[] | "\(.key)\t\(.value)"' | while IFS=$'\t' read -r key value; do
-        printf "  ${blue}%-12s${yellow}%-20s${reset}\n" "$key" "$value"
-    done
-    echo "----------------------------------------"
-    # echo "--------------------------------"
 }
 
 # Create alias

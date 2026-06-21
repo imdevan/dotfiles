@@ -198,5 +198,5 @@ function list_all() {
 }
 
 # Create alias
-alias l="list_all"
-alias la="list_all -h"
+# alias l="list_all"
+# alias la="list_all -h"

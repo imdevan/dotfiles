@@ -17,6 +17,7 @@ source $dotfile_dir/functions/shared/alias_utils.sh
 source $dotfile_dir/functions/shared/to_copy.sh
 source $dotfile_dir/functions/shared/gummy.sh
 source $dotfile_dir/functions/shared/nu_alias.sh
+source $dotfile_dir/functions/shared/fzf_vim.sh
 
 # Global function handler for zsh
 source $dotfile_dir/functions/command_not_found_handler.sh
@@ -71,7 +72,6 @@ source $dotfile_dir/functions/to_log.sh
 
 source $dotfile_dir/functions/which_lock.sh
 
-source $dotfile_dir/functions/fzf_vim.sh
 
 source $dotfile_dir/functions/list_all.sh
 
@@ -107,3 +107,6 @@ source $dotfile_dir/functions/gcal.sh
 source $dotfile_dir/functions/tdpv.sh
 
 source $dotfile_dir/functions/lazy-window.sh
+
+
+source $dotfile_dir/functions/.sh
