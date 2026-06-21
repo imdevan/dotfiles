@@ -70,7 +70,7 @@ DISABLE_UPDATE_PROMPT="true"
 # Plugins
 # plugins=(zsh-vi-mode web-search zsh-autosuggestions)
 
-# Directly source plugins to defer optimization
+# Directly source plugins for defer optimization
 source $ZSH/custom/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 zsh-defer source $ZSH/plugins/web-search/web-search.plugin.zsh
 zsh-defer source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
@@ -93,12 +93,11 @@ unalias l
 bindkey -M main " " magic-space
 
 # Apply specifically to emacs and vi-insert modes
-bindkey -M emacs " " magic-space
 bindkey -M viins " " magic-space
 
 # My dotfiles
 # ================================================================================
-zsh-defer source ~/dotfiles/index.sh
+source ~/dotfiles/index.sh
 zsh-defer source ~/.bookmarks/bookmarks.sh
 
 # OS specific setup
@@ -146,43 +145,25 @@ python() {
 
 # Path and vars
 # ================================================================================
-# - mostly added by tool installs
-# TODO: organize these   
 
-# export MANPATH="/usr/local/man:$MANPATH"
-# Add cargo (rust toolkit) to path
+# Rust
 export PATH="${HOME}/.cargo/bin:${PATH}"
- 
-# Add android paths 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulatorand
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Android
+export ANDROID_HOME=/opt/android-sdk
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
+
+# Local bin
+export PATH="$PATH:$HOME/.local/bin"
+
+# Nushell
+export NU_CONFIG_DIR="$HOME/.config/nushell"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-
-# Added by Antigravity
-export PATH="/Users/devy/.antigravity/antigravity/bin:$PATH"
-
-# Ensure bin is in path
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$HOME/.bun/bin:$PATH"
-
-# Android sdk path
-export ANDROID_HOME=/opt/android-sdk
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/emulator
-
-# NU shell config
-export NU_CONFIG_DIR="$HOME/.config/nushell"
 
 zstyle ':completion:*' verbose no
 zstyle ':fzf-tab:*' continuous-trigger ''
 
-# . "$HOME/.local/bin/env"
-
-# Added by Antigravity CLI installer
-export PATH="/home/devy/.local/bin:$PATH"
 
 # Github token
 source ~/.github_token
