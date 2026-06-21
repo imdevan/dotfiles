@@ -28,6 +28,9 @@ config.bind("<Cmd-Shift-W>", "close")  # For macOS
 config.bind(
     "<Ctrl-w>", "spawn --userscript download-wallhaven ;; later 2000 tab-close"
 )  # Download wallhaven wallpaper and close tab after 2 seconds
+config.bind(
+    "<Ctrl-Alt-Shift-g>", "spawn --userscript save-guitar-tab"
+)  # Save ultimate-guitar tab as md note in Obsidian vault
 
 # Window Styles
 c.window.hide_decoration = True
