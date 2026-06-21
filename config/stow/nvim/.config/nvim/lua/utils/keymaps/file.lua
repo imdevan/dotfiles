@@ -153,4 +153,30 @@ function M.delete_file_and_close()
   vim.cmd("qa!")
 end
 
+-- Open justfile
+function M.open_justfile()
+  local current_file = api.nvim_buf_get_name(0)
+  local start_dir = current_file ~= "" and fn.fnamemodify(current_file, ":h") or fn.getcwd()
+
+  local justfiles = vim.fs.find({ "justfile", "Justfile", ".justfile" }, {
+    upward = true,
+    stop = (vim.uv or vim.loop).os_homedir(),
+    path = start_dir,
+  })
+
+  if #justfiles > 0 then
+    vim.cmd("edit " .. fn.fnameescape(justfiles[1]))
+  else
+    -- Try current working directory as fallback
+    local cwd = fn.getcwd()
+    local cwd_justfile = cwd .. "/justfile"
+    if fn.filereadable(cwd_justfile) == 1 then
+      vim.cmd("edit " .. fn.fnameescape(cwd_justfile))
+    else
+      vim.notify("No justfile found", vim.log.levels.WARN)
+    end
+  end
+end
+
 return M
+

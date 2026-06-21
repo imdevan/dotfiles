@@ -116,4 +116,34 @@ function M.open_parent_folder()
   notify("Opened parent folder in Finder: " .. parent_dir, vim.log.levels.INFO)
 end
 
+-- Open current file in Obsidian
+function M.open_in_obsidian()
+  local file = vim.fn.expand("%:p")
+  if not file or file == "" then
+    return
+  end
+
+  local function url_encode(str)
+    if str then
+      str = str:gsub("\n", "\r\n")
+      str = str:gsub("([^%w %-%_%.%~])", function(c)
+        return string.format("%%%02X", string.byte(c))
+      end)
+      str = str:gsub(" ", "%%20")
+    end
+    return str
+  end
+
+  local encoded_path = url_encode(file)
+  local uri = "obsidian://open?path=" .. encoded_path
+
+  if vim.ui and vim.ui.open then
+    -- native, platform-agnostic API
+    vim.ui.open(uri)
+  else
+    local cmd = { "xdg-open", uri }
+    vim.fn.jobstart(cmd, { detach = true })
+  end
+end
+
 return M

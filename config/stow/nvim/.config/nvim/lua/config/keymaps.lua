@@ -125,7 +125,9 @@ multi_set("n,v", "K", paragraph_utils.jump_up, { desc = "Jump to paragraph up", 
 multi_set("n,v", "J", paragraph_utils.jump_down, { desc = "Jump to paragraph down", noremap = true })
 
 -- Remap hover documentation (originally K)
-set("n", "<leader>k", function() vim.lsp.buf.hover() end, { desc = "Hover documentation", noremap = true })
+set("n", "<leader>k", function()
+  vim.lsp.buf.hover()
+end, { desc = "Hover documentation", noremap = true })
 
 -- Buffer navigation
 set("n", "<C-H>", "<cmd>bprevious<cr>", { desc = "Go to previous buffer", noremap = true })
@@ -272,6 +274,9 @@ multi_set("n,v", "<leader>p-", text_utils.insert_dash_at_line_start, {
 -- New line with '- ' respecting indentation
 multi_set("n", "oo", text_utils.new_dash_line, { desc = "New line with dash (respects indent)" })
 
+-- Open justfile
+set("n", "<leader>j", file_utils.open_justfile, { desc = "Open justfile" })
+
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
 multi_set("n", "<leader>fp,<leader>il", file_utils.copy_file_path, { desc = "Copy file path and line number" })
@@ -344,6 +349,9 @@ end
 
 -- Open parent folder in finder
 set("n", "<leader>of", open_in_editor.open_parent_folder, { desc = "Open parent folder in Finder" })
+
+-- Open file in Obsidian
+set("n", "<leader>oo", open_in_editor.open_in_obsidian, { desc = "Open file in Obsidian" })
 
 -- =====================================================================================================================
 -- UI toggles (t)
