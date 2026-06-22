@@ -12,7 +12,7 @@ fi
 # Load omarchy-zsh functions and aliases
 if [[ -d $HOME/dotfiles/config/omarchy-zsh/functions ]]; then
   for func in $HOME/dotfiles/config/omarchy-zsh/functions/*.zsh; do
-    [[ -f "$func" ]] && zsh-defer source "$func"
+    [[ -f "$func" ]] && source "$func"
   done
 fi
 
@@ -20,9 +20,6 @@ fi
 # un comment when needed
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# ZSH syntax highlight plugin
-# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
-# Arch
-zsh-defer source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+# ZSH syntax highlighting loaded via zinit turbo in .zshrc
 
 

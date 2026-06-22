@@ -1,19 +1,17 @@
 # Tool initialization with safety checks
 if command -v mise &> /dev/null; then
-  zsh-defer eval "$(mise activate zsh)"
+  eval "$(mise activate zsh --shims)"
 fi
 
 if command -v zoxide &> /dev/null; then
-  zsh-defer eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh)"
 fi
 
 if command -v try &> /dev/null; then
-  zsh-defer eval "$(try init ~/Work/tries)"
+  eval "$(try init ~/Work/tries)"
 fi
 
-if command -v starship &> /dev/null; then
-  eval "$(starship init zsh)"
-fi
+
 
 # fzf integration
 if command -v fzf &> /dev/null; then

@@ -1,111 +1,88 @@
-# Zsh profiler start
-# ================================================================================
-# Add this to the TOP of your .zshrc to profile
-# Uncomment to track load times
+# Profiler (uncomment to profile)
 zmodload zsh/zprof
 
-# Zsh preload
+# Zinit installer
 # ================================================================================
-# Must be before loading .oh-my-zsh
-# Skip expensive security checks - useful in multi-user systems, but unnecessary on your personal
-ZSH_DISABLE_COMPFIX=true
+ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
+if [[ ! -d $ZINIT_HOME ]]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+source "$ZINIT_HOME/zinit.zsh"
+# Compile zinit for faster loads
+if [[ ! -e "$ZINIT_HOME/zinit.zsh.zwc" || "$ZINIT_HOME/zinit.zsh" -nt "$ZINIT_HOME/zinit.zsh.zwc" ]]; then
+  zcompile "$ZINIT_HOME/zinit.zsh"
+fi
 
-# initialize zsh defer
-# https://github.com/romkatv/zsh-defer
-source ~/zsh-defer/zsh-defer.plugin.zsh
+# Plugins
+# ================================================================================
+# zsh-vi-mode must load synchronously (it hijacks keymaps on load)
+zinit light jeffreytse/zsh-vi-mode
 
-# compinit
-# autoload -Uz compinit
-# compinit -C -u -d ~/.zcompdump
+# defer id snippet — deferred atload via zinit turbo mode
+# defer_plugins plugin... — deferred plugin load
+defer() { zinit wait lucid light-mode for id-as"$1" atload"$2" zdharma-continuum/null }
+defer_plugins() { zinit wait lucid light-mode for "$@" }
+
+# Turbo (deferred) plugins
+defer_plugins \
+  zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-history-substring-search \
+  Aloxaf/fzf-tab \
+  OMZP::web-search
+
+# Arch system syntax highlighting (avoid duplicate install)
+defer "zsh-syntax-highlighting" "source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+
+# Completion
+# ================================================================================
 # autoload -Uz compinit
 # if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-  # compinit -u
+#   compinit -u
 # else
-  # compinit -C -u
+#   compinit -C -u
 # fi
 
-
-# Path to Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# Keybinds
+# ================================================================================
+bindkey '^ ' autosuggest-accept
+bindkey -M main " " magic-space
+bindkey -M viins " " magic-space
 
 # Zsh behavior
 # ================================================================================
-# Add a blank line after the prompt
-preexec(){
-  echo
-}
-
-# Use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
+preexec(){ echo }
 HYPHEN_INSENSITIVE="true"
-
-# Auto-update behavior
-zstyle ":omz:update" mode disabled  # disable automatic updates
-# zstyle ":omz:update" mode auto      # update automatically without asking
-# zstyle ":omz:update" mode reminder  # just remind me to update when it"s time
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+zstyle ':completion:*' verbose no
+zstyle ':fzf-tab:*' continuous-trigger ''
 
-# Speed up OMZ by disabling unnecessary features
-DISABLE_AUTO_UPDATE="true"
-DISABLE_UPDATE_PROMPT="true"
-
-
-# Zsh plugins
+# Path and vars
 # ================================================================================
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Add wisely, as too many plugins slow down shell startup.
-# custom plugin added: https://github.com/jeffreytse/zsh-vi-mode
+export PATH="${HOME}/.cargo/bin:${PATH}"
+export PATH="$PATH:$HOME/.local/bin"
+export ANDROID_HOME=/opt/android-sdk
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
+export NU_CONFIG_DIR="$HOME/.config/nushell"
 
-# needed for nvm to be lazyloaded MUST come before plugins are loaded
-# export NVM_LAZY_LOAD=true
-# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
-
-# Plugins
-# plugins=(zsh-vi-mode web-search zsh-autosuggestions)
-
-# Directly source plugins for defer optimization
-source $ZSH/custom/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-zsh-defer source $ZSH/plugins/web-search/web-search.plugin.zsh
-zsh-defer source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-
-bindkey '^ ' autosuggest-accept
-
-# Zsh load
+# Python (lazy)
 # ================================================================================
-source $ZSH/oh-my-zsh.sh
-
-# Zsh post-load
-# ================================================================================
-# todo find where to fix this
-unalias l
-
-# Magic space plugin config
-# ================================================================================
-# Bind keys to widgets
-# Apply to the global/main keymap
-bindkey -M main " " magic-space
-
-# Apply specifically to emacs and vi-insert modes
-bindkey -M viins " " magic-space
+pyenv() {
+  unfunction pyenv
+  eval "$(command pyenv init - zsh)"
+  pyenv "$@"
+}
+python() {
+  unfunction pyenv python
+  eval "$(command pyenv init - zsh)"
+  python "$@"
+}
 
 # My dotfiles
 # ================================================================================
 source ~/dotfiles/index.sh
-zsh-defer source ~/.bookmarks/bookmarks.sh
+source ~/.github_token
 
 # OS specific setup
 # ================================================================================
@@ -114,69 +91,17 @@ IS_ARCH=false
 [[ "$(uname)" == "Darwin" ]] && IS_MAC=true
 [[ -f /etc/arch-release ]] && IS_ARCH=true
 
-# Omarchy
-if $IS_ARCH; then
-  source ~/.config/zsh/.omarchyrc.sh
-fi
+$IS_ARCH && source ~/.config/zsh/.omarchyrc.sh
+$IS_MAC  && defer "macrc" "source ~/.config/zsh/.macrc.sh"
 
-# Mac
-if $IS_MAC; then
-  zsh-defer source ~/.config/zsh/.macrc.sh
-fi
+# Bookmarks (deferred)
+defer "bookmarks" "source ~/.bookmarks/bookmarks.sh"
 
-# Tmux
-# ================================================================================
-# Start tmux automatically if not already inside tmux
-# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#   tmux attach-session -t 0 || tmux new-session -s 0
-# fi
+# Kiro shell integration
+defer "kiro" '[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"'
 
-# Python setup
-# ================================================================================
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init - zsh)"
+# Prompt
+command -v starship &>/dev/null && eval "$(starship init zsh)"
 
-# lazyload
-pyenv() {
-  unfunction pyenv
-  eval "$(command pyenv init - zsh)"
-  pyenv "$@"
-}
-
-python() {
-  unfunction pyenv python
-  eval "$(command pyenv init - zsh)"
-  python "$@"
-}
-
-# Path and vars
-# ================================================================================
-
-# Rust
-export PATH="${HOME}/.cargo/bin:${PATH}"
-
-# Android
-export ANDROID_HOME=/opt/android-sdk
-export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
-
-# Local bin
-export PATH="$PATH:$HOME/.local/bin"
-
-# Nushell
-export NU_CONFIG_DIR="$HOME/.config/nushell"
-
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-
-zstyle ':completion:*' verbose no
-zstyle ':fzf-tab:*' continuous-trigger ''
-
-# Github token
-source ~/.github_token
-
-# Zsh profiler end
-# ================================================================================
-# For output testing 
-# Uncomment to track load times
+# Profiler output (uncomment to profile)
 zprof > ~/.zsh_profile
-

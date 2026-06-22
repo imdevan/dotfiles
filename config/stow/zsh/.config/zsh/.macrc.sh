@@ -61,7 +61,7 @@ fi
 # source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #
 # zoxide
-# zsh-defer eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 # with cache:
 # if [[ ! -f ~/.zoxide-init.zsh ]]; then
 #   zoxide init zsh > ~/.zoxide-init.zsh

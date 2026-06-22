@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/zsh
 
 # fzf file search function
 # Usage:

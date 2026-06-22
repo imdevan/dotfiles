@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 # Auto-compile all function files on first load or when changed
-for func_file in $dotfile_dir/functions/**/*.sh(N); do
-    if [[ ! -f "${func_file}.zwc" ]] || [[ "$func_file" -nt "${func_file}.zwc" ]]; then
-        zcompile "$func_file" 2>/dev/null
-    fi
-done
+# for func_file in $dotfile_dir/functions/**/*.sh(N); do
+#     if [[ ! -f "${func_file}.zwc" ]] || [[ "$func_file" -nt "${func_file}.zwc" ]]; then
+#         zcompile "$func_file" 2>/dev/null
+#     fi
+# done
 
 # Shared functions
 source $dotfile_dir/functions/shared/colors.sh # colors should be loaded first
@@ -107,6 +107,3 @@ source $dotfile_dir/functions/gcal.sh
 source $dotfile_dir/functions/tdpv.sh
 
 source $dotfile_dir/functions/lazy-window.sh
-
-
-source $dotfile_dir/functions/.sh

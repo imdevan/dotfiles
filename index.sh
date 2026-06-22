@@ -6,4 +6,4 @@ source $dotfile_dir/aliases.sh
 
 # Removed in favor of caching
 # Import functions
-zsh-defer source $dotfile_dir/functions/index.sh
+source $dotfile_dir/functions/index.sh
