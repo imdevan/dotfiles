@@ -14,9 +14,16 @@ ZSH_DISABLE_COMPFIX=true
 # https://github.com/romkatv/zsh-defer
 source ~/zsh-defer/zsh-defer.plugin.zsh
 
-# 
-autoload -Uz compinit
-compinit -C -u -d ~/.zcompdump
+# compinit
+# autoload -Uz compinit
+# compinit -C -u -d ~/.zcompdump
+# autoload -Uz compinit
+# if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  # compinit -u
+# else
+  # compinit -C -u
+# fi
+
 
 # Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -163,7 +170,6 @@ export NU_CONFIG_DIR="$HOME/.config/nushell"
 
 zstyle ':completion:*' verbose no
 zstyle ':fzf-tab:*' continuous-trigger ''
-
 
 # Github token
 source ~/.github_token
