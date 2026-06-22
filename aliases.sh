@@ -22,15 +22,12 @@ alias restart="sudo shutdown -r now"
 alias sdown="sudo shutdown -h now"
 
 # Terminal Navigation
-alias lsa="ls -a"
-alias lfa="ls -ARFh"
-alias o="open ./"  # Open - in finder
-alias cpr="cp -rf" # Copy recursive
+# alias lfa="ls -ARFh"
+alias o="open ./" # Open - in finder
 alias cf="cp -rf"
 alias rf="rm -rf" # Remove recursive
 alias t="touch"   # Make file
 alias ex="exit"   # Exit terminal
-alias bb="cd -"   # Go back to last dirctory
 
 # Suffix aliases
 # Open various files types in editor
@@ -38,9 +35,8 @@ alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py,conf,desktop,ju
 alias -s git="git_clone" # open git urls with custom function
 
 # Global aliases
-alias -g T="2>&1 | tee output.log" # copy output to output.log
-# alias -g T="| tee output.log"        # copy output to output.log
-alias -g G="| grep"                  # grep output
+alias -g T="2>&1 | tee output.log"   # copy output to output.log
+alias -g G="| rg"                    # grep output
 alias -g B="| boxes -d ansi-rounded" # https://boxes.thomasjensen.com/examples.html
 alias -g L="| lolcat -f"             # https://github.com/busyloop/lolcat
 alias -g Q="| quick_note"            # https://github.com/busyloop/lolcat
@@ -103,6 +99,7 @@ alias drm="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r dock
 alias bds="bdpv && cs && dcub -d" # ds but navigate to backend first
 alias dcr="dcd && dcubd"          # restart db
 
+# Python
 alias ved="deactivate"
 alias vdcw="ve && dcw"
 alias vcd="ve && cs && dcw"
@@ -126,16 +123,15 @@ alias play="cd ~/Documents/Projects/playground"
 alias wd="w 'dpv & sd'"
 
 # Open in Vim
-alias vz="nvim ~/.zshrc"
-alias hk="v ~/dotfiles/docs/keybinds/hotkeys.md"
-alias vpf="v ~/dotfiles/docs/possible-future.md"
+alias fv="fzf --bind 'enter:become(nvim {})'" # fzf file search then open in nvim
+alias hk="~/dotfiles/docs/keybinds/hotkeys.md"
+alias vpf="~/dotfiles/docs/possible-future.md"
 alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
-alias va="v ~/dotfiles/aliases.sh"
-alias vc="v ~/Library/Application\ Support/com.mitchellh.ghostty/config"
-alias aero="v ~/.aerospace.toml"
-alias vs="v ~/dotfiles/setup.md"
-alias vpf="v ~/dotfiles/docs/possible-future.md"
-
+alias va="~/dotfiles/aliases.sh"
+alias vc="~/Library/Application\ Support/com.mitchellh.ghostty/config"
+alias aero="~/.aerospace.toml"
+alias vs="~/dotfiles/setup.md"
+alias vpf="~/dotfiles/docs/possible-future.md"
 alias vd="v ~/dotfiles"
 alias vt="v ~/dotfiles/config/stow/tmux/.config/tmux/tmux.conf"
 alias vs="v ~/dotfiles/config/stow/sketchybar/.config/sketchybar"
@@ -144,8 +140,6 @@ alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
 alias vnp="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/plugins"
 alias vb="v ~/dotfiles/config/stow/borders/.config/borders/bordersrc"
 alias val="v ~/dotfiles/config/stow/alacritty/.alacritty.toml"
-# alias vf="" now handled by function_utils/vim_function
-alias fv="fzf --bind 'enter:become(nvim {})'" # fzf file search then open in nvim
 alias vq="v ~/dotfiles/config/stow/qutebrowser/.config/qutebrowser/config.py"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
 alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
@@ -383,6 +377,7 @@ alias bve="z backend && ve && .."
 alias gr="go run main.go"
 alias gmt="go mod tidy"
 
+# alias vf="" now handled by function_utils/vim_function
 # Misc.
 alias ge="gemini"
 alias pt="python google_photo_transfer.py"
@@ -392,21 +387,6 @@ alias gcrndp="gcl https://github.com/imdevan/react-native-dropdown-picker.git"
 alias au="grem add upstream https://github.com/imdevan/react-native-dropdown-picker.git"
 alias asdf="cowsay 'hang in there!' L" # use incase of frustration
 alias weather="curl http://wttr.in/Seattle"
-
-# Bookmarks
-# Pinned - go and rename
-alias zd="~/dotfiles/ && tmux rename-window dot"
-alias zp="~/Projects/prompter/prompter-cli && tmux rename-window prmpt"
-alias zv="~/Work/visual_studio_agent/ && tmux rename-window vsa"
-alias zh="~/dotfiles/config/stow/hypr/.config/hypr && tmux rename-window hypr"
-alias zdp="~/Projects/dance-partner-vibes/ && tmux rename-window dpv"
-alias zpo="~/Work/portfolio && tmux rename-window port"
-alias zpres="~/Projects/dotfiles-for-web-devs-presentation/ && tmux rename-window d4js && v index.html"
-alias notes="cd ~/Documents/Obsidian\ Vault && tmux rename-window notes"
-
-# Standard - go to
-alias np="cd ~/.config/nvim/lua/plugins"
-alias pp="cd ~/Projects/portfolio"
 
 # Jankyborder
 # :open https://github.com/FelixKratz/JankyBorders/wiki/Man-Page
@@ -556,8 +536,6 @@ alias e="exit"
 alias bgc="bun generate:client"
 alias guc="git reset --soft HEAD~1" # git undo commit
 alias bre="bun restart"
-alias pvnk="p -v -E -G vnk"
-alias pvnk="p -v -E -Y -G vnk"
 alias pvnk="p -k -E -Y -G vnk"
 alias br="brighten"
 alias tas="v task"
@@ -565,7 +543,6 @@ alias tail20="op A2 OC"
 alias w2="wee '' 2" # 2 week calendar
 alias lin2="bun run lint A2 OC"
 alias brl="bun run lint"
-alias brr="bun run db:reset"
 alias brr="bun run reset"
 alias jre="just reinstall"
 alias kl="kiro-cli"
