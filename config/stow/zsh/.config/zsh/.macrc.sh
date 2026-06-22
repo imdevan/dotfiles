@@ -1,5 +1,19 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path and vars
+# ================================================================================
+
+# Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# Bun
+export PATH="$HOME/.bun/bin:$PATH"
+
+# Android (macOS)
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
+
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 # cach brew shellenv
 # only execute on darwin
