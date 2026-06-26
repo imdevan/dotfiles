@@ -37,11 +37,8 @@ defer "zsh-syntax-highlighting" "source /usr/share/zsh/plugins/zsh-syntax-highli
 # Completion
 # ================================================================================
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-  compinit -u
-else
-  compinit -C -u
-fi
+compinit -C -u
+# zinit cdreplay -q
 
 # TODO: probably move this to global configs
 # History configuration
