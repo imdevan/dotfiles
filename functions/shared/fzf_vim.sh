@@ -7,7 +7,7 @@
 fzf_vim() {
   if [ $# -eq 0 ]; then
     # No arguments - interactive mode, open selected file in nvim
-    fzf --bind 'enter:become(nvim {})'
+    fzf  --bind 'enter:become(nvim {})' --preview 'bat --style=numbers --color=always {}'
   else
     # With argument - search and return first match
     local file
