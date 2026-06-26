@@ -219,6 +219,7 @@ multi_set("n,x", "<leader>pc", markdown_utils.toggle_checkbox, { desc = "Toggle 
 -- Navigate unchecked checkboxes
 set("n", "<leader>]", markdown_utils.jump_to_next_unchecked_checkbox, { desc = "Next unchecked checkbox" })
 set("n", "<leader>[", markdown_utils.jump_to_prev_unchecked_checkbox, { desc = "Previous unchecked checkbox" })
+set("n", "<C-[>", "va[c", { desc = "Change around next []" })
 
 -- Toggle boldness
 -- todo move to markdown only
