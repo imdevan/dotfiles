@@ -14,7 +14,7 @@ alias dotfiles="$EDITOR $dotfile_dir"
 alias aliases="$EDITOR $dotfile_dir/aliases.sh"
 
 ## Aliases shortcut
-alias a="aliases"
+# alias a="aliases"
 alias dots="~/dotfiles"
 alias r="exec zsh"                      # Reload zsh config
 alias ra="source ~/dotfiles/aliases.sh" # Reload aliases
@@ -90,7 +90,6 @@ alias bil="eas build --platform ios --profile development --local"
 # Docker
 alias dcu="docker compose up"
 alias dcw="docker compose watch"
-alias dcd="docker compose down -v"
 alias dcub="docker compose up --build"
 alias dex="docker exec -it" # Docker execute consider adding container-name zsh
 alias prune_all="docker ps -aq | xargs -r docker stop && docker ps -aq | xargs -r docker rm && docker system prune -a --volumes -f"
@@ -122,8 +121,14 @@ alias play="cd ~/Documents/Projects/playground"
 # Tmux Navigation
 alias wd="w 'dpv & sd'"
 
+# eza
+alias el='eza -lh --group-directories-first --icons=auto'
+alias et='eza --tree --level=2 --long --icons --git' #default 2 accept arg
+
+# fzf
+alias fz="fzf --preview 'bat --style=numbers --color=always {}'"
+
 # Open in Vim
-alias fv="fzf --bind 'enter:become(nvim {})'" # fzf file search then open in nvim
 alias hk="~/dotfiles/docs/keybinds/hotkeys.md"
 alias vpf="~/dotfiles/docs/possible-future.md"
 alias vz="v ~/dotfiles/config/stow/zsh/.zshrc"
@@ -142,10 +147,10 @@ alias vb="v ~/dotfiles/config/stow/borders/.config/borders/bordersrc"
 alias val="v ~/dotfiles/config/stow/alacritty/.alacritty.toml"
 alias vq="v ~/dotfiles/config/stow/qutebrowser/.config/qutebrowser/config.py"
 alias vto="v /Users/devy/Documents/Projects/project-ignite-go-fast/todo.md"
-alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
+# alias vnk="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/keymaps.lua"
 alias vns="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/plugins/snacks.lua"
 alias vno="v ~/dotfiles/config/stow/nvim/.config/nvim/lua/config/options.lua"
-alias vk="v ~/dotfiles/config/stow/kitty/.config/kitty/kitty.conf"
+alias vki="v ~/dotfiles/config/stow/kitty/.config/kitty/kitty.conf"
 alias vw="v ~/dotfiles/config/stow/wezterm/.wezterm.lua"
 alias vsk="v ~/dotfiles/config/stow/skhd/.config/skhd/skhdrc"
 alias vcoms="v ~/dotfiles/config/stow/cursor/.cursor/commands/"
@@ -575,3 +580,6 @@ alias sim="v plan/simple.md"
 alias la="l -a"
 alias jdg="just docs-generate"
 alias pqq="pq -q"
+alias klo="kiro-cli logout"
+alias klo="kiro-cli logout"
+alias kli="kiro-cli login"
