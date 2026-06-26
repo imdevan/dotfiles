@@ -101,8 +101,9 @@ def tag [] { open app.db | query db "select * from tag" }
 def ds [] { open app.db | query db "select * from dancestyle" }
 
 alias e = exit
-alias r = clear
 alias c = clear
+alias b = bookmark
+
 
 def reload  [] {
   exec nu
