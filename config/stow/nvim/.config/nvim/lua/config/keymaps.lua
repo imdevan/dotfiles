@@ -149,6 +149,11 @@ set("n", "<leader>pop", 'ggVG"0p', { desc = "Paste whole page", remap = true })
 set("n", "<leader>poy", "ggVGy", { desc = "Yank whole page", remap = true })
 set("n", "<M-a>", "ggVG", { desc = "Select all" })
 
+-- Copy content under cursor to register o
+set("n", "<M-o>", text_utils.copy_word_to_reg_o, { desc = "Copy word under cursor to register o" })
+set("v", "<M-o>", text_utils.copy_selection_to_reg_o, { desc = "Copy selection to register o" })
+multi_set("i,c", "<M-o>", "<C-r>o", { desc = "Paste from register o" })
+
 -- Full word motions
 -- =====================================================================================================================
 

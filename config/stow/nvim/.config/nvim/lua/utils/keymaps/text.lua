@@ -266,4 +266,14 @@ function M.trim_whitespace()
   vim.cmd('normal! gv"zp')
 end
 
+-- Copy word under cursor to register o
+function M.copy_word_to_reg_o()
+  cmd('normal! "oyiw')
+end
+
+-- Copy visual selection to register o
+function M.copy_selection_to_reg_o()
+  cmd('normal! "oy')
+end
+
 return M
