@@ -95,18 +95,18 @@ function M.yank_between_seperators()
     end
   end
 
-  -- Check if we found both separators
-  if not start_line or not end_line then
-    print("Could not find separators above and below cursor")
+  -- Check if we found at least one separator
+  if not start_line and not end_line then
+    print("Could not find any separator above or below cursor")
     return
   end
 
-  -- Yank the content between separators (excluding the separator lines)
-  local content_start = start_line + 1
-  local content_end = end_line - 1
+  -- Yank the content (excluding the separator lines)
+  local content_start = start_line and (start_line + 1) or 1
+  local content_end = end_line and (end_line - 1) or total_lines
 
   if content_start > content_end then
-    print("No content between separators")
+    print("No content to yank")
     return
   end
 
@@ -127,7 +127,7 @@ function M.yank_between_seperators()
   vim.fn.setreg("0", text, "l") -- Yank register (linewise)
 
   local line_count = #lines
-  print("Yanked " .. line_count .. " line(s) between separators to clipboard")
+  print("Yanked " .. line_count .. " line(s) to clipboard")
 end
 
 -- Toggle comment state for each line individually in visual selection
