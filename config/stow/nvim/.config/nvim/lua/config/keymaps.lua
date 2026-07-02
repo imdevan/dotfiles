@@ -87,6 +87,8 @@ local silent_opts = { silent = true }
 set("n", "<M-s>", "<CMD>write<CR>", silent_opts)
 set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
 
+set("i", "<C-n>", "<CMD>Nerdy<CR>", silent_opts)
+
 -- Redo
 set("n", "<C-u>", "<C-r>", { desc = "Redo" })
 
