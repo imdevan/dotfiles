@@ -37,7 +37,14 @@ defer "zsh-syntax-highlighting" "source /usr/share/zsh/plugins/zsh-syntax-highli
 # Completion
 # ================================================================================
 autoload -Uz compinit
-compinit -C -u
+# compinit -C -u -d ~/.zcompdump
+_lazy_compinit() {
+  compinit
+  zle expand-or-complete
+}
+
+zle -N _lazy_compinit
+bindkey '^I' _lazy_compinit  # Tab
 # zinit cdreplay -q
 
 # TODO: probably move this to global configs
@@ -115,6 +122,7 @@ python() {
 # My dotfiles
 # ================================================================================
 source ~/dotfiles/index.sh
+# defer "dotfiles" "source ~/dotfiles/index.sh"
 source ~/.github_token
 
 # OS specific setup
@@ -128,7 +136,8 @@ $IS_ARCH && source ~/.config/zsh/omarchy.zsh
 $IS_MAC  && defer "mac" "source ~/.config/zsh/mac.zsh"
 
 # Bookmarks (deferred)
-defer "bookmarks" "source ~/.bookmarks/bookmarks.sh"
+source ~/.bookmarks/bookmarks.sh
+# defer "bookmarks" "source ~/.bookmarks/bookmarks.sh"
 
 # Kiro shell integration
 defer "kiro" '[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"'
