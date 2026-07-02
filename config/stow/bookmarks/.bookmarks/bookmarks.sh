@@ -86,8 +86,8 @@ alias brig='cd '\''/home/devy/Projects/brighten'\'' && tmux rename-window '\''br
 # BM: taskm|/home/devy/Projects/task_manager||2026-03-26T14:55:17-07:00|2026-03-26T14:55:17-07:00|taskm|||
 alias taskm='cd '\''/home/devy/Projects/task_manager'\'' && tmux rename-window '\''taskm'\'''
 
-# BM: task|/home/devy/Projects/task_manager||2026-04-08T11:29:24-07:00|2026-04-08T11:29:24-07:00|tm|||
-alias task='cd '\''/home/devy/Projects/task_manager'\'' && tmux rename-window '\''tm'\'''
+# BM: task|/home/devy/Projects/nvim_plugins/task-manager.nvim||2026-04-08T11:29:24-07:00|2026-07-02T14:11:11-07:00|tm|||
+alias task='cd '\''/home/devy/Projects/nvim_plugins/task-manager.nvim'\'' && tmux rename-window '\''tm'\'''
 
 # BM: hc|/home/devy/dotfiles/config/stow/hypr/.config/hypr||2026-04-14T13:11:26-07:00|2026-04-14T13:11:46-07:00|hc|||.
 alias hc='cd '\''/home/devy/dotfiles/config/stow/hypr/.config/hypr'\'' && tmux rename-window '\''hc'\'' && nvim '\''.'\'''
@@ -226,4 +226,7 @@ alias foo='cd '\''/home/devy/foo'\'' && tmux rename-window '\''foo'\'' && just s
 
 # BM: vna|/home/devy/dotfiles/config/stow/nvim/.config/nvim||2026-07-02T10:52:38-07:00|2026-07-02T10:52:38-07:00|vn||aw|
 alias vna='cd '\''/home/devy/dotfiles/config/stow/nvim/.config/nvim'\'' && tmux rename-window '\''vn'\'' && aw'
+
+# BM: ntemp|/home/devy/Projects/nvim_plugins/template.nvim||2026-07-02T14:16:53-07:00|2026-07-02T14:16:53-07:00|temp.nvim|||
+alias ntemp='cd '\''/home/devy/Projects/nvim_plugins/template.nvim'\'' && tmux rename-window '\''temp.nvim'\'''
 
