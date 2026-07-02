@@ -90,6 +90,10 @@ set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
 -- Redo
 set("n", "<C-u>", "<C-r>", { desc = "Redo" })
 
+-- Newline at cursor
+set("n", "<C-o>", "i<CR>", { desc = "Newline at cursor", silent = true })
+set("i", "<C-o>", "<CR>", { desc = "Newline at cursor", silent = true })
+
 -- Quit (consolidated duplicates)
 multi_set("n,i", "<C-q>", "<CMD>quitall<CR>", silent_opts)
 multi_set("n,i", "<M-q>", "<CMD>wqall<CR>", silent_opts)
