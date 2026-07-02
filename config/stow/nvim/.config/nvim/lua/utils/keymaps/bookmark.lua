@@ -1,5 +1,6 @@
 local M = {}
 
+-- TODO: this should be a plugin bookmark.nvim
 function M.bookmark_file()
   local bookmark_dir = vim.fn.getcwd()
   local current_file = vim.fn.expand("%:.")
