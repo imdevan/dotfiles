@@ -25,12 +25,22 @@ alias fv="fzf_vim"
 
 with_vim() {
   if [ $# -eq 0 ]; then
-    # No arguments - open folder in vim
-    nvim
+    # No arguments - open folder in vim with sidebar explorer open
+    # nvim . '+lua require("snacks").explorer.show()'
+    nvim . '+lua vim.schedule(function() require("snacks").explorer.reveal() end)'
+    # nvim . '+lua vim.defer_fn(function() require("snacks").explorer.open() end, 300)'
+    # nvim . '+lua require("snacks").explorer.open()'
   else
     # Check if argument contains :line_number syntax
     local query="$1"
     local line_number=""
+
+    # If the query is an existing directory, open it with sidebar explorer open
+    if [[ -d "$query" ]]; then
+      nvim "$query" '+lua vim.defer_fn(function() require("snacks").explorer.reveal() end, 100)'
+      # nvim . '+lua vim.defer_fn(function() require("snacks").explorer.open() end, 300)'
+      return
+    fi
 
     # Use parameter expansion instead of regex for more reliable extraction
     if [[ "$query" == *:* ]]; then
