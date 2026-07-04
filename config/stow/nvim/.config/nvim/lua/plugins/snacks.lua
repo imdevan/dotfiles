@@ -11,6 +11,16 @@ return {
       ignored = false, -- for .gitignore files
 
       sources = {
+        -- Explorer
+        explorer = {
+          auto_close = true,
+          -- focus = "input",
+          -- todo: fix sort, reverts back after first load
+          -- sort = {
+          -- fields = { "type:asc", "score:desc" },
+          -- },
+        },
+
         -- Grep search settings
         -- Show hidden files
         -- Ignore .gitignore and the like
