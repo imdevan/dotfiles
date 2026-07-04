@@ -232,16 +232,16 @@ set("n", "<leader>]", markdown_utils.jump_to_next_unchecked_checkbox, { desc = "
 set("n", "<leader>[", markdown_utils.jump_to_prev_unchecked_checkbox, { desc = "Previous unchecked checkbox" })
 set("n", "<C-[>", "va[c", { desc = "Change around next []" })
 
--- Toggle boldness
 -- todo move to markdown only
+-- Toggle boldness
 -- multi_set("n,x", "<leader>pb,<C-b>", markdown_utils.toggle_bold, { desc = "Toggle boldness" })
 
 -- Utils
 -- =====================================================================================================================
 
 -- Togglr
-local togglr = require("togglr")
-set("n", "<leader>ptt", togglr.toggle_word, { desc = "Togglr" })
+-- local togglr = require("togglr")
+-- set("n", "<leader>ptt", togglr.toggle_word, { desc = "Togglr" })
 
 -- Reset git hunk under cursor
 multi_set("n", "<leader>pgd,<leader>gz", git_utils.reset_hunk, { desc = "Discard git hunk under cursor" })
@@ -341,6 +341,10 @@ set("v", "<leader>pwc", text_utils.word_count, { desc = "Word and character coun
 -- Wrap lines in double quotes with trailing comma
 set("v", '<leader>pw"', [[:s/.*/"&",/<CR>]], { desc = 'Wrap selected lines: "line",' })
 set("n", '<leader>pw"', [[vip<Esc>:'<,'>s/.*/"&",/<CR>]], { desc = 'Wrap paragraph lines: "line",' })
+
+-- Wrap bold
+set("v", "<C-b>", [[:s/.*/**&**/<CR>]], { desc = "Wrap selected lines: **line**" })
+set("n", "<C-b>", [[vip<Esc>:'<,'>s/.*/**&**/<CR>]], { desc = "Wrap paragraph lines: **line**" })
 
 -- Open in
 -- =====================================================================================================================
