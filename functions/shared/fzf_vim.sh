@@ -24,12 +24,16 @@ fzf_vim() {
 alias fv="fzf_vim"
 
 with_vim() {
+  # local open_command='+lua vim.schedule(function() require("snacks").explorer.reveal() end)'
+  local open_command='+lua vim.schedule(function()  end)'
+  # local open_command=''
+  
+    # '+lua vim.defer_fn(function() require("snacks").explorer.open() end, 300)'
+    # '+lua require("snacks").explorer.open()'
+
   if [ $# -eq 0 ]; then
     # No arguments - open folder in vim with sidebar explorer open
-    # nvim . '+lua require("snacks").explorer.show()'
-    nvim . '+lua vim.schedule(function() require("snacks").explorer.reveal() end)'
-    # nvim . '+lua vim.defer_fn(function() require("snacks").explorer.open() end, 300)'
-    # nvim . '+lua require("snacks").explorer.open()'
+    nvim .
   else
     # Check if argument contains :line_number syntax
     local query="$1"
@@ -37,8 +41,7 @@ with_vim() {
 
     # If the query is an existing directory, open it with sidebar explorer open
     if [[ -d "$query" ]]; then
-      nvim "$query" '+lua vim.defer_fn(function() require("snacks").explorer.reveal() end, 100)'
-      # nvim . '+lua vim.defer_fn(function() require("snacks").explorer.open() end, 300)'
+      nvim "$query"
       return
     fi
 
