@@ -1,5 +1,5 @@
 return {
-  "elentok/togglr.nvim",
+  "imdevan/togglr.nvim",
   opts = {
     -- Specify key map (set to false or nil to disable)
     -- key = "<Leader>pj",
@@ -8,6 +8,9 @@ return {
     -- Specify which register to use (to avoid overriding the default register)
     register = "t",
 
+    keymaps = {
+      enabled = true,
+    },
     -- Enable debugging mode
     -- debug = true,
 
