@@ -106,8 +106,6 @@ source $dotfile_dir/functions/gcal.sh
 
 source $dotfile_dir/functions/tdpv.sh
 
-source $dotfile_dir/functions/lazy-window.sh
-
 source $dotfile_dir/functions/simple_plan.sh
 
 source $dotfile_dir/functions/compression.sh
