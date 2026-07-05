@@ -167,6 +167,7 @@ multi_set("n", "<leader>pY", "v$gey,<C-Y>", vim.tbl_extend("force", word_opts, {
 multi_set("n", "<leader>pP,<C-P>", "v$gep", vim.tbl_extend("force", word_opts, { desc = "Paste to end of line" }))
 
 -- Copy between `---`
+set("n", "<leader>p-", text_utils.insert_seperator, { desc = "Insert --- with space" })
 set("n", "<leader>p<M-y>", text_utils.yank_between_seperators, { desc = "Yank between seperators" })
 
 -- Todo comments
@@ -279,7 +280,7 @@ set("n", "gt", text_utils.line_to_title_case, {
 })
 
 -- Insert dash at beginning of line(s)
-multi_set("n,v", "<leader>p-", text_utils.insert_dash_at_line_start, {
+multi_set("n,v", "<leader>p_", text_utils.insert_dash_at_line_start, {
   desc = "Insert dash at beginning of line(s)",
 })
 

@@ -276,4 +276,18 @@ function M.copy_selection_to_reg_o()
   cmd('normal! "oy')
 end
 
+-- Insert separator block above current line
+function M.insert_seperator()
+  local row = api.nvim_win_get_cursor(0)[1]
+  -- Determine insertion point (line above current, or start of file)
+  local insert_pos = row - 1
+  if insert_pos < 0 then insert_pos = 0 end
+  -- Lines to insert: three blanks, "---", one blank
+  local lines = {"", "", "", "---", ""}
+  api.nvim_buf_set_lines(0, insert_pos, insert_pos, false, lines)
+  -- Move cursor to the second blank line (the middle of the three blanks above separator)
+  local target_line = insert_pos + 2
+  api.nvim_win_set_cursor(0, {target_line, 0})
+end
+
 return M
