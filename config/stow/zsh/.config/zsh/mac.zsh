@@ -14,6 +14,7 @@ export PATH="$HOME/.bun/bin:$PATH"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 
+# echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 # cach brew shellenv
 # only execute on darwin
@@ -27,25 +28,25 @@ export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 
 # https://ohmyposh.dev/docs/installation/linux
 # Oh My Posh!
-eval "$(oh-my-posh init zsh)"
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/hunk.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubbles.omp.json)"
-  # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/1_shell.omp.json)"
-  eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
-  # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
-fi
+# eval "$(oh-my-posh init zsh)"
+# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+#   # eval "$(oh-my-posh init zsh --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/bubbles.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/hunk.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/catppuccin.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/bubbles.omp.json)"
+#   # eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/1_shell.omp.json)"
+#   eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml)"
+#   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/catty.toml)"
+#   # eval "$(oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/1_shell.toml)"
+# fi
 
 # cache oh-my-posh
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  if [[ ! -f ~/.oh-my-posh-init.zsh ]] || [[ ~/dotfiles/config/oh-my-posh/themes/bubbles.toml -nt ~/.oh-my-posh-init.zsh ]]; then
-    oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml >~/.oh-my-posh-init.zsh
-  fi
-  source ~/.oh-my-posh-init.zsh
-fi
+# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+#   if [[ ! -f ~/.oh-my-posh-init.zsh ]] || [[ ~/dotfiles/config/oh-my-posh/themes/bubbles.toml -nt ~/.oh-my-posh-init.zsh ]]; then
+#     oh-my-posh init zsh --config ~/dotfiles/config/oh-my-posh/themes/bubbles.toml >~/.oh-my-posh-init.zsh
+#   fi
+#   source ~/.oh-my-posh-init.zsh
+# fi
 
 # todo: go is managed by omarchy seperate mac deps
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -58,12 +59,12 @@ fi
 # export JAVA_HOME=$(brew --prefix)/opt/openjdk@17
 
 # Mac
-# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # zoxide
-# eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 # with cache:
-# if [[ ! -f ~/.zoxide-init.zsh ]]; then
-#   zoxide init zsh > ~/.zoxide-init.zsh
-# fi
-# source ~/.zoxide-init.zsh
+if [[ ! -f ~/.zoxide-init.zsh ]]; then
+  zoxide init zsh > ~/.zoxide-init.zsh
+fi
+source ~/.zoxide-init.zsh

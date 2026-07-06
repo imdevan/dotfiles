@@ -31,9 +31,6 @@ defer_plugins \
   Aloxaf/fzf-tab \
   OMZP::web-search
 
-# Arch system syntax highlighting (avoid duplicate install)
-defer "zsh-syntax-highlighting" "source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-
 # Completion
 # ================================================================================
 autoload -Uz compinit
@@ -147,3 +144,7 @@ command -v starship &>/dev/null && eval "$(starship init zsh)"
 
 # Profiler output (uncomment to profile)
 zprof > ~/.zsh_profile
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/devy/.local/bin:$PATH"
