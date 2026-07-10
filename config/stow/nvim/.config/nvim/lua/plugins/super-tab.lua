@@ -1,4 +1,4 @@
 return {
-  "imdevan/super-tab.nvim"
+  "imdevan/super-tab.nvim",
   opts = {},
 }
