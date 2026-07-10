@@ -1,5 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
---
 -- Default keymaps
 -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 --
@@ -123,6 +121,15 @@ set("n", "<leader>fD", file_utils.delete_file_and_close, { desc = "Delete file a
 -- Line navigation
 -- multi_set("n,v", "H", "^", { desc = "Go to beginning of line", noremap = true })
 multi_set("n,v", "H", motions.go_to_first_alpha, { desc = "Go to first alpha character on line", noremap = true })
+
+-- Insert project URL
+set("n", "<leader>p<M-d>", function()
+  local project = vim.fn.input("Project: ")
+  if project and project ~= "" then
+    local url = "https://devan.gg/" .. project .. "/"
+    vim.api.nvim_put({ url }, "c", true, true)
+  end
+end, { desc = "Insert project URL" })
 multi_set("n,v", "L", "$", { desc = "Go to end of line", noremap = true })
 
 -- Paragraph navigation
@@ -140,14 +147,16 @@ set("n", "<C-H>", "<cmd>bprevious<cr>", { desc = "Go to previous buffer", norema
 set("n", "<C-L>", "<cmd>bnext<cr>", { desc = "Go to next buffer", noremap = true })
 set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer", noremap = true })
 set("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Previous buffer", noremap = true })
+
 -- Full page motions
 -- =====================================================================================================================
-
+-- Cursor needs time to travel across page
+local delay = "<CMD>sleep 200m<CR>"
 -- Full page operations
-set("n", "<leader>poc", "ggVGd", { desc = "Clear whole page" })
-set("n", "<leader>pop", 'ggVG"0p', { desc = "Paste whole page", remap = true })
-set("n", "<leader>poy", "ggVGy", { desc = "Yank whole page", remap = true })
-set("n", "<M-a>", "ggVG", { desc = "Select all" })
+set("n", "<leader>poc", "gg" .. delay .. "VG" .. delay .. "d", { desc = "Clear whole page" })
+set("n", "<leader>pop", "gg" .. delay .. "VG" .. delay .. '"0p', { desc = "Paste whole page", remap = true })
+set("n", "<leader>poy", "gg" .. delay .. "VG" .. delay .. "y", { desc = "Yank whole page", remap = true })
+set("n", "<M-a>", "gg" .. delay .. "VG", { desc = "Select whole page" })
 
 -- Copy content under cursor to register o
 set("n", "<M-o>", text_utils.copy_word_to_reg_o, { desc = "Copy word under cursor to register o" })
@@ -156,6 +165,8 @@ multi_set("i,c", "<M-o>", "<C-r>o", { desc = "Paste from register o" })
 
 -- Full word motions
 -- =====================================================================================================================
+-- Copy end of word to register e (same as bve"ey)
+set("n", "<M-e>", 'bve"ey', { desc = "Copy word under cursor to register o" })
 
 -- Copy / Paste full word
 local word_opts = { remap = true }
@@ -169,6 +180,10 @@ multi_set("n", "<leader>pP,<C-P>", "v$gep", vim.tbl_extend("force", word_opts, {
 -- Copy between `---`
 set("n", "<leader>p-", text_utils.insert_seperator, { desc = "Insert --- with space" })
 set("n", "<leader>p<M-y>", text_utils.yank_between_seperators, { desc = "Yank between seperators" })
+
+-- Full line motions
+-- =====================================================================================================================
+set("n", "<leader>pd", "yygccp", { desc = "Duplicate and comment out line", remap = true })
 
 -- Todo comments
 -- =====================================================================================================================
