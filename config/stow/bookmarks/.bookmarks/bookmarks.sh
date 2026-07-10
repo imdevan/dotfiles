@@ -26,8 +26,8 @@ alias po='cd '\''/home/devy/Work/portfolio'\'' && tmux rename-window '\''po'\'' 
 # BM: d4j|/home/devy/Projects/dotfiles-for-web-devs-presentation||2026-02-24T15:11:40-08:00|2026-02-24T15:11:40-08:00|d4js|||index.html
 alias d4j='cd '\''/home/devy/Projects/dotfiles-for-web-devs-presentation'\'' && tmux rename-window '\''d4js'\'' && nvim '\''index.html'\'''
 
-# BM: bo|/home/devy/Projects/bookmark||2026-02-24T20:03:33-08:00|2026-06-26T21:47:34-07:00|bm|||
-alias bo='cd '\''/home/devy/Projects/bookmark'\'' && tmux rename-window '\''bm'\'''
+# BM: bo|/home/devy/Projects/clis/bookmark||2026-02-24T20:03:33-08:00|2026-07-06T10:24:34-07:00|bm|||
+alias bo='cd '\''/home/devy/Projects/clis/bookmark'\'' && tmux rename-window '\''bm'\'''
 
 # BM: play|/home/devy/Projects/playground||2026-02-25T07:51:35-08:00|2026-02-25T07:51:35-08:00|play|||
 alias play='cd '\''/home/devy/Projects/playground'\'' && tmux rename-window '\''play'\'''
@@ -209,8 +209,8 @@ alias vids='cd '\''/home/devy/Videos'\'' && tmux rename-window '\''vids'\'''
 # BM: a|/home/devy/Projects/The Wheel/a||2026-06-26T21:56:54-07:00|2026-06-26T21:56:54-07:00||||
 alias a='cd '\''/home/devy/Projects/The Wheel/a'\'''
 
-# BM: ideas|/home/devy/Documents/Obsidian Vault||2026-06-27T09:10:15-07:00|2026-06-27T09:10:15-07:00|notes|||./todo/Project Ideas.md
-alias ideas='cd '\''/home/devy/Documents/Obsidian Vault'\'' && tmux rename-window '\''notes'\'' && nvim '\''./todo/Project Ideas.md'\'''
+# BM: ideas|/home/devy/Documents/Obsidian Vault||2026-06-27T09:10:15-07:00|2026-07-09T17:52:51-07:00|ideas|||./todo/Project Ideas.md
+alias ideas='cd '\''/home/devy/Documents/Obsidian Vault'\'' && tmux rename-window '\''ideas'\'' && nvim '\''./todo/Project Ideas.md'\'''
 
 # BM: ams|/home/devy/Projects/The Wheel/a||2026-06-28T00:50:37-07:00|2026-06-28T00:50:37-07:00|a|||
 alias ams='cd '\''/home/devy/Projects/The Wheel/a'\'' && tmux rename-window '\''a'\'''
@@ -229,4 +229,31 @@ alias vna='cd '\''/home/devy/dotfiles/config/stow/nvim/.config/nvim'\'' && tmux 
 
 # BM: ntemp|/home/devy/Projects/nvim_plugins/template.nvim||2026-07-02T14:16:53-07:00|2026-07-02T14:16:53-07:00|temp.nvim|||
 alias ntemp='cd '\''/home/devy/Projects/nvim_plugins/template.nvim'\'' && tmux rename-window '\''temp.nvim'\'''
+
+# BM: stab|/home/devy/Projects/nvim_plugins/super-tab.nvim||2026-07-03T10:55:18-07:00|2026-07-03T10:55:18-07:00|stab|||
+alias stab='cd '\''/home/devy/Projects/nvim_plugins/super-tab.nvim'\'' && tmux rename-window '\''stab'\'''
+
+# BM: nvimp|/home/devy/Projects/nvim_plugins||2026-07-03T11:49:47-07:00|2026-07-03T11:49:47-07:00|nvimp|||
+alias nvimp='cd '\''/home/devy/Projects/nvim_plugins'\'' && tmux rename-window '\''nvimp'\'''
+
+# BM: vtemp|/home/devy/Projects/nvim_plugins/template.nvim||2026-07-03T11:52:37-07:00|2026-07-03T11:52:37-07:00|vtemp|||
+alias vtemp='cd '\''/home/devy/Projects/nvim_plugins/template.nvim'\'' && tmux rename-window '\''vtemp'\'''
+
+# BM: vtog|/home/devy/Projects/nvim_plugins/togglr.nvim||2026-07-03T14:28:16-07:00|2026-07-03T14:28:16-07:00|vtog|||
+alias vtog='cd '\''/home/devy/Projects/nvim_plugins/togglr.nvim'\'' && tmux rename-window '\''vtog'\'''
+
+# BM: down|/home/devy/Downloads||2026-07-04T16:59:04-07:00|2026-07-04T16:59:04-07:00|down|||
+alias down='cd '\''/home/devy/Downloads'\'' && tmux rename-window '\''down'\'''
+
+# BM: gdocs|/home/devy/Projects/clis/go-cli-docs||2026-07-06T12:42:05-07:00|2026-07-06T12:42:05-07:00|gdocs|||
+alias gdocs='cd '\''/home/devy/Projects/clis/go-cli-docs'\'' && tmux rename-window '\''gdocs'\'''
+
+# BM: vt|/home/devy/dotfiles/config/stow/tmux/.config/tmux||2026-07-08T13:04:02-07:00|2026-07-08T13:04:02-07:00|vt|||tmux.conf
+alias vt='cd '\''/home/devy/dotfiles/config/stow/tmux/.config/tmux'\'' && tmux rename-window '\''vt'\'' && nvim '\''tmux.conf'\'''
+
+# BM: gopack|/home/devy/Projects/clis/go-cli-package||2026-07-08T13:42:09-07:00|2026-07-08T13:42:09-07:00||||
+alias gopack='cd '\''/home/devy/Projects/clis/go-cli-package'\'''
+
+# BM: gpack|/home/devy/Projects/clis/go-cli-package||2026-07-08T15:21:07-07:00|2026-07-08T15:21:07-07:00|gpack|||plan/simple.md
+alias gpack='cd '\''/home/devy/Projects/clis/go-cli-package'\'' && tmux rename-window '\''gpack'\'' && nvim '\''plan/simple.md'\'''
 
