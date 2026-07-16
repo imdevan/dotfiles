@@ -132,8 +132,8 @@ end
 
 -- Toggle comment state for each line individually in visual selection
 function M.comment_swap()
-  local start_line = vim.fn.line("'<")
-  local end_line = vim.fn.line("'>")
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
 
   -- Ensure start_line is always less than end_line (handles upward selection)
   if start_line > end_line then
@@ -214,15 +214,15 @@ function M.insert_dash_at_line_start()
   -- Get visual selection range
   local start_line = vim.fn.line("v")
   local end_line = vim.fn.line(".")
-  
+
   -- Ensure start_line is always less than end_line
   if start_line > end_line then
     start_line, end_line = end_line, start_line
   end
-  
+
   -- Get buffer line count to avoid accessing invalid lines
   local buf_line_count = api.nvim_buf_line_count(0)
-  
+
   -- Process each line in the selection
   for line_num = start_line, math.min(end_line, buf_line_count) do
     local lines = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)
@@ -253,14 +253,14 @@ function M.trim_whitespace()
   -- Yank the visual selection to register z
   vim.cmd('normal! "zy')
   local selected_text = vim.fn.getreg("z")
-  
+
   -- Trim whitespace
   local trimmed = selected_text:match("^%s*(.-)%s*$")
-  
+
   if not trimmed or trimmed == selected_text then
     return
   end
-  
+
   -- Delete selection and paste trimmed text
   vim.fn.setreg("z", trimmed)
   vim.cmd('normal! gv"zp')
@@ -281,13 +281,63 @@ function M.insert_seperator()
   local row = api.nvim_win_get_cursor(0)[1]
   -- Determine insertion point (line above current, or start of file)
   local insert_pos = row - 1
-  if insert_pos < 0 then insert_pos = 0 end
+  if insert_pos < 0 then
+    insert_pos = 0
+  end
   -- Lines to insert: three blanks, "---", one blank
-  local lines = {"", "", "", "---", ""}
+  local lines = { "", "", "", "---", "" }
   api.nvim_buf_set_lines(0, insert_pos, insert_pos, false, lines)
   -- Move cursor to the second blank line (the middle of the three blanks above separator)
   local target_line = insert_pos + 2
-  api.nvim_win_set_cursor(0, {target_line, 0})
+  api.nvim_win_set_cursor(0, { target_line, 0 })
+end
+
+-- Duplicate visual selection, paste below, comment out the original block
+function M.visual_dup_comment()
+  -- Get the current visual selection range using 'v' (visual anchor) and '.' (cursor)
+  -- since we are currently in visual mode.
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+
+  -- Ensure correct order
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+
+  -- Exit visual mode to return to normal mode
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "x", true)
+
+  -- Get the selected lines
+  local lines = api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+
+  -- Insert the duplicate below the selection
+  api.nvim_buf_set_lines(0, end_line, end_line, false, lines)
+
+  -- Comment out the original block using commentstring
+  local commentstring = vim.bo.commentstring
+  if not commentstring or commentstring == "" then
+    commentstring = "-- %s" -- fallback
+  end
+  if not commentstring:find("%%s") then
+    commentstring = commentstring .. " %s"
+  end
+
+  for line_num = start_line, end_line do
+    local line_lines = api.nvim_buf_get_lines(0, line_num - 1, line_num, false)
+    if #line_lines > 0 then
+      local line_content = line_lines[1]
+      -- Skip empty lines
+      if not line_content:match("^%s*$") then
+        local leading_space = line_content:match("^%s*") or ""
+        local content_after_space = line_content:sub(#leading_space + 1)
+        local commented = leading_space .. commentstring:format(content_after_space)
+        api.nvim_buf_set_lines(0, line_num - 1, line_num, false, { commented })
+      end
+    end
+  end
+
+  -- Move cursor to start of the pasted (duplicate) block
+  api.nvim_win_set_cursor(0, { end_line + 1, 0 })
 end
 
 return M

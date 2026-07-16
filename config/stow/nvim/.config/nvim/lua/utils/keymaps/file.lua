@@ -25,6 +25,14 @@ function M.copy_file_path()
   vim.notify("File and line copied", vim.log.levels.INFO)
 end
 
+-- Copy full file path and line number
+function M.copy_full_file_path()
+  local filepath, line_num = M.get_file_path_and_line(false)
+  local content = filepath .. ":" .. line_num
+  fn.setreg("+", content)
+  vim.notify("Full file and line copied", vim.log.levels.INFO)
+end
+
 -- "Implement" at file path
 function M.implement_at_file_path(extra, extra_notif)
   local extra_notif = extra_notif or ""
