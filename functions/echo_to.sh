@@ -12,4 +12,4 @@ function echo_to() {
 }
 
 # Create alias
-alias et="echo_to"
+# alias et="echo_to"

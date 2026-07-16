@@ -37,6 +37,20 @@ function git_add_push() {
   git push
 }
 alias gap="git_add_push"
+#
+# Calls git add, git commit, and git push
+# Takes commit message
+function git_add_push_update() {
+  if g_confirm 'Proceed with git add + commit + push "update"?'; then 
+    git_add_commit "update" && git push
+  else 
+    g_dang "Canceled"
+  fi
+
+  }
+alias gapu="git_add_push_update"
+
+
 
 # Pulls down pull request from upstream and creates branch
 function pull_request() {
@@ -315,21 +329,35 @@ function create_repo () {
   # 1. Set current origin to upstream if present (before creating new origin)
   if git remote get-url origin > /dev/null 2>&1; then
     local old_origin=$(git remote get-url origin)
-    git remote rename origin upstream 2>/dev/null
-    echo "Moved existing origin to upstream: $old_origin"
+    if git remote get-url upstream > /dev/null 2>&1; then
+      git remote remove upstream
+    fi
+    if git remote rename origin upstream; then
+      echo "Moved existing origin to upstream: $old_origin"
+    else
+      echo "Failed to rename origin to upstream" >&2
+      return 1
+    fi
   fi
 
-  # 2. Create the repo and set SSH remote
-  gh repo create "$repo_name" --public --source=. --remote=origin --push
-  
-  if [ $? -ne 0 ]; then
-    echo "Failed to create repository"
-    return 1
+  # 2. Create the repo if it doesn't exist and set SSH remote
+  local username=$(gh api user --jq '.login')
+  if ! gh repo view "${username}/${repo_name}" >/dev/null 2>&1; then
+    gh repo create "$repo_name" --public --source=. --remote=origin --push
+    if [ $? -ne 0 ]; then
+      echo "Failed to create repository"
+      return 1
+    fi
+  else
+    echo "Repository ${username}/${repo_name} already exists on GitHub. Skipping creation..."
   fi
   
-  # Ensure origin uses SSH URL
-  local username=$(gh api user --jq '.login')
-  git remote set-url origin "git@github.com:${username}/${repo_name}.git"
+  # Ensure origin exists and uses SSH URL
+  if ! git remote get-url origin > /dev/null 2>&1; then
+    git remote add origin "git@github.com:${username}/${repo_name}.git"
+  else
+    git remote set-url origin "git@github.com:${username}/${repo_name}.git"
+  fi
   
   # Set main as default branch on GitHub
   gh repo edit "${username}/${repo_name}" --default-branch main

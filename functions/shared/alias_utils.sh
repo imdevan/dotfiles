@@ -18,16 +18,16 @@ alias r="refresh"
 # Function to create new aliases
 function add_alias() {
   if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "${red}Invalid alias provided${reset}"
+    g_dang "${red}Invalid alias provided${reset}"
   else
     if [ -n "$3" ]; then
       local ALIAS="alias ${1}=\"${2}\" # ${3}"
       echo $ALIAS >>$aliases_file
-      echo "${green}Alias: ${pink}${1}${green}=${gold}\"${2}\"${green} ${light_green}# ${3}${green} created!${reset}\n"
+      g_suc "${green}Alias: ${pink}${1}${green}=${gold}\"${2}\"${green} ${light_green}# ${3}${green} created!${reset}"
     else
       local ALIAS="alias ${1}=\"${2}\""
       echo $ALIAS >>$aliases_file
-      echo "${green}Alias: ${pink}${1}${green}=${purple}\"${2}\"${green} created!\n"
+      g_suc "${green}Alias: ${pink}${1}${green}=${purple}\"${2}\"${green} created!"
     fi
     source $aliases_file
   fi

@@ -16,7 +16,7 @@ function gcal_quick_add() {
     shift
     gcalcli calw "$@"
   else
-    gcalcli calw
+    gcalcli calw '' 2
   fi
 
   return 0

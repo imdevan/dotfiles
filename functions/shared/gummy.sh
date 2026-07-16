@@ -22,7 +22,7 @@ _gum_style() {
   shift
   gum style \
     --border-foreground "$color" --border rounded \
-    --margin "1 2" --padding "1 2" \
+    --margin "0 2" --padding "1 2" \
     "$@"
   #
     # $(join_args "$@")
@@ -55,13 +55,13 @@ g_confirm() {
   local prompt="${1:-Are you sure?}"
   local affirmative="${2:-Yes}"
   local negative="${3:-No}"
-  
-  echo ""
+
   gum confirm "$prompt" \
     --affirmative "$affirmative" \
     --negative "$negative" \
     --padding "1 2"
-  echo ""
+  local ret=$?
+  return "$ret"
 }
 
 alias gu=gummy
