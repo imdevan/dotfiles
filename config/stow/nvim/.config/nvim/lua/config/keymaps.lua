@@ -184,6 +184,8 @@ set("n", "<leader>p<M-y>", text_utils.yank_between_seperators, { desc = "Yank be
 -- Full line motions
 -- =====================================================================================================================
 set("n", "<leader>pd", "yygccp", { desc = "Duplicate and comment out line", remap = true })
+-- set("v", "<leader>pd", "ygccp", { desc = "Duplicate and comment out line", remap = true })
+set("v", "<leader>pd", text_utils.visual_dup_comment, { desc = "Multiline duplicate and comment", remap = true })
 
 -- Todo comments
 -- =====================================================================================================================
@@ -236,7 +238,7 @@ for i = 0, 9 do
 end
 
 -- Render markdown
-set("n", "<leader>pr", markdown_utils.toggle_render_markdown, {
+set("n", "<leader>pR", markdown_utils.toggle_render_markdown, {
   desc = "Toggle render markdown",
 })
 
@@ -308,6 +310,7 @@ set("n", "<leader>j", file_utils.open_justfile, { desc = "Open justfile" })
 -- Copy file path and line number(s)
 -- Useful for referencing code in llm
 multi_set("n", "<leader>fp,<leader>il", file_utils.copy_file_path, { desc = "Copy file path and line number" })
+set("n", "<leader>fP", file_utils.copy_full_file_path, { desc = "Copy full file path and line number" })
 
 set("n", "<leader>ii", file_utils.implement_at_file_path, { desc = "implement task" })
 
