@@ -35,14 +35,14 @@ alias -s {js,json,ts,tsx,env,md,mdx,html,css,toml,yaml,env,go,py,conf,desktop,ju
 alias -s git="git_clone" # open git urls with custom function
 
 # Global aliases
-alias -g T="2>&1 | tee output.log"   # copy output to output.log
+alias -g C="2>&1 | omni_copy"
 alias -g G="| rg"                    # grep output
+alias -g T="2>&1 | tee output.log"   # copy output to output.log
 alias -g B="| boxes -d ansi-rounded" # https://boxes.thomasjensen.com/examples.html
 alias -g L="| lolcat -f"             # https://github.com/busyloop/lolcat
 alias -g Q="| quick_note"            # https://github.com/busyloop/lolcat
 alias -g COW="| cowsay"
 # alias -g G="| grep"
-# alias -g C="| wl-copy"
 alias -g C=""
 alias -g K="|& wl-copy"
 alias -g P="| prompter"
@@ -123,7 +123,8 @@ alias wd="w 'dpv & sd'"
 
 # eza
 alias el='eza -lh --group-directories-first --icons=auto'
-alias et='eza --tree --level=2 --long --icons --git' #default 2 accept arg
+# alias et='eza --tree --level=2 --long --icons --git' #default 2 accept arg
+alias et='eza --tree --level=2 --icons --git' #default 2 accept arg
 
 # fzf
 alias fz="fzf --preview 'bat --style=numbers --color=always {}'"
@@ -352,7 +353,7 @@ alias dliv="docker ps --format 'table {{.ID}}	{{.Names}}	{{.Status}}' | nvim"
 alias t="tmux"
 alias tks="tmux kill-server"
 alias ta="tmux attach -t"
-alias tms="tmux source-file ~/.config/tmux/tmux.conf"
+alias tsauce="tmux source-file ~/.config/tmux/tmux.conf"
 # alias tmr="tmux rename-window -t"
 alias tls="tmux list-sessions"
 alias tt="tmux attach -t 0" # add after ta alias
@@ -586,3 +587,18 @@ alias kli="kiro-cli login"
 alias gros="git remote origin set-url"
 alias gros="git remote set-url origin"
 alias grao="git remote add origin"
+alias jdi="just docs-init"
+alias jbg="just build && ./bin/go-cli-docs generate 2>&1 OC"
+alias test="what"
+alias hi="there"
+alias gc2="gc calw '' 2"
+alias jbd="just build && just docs-dev"
+alias jtr="just tag && just github-release"
+alias jgr="just github-release"
+alias jdid="jdi && jdd"
+alias rjdd="rf docs && jdi && jdd"
+alias ytd="yt-dlp"
+alias ji="just install"
+alias jr="just release"
+alias pac="v package.toml"
+alias jus="just sync"
