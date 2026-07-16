@@ -10,6 +10,9 @@ return {
   --     file_types = { "markdown", "mdx" },
   --   })
   -- end,
+  config = function(_, opts)
+    require("render-markdown").setup(opts)
+  end,
   opts = {
     file_types = { "markdown", "mdx" },
     render_modes = true,
@@ -50,17 +53,15 @@ return {
       -- below = "󰺵",
       -- Highlight for the heading icon and extends through the entire line.
       -- Output is evaluated by `clamp(value, context.level)`.
-      backgrounds = {},
-      -- Highlight for the heading and sign icons.
-      -- Output is evaluated using the same logic as 'backgrounds'.
-      foregrounds = {
-        "RenderMarkdownH1",
-        "RenderMarkdownH2",
-        "RenderMarkdownH3",
-        "RenderMarkdownH4",
-        "RenderMarkdownH5",
-        "RenderMarkdownH6",
+      backgrounds = {
+        "RenderMarkdownH1Bg",
+        "RenderMarkdownH2Bg",
+        "RenderMarkdownH3Bg",
+        "RenderMarkdownH4Bg",
+        "RenderMarkdownH5Bg",
+        "RenderMarkdownH6Bg",
       },
+      -- foregrounds defaults to RenderMarkdownH1-H6, which we override above.
     },
     pipe_table = { preset = "round" },
     bullet = {
