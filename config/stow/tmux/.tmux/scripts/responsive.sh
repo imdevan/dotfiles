@@ -25,15 +25,23 @@ app='#[fg=color9]#[fg=color0,bg=color9] #[fg=color9,bg=color0]#{E:@catppuc
 session='#[fg=color13]#[fg=color0,bg=color13] #[fg=color13,bg=color0]#{E:@catppuccin_session_text} '
 battery='#(p=$(memory_pressure 2>/dev/null | awk '\''/percentage/{print $5}'\'' | tr -d '\''%'\''); [ -n "$p" ] && [ "$p" -le 20 ] && echo "#[bg=#{@thm_flamingo},fg=color0]#[reverse]#[noreverse]󱀙 #[fg=#{@thm_flamingo},bg=color0] ${p}%")'
 
-status_right_lg="${app}${session}${battery}${dir}${clock}"
-status_right_md_sm="${dir}${clock}"
+# Battery pill (togglable via @show_battery)
+show_bat=$(tmux show-option -gv @show_battery 2>/dev/null)
+if [ "$show_bat" = "1" ]; then
+  bat_pill='#(sh ~/.tmux/scripts/status_battery.sh) '
+else
+  bat_pill=""
+fi
+
+status_right_lg="${app}${session}${battery}${dir}${bat_pill}${clock}"
+status_right_md_sm="${dir}${bat_pill}${clock}"
 
 if [ "$width" -lt 56 ]; then
   # xxxs, xxs, xs (0-55)
   tmux set-option -g status-right ""
   tmux set-window-option -g window-status-format ""
 elif [ "$width" -lt 90 ]; then
-  # sm (58-89)
+  # sm (56-89)
   tmux set-option -g status-right "$status_right_md_sm"
   tmux set-window-option -g window-status-format ""
 elif [ "$width" -lt 120 ]; then
