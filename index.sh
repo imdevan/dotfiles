@@ -2,7 +2,7 @@
 dotfile_dir=~/dotfiles
 
 # A bunch of aliases
-source $dotfile_dir/aliases.sh
+# source $dotfile_dir/aliases.sh
 
 # Removed in favor of caching
 # Import functions

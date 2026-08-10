@@ -10,11 +10,11 @@ font-size = 9
 # Window
 window-theme = ghostty
 
-# window-padding-x = 0
-# window-padding-x = 8
+# window-padding-x = 0,0
+# window-padding-y = 0,0
 window-padding-x = 4
 window-padding-y = 4
-# window-padding-y = 0
+# window-padding-x = 8
 # window-padding-y = 8
 # window-padding-x = 12
 # window-padding-y = 12

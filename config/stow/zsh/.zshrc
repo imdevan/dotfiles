@@ -134,6 +134,20 @@ $IS_MAC  && defer "mac" "source ~/.config/zsh/mac.zsh"
 
 # Bookmarks (deferred)
 source ~/.bookmarks/bookmarks.sh
+source ~/.aliases/aliases.zsh
+
+# super-todo() {
+# 	if [ $# -eq 0 ]; then
+# 		# if [[ -n "$cmd" ]]; then
+# 			# eval "$(CLICOLOR_FORCE=1 command super-todo)"
+# 		# fi
+#     eval "$(CLICOLOR_FORCE=1 command super-todo)"
+# 	else
+# 		command super-todo "$@"
+# 	fi
+# }
+
+
 # defer "bookmarks" "source ~/.bookmarks/bookmarks.sh"
 
 # Kiro shell integration

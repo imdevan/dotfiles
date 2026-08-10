@@ -32,7 +32,7 @@ function add_alias() {
     source $aliases_file
   fi
 }
-alias aa="add_alias"
+# alias aa="add_alias"
 
 # # Bookmark position
 # function bookmark() {

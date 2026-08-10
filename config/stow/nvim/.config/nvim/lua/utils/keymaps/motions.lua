@@ -22,4 +22,12 @@ function M.go_to_first_alpha()
   api.nvim_win_set_cursor(0, { row, 0 })
 end
 
+-- Go to the last character on the current line (excluding newline)
+function M.go_to_last()
+  local row = api.nvim_win_get_cursor(0)[1]
+  local line = api.nvim_get_current_line()
+  local col = math.max(0, #line - 1)
+  api.nvim_win_set_cursor(0, { row, col })
+end
+
 return M

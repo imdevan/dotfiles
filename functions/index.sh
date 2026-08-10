@@ -111,3 +111,5 @@ source $dotfile_dir/functions/simple_plan.sh
 source $dotfile_dir/functions/compression.sh
 
 source $dotfile_dir/functions/hours_from_now.sh
+
+source $dotfile_dir/functions/yx.sh

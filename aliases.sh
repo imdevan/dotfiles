@@ -11,7 +11,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 alias dotfiles="$EDITOR $dotfile_dir"
-alias aliases="$EDITOR $dotfile_dir/aliases.sh"
+# alias aliases="$EDITOR $dotfile_dir/aliases.sh"
 
 ## Aliases shortcut
 # alias a="aliases"
@@ -602,3 +602,4 @@ alias ji="just install"
 alias jr="just release"
 alias pac="v package.toml"
 alias jus="just sync"
+alias asdf="echi "hi""

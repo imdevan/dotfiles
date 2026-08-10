@@ -32,7 +32,7 @@ return {
     },
     heading = {
       border = true,
-      enabled = true,
+      -- enabled = true,
       sign = true,
       signs = { "󰫎 " },
       -- ions = {'', ''}
@@ -53,14 +53,6 @@ return {
       -- below = "󰺵",
       -- Highlight for the heading icon and extends through the entire line.
       -- Output is evaluated by `clamp(value, context.level)`.
-      backgrounds = {
-        "RenderMarkdownH1Bg",
-        "RenderMarkdownH2Bg",
-        "RenderMarkdownH3Bg",
-        "RenderMarkdownH4Bg",
-        "RenderMarkdownH5Bg",
-        "RenderMarkdownH6Bg",
-      },
       -- foregrounds defaults to RenderMarkdownH1-H6, which we override above.
     },
     pipe_table = { preset = "round" },

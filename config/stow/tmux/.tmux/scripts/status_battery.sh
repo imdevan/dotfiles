@@ -26,11 +26,14 @@ if [ "$status" = "Charging" ]; then
   elif [ "$capacity" -ge 10 ]; then icon="󰢜"
   else icon="󰢟"
   fi
+
+  printf "#[fg=%s,bg=color0]#[bg=%s,fg=color0]%s #[fg=%s,bg=color0] %s%%#[default]" "$color" "$color" "$icon" "$color" "$capacity"
 else
   color="color11"
   if [ "$capacity" -le 20 ]; then
     color="color1"
   fi
+
   if [ "$capacity" -ge 95 ]; then icon="󰁹"
   elif [ "$capacity" -ge 90 ]; then icon="󰂂"
   elif [ "$capacity" -ge 80 ]; then icon="󰂁"
@@ -43,6 +46,16 @@ else
   elif [ "$capacity" -ge 10 ]; then icon="󰁺"
   else icon="󰂃"
   fi
-fi
 
-printf "#[fg=%s,bg=color0]#[bg=%s,fg=color0]%s #[fg=%s,bg=color0] %s%%#[default]" "$color" "$color" "$icon" "$color" "$capacity"
+  if [ "$capacity" -le 10 ]; then
+    # Flash inverting color warning on 10% or less battery while not charging
+    sec=$(date +%s)
+    if [ $((sec % 2)) -eq 1 ]; then
+      printf "#[fg=color0,bg=color1]#[bg=color0,fg=color1]%s #[fg=color0,bg=color1] %s%%#[default]" "$icon" "$capacity"
+    else
+      printf "#[fg=color1,bg=color0]#[bg=color1,fg=color0]%s #[fg=color1,bg=color0] %s%%#[default]" "$icon" "$capacity"
+    fi
+  else
+    printf "#[fg=%s,bg=color0]#[bg=%s,fg=color0]%s #[fg=%s,bg=color0] %s%%#[default]" "$color" "$color" "$icon" "$color" "$capacity"
+  fi
+fi

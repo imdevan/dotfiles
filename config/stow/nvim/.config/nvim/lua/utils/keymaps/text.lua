@@ -26,17 +26,18 @@ end
 
 -- Insert line (language-specific)
 function M.insert_line()
+  local line_length = 120
   local filetype = vim.bo.filetype
   local current_line = api.nvim_win_get_cursor(0)[1]
 
   if filetype == "markdown" or filetype == "mdx" then
     -- Insert 80 dashes for Markdown/MDX
-    local dash_line = string.rep("-", 80)
+    local dash_line = string.rep("-", line_length)
     api.nvim_buf_set_lines(0, current_line, current_line, false, { dash_line })
     api.nvim_win_set_cursor(0, { current_line + 1, 0 })
   else
     -- Insert 80 equals and comment for other languages
-    local equals_line = string.rep("=", 80)
+    local equals_line = string.rep("=", line_length)
     api.nvim_buf_set_lines(0, current_line, current_line, false, { equals_line })
     -- Move to the new line and comment it
     api.nvim_win_set_cursor(0, { current_line + 1, 0 })

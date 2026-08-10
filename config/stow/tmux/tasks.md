@@ -61,7 +61,7 @@ charging:
 󰢟 - 10% or less
 
 
-- [ ] 2.3 flash inverting color warning on 10% or less battery
+- [x] 2.3 flash inverting color warning on 10% or less battery while not charging
 
 ## Feature 3: show battery in status if below 26 (assign via variable)
 

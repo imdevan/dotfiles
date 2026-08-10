@@ -121,16 +121,7 @@ set("n", "<leader>fD", file_utils.delete_file_and_close, { desc = "Delete file a
 -- Line navigation
 -- multi_set("n,v", "H", "^", { desc = "Go to beginning of line", noremap = true })
 multi_set("n,v", "H", motions.go_to_first_alpha, { desc = "Go to first alpha character on line", noremap = true })
-
--- Insert project URL
-set("n", "<leader>p<M-d>", function()
-  local project = vim.fn.input("Project: ")
-  if project and project ~= "" then
-    local url = "https://devan.gg/" .. project .. "/"
-    vim.api.nvim_put({ url }, "c", true, true)
-  end
-end, { desc = "Insert project URL" })
-multi_set("n,v", "L", "$", { desc = "Go to end of line", noremap = true })
+multi_set("n,v", "L", motions.go_to_last, { desc = "Go to character on line, excluding \n", noremap = true })
 
 -- Paragraph navigation
 -- Note: We need to unmap K first to prevent LSP hover from triggering
@@ -441,15 +432,14 @@ multi_set("x,v", "<C-c>", text_utils.comment_swap, { desc = "Toggle comment (swa
 multi_set("n,x", "<M-CR>", snacks.zen.zen, { desc = "Toggle zen" })
 
 -- Debugging
--- ============================================================================
+-- ================================================================================
 -- set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
 -- set("n", "<Leader>dc", ":DapContinue<CR>")
 -- set("n", "<Leader>dx", ":DapTerminate<CR>")
 -- set("n", "<Leader>do", ":DapStepOver<CR>")
 
 -- Terminal
--- ============================================================================
-
+-- ================================================================================
 multi_set("n,t", "<C-x>", snacks.terminal.toggle, {
   desc = "Toggle multi Line Terminal",
 })
@@ -457,8 +447,20 @@ multi_set("n,t", "<C-x>", snacks.terminal.toggle, {
 set("t", "<C-t>", terminal_utils.toggle_terminal_size, { desc = "Toggle Terminal Size" })
 
 -- Noice
--- =====================================================================================================================
+-- ================================================================================
 set("n", "<leader>pi", "<CMD>Noice history<CR>", { desc = "Noice history" })
 
 -- Bookmark
+-- ================================================================================
 set("n", "<leader>pb", bookmark_utils.bookmark_file, { desc = "Bookmark file" })
+
+-- Insert project URL
+-- ================================================================================
+set("n", "<leader>p<M-d>", function()
+  local project = vim.fn.input("Project: ")
+  if project and project ~= "" then
+    local url = "https://devan.gg/" .. project .. "/"
+    vim.api.nvim_put({ url }, "c", true, true)
+  end
+end, { desc = "Insert project URL" })
+-- multi_set("n,v", "L", "$", { desc = "Go to end of line", noremap = true })

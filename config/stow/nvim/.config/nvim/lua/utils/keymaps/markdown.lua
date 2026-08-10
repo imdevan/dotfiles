@@ -423,17 +423,14 @@ function M.toggle_checkbox_multi_line()
 
   -- Determine action based on what we found
   local action
-  if has_no_checkbox then
-    -- If any lines don't have checkboxes, add checkboxes to all
+  if not has_checked and not has_unchecked then
+    -- If no lines have checkboxes, add checkboxes to all
     action = "add"
   elseif has_checked and not has_unchecked then
     -- If all checkboxes are checked, uncheck them
     action = "uncheck"
-  elseif has_unchecked and not has_checked then
-    -- If all checkboxes are unchecked, check them
-    action = "check"
   else
-    -- Mixed state: check all unchecked ones
+    -- Mixed state or all unchecked: check them
     action = "check"
   end
 
@@ -476,50 +473,18 @@ function M.toggle_checkbox_multi_line()
           end
         end
       elseif action == "check" then
-        -- Check unchecked boxes, add checkbox to lines without one
+        -- Check unchecked boxes, do not add checkbox to lines without one
         if rest:match("^%- %[ %]") then
           new_rest = rest:gsub("^%- %[ %]", "- [x]")
-        elseif rest:match("^%- %[x%]") then
-          new_rest = rest -- Already checked
         else
-          -- No checkbox, add checked one
-          if rest:match("^%d+%)") then
-            -- Numbered list item
-            new_rest = "- [x] " .. rest
-          elseif rest:match("^%-") then
-            -- Plain list item
-            local content = rest:gsub("^%-%s*", "")
-            new_rest = "- [x] " .. content
-          elseif rest:match("^#+") then
-            -- Header
-            new_rest = "- [x] " .. rest
-          else
-            -- Regular text
-            new_rest = "- [x] " .. rest
-          end
+          new_rest = rest
         end
       elseif action == "uncheck" then
-        -- Uncheck checked boxes
+        -- Uncheck checked boxes, do not add checkbox to lines without one
         if rest:match("^%- %[x%]") then
           new_rest = rest:gsub("^%- %[x%]", "- [ ]")
-        elseif rest:match("^%- %[ %]") then
-          new_rest = rest -- Already unchecked
         else
-          -- No checkbox, add unchecked one
-          if rest:match("^%d+%)") then
-            -- Numbered list item
-            new_rest = "- [ ] " .. rest
-          elseif rest:match("^%-") then
-            -- Plain list item
-            local content = rest:gsub("^%-%s*", "")
-            new_rest = "- [ ] " .. content
-          elseif rest:match("^#+") then
-            -- Header
-            new_rest = "- [ ] " .. rest
-          else
-            -- Regular text
-            new_rest = "- [ ] " .. rest
-          end
+          new_rest = rest
         end
       end
 

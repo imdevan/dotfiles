@@ -1,4 +1,5 @@
 return {
-  "imdevan/template.nvim",
+  dir = "/home/devy/Projects/nvim_plugins/venn.nvim",
+  name = "template.nvim",
   opts = {},
 }

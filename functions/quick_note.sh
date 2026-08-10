@@ -31,6 +31,8 @@ function quick_note() {
     quick_note_to_open="$notes_folder"/$(to_snake_case "$@").md
   fi
 
+  tmux rename-window "qn"
+
   # Check if text is being piped in (stdin is not a terminal)
   if [ ! -t 0 ]; then
     # Text is being piped: append it to the file

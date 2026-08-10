@@ -34,19 +34,20 @@ else
 fi
 
 status_right_lg="${app}${session}${battery}${dir}${bat_pill}${clock}"
-status_right_md_sm="${dir}${bat_pill}${clock}"
+status_right_sm="${bat_pill}${clock}"
+status_right_md="${bat_pill}${clock}"
 
 if [ "$width" -lt 56 ]; then
   # xxxs, xxs, xs (0-55)
   tmux set-option -g status-right ""
   tmux set-window-option -g window-status-format ""
-elif [ "$width" -lt 90 ]; then
-  # sm (56-89)
-  tmux set-option -g status-right "$status_right_md_sm"
+elif [ "$width" -lt 84 ]; then
+  # sm (56-83)
+  tmux set-option -g status-right "$status_right_sm"
   tmux set-window-option -g window-status-format ""
 elif [ "$width" -lt 120 ]; then
   # md (90-119)
-  tmux set-option -g status-right "$status_right_md_sm"
+  tmux set-option -g status-right "$status_right_md"
   tmux set-window-option -g window-status-format "$window_format_default"
 else
   # lg (120+)
