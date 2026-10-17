@@ -32,6 +32,7 @@ def query_table [
   }
 }
 
+# query table
 def qt [table: string, select?: string, where?: string] {
   if $where != null {
     query_table $table --select ($select | default "*") --where $where
@@ -40,6 +41,7 @@ def qt [table: string, select?: string, where?: string] {
   }
 }
 
+# query backend
 def qd [table: string, select?: string, where?: string, container?: string] {
   let c = ($container | default "backend-backend-1")
   if $where != null {
@@ -48,6 +50,7 @@ def qd [table: string, select?: string, where?: string, container?: string] {
     query_table $table --select ($select | default "*") --container $c
   }
 }
+
 
 def qdu [table: string, set: string, where?: string, container?: string] {
   let c = ($container | default "backend-backend-1")
@@ -59,6 +62,7 @@ def qdu [table: string, set: string, where?: string, container?: string] {
   docker_query $sql $c
 }
 
+# delete from table
 def qdd [table: string, where: string, container?: string] {
   let c = ($container | default "backend-backend-1")
   docker_query $"delete from ($table) where ($where)" $c
@@ -76,11 +80,11 @@ def td [container?: string] {
 }
 
 def tables [] {
-  open app.db 
+  open index.db 
   | query db "select name from sqlite_master where type='table'" 
   | each { |table| 
       let table_name = $table.name
-      let row_count = (open app.db | query db $"select count\(*) as count from ($table_name)" | get count.0)
+      let row_count = (open index.db | query db $"select count\(*) as count from ($table_name)" | get count.0)
       {
         table: $table_name, 
         rows: $row_count
