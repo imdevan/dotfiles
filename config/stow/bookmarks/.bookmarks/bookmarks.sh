@@ -305,3 +305,12 @@ alias vtm='cd '\''/home/devy/.config/tmuxinator'\'' && tmux rename-window '\''tm
 # BM: bub|/home/devy/Projects/clis/bubbletea/examples||2026-08-06T13:37:46-07:00|2026-08-06T13:37:46-07:00|bub|||
 alias bub='cd '\''/home/devy/Projects/clis/bubbletea/examples'\'' && tmux rename-window '\''bub'\'''
 
+# BM: pg|/home/devy/Projects/clis/pomquest||2026-08-11T10:03:42-07:00|2026-08-11T10:03:42-07:00|pom-g|jp||
+alias pg='cd '\''/home/devy/Projects/clis/pomquest'\'' && tmux rename-window '\''pom-g'\'' && jp'
+
+# BM: dtc|/home/devy/Projects/dog-training|/home/devy/Projects/dog-training|2026-09-15T15:06:03-07:00|2026-09-15T15:06:03-07:00|dtc|||src/content/docs/index.mdx
+alias dtc='cd '\''/home/devy/Projects/dog-training'\'' && tmux rename-window '\''dtc'\'' && nvim '\''src/content/docs/index.mdx'\'''
+
+# BM: phub|/home/devy/Projects/clis/project-hub||2026-10-16T11:45:57-07:00|2026-10-16T11:45:57-07:00|phub|||
+alias phub='cd '\''/home/devy/Projects/clis/project-hub'\'' && tmux rename-window '\''phub'\'''
+
