@@ -259,14 +259,14 @@ multi_set("n", "<leader>pgd,<leader>gz", git_utils.reset_hunk, { desc = "Discard
 set("n", "<leader>ga", git_utils.lazy_commit, { desc = "Lazy add & commit" })
 set("n", "<leader>gA", git_utils.lazy_nested_commit, { desc = "Lazy add & commit (nested: parent dir + filename)" })
 
--- Calculator
-set("n", "<leader>pm", math_utils.evaluate_and_insert, { desc = "Evaluate expression and insert result" })
-
--- Evaluate math expression from selected text
-set("v", "<leader>pm", math_utils.evaluate_math_expression, { desc = "Evaluate math expression from selected text" })
-
--- Evaluate math expression on all numbers in selection
-set("v", "<leader>pM", math_utils.apply_math_to_numbers, { desc = "Apply math expression to all numbers in selection" })
+-- -- Calculator
+-- set("n", "<leader>pm", math_utils.evaluate_and_insert, { desc = "Evaluate expression and insert result" })
+--
+-- -- Evaluate math expression from selected text
+-- set("v", "<leader>pm", math_utils.evaluate_math_expression, { desc = "Evaluate math expression from selected text" })
+--
+-- -- Evaluate math expression on all numbers in selection
+-- set("v", "<leader>pM", math_utils.apply_math_to_numbers, { desc = "Apply math expression to all numbers in selection" })
 
 -- Case (toggle)
 -- TODO: validate and probably remap for convience
