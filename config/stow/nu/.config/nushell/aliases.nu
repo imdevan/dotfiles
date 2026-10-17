@@ -80,11 +80,11 @@ def td [container?: string] {
 }
 
 def tables [] {
-  open index.db 
+  open app.db 
   | query db "select name from sqlite_master where type='table'" 
   | each { |table| 
       let table_name = $table.name
-      let row_count = (open index.db | query db $"select count\(*) as count from ($table_name)" | get count.0)
+      let row_count = (open app.db | query db $"select count\(*) as count from ($table_name)" | get count.0)
       {
         table: $table_name, 
         rows: $row_count
