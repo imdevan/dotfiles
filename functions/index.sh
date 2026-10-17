@@ -86,10 +86,6 @@ source $dotfile_dir/functions/reverse_stow.sh
 
 source $dotfile_dir/functions/brighten.sh
 
-
-source $dotfile_dir/functions/double_trouble.sh
-
-
 source $dotfile_dir/functions/work_set_up.sh
 
 source $dotfile_dir/functions/split_dev.sh
@@ -113,3 +109,5 @@ source $dotfile_dir/functions/compression.sh
 source $dotfile_dir/functions/hours_from_now.sh
 
 source $dotfile_dir/functions/yx.sh
+
+source $dotfile_dir/functions/webify.sh
