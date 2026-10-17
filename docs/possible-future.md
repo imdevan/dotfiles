@@ -3,6 +3,7 @@
 > “...Things that yet may be”
 >         - Galadriel
 
+
 ## Top priorities
 
 - [ ] use variables for git hub, files, and other psersonal variablizable information
@@ -17,6 +18,7 @@ alises
 
 ## Things to figure out
 
+- lazygit hotkey to auto commit message (similar to vim <leader>ga)
 - how the hell do lsps and ls's work? 
   - like what the hell is this documentation: https://github.com/AstroNvim/astrolsp#%EF%B8%8F-configuration
  - Configure own nvim from base
