@@ -27,6 +27,7 @@ if [[ $IS_MAC == true ]]; then
   echo "mac detected"
   # check for and install homebrew if absent
   # brew install $(~/dotfiles/config/deps/homebrew)
+  # run mac/macos_setup.sh
 fi
 
 # stow dotfiles
