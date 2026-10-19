@@ -2,6 +2,8 @@
 zmodload zsh/zprof
 
 # Zinit installer
+# TODO: create shared installer for zinit and other potentially required zsh plugins that require manual install?
+#   (zsh-syntax-highlighting)
 # ================================================================================
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 if [[ ! -d $ZINIT_HOME ]]; then
