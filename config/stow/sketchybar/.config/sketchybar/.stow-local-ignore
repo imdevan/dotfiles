@@ -1,2 +1,2 @@
-*.md
-sketchybarrc_*
+\.md$
+^sketchybarrc_.*
