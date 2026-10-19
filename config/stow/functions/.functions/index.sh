@@ -6,7 +6,7 @@
 #         zcompile "$func_file" 2>/dev/null
 #     fi
 # done
-func_path="~/.functions"
+func_path="$HOME/.functions"
 
 # Shared functions
 source $func_path/shared/colors.sh # colors should be loaded first
