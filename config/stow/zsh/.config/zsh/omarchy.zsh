@@ -39,11 +39,11 @@ if command -v zoxide &> /dev/null; then
 fi
 
 # Arch system syntax highlighting (avoid duplicate install)
-defer "zsh-syntax-highlighting" "source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+# defer "zsh-syntax-highlighting" "source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 # Homebrew for linux
 # un comment when needed
 # TODO: lazyload this (like above)
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 

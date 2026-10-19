@@ -6,7 +6,7 @@
 # Alias: fu
 
 function vim_function() {
-  local functions_path="$dotfile_dir/functions"
+  local functions_path="~/.functions"
 
   if [ -z "$1" ]; then
     with_vim "$functions_path/"

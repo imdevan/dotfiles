@@ -120,9 +120,12 @@ python() {
 
 # My dotfiles
 # ================================================================================
-source ~/dotfiles/index.sh
+source ~/.bookmarks/bookmarks.sh
+source ~/.aliases/aliases.zsh
+source ~/.functions/index.sh
+
 # defer "dotfiles" "source ~/dotfiles/index.sh"
-source ~/.github_token
+# source ~/.github_token
 
 # OS specific setup
 # ================================================================================
@@ -135,8 +138,6 @@ $IS_ARCH && source ~/.config/zsh/omarchy.zsh
 $IS_MAC  && defer "mac" "source ~/.config/zsh/mac.zsh"
 
 # Bookmarks (deferred)
-source ~/.bookmarks/bookmarks.sh
-source ~/.aliases/aliases.zsh
 
 # super-todo() {
 # 	if [ $# -eq 0 ]; then
