@@ -1,45 +1,23 @@
-#!/usr/bin/env bash
+# Set os flags
+IS_MAC=false
+IS_ARCH=false
+[[ "$(uname)" == "Darwin" ]] && IS_MAC=true
+[[ -f /etc/arch-release ]] && IS_ARCH=true
 
-# WIP - use manual process for now :)
+if [[ $IS_ARCH ]]; then
+  # check for and install yay if absent
+  yay -S --needed - < ~/dotfiles/config/deps/aur
+fi
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
 
-# Ask for the administrator password upfront
-sudo -v
+if [[ $IS_MAC ]]; then
+  echo "mac logic"
+  # check for and install homebrew if absent
+  # brew install $(~/dotfiles/config/deps/homebrew)
+fi
 
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do
-  sudo -n true
-  sleep 60
-  kill -0 "$$" || exit
-done 2>/dev/null &
+# stow dotfiles
+cd ~/dotfiles/config/stow
+stow stowrc --target=$HOME
+stow */ --ignore=stowrc
 
-# Check if homebrew is installed
-#
-# Install Homebrew if not installed
-#
-# Install homebrew via brew file
-#
-./config/homebrew/install_packages.sh
-
-# Run mac os setup
-./config/macos/.macos
-
-# Configure stow
-# See https://www.gnu.org/software/stow/manual/stow.html#Invoking-Stow
-# For more information on stowing packages
-cd ./config/stow
-stow -t ~/ stowrc
-
-# Install remaining stow files
-stow * --ignore=stowrc
-
-# This should automatically add the dotfile setup to the zshrc config
-
-# Check if zshrc or bashrc contains a source to dotfile index
-#
-# Add source $dotfile_dir/index if not present
-#
-#
