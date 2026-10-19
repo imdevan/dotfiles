@@ -58,9 +58,6 @@ export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 # todo: conslidate mac configs
 # export JAVA_HOME=$(brew --prefix)/opt/openjdk@17
 
-# Mac
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # zoxide
 eval "$(zoxide init zsh)"
 # with cache:

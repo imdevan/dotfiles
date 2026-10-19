@@ -2,8 +2,6 @@
 zmodload zsh/zprof
 
 # Zinit installer
-# TODO: create shared installer for zinit and other potentially required zsh plugins that require manual install?
-#   (zsh-syntax-highlighting)
 # ================================================================================
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 if [[ ! -d $ZINIT_HOME ]]; then
@@ -31,7 +29,8 @@ defer_plugins \
   zsh-users/zsh-autosuggestions \
   zsh-users/zsh-history-substring-search \
   Aloxaf/fzf-tab \
-  OMZP::web-search
+  OMZP::web-search \
+  zsh-users/zsh-syntax-highlighting # must be last: wraps widgets defined before it
 
 # Completion
 # ================================================================================
@@ -90,7 +89,7 @@ bindkey -M viins " " magic-space
 
 # Zsh behavior
 # ================================================================================
-preexec(){ echo }
+# preexec(){ echo }
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
