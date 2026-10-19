@@ -25,25 +25,17 @@ defer() { zinit wait lucid light-mode for id-as"$1" atload"$2" zdharma-continuum
 defer_plugins() { zinit wait lucid light-mode for "$@" }
 
 # Turbo (deferred) plugins
+# fzf-tab needs compinit before it loads and must load before widget-wrapping plugins
 defer_plugins \
+  atinit"zicompinit; zicdreplay" Aloxaf/fzf-tab \
   zsh-users/zsh-autosuggestions \
   zsh-users/zsh-history-substring-search \
-  Aloxaf/fzf-tab \
   OMZP::web-search \
   zsh-users/zsh-syntax-highlighting # must be last: wraps widgets defined before it
 
-# Completion
+# Completion settings
 # ================================================================================
-autoload -Uz compinit
-# compinit -C -u -d ~/.zcompdump
-_lazy_compinit() {
-  compinit
-  zle expand-or-complete
-}
-
-zle -N _lazy_compinit
-bindkey '^I' _lazy_compinit  # Tab
-# zinit cdreplay -q
+# compinit runs deferred in fzf-tab's atinit (see plugins above)
 
 # TODO: probably move this to global configs
 # History configuration
