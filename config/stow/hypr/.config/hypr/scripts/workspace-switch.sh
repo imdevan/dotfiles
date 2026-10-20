@@ -9,12 +9,12 @@ if [ "$direction" = "next" ]; then
     else
         next=$((current + 1))
     fi
-    hyprctl dispatch workspace $next
+    hyprctl dispatch "hl.dsp.focus({ workspace = \"$next\" })"
 else
     if [ "$current" -le 1 ]; then
         prev=$max
     else
         prev=$((current - 1))
     fi
-    hyprctl dispatch workspace $prev
+    hyprctl dispatch "hl.dsp.focus({ workspace = \"$prev\" })"
 fi
