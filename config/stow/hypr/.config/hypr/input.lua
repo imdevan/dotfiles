@@ -9,9 +9,9 @@ hl.config({
 
     -- Swap keys
     -- kb_options = "ctrl:swap_lctl_lshift,caps:swapescape,altwin:swap_alt_win", -- ,grp:alts_toggle
-    -- kb_options = "caps:swapescape",
+    kb_options = "caps:swapescape",
     -- kb_options = "compose:caps,caps:swapescape,altwin:swap_alt_win", -- ,grp:alts_toggle
-    kb_options = "caps:swapescape,altwin:swap_alt_win",
+    -- kb_options = "caps:swapescape,altwin:swap_alt_win",
 
     -- Change speed of keyboard repeat
     repeat_rate = 120,

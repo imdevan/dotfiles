@@ -99,6 +99,10 @@ rebind("SUPER + CTRL + 8", "Split ratio 1.25", hl.dsp.layout("splitratio 1.25 ex
 rebind("SUPER + CTRL + 7", "Split ratio 0.75", hl.dsp.layout("splitratio 0.75 exact"))
 rebind("SUPER + CTRL + 6", "Split ratio 0.66", hl.dsp.layout("splitratio 0.66 exact"))
 
+-- Layout
+-- ================================================================================
+rebind("SUPER + SHIFT + CTRL + S", "Toggle workspace layout (dwindle/scrolling)", "omarchy-hyprland-workspace-layout-toggle")
+
 -- Workspaces / monitors
 -- ================================================================================
 rebind("SUPER + SHIFT + L", "Next workspace (wrap at 5)", scripts .. "workspace-switch.sh next")
