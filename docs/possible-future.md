@@ -46,6 +46,11 @@ alises
 
 ## Things to check out
 
+using shift+ctrl home row keybinds for things
+- nvim, tmux, hypr
+shift+fkey? mod+fkey? for apps, leave standard f key funcitons available for programs?
+  - or possibly somehow map standard fkey behavior behind mod?
+what does visual-multi do in nvim?
 - [ ] breadonPinguin dotfiles notably qutebrowser config https://github.com/BreadOnPenguins/dots/tree/master/.config/qutebrowser 
 - tmux config with centered info 
   - https://github.com/Sin-cy/dotfiles/blob/main/tmux/.config/tmux/tmux.conf
