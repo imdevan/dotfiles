@@ -18,7 +18,7 @@ clock='#[fg=color15,bg=color0]#[bg=color15,fg=color0]#[fg=color15,bg=color
 dir='#[bg=#{@thm_pink},fg=color0]#[reverse]#[noreverse]󰉋 #[fg=#{@thm_pink},bg=color0] #(sh ~/.tmux/scripts/status_path.sh "#{pane_current_path}" "#{@status_path_max_chars}" "#{@status_path_preserve_separators}") '
 
 # Inactive window format
-window_format_default='#[fg=#181926,bg=color0]#[fg=color0,reverse]#[none]#[fg=color15]#I #[fg=#cad3f5,bg=color0]#[fg=color15]#W#[fg=color0,reverse]#[none]'
+inactive_window_format='#[fg=#181926,bg=color0]#[fg=color0,reverse]#[none]#[fg=color15]#I #[fg=#cad3f5,bg=color0]#[fg=color15]#W#[fg=color0,reverse]#[none]'
 
 # Large status right (all elements)
 app='#[fg=color9]#[fg=color0,bg=color9] #[fg=color9,bg=color0]#{E:@catppuccin_application_text}  '
@@ -34,23 +34,23 @@ else
 fi
 
 status_right_lg="${app}${session}${battery}${dir}${bat_pill}${clock}"
-status_right_sm="${bat_pill}${clock}"
-status_right_md="${bat_pill}${clock}"
+status_right_md="${bat_pill}${dir}${clock}"
+status_right_sm="${bat_pill}${dir}"
 
 if [ "$width" -lt 56 ]; then
   # xxxs, xxs, xs (0-55)
   tmux set-option -g status-right ""
   tmux set-window-option -g window-status-format ""
-elif [ "$width" -lt 84 ]; then
+elif [ "$width" -lt 80 ]; then
   # sm (56-83)
   tmux set-option -g status-right "$status_right_sm"
   tmux set-window-option -g window-status-format ""
 elif [ "$width" -lt 120 ]; then
   # md (90-119)
   tmux set-option -g status-right "$status_right_md"
-  tmux set-window-option -g window-status-format "$window_format_default"
+  tmux set-window-option -g window-status-format "$inactive_window_format"
 else
   # lg (120+)
   tmux set-option -g status-right "$status_right_lg"
-  tmux set-window-option -g window-status-format "$window_format_default"
+  tmux set-window-option -g window-status-format "$inactive_window_format"
 fi
