@@ -27,15 +27,16 @@ rebind("SUPER + SHIFT + R", "Reload Hyprland", "hyprctl reload")
 rebind("SUPER + SHIFT + Q", "Close all windows", "omarchy-hyprland-window-close-all")
 
 -- Default browser
-rebind("SUPER + SHIFT + CTRL + 0", "Default browser: qutebrowser", "xdg-settings set default-web-browser qutebrowser.desktop")
+rebind("SUPER + SHIFT + CTRL + 0", "Default browser: qutebrowser",
+  "xdg-settings set default-web-browser qutebrowser.desktop")
 rebind("SUPER + SHIFT + CTRL + 9", "Default browser: chromium", "xdg-settings set default-web-browser chromium.desktop")
 
 -- Apps
 -- ================================================================================
 rebind("F1", "Terminal (workspace 1)", [[
   hyprctl dispatch 'hl.dsp.focus({ workspace = "1" })' &&
-  omarchy-launch-or-focus com.mitchellh.ghostty "uwsm-app -- xdg-terminal-exec --dir=\"$(omarchy-cmd-terminal-cwd)\"" ;
-  hyprctl dispatch 'hl.dsp.window.move({ workspace = "1", window = "class:com.mitchellh.ghostty" })'
+  omarchy-launch-or-focus "^kitty$" "uwsm-app -- xdg-terminal-exec --dir=\"$(omarchy-cmd-terminal-cwd)\"" ;
+  hyprctl dispatch 'hl.dsp.window.move({ workspace = "1", window = "class:^(kitty)$" })'
 ]])
 rebind("F2", "Qutebrowser", "omarchy-launch-or-focus qutebrowser")
 rebind("F3", "Chromium", "omarchy-launch-or-focus chromium")
@@ -47,18 +48,18 @@ rebind("F12", "Kiro run", scripts .. "kiro-run.sh")
 
 -- Work sessions
 rebind("SUPER + SHIFT + G", "Get to work", scripts .. "get-to-work.sh") -- was: Signal
-rebind("SUPER + SHIFT + E", "End work", scripts .. "end-work.sh") -- was: Email
+rebind("SUPER + SHIFT + E", "End work", scripts .. "end-work.sh")       -- was: Email
 
 -- Focus / swap (vim keys)
 -- ================================================================================
 rebind("SUPER + H", "Move window focus left", hl.dsp.focus({ direction = "l" }))
-rebind("SUPER + L", "Move window focus right", hl.dsp.focus({ direction = "r" })) -- was: toggle workspace layout
-rebind("SUPER + K", "Move window focus up", hl.dsp.focus({ direction = "u" })) -- was: keybindings menu
-rebind("SUPER + J", "Move window focus down", hl.dsp.focus({ direction = "d" })) -- was: toggle split
+rebind("SUPER + L", "Move window focus right", hl.dsp.focus({ direction = "r" }))       -- was: toggle workspace layout
+rebind("SUPER + K", "Move window focus up", hl.dsp.focus({ direction = "u" }))          -- was: keybindings menu
+rebind("SUPER + J", "Move window focus down", hl.dsp.focus({ direction = "d" }))        -- was: toggle split
 
 rebind("SUPER + CTRL + H", "Swap window left", hl.dsp.window.swap({ direction = "l" })) -- was: hardware menu
 rebind("SUPER + CTRL + L", "Swap window right", hl.dsp.window.swap({ direction = "r" }))
-rebind("SUPER + CTRL + K", "Swap window up", hl.dsp.window.swap({ direction = "u" })) -- was: herdr keybindings
+rebind("SUPER + CTRL + K", "Swap window up", hl.dsp.window.swap({ direction = "u" }))   -- was: herdr keybindings
 rebind("SUPER + CTRL + J", "Swap window down", hl.dsp.window.swap({ direction = "d" }))
 
 -- Resize
@@ -68,9 +69,11 @@ rebind("SUPER + ALT + L", "Grow window width", hl.dsp.window.resize({ x = 20, y 
 rebind("SUPER + ALT + K", "Shrink window height", hl.dsp.window.resize({ x = 0, y = -20, relative = true }))
 rebind("SUPER + ALT + J", "Grow window height", hl.dsp.window.resize({ x = 0, y = 20, relative = true }))
 
-rebind("SUPER + CTRL + SHIFT + N", "Shrink window width a lot", hl.dsp.window.resize({ x = -240, y = 0, relative = true }))
+rebind("SUPER + CTRL + SHIFT + N", "Shrink window width a lot",
+  hl.dsp.window.resize({ x = -240, y = 0, relative = true }))
 rebind("SUPER + CTRL + SHIFT + L", "Grow window width a lot", hl.dsp.window.resize({ x = 240, y = 0, relative = true }))
-rebind("SUPER + CTRL + SHIFT + K", "Shrink window height a lot", hl.dsp.window.resize({ x = 0, y = -160, relative = true }))
+rebind("SUPER + CTRL + SHIFT + K", "Shrink window height a lot",
+  hl.dsp.window.resize({ x = 0, y = -160, relative = true }))
 rebind("SUPER + CTRL + SHIFT + J", "Grow window height a lot", hl.dsp.window.resize({ x = 0, y = 160, relative = true }))
 
 -- Resize to 60% of the monitor and center (floating windows)
@@ -101,13 +104,14 @@ rebind("SUPER + CTRL + 6", "Split ratio 0.66", hl.dsp.layout("splitratio 0.66 ex
 
 -- Layout
 -- ================================================================================
-rebind("SUPER + SHIFT + CTRL + S", "Toggle workspace layout (dwindle/scrolling)", "omarchy-hyprland-workspace-layout-toggle")
+rebind("SUPER + SHIFT + CTRL + S", "Toggle workspace layout (dwindle/scrolling)",
+  "omarchy-hyprland-workspace-layout-toggle")
 
 -- Workspaces / monitors
 -- ================================================================================
 rebind("SUPER + SHIFT + L", "Next workspace (wrap at 5)", scripts .. "workspace-switch.sh next")
 rebind("SUPER + SHIFT + H", "Previous workspace (wrap at 5)", scripts .. "workspace-switch.sh prev")
-rebind("SUPER + SHIFT + RIGHT", "Next workspace (wrap at 5)", scripts .. "workspace-switch.sh next") -- was: swap window right
+rebind("SUPER + SHIFT + RIGHT", "Next workspace (wrap at 5)", scripts .. "workspace-switch.sh next")    -- was: swap window right
 rebind("SUPER + SHIFT + LEFT", "Previous workspace (wrap at 5)", scripts .. "workspace-switch.sh prev") -- was: swap window left
 
 rebind("SUPER + SHIFT + CTRL + H", "Move window to left monitor", hl.dsp.window.move({ monitor = "l" }))
