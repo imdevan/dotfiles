@@ -12,18 +12,19 @@ fi
 
 # Define the status elements
 # Clock
-clock='#[fg=color15,bg=color0]#[bg=color15,fg=color0]#[fg=color15,bg=color0]#[bg=color15,fg=color0] %H:%M#[default]#[fg=color15,bg=color0]#[bg=color15,fg=color0]'
+clock='#[fg=color15,bg=default]#[bg=color15,fg=color0]#[fg=color15,bg=default]#[bg=color15,fg=color0] %H:%M#[default]#[fg=color15,bg=default]#[bg=color15,fg=color0]'
 
 # Directory
-dir='#[bg=#{@thm_pink},fg=color0]#[reverse]#[noreverse]󰉋 #[fg=#{@thm_pink},bg=color0] #(sh ~/.tmux/scripts/status_path.sh "#{pane_current_path}" "#{@status_path_max_chars}" "#{@status_path_preserve_separators}") '
+dir='#[fg=color13,bg=default]#[fg=color0,bg=color13]󰉋 #[fg=color13,bg=default] #(sh ~/.tmux/scripts/status_path.sh "#{pane_current_path}" "#{@status_path_max_chars}" "#{@status_path_preserve_separators}") '
 
 # Inactive window format
-inactive_window_format='#[fg=#181926,bg=color0]#[fg=color0,reverse]#[none]#[fg=color15]#I #[fg=#cad3f5,bg=color0]#[fg=color15]#W#[fg=color0,reverse]#[none]'
+inactive_window_format='#[fg=color15,bg=default] #I #W '
+current_window_format='#[fg=color5,bg=default]#[fg=color0,bg=color5]#I #W#[fg=color5,bg=default]'
 
 # Large status right (all elements)
-app='#[fg=color9]#[fg=color0,bg=color9] #[fg=color9,bg=color0]#{E:@catppuccin_application_text}  '
-session='#[fg=color13]#[fg=color0,bg=color13] #[fg=color13,bg=color0]#{E:@catppuccin_session_text} '
-battery='#(p=$(memory_pressure 2>/dev/null | awk '\''/percentage/{print $5}'\'' | tr -d '\''%'\''); [ -n "$p" ] && [ "$p" -le 20 ] && echo "#[bg=#{@thm_flamingo},fg=color0]#[reverse]#[noreverse]󱀙 #[fg=#{@thm_flamingo},bg=color0] ${p}%")'
+app='#[fg=color9]#[fg=color0,bg=color9] #[fg=color9,bg=default]#{E:@catppuccin_application_text}  '
+session='#[fg=color13]#[fg=color0,bg=color13] #[fg=color13,bg=default]#{E:@catppuccin_session_text} '
+battery='#(p=$(memory_pressure 2>/dev/null | awk '\''/percentage/{print $5}'\'' | tr -d '\''%'\''); [ -n "$p" ] && [ "$p" -le 20 ] && echo "#[fg=color9,bg=default]#[fg=color0,bg=color9]󱀙 #[fg=color9,bg=default] ${p}%")'
 
 # Battery pill (togglable via @show_battery)
 show_bat=$(tmux show-option -gv @show_battery 2>/dev/null)
@@ -36,6 +37,8 @@ fi
 status_right_lg="${app}${session}${battery}${dir}${bat_pill}${clock}"
 status_right_md="${bat_pill}${dir}${clock}"
 status_right_sm="${bat_pill}${dir}"
+
+tmux set-window-option -g window-status-current-format "$current_window_format"
 
 if [ "$width" -lt 56 ]; then
   # xxxs, xxs, xs (0-55)
