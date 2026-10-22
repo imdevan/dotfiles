@@ -7,17 +7,21 @@ unalias fi 2>/dev/null
 # Function wrapper to auto-source bookmarks after running bookmark commands
 # This ensures new/updated bookmarks are immediately available in your shell
 bookmark() {
-	command bookmark "$@" && source /home/devy/.bookmarks/bookmarks.sh
+	if [ $# -eq 0 ]; then
+		local cmd=$(CLICOLOR_FORCE=1 command bookmark -i)
+		if [[ -n "$cmd" ]]; then
+			eval "$cmd"
+		fi
+	else
+		command bookmark "$@"
+	fi
+	source /home/devy/.bookmarks/bookmarks.sh
 }
 
 # Interactive bookmark navigation function
-# Displays the TUI and executes the selected bookmark command
+# Delegates to consolidated bookmark function
 bm() {
-	local cmd=$(CLICOLOR_FORCE=1 bookmark -i)
-	if [[ -n "$cmd" ]]; then
-		eval "$cmd"
-	fi
-	source /home/devy/.bookmarks/bookmarks.sh
+	bookmark "$@"
 }
 
 # BM: po|/home/devy/Work/portfolio||2026-02-24T14:55:46-08:00|2026-02-24T14:55:46-08:00|po|||.
@@ -122,14 +126,14 @@ alias hcw='cd '\''/home/devy/dotfiles/config/stow/hypr/.config/hypr'\'' && tmux 
 # BM: vnu|/home/devy/dotfiles|/home/devy/dotfiles|2026-05-01T19:33:59-07:00|2026-05-01T19:33:59-07:00|vnu|||config/stow/nu/.config/nushell/aliases.nu
 alias vnu='cd '\''/home/devy/dotfiles'\'' && tmux rename-window '\''vnu'\'' && nvim '\''config/stow/nu/.config/nushell/aliases.nu'\'''
 
-# BM: vk|/home/devy/dotfiles/config/stow/nvim/.config/nvim||2026-05-05T22:09:35-07:00|2026-05-05T22:09:44-07:00|vk|kw||./lua/config/keymaps.lua
-alias vk='cd '\''/home/devy/dotfiles/config/stow/nvim/.config/nvim'\'' && tmux rename-window '\''vk'\'' && kw && nvim '\''./lua/config/keymaps.lua'\'''
+# BM: vk|/home/devy/dotfiles/config/stow/kitty/.config/kitty||2026-05-05T22:09:35-07:00|2026-10-22T10:24:03-07:00|vk|||kitty.conf
+alias vk='cd '\''/home/devy/dotfiles/config/stow/kitty/.config/kitty'\'' && tmux rename-window '\''vk'\'' && nvim '\''kitty.conf'\'''
 
 # BM: blog|/home/devy/Projects/dance-partner-vibes/app/backend||2026-05-11T11:52:10-07:00|2026-05-11T11:52:10-07:00||docker logs backend-backend-1 OC||
 alias blog='cd '\''/home/devy/Projects/dance-partner-vibes/app/backend'\'' && docker logs backend-backend-1 OC'
 
-# BM: no|/home/devy/Documents/Obsidian Vault||2026-05-13T10:49:50-07:00|2026-05-13T10:49:50-07:00|notes|||./
-alias no='cd '\''/home/devy/Documents/Obsidian Vault'\'' && tmux rename-window '\''notes'\'' && nvim '\''./'\'''
+# BM: no|/home/devy/Documents/obsidian-vault||2026-05-13T10:49:50-07:00|2026-10-22T10:41:38-07:00|notes|||./
+alias no='cd '\''/home/devy/Documents/obsidian-vault'\'' && tmux rename-window '\''notes'\'' && nvim '\''./'\'''
 
 # BM: vn|/home/devy/dotfiles/config/stow/nvim/.config/nvim||2026-05-15T10:27:32-07:00|2026-05-15T10:27:32-07:00|vn|||./
 alias vn='cd '\''/home/devy/dotfiles/config/stow/nvim/.config/nvim'\'' && tmux rename-window '\''vn'\'' && nvim '\''./'\'''
