@@ -75,7 +75,8 @@ zstyle ':complaetion:*' special-dirs false
 
 # Keybinds
 # ================================================================================
-bindkey '^ ' autosuggest-accept
+# zsh-vi-mode resets keymaps on init, so bind after it
+zvm_after_init_commands+=("bindkey -M viins '^ ' autosuggest-accept")
 bindkey -M main " " magic-space
 bindkey -M viins " " magic-space
 
