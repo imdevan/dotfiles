@@ -8,16 +8,15 @@
 #
 # TODO: consider replacing with https://jrnl.sh/en/stable/overview/
 
-vault_folder="$HOME/Documents/Obsidian Vault"
-notes_folder="$HOME/Documents/Obsidian Vault/quick_notes"
-journal_folder="$HOME/Documents/Obsidian Vault/journal"
+VAULT_DIR="$HOME/Documents/obsidian-vault"
+NOTES_DIR="$VAULT_DIR/quick_notes"
 
 # # How it started
 # function quick_note() {
 #   if [ "$#" -lt 1 ]; then
-#     nvim "$notes_folder"/$(date +%m-%d-%Y).md
+#     nvim "$NOTES_DIR"/$(date +%m-%d-%Y).md
 #   else  
-#     nvim "$notes_folder"/$(to_snake_case "$@").md
+#     nvim "$NOTES_DIR"/$(to_snake_case "$@").md
 #   fi
 # }
 
@@ -26,12 +25,14 @@ function quick_note() {
   local quick_note_to_open=""
 
   if [ "$#" -lt 1 ]; then
-    quick_note_to_open="$notes_folder"/$(date +%m-%d-%Y).md
+    quick_note_to_open="$NOTES_DIR"/$(date +%m-%d-%Y).md
   else  
-    quick_note_to_open="$notes_folder"/$(to_snake_case "$@").md
+    quick_note_to_open="$NOTES_DIR"/$(to_snake_case "$@").md
   fi
 
   tmux rename-window "qn"
+
+  cd "$NOTES_DIR"
 
   # Check if text is being piped in (stdin is not a terminal)
   if [ ! -t 0 ]; then
@@ -65,7 +66,7 @@ function quick_notes_list() {
   local named=()
   local dated=()
 
-  for file in "$notes_folder"/*; do
+  for file in "$NOTES_DIR"/*; do
     [ -f "$file" ] || continue
     local basename=$(basename "$file")
 
@@ -116,9 +117,9 @@ function notes_grep() {
   # Escape single quotes in search query for lua
   local escaped_query=$(echo "$search_query" | sed "s/'/''/g")
   if [ -n "$search_query" ]; then
-    nvim "$notes_folder" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_folder' }); vim.defer_fn(function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('$escaped_query', true, false, true), 't', false) end, 200) end, 100)"
+    nvim "$NOTES_DIR" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$NOTES_DIR' }); vim.defer_fn(function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('$escaped_query', true, false, true), 't', false) end, 200) end, 100)"
   else
-    nvim "$notes_folder" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$notes_folder' }) end, 100)"
+    nvim "$NOTES_DIR" -c "lua vim.defer_fn(function() require('snacks').picker.grep({ cwd = '$NOTES_DIR' }) end, 100)"
   fi
 }
 
