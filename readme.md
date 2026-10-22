@@ -9,17 +9,16 @@ My personal dotfiles, use or edit at your own risk. Working on a more public opt
 **Step 1**
 Clone the repository into your root directory
 
-```
+```bash
 cd ~
 git clone https://github.com/imdevan/dotfiles.git
 ```
 
 **Step 2**  
-Add `source ~/dotfiles/index.sh` to the end of your `.bashrc` or `.zshrc` file
-
-If you don't have a `.bashrc` file in your root directory, you can create one
-and everything should work.
-
+```bash
+chmod +x ~/dotfiles/config/setup/boot_strap.sh
+~/dotfiles/config/setup/boot_strap.sh
+```
 
 **Step 3**
 Restart you're terminal
