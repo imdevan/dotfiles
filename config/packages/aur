@@ -1,9 +1,10 @@
 stow
+nator
 l
 bookmark-plus
 aliases
 project-hub
-timr
+timr-cli
 claude-code
 harlequin
 kitty
@@ -17,4 +18,5 @@ zsh
 pac
 cowsay
 tmuxinator
-nator
+just
+lolcat
