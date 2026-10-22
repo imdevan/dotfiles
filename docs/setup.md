@@ -1,4 +1,13 @@
-# Manual Setup Steps
+# Omarchy
+
+```bash
+cd ~
+git clone https://github.com/imdevan/dotfiles.git
+chmod +x ~/dotfiles/config/setup/boot_strap.sh
+~/dotfiles/config/setup/boot_strap.sh
+```
+
+# Mac:
 
 ## Terminal
 ------------------------------------------------------------------------

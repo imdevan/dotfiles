@@ -103,7 +103,7 @@ what does visual-multi do in nvim?
 
 ### Considerations of tools to add
 
-- [ ] gum to scripts https://github.com/charmbracelet/gum
+- [x] gum to scripts https://github.com/charmbracelet/gum
 - [ ] gh-dash https://www.gh-dash.dev/getting-started/usage/
 - [ ] pavu audio manager
 - [ ] possible text to speech engine https://github.com/mkiol/dsnote
@@ -113,7 +113,7 @@ what does visual-multi do in nvim?
 - [ ] hammerspoon for scripting <https://www.hammerspoon.org/>
 - [ ] eza <https://github.com/eza-community/eza>
 - [ ] nix package manager / nixos
-- [ ] nu shell <https://github.com/nushell/nushell> has some nice navigation features
+- [x] nu shell <https://github.com/nushell/nushell> has some nice navigation features
 - [x] yazi <https://github.com/sxyazi/yazi>
 - [x] zed <https://zed.dev/q>
 - [ ] indent blank line colors <https://github.com/lukas-reineke/indent-blankline.nvim>
@@ -127,7 +127,7 @@ what does visual-multi do in nvim?
 - [x] consider switching to alacritty eventually - landed on wezterm
 - [ ] presentations in terminal https://github.com/museslabs/kyma
 - [ ] nnn https://github.com/jarun/nnn
-- [ ] starship https://starship.rs/
+- [x] starship https://starship.rs/
 - [ ] https://github.com/jj-vcs/jj
 - [ ] lulu https://formulae.brew.sh/cask/lulu#default
 - [ ] wireguard-go
