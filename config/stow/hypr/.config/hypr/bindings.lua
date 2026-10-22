@@ -44,7 +44,7 @@ rebind("F4", "Obsidian", "omarchy-launch-or-focus obsidian")
 rebind("F8", "Aether", "omarchy-launch-or-focus aether")
 rebind("F9", "File manager", { launch = "nautilus --new-window", focus = "org.gnome.Nautilus" })
 rebind("F10", "Chromium", "omarchy-launch-or-focus chromium")
-rebind("F12", "Kiro run", scripts .. "kiro-run.sh")
+-- rebind("F12", "Kiro run", scripts .. "kiro-run.sh")
 
 -- Work sessions
 rebind("SUPER + SHIFT + G", "Get to work", scripts .. "get-to-work.sh") -- was: Signal
