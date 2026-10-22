@@ -1,0 +1,22 @@
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+os:
+  editPreset: 'nvim'
+
+gui:
+  # start "zoomed" (same as the first shift++)
+  screenMode: 'half'
+
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
+customCommands:
+  - key: 'n'
+    context: 'files'
+    description: 'Lazy commit: add/update/delete <file>'
+    command: 'sh "$HOME/.config/lazygit/scripts/lazy-commit.sh" {{.SelectedPath | quote}}'
+    loadingText: 'Committing...'
+    output: log
+  - key: 'N'
+    context: 'files'
+    description: 'Lazy commit (nested): add/update/delete <file> <parent dir>'
+    command: 'sh "$HOME/.config/lazygit/scripts/lazy-commit.sh" --nested {{.SelectedPath | quote}}'
+    loadingText: 'Committing...'
+    output: log
