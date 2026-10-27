@@ -39,7 +39,7 @@ name="${name%.*}"
 msg="$verb $name"
 if [ "$nested" -eq 1 ]; then
   parent=$(basename "$(dirname "$file")" | sed 's/s$//')
-  [ "$parent" != "." ] && msg="$parent $msg"
+  [ "$parent" != "." ] && msg="$verb $parent $name"
 fi
 
 git add -A -- "$file" || exit 1
