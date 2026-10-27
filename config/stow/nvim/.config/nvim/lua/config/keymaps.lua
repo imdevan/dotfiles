@@ -362,10 +362,6 @@ set("v", "<leader>pwc", text_utils.word_count, { desc = "Word and character coun
 set("v", '<leader>pw"', [[:s/.*/"&",/<CR>]], { desc = 'Wrap selected lines: "line",' })
 set("n", '<leader>pw"', [[vip<Esc>:'<,'>s/.*/"&",/<CR>]], { desc = 'Wrap paragraph lines: "line",' })
 
--- Wrap bold
-set("v", "<C-b>", [[:s/.*/**&**/<CR>]], { desc = "Wrap selected lines: **line**" })
-set("n", "<C-b>", [[vip<Esc>:'<,'>s/.*/**&**/<CR>]], { desc = "Wrap paragraph lines: **line**" })
-
 -- Open in
 -- =====================================================================================================================
 
