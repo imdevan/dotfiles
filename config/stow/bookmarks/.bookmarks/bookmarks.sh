@@ -310,7 +310,7 @@ alias vtm='cd '\''/home/devy/.config/tmuxinator'\'' && tmux rename-window '\''tm
 alias bub='cd '\''/home/devy/Projects/clis/bubbletea/examples'\'' && tmux rename-window '\''bub'\'''
 
 # BM: pg|/home/devy/Projects/clis/pomquest||2026-08-11T10:03:42-07:00|2026-08-11T10:03:42-07:00|pom-g|jp||
-alias pg='cd '\''/home/devy/Projects/clis/pomquest'\'' && tmux rename-window '\''pom-g'\'' && jp'
+alias pg='cd '\''/home/devy/Projects/clis/pomquest'\'' && tmux rename-window '\''pom-g'\'' && jbi && pomquest'
 
 # BM: dtc|/home/devy/Projects/dog-training|/home/devy/Projects/dog-training|2026-09-15T15:06:03-07:00|2026-09-15T15:06:03-07:00|dtc|||src/content/docs/index.mdx
 alias dtc='cd '\''/home/devy/Projects/dog-training'\'' && tmux rename-window '\''dtc'\'' && nvim '\''src/content/docs/index.mdx'\'''
