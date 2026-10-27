@@ -10,13 +10,13 @@ gui:
 customCommands:
   - key: 'n'
     context: 'files'
-    description: 'Lazy commit: add/update/delete <file>'
+    description: 'Lazy commit: add/update/delete <file or dir>'
     command: 'sh "$HOME/.config/lazygit/scripts/lazy-commit.sh" {{.SelectedPath | quote}}'
     loadingText: 'Committing...'
     output: log
   - key: 'N'
     context: 'files'
-    description: 'Lazy commit (nested): add/update/delete <file> <parent dir>'
+    description: 'Lazy commit (nested): add/update/delete <file or dir> <parent dir>'
     command: 'sh "$HOME/.config/lazygit/scripts/lazy-commit.sh" --nested {{.SelectedPath | quote}}'
     loadingText: 'Committing...'
     output: log

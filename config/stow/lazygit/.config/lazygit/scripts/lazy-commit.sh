@@ -1,8 +1,8 @@
 #!/bin/sh
-# Stage and commit a single file with a generated message, like the nvim
+# Stage and commit a single file or directory with a generated message, like the nvim
 # <leader>ga / <leader>gA utils (nvim/lua/utils/keymaps/git.lua).
 #
-# usage: lazy-commit.sh [--nested] <path>
+# usage: lazy-commit.sh [--nested] <path>   (file or directory)
 #   "<verb> <name>"           e.g. "update github"
 #   "<verb> <name> <parent>"  (--nested) e.g. utils/github.lua -> "update github util"
 # verb is add (not in HEAD), delete (gone from worktree) or update.
@@ -13,14 +13,9 @@ if [ "$1" = "--nested" ]; then
   shift
 fi
 
-file="$1"
+file="${1%/}"
 if [ -z "$file" ]; then
   echo "usage: lazy-commit.sh [--nested] <path>" >&2
-  exit 1
-fi
-
-if [ -d "$file" ]; then
-  echo "lazy-commit: '$file' is a directory, select a file" >&2
   exit 1
 fi
 
@@ -33,7 +28,10 @@ else
 fi
 
 name=$(basename "$file")
-name="${name%.*}"
+# keep dir names like conf.d intact (also when the dir was deleted)
+if [ ! -d "$file" ] && [ "$(git cat-file -t "HEAD:$file" 2>/dev/null)" != "tree" ]; then
+  name="${name%.*}"
+fi
 [ -z "$name" ] && name=$(basename "$file") # dotfiles like .zshrc
 
 msg="$verb $name"
@@ -42,5 +40,9 @@ if [ "$nested" -eq 1 ]; then
   [ "$parent" != "." ] && msg="$verb $parent $name"
 fi
 
-git add -A -- "$file" || exit 1
+# skip add when a deletion is already staged (e.g. after undo), git add would
+# fail on the unmatched pathspec; commit -- <path> still picks it up
+if [ -e "$file" ] || git ls-files --error-unmatch -- "$file" >/dev/null 2>&1; then
+  git add -A -- "$file" || exit 1
+fi
 git commit -m "$msg" -- "$file"
