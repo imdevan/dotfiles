@@ -10,7 +10,8 @@ import catppuccin
 # Must load first
 config.load_autoconfig()
 
-path_to_start_page = "localhost:8081"
+# path_to_start_page = "localhost:8081"
+path_to_start_page = "localhost:4321/training/vocab"
 # path_to_start_page = "https://devan.gg/cosmic"
 # path_to_start_page = "https://chatgpt.com/chat"
 # path_to_start_page = "https://github.com/news-s/Qutebrowser-config/blob/main/config.py"
