@@ -8,19 +8,19 @@ hl.config({
     gaps_out = 8,
     -- gaps_in = 0,
     -- gaps_out = 0,
-    border_size = 0,
+    -- border_size = 0,
     -- border_size = 1,
-    -- border_size = 2,
+    border_size = 2,
     -- gaps_in = 8, gaps_out = 64, border_size = 2,
 
     col = {
       -- active_border = "rgba(52CFFFFF)", -- baby blue
       -- active_border = "rgba(94C7C8FF)", -- lighter blue
       -- active_border = "rgba(FD79F9FF)", -- pink
-      active_border = "rgba(FEC4FFFF)", -- light pink
+      -- active_border = "rgba(FEC4FFFF)", -- light pink
       -- active_border = "rgba(E2C264FF)", -- yellow
       -- active_border = "rgba(4aeb85FF)", -- green
-      inactive_border = "rgba(FFFFFF22)", -- clear
+      inactive_border = "rgba(FFFFFF19)", -- clear
       -- inactive_border = "rgba(000000aa)",
       -- inactive_border = "rgba(000000ff)", -- black
     },

@@ -11,7 +11,7 @@ hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 2 })
 hl.monitor({ output = "eDP-1", mode = "1920x1080@60.01", position = "0x0", scale = 1.5 })
 -- hl.monitor({ output = "eDP-1", mode = "1920x1080@60.01", position = "0x0", scale = 1.2 })
 
-hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@74.99", position = "auto", scale = 1.2 })
+hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@74.99", position = "auto", scale = 1 })
 -- hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@74.99", position = "auto", scale = 1.2, mirror = "eDP-1" })
 -- hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@60.01", position = "auto", scale = 1.2 })
 
