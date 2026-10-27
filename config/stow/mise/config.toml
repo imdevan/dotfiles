@@ -1,0 +1,16 @@
+[tools]
+bun = "latest"
+claude = "latest"
+codex = "latest"
+gh = "latest"
+go = "latest"
+node = "26.8.2"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
+
+[settings.upgrade]
+auto_prune = false
+
+[settings.ruby]
+compile = false
