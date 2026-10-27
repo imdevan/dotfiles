@@ -47,12 +47,12 @@ vim.schedule(function()
     local wk = require("which-key")
 
     wk.add({
-      { "<leader>o", group = " Open in editor" },
-      { "<leader>p", group = " Personal" },
-      { "<leader>ph", group = " Convert to header" },
+      { "<leader>o",   group = " Open in editor" },
+      { "<leader>p",   group = " Personal" },
+      { "<leader>ph",  group = " Convert to header" },
       { "<leader>phh", group = " Copy headers" },
-      { "<leader>po", group = " Whole page commands" },
-      { "<leader>pt", group = " Toggle things" },
+      { "<leader>po",  group = " Whole page commands" },
+      { "<leader>pt",  group = " Toggle things" },
     })
   end)
 end)
@@ -84,6 +84,16 @@ local silent_opts = { silent = true }
 -- Save
 set("n", "<M-s>", "<CMD>write<CR>", silent_opts)
 set("i", "<M-s>", "<CMD>write<CR>", silent_opts)
+
+-- Save & lazy commit
+multi_set("n,i", "<M-g>", function()
+  vim.cmd("write")
+  git_utils.lazy_commit()
+end, { desc = "Save & lazy commit", silent = true })
+multi_set("n,i", "<M-G>", function()
+  vim.cmd("write")
+  git_utils.lazy_nested_commit()
+end, { desc = "Save & lazy commit (nested)", silent = true })
 
 set("i", "<C-n>", "<CMD>Nerdy<CR>", silent_opts)
 
@@ -361,9 +371,9 @@ set("n", "<C-b>", [[vip<Esc>:'<,'>s/.*/**&**/<CR>]], { desc = "Wrap paragraph li
 
 -- Open in external editor
 local editors = {
-  { key = "v", cmd = "code", desc = "Open file and parent folder in VS Code" },
-  { key = "c", cmd = "cursor", desc = "Open in Cursor at line" },
-  { key = "k", cmd = "kiro", desc = "Open in Kiro at line" },
+  { key = "v", cmd = "code",        desc = "Open file and parent folder in VS Code" },
+  { key = "c", cmd = "cursor",      desc = "Open in Cursor at line" },
+  { key = "k", cmd = "kiro",        desc = "Open in Kiro at line" },
   { key = "g", cmd = "antigravity", desc = "Open in Antigravity at line" },
 }
 
