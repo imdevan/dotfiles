@@ -16,7 +16,10 @@ end
 hl.unbind("CTRL + ALT + J")
 hl.unbind("CTRL + ALT + H")
 hl.unbind("CTRL + SHIFT + Q")
-hl.unbind("SUPER + G") -- was: toggle window grouping
+hl.unbind("SUPER + G")         -- was: toggle window grouping
+hl.unbind("SUPER + SHIFT + C") -- was: Calendar (HEY)
+hl.unbind("SUPER + SHIFT + M") -- was: Music (Spotify)
+hl.unbind("SUPER + SHIFT + X") -- was: Twatter
 
 -- Menus / system
 -- ================================================================================
@@ -49,6 +52,9 @@ rebind("F10", "Chromium", "omarchy-launch-or-focus chromium")
 -- Work sessions
 rebind("SUPER + SHIFT + G", "Get to work", scripts .. "get-to-work.sh") -- was: Signal
 rebind("SUPER + SHIFT + E", "End work", scripts .. "end-work.sh")       -- was: Email
+
+-- Notes
+rebind("SUPER + SHIFT + N", "Quick note", { launch = "xdg-terminal-exec zsh -ic qn" }) -- was: Editor
 
 -- Focus / swap (vim keys)
 -- ================================================================================
@@ -109,8 +115,8 @@ rebind("SUPER + SHIFT + CTRL + S", "Toggle workspace layout (dwindle/scrolling)"
 
 -- Workspaces / monitors
 -- ================================================================================
-rebind("SUPER + SHIFT + L", "Next workspace (wrap at 5)", scripts .. "workspace-switch.sh next")
-rebind("SUPER + SHIFT + H", "Previous workspace (wrap at 5)", scripts .. "workspace-switch.sh prev")
+rebind("SUPER + SHIFT + H", "Move window to left monitor", hl.dsp.window.move({ monitor = "l" }))
+rebind("SUPER + SHIFT + L", "Move window to right monitor", hl.dsp.window.move({ monitor = "r" }))
 rebind("SUPER + SHIFT + RIGHT", "Next workspace (wrap at 5)", scripts .. "workspace-switch.sh next")    -- was: swap window right
 rebind("SUPER + SHIFT + LEFT", "Previous workspace (wrap at 5)", scripts .. "workspace-switch.sh prev") -- was: swap window left
 
