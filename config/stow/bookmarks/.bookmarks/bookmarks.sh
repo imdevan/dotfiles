@@ -318,3 +318,12 @@ alias dtc='cd '\''/home/devy/Projects/dog-training'\'' && tmux rename-window '\'
 # BM: phub|/home/devy/Projects/clis/project-hub||2026-10-16T11:45:57-07:00|2026-10-16T11:45:57-07:00|phub|||
 alias phub='cd '\''/home/devy/Projects/clis/project-hub'\'' && tmux rename-window '\''phub'\'''
 
+# BM: vocab|/home/devy/Projects/training|/home/devy/Projects/training|2026-10-22T11:22:58-07:00|2026-10-22T11:22:58-07:00|vocab|||src/content/docs/vocab.mdx
+alias vocab='cd '\''/home/devy/Projects/training'\'' && tmux rename-window '\''vocab'\'' && nvim '\''src/content/docs/vocab.mdx'\'''
+
+# BM: oma|/home/devy/.config/omarchy||2026-10-22T14:02:29-07:00|2026-10-22T14:02:29-07:00|oma|||
+alias oma='cd '\''/home/devy/.config/omarchy'\'' && tmux rename-window '\''oma'\'''
+
+# BM: super-tab|/home/devy/Projects/nvim_plugins/super-tab.nvim||2026-10-26T21:44:41-07:00|2026-10-26T21:45:46-07:00|super-tab|cw||./
+alias super-tab='cd '\''/home/devy/Projects/nvim_plugins/super-tab.nvim'\'' && tmux rename-window '\''super-tab'\'' && cw && nvim '\''./'\'''
+
