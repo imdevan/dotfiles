@@ -310,7 +310,7 @@ alias vtm='cd '\''/home/devy/.config/tmuxinator'\'' && tmux rename-window '\''tm
 alias bub='cd '\''/home/devy/Projects/clis/bubbletea/examples'\'' && tmux rename-window '\''bub'\'''
 
 # BM: pg|/home/devy/Projects/clis/pomquest||2026-08-11T10:03:42-07:00|2026-08-11T10:03:42-07:00|pom-g|jp||
-alias pg='cd '\''/home/devy/Projects/clis/pomquest'\'' && tmux rename-window '\''pom-g'\'' && jbi && pomquest'
+alias pg='cd '\''/home/devy/Projects/clis/pomquest'\'' && tmux rename-window '\''pom-g'\'' && jp'
 
 # BM: dtc|/home/devy/Projects/dog-training|/home/devy/Projects/dog-training|2026-09-15T15:06:03-07:00|2026-09-15T15:06:03-07:00|dtc|||src/content/docs/index.mdx
 alias dtc='cd '\''/home/devy/Projects/dog-training'\'' && tmux rename-window '\''dtc'\'' && nvim '\''src/content/docs/index.mdx'\'''
@@ -326,4 +326,7 @@ alias oma='cd '\''/home/devy/.config/omarchy'\'' && tmux rename-window '\''oma'\
 
 # BM: super-tab|/home/devy/Projects/nvim_plugins/super-tab.nvim||2026-10-26T21:44:41-07:00|2026-10-26T21:45:46-07:00|super-tab|cw||./
 alias super-tab='cd '\''/home/devy/Projects/nvim_plugins/super-tab.nvim'\'' && tmux rename-window '\''super-tab'\'' && cw && nvim '\''./'\'''
+
+# BM: dog|/home/devy/Projects/training||2026-10-28T09:12:58-07:00|2026-10-28T09:14:20-07:00|dog|||./src/content/docs/vocab.mdx
+alias dog='cd '\''/home/devy/Projects/training'\'' && tmux rename-window '\''dog'\'' && nvim '\''./src/content/docs/vocab.mdx'\'''
 
