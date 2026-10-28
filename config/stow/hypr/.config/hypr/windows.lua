@@ -14,6 +14,15 @@ o.window({ tag = "default-opacity" }, { opacity = "1 1" })
 -- Omarchy opts browsers out of default-opacity, so match them explicitly
 -- o.window({ tag = "chromium-based-browser" }, { opacity = "0.84 0.84" })
 
+-- Small mpv window, overriding Omarchy's 875x600 floating-window size.
+-- Matches the tag too, since tag rules are applied after plain class rules.
+-- o.window({ tag = "floating-window", class = "^mpv$" }, { size = { 240, 135 } })
+o.window({ tag = "floating-window", class = "^mpv$" }, { size = { 320, 180 } })
+-- Top right, just under the tmux status bar. window_w is evaluated before the
+-- size rule applies, so the 320 width is subtracted directly.
+o.window({ tag = "floating-window", class = "^mpv$" }, { move = { "(monitor_w-331)", "34" } })
+-- o.window({ tag = "floating-window", class = "^mpv$" }, { size = { 720, 480 } })
+
 -- o.window("org.qutebrowser.qutebrowser", { opacity = "0.9 0.8" })
 -- o.window("chromium", { opacity = "1 1" })
 -- o.window("com.mitchellh.ghostty", { opacity = "0.9 0.8" })
