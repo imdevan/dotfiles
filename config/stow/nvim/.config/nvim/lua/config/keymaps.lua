@@ -434,6 +434,10 @@ set("n", "<C-c>", "gcc", { desc = "Toggle comment", remap = true })
 -- set("x", "<C-c>", "gc", { desc = "Toggle comment (visual)", remap = true })
 multi_set("x,v", "<C-c>", text_utils.comment_swap, { desc = "Toggle comment (swap)", remap = true })
 
+-- Toggle link (C-k)
+-- Wrap current word or selection in [<selection>](|), yank selection to default register
+multi_set("n,x", "<C-s-k>", markdown_utils.wrap_link, { desc = "Wrap word/selection in link" })
+
 -- Zen mode
 multi_set("n,x", "<M-CR>", snacks.zen.zen, { desc = "Toggle zen" })
 

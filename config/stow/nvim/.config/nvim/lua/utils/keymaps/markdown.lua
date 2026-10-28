@@ -607,5 +607,28 @@ function M.jump_to_prev_unchecked_checkbox()
   notify("No unchecked checkboxes found", vim.log.levels.INFO)
 end
 
+-- Wrap current word or selection in [<selection>](|), yank selection to default register
+function M.wrap_link()
+  -- Single :normal call, visual mode doesn't persist between calls
+  vim.cmd(fn.mode() == "n" and "normal! viwy" or "normal! y")
+
+  local text = fn.getreg('"'):gsub("\n$", "")
+  local s = fn.getpos("'<")
+  local e = fn.getpos("'>")
+  local s_row, s_col, e_row = s[2] - 1, s[3] - 1, e[2] - 1
+  local end_line = fn.getline(e[2])
+  local e_col = math.min(e[3], #end_line)
+  -- '> points at the start byte of the last char; include the whole (multibyte) char
+  local end_col = e_col == 0 and 0 or e_col - 1 + #fn.strcharpart(end_line:sub(e_col), 0, 1)
+
+  local new_lines = vim.split("[" .. text .. "]()", "\n")
+  api.nvim_buf_set_text(0, s_row, s_col, e_row, end_col, new_lines)
+
+  local last = #new_lines
+  local col = #new_lines[last] - 1 + (last == 1 and s_col or 0)
+  api.nvim_win_set_cursor(0, { s_row + last, col })
+  vim.cmd("startinsert")
+end
+
 return M
 
