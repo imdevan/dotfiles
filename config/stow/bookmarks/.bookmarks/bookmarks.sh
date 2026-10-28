@@ -330,3 +330,6 @@ alias super-tab='cd '\''/home/devy/Projects/nvim_plugins/super-tab.nvim'\'' && t
 # BM: dog|/home/devy/Projects/training||2026-10-28T09:12:58-07:00|2026-10-28T09:14:20-07:00|dog|||./src/content/docs/vocab.mdx
 alias dog='cd '\''/home/devy/Projects/training'\'' && tmux rename-window '\''dog'\'' && nvim '\''./src/content/docs/vocab.mdx'\'''
 
+# BM: glassy|/home/devy/.config/omarchy/plugins/glassy.bar||2026-10-28T11:17:47-07:00|2026-10-28T11:17:47-07:00|glassy|||
+alias glassy='cd '\''/home/devy/.config/omarchy/plugins/glassy.bar'\'' && tmux rename-window '\''glassy'\'''
+
