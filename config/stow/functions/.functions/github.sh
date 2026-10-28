@@ -425,6 +425,44 @@ function enable_pages () {
   fi
 }
 
+function git_to_ssh() {
+  # convert current origin url to ssh url
+  local origin_url=$(git remote get-url origin 2>/dev/null)
+
+  if [ -z "$origin_url" ]; then
+    echo "No origin remote found" >&2
+    return 1
+  fi
+
+  if [[ "$origin_url" == git@* ]]; then
+    echo "Origin already uses SSH: $origin_url"
+    return 0
+  fi
+
+  if [[ ! "$origin_url" =~ ^(https?|ssh)://([^@/]+@)?([^/:]+)(:[0-9]+)?/(.+)$ ]]; then
+    echo "Unrecognized origin URL: $origin_url" >&2
+    return 1
+  fi
+
+  # bash uses BASH_REMATCH, zsh uses match (unless BASH_REMATCH is set)
+  # note: don't name a variable `path` -- in zsh it's tied to $PATH
+  local host repo_path
+  if [ -n "$ZSH_VERSION" ] && [[ ! -o BASH_REMATCH ]]; then
+    host="${match[3]}"
+    repo_path="${match[5]}"
+  else
+    host="${BASH_REMATCH[3]}"
+    repo_path="${BASH_REMATCH[5]}"
+  fi
+
+  repo_path="${repo_path%/}"
+  [[ "$repo_path" == *.git ]] || repo_path="${repo_path}.git"
+
+  local ssh_url="git@${host}:${repo_path}"
+  git remote set-url origin "$ssh_url" || return 1
+  g_suc "Origin updated: $origin_url -> $ssh_url"
+}
+alias gssh=git_to_ssh
 
 function git_origin() {
   # get github origin url and copy to clipboard
