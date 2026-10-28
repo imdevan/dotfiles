@@ -1,0 +1,79 @@
+-- -- Play a random video from ~/Videos (muted, looping) as the picture for audio-only files.
+--
+-- local utils = require("mp.utils")
+-- local options = require("mp.options")
+--
+-- local opts = { dir = "~/Videos/viz" }
+-- options.read_options(opts, "video-bg")
+--
+-- local EXTENSIONS = { mp4 = true, mkv = true, webm = true, mov = true, avi = true, m4v = true }
+--
+-- local active = false
+--
+-- local function pick_video()
+--   local dir = mp.command_native({ "expand-path", opts.dir })
+--   local videos = {}
+--   for _, name in ipairs(utils.readdir(dir, "files") or {}) do
+--     local ext = name:match("%.([^.]+)$")
+--     if ext and EXTENSIONS[ext:lower()] then
+--       videos[#videos + 1] = utils.join_path(dir, name)
+--     end
+--   end
+--   if #videos == 0 then return nil end
+--   return videos[math.random(#videos)]
+-- end
+--
+-- local function duration(path)
+--   local r = mp.command_native({
+--     name = "subprocess",
+--     playback_only = false,
+--     capture_stdout = true,
+--     args = { "ffprobe", "-v", "error", "-show_entries", "format=duration",
+--       "-of", "default=nw=1:nk=1", path },
+--   })
+--   return r.status == 0 and tonumber(r.stdout) or nil
+-- end
+--
+-- -- Filter option values need two levels of escaping: one for the option parser
+-- -- and one for the filtergraph parser.
+-- local function escape(path)
+--   local value = path:gsub("[\\':]", "\\%0")
+--   return (value:gsub("[\\'%[%],;]", "\\%0"))
+-- end
+--
+-- local function audio_only()
+--   local video = mp.get_property_native("current-tracks/video")
+--   return mp.get_property_native("current-tracks/audio") ~= nil
+--       and (video == nil or video.image or video.albumart)
+-- end
+--
+-- mp.register_event("file-loaded", function()
+--   if not audio_only() then return end
+--   local path = pick_video()
+--   if not path then return end
+--
+--   local len = duration(path)
+--   local start = len and math.random() * len * 0.9 or 0
+--
+--   mp.msg.info("background: " .. path)
+--   -- movie's own loop rewinds to seek_point, so play the rest of the video once
+--   -- from the random start, then loop the whole thing from the beginning.
+--   local file = escape(path)
+--   mp.set_property("lavfi-complex", string.format(
+--     "movie=filename=%s:seek_point=%.1f[first]; movie=filename=%s:loop=0[rest]; " ..
+--     "[first][rest]concat=n=2:v=1:a=0,setpts=N/FRAME_RATE/TB[vo]; [aid1]anull[ao]",
+--     file, start, file))
+--   -- Crop to fill the window instead of letterboxing.
+--   mp.set_property_number("panscan", 1)
+--   active = true
+-- end)
+--
+-- mp.register_event("end-file", function()
+--   if active then
+--     mp.set_property("lavfi-complex", "")
+--     mp.set_property_number("panscan", 0)
+--     active = false
+--   end
+-- end)
+--
+-- math.randomseed(os.time())
