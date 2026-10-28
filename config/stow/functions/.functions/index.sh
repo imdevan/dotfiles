@@ -52,6 +52,7 @@ source $func_path/re_run.sh
 source $func_path/math.sh
 source $func_path/docker_exec_it.sh
 source $func_path/clear_all_modules.sh
+source $func_path/img_utils.sh
 
 source $func_path/function_utils.sh
 
