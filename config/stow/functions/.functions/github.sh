@@ -71,15 +71,34 @@ function force_delete_branches() {
 alias gbd!="force_delete_branches"
 
 function new_repo() {
-  local ORIGIN=${GIT_SSH_URL}/${PWD##*/}.git
-  git init
+  local repo_name=${PWD##*/}
+  local username=$(gh api user --jq '.login')
+  local ORIGIN="git@github.com:${username}/${repo_name}.git"
+
+  git init -b main
   git add .
-  git commit -m ':tada: first commit!'
-  git remote add origin ${ORIGIN}
-  git push -u origin master
+  git commit -m 'first commit :tada:'
+  git branch -M main
+
+  # Create the repo on GitHub if it doesn't exist
+  if ! gh repo view "${username}/${repo_name}" >/dev/null 2>&1; then
+    gh repo create "$repo_name" --public --source=. || return 1
+  else
+    echo "Repository ${username}/${repo_name} already exists on GitHub. Skipping creation..."
+  fi
+
+  # Ensure origin exists and uses SSH URL
+  if git remote get-url origin >/dev/null 2>&1; then
+    git remote set-url origin "$ORIGIN"
+  else
+    git remote add origin "$ORIGIN"
+  fi
+
+  git push -u origin main
+  gh repo edit "${username}/${repo_name}" --default-branch main
   echo ${green}New Repo Created at $ORIGIN${reset}
 }
-alias gn='new_repo'
+alias gnr='new_repo'
 
 function git_reset() {
   git fetch
