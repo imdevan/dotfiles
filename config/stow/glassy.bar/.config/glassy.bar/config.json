@@ -1,0 +1,35 @@
+// Glassy Bar look. Saved changes apply live; whole-line // comments are allowed.
+// ~/.config/glassy.bar/config.json, when present, is used instead of this file.
+//
+// position: "top", "bottom", "left" or "right"; "" uses shell.json (bar dragging / `omarchy bar position`)
+// width:   "full", pixels (1200), or a percentage of the screen ("80%"); centered
+// margin:  edge = gap to the screen edge the bar sits on, sides = minimum gap to the other edges
+// padding: space between the pill's ends and the first/last widget
+// radius:  "pill" for fully rounded ends, or corner radius in pixels
+// opacity: background fill, 0 = clear glass to 1 = solid theme background
+// blur:    true blurs what's behind the bar (strength = Hyprland's decoration.blur settings)
+// border:  accent-colored outline; width 0 hides it
+// shadow:  inner shadow; depth in pixels, tint = how much theme accent mixes into it (0-1)
+{
+  "position": "top",
+  "width": "full",
+  "margin": {
+    "edge": 4,
+    "sides": 120
+  },
+  "padding": 0,
+  // "radius": 0,
+  // "opacity": 0.4,
+  // "background": "#000000",
+  "foreground": "#afffffff",
+  "blur": true,
+  "border": {
+    // "width": 1,
+    "opacity": 0.2
+  },
+  "shadow": {
+    "depth": 10,
+    "opacity": 0.5,
+    "tint": 0.3
+  }
+}
