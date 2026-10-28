@@ -46,10 +46,12 @@ hl.config({
       passes = 3,
       size = 6,
       -- Changes the color of the blurred area
-      -- vibrancy = 0.5,
-      vibrancy_darkness = 0.5,
+      vibrancy = 0.5,
+      -- vibrancy = 1,
+      -- vibrancy_darkness = 0.5,
       -- brightness = 0.7, 1, 1.5, 2
-      brightness = 1.25,
+      -- brightness = 1.25,
+      brightness = 1,
       -- Optional: Use xray to make windows look behind other windows
       -- xray = true,
     },
