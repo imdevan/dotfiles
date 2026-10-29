@@ -20,6 +20,11 @@ customCommands:
     command: 'sh "$HOME/.config/lazygit/scripts/lazy-commit.sh" --nested {{.SelectedPath | quote}}'
     loadingText: 'Committing...'
     output: log
+  - key: 'I'
+    context: 'files'
+    description: 'Toggle hiding nested repos'
+    command: 'sh "$HOME/.config/lazygit/scripts/toggle-nested-repos.sh"'
+    output: log
   - key: 'u'
     context: 'files'
     description: 'Undo last commit (soft reset, keeps changes staged)'
