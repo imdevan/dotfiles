@@ -333,3 +333,6 @@ alias dog='cd '\''/home/devy/Projects/training'\'' && tmux rename-window '\''dog
 # BM: glassy|/home/devy/.config/omarchy/plugins/glassy.bar||2026-10-28T11:17:47-07:00|2026-10-28T11:17:47-07:00|glassy|||
 alias glassy='cd '\''/home/devy/.config/omarchy/plugins/glassy.bar'\'' && tmux rename-window '\''glassy'\'''
 
+# BM: coding|/home/devy/Music/coding||2026-10-28T22:20:58-07:00|2026-10-28T22:20:58-07:00|coding|mpv ./||
+alias coding='cd '\''/home/devy/Music/coding'\'' && tmux rename-window '\''coding'\'' && mpv ./'
+
