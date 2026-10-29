@@ -17,6 +17,7 @@ hl.unbind("CTRL + ALT + J")
 hl.unbind("CTRL + ALT + H")
 hl.unbind("CTRL + SHIFT + Q")
 hl.unbind("SUPER + G")         -- was: toggle window grouping
+hl.unbind("SUPER + SHIFT + B") -- was: Browser
 hl.unbind("SUPER + SHIFT + C") -- was: Calendar (HEY)
 hl.unbind("SUPER + SHIFT + M") -- was: Music (Spotify)
 hl.unbind("SUPER + SHIFT + X") -- was: Twatter
