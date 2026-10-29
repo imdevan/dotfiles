@@ -8,28 +8,32 @@
 // radius:  "pill" for fully rounded ends, or corner radius in pixels
 // opacity: background fill, 0 = clear glass to 1 = solid theme background
 // blur:    true blurs what's behind the bar (strength = Hyprland's decoration.blur settings)
+// split:   true gives each bar section (left/center/right) its own pill; the bar between them is clear
 // border:  accent-colored outline; width 0 hides it
 // shadow:  inner shadow; depth in pixels, tint = how much theme accent mixes into it (0-1)
 {
-  "position": "top",
+  "position": "bottom",
   "width": "full",
   "margin": {
     "edge": 4,
     "sides": 120
+    // "edge": 0,
+    // "sides": 0
   },
-  "padding": 0,
+  "padding": 8,
   // "radius": 0,
+  "radius": "pill",
   // "opacity": 0.4,
   // "background": "#000000",
   "foreground": "#afffffff",
   "blur": true,
   "border": {
-    // "width": 1,
+    "width": 0,
     "opacity": 0.2
   },
   "shadow": {
     "depth": 10,
     "opacity": 0.5,
-    "tint": 0.3
+    "tint": 1
   }
 }
