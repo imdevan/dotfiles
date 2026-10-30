@@ -32,15 +32,21 @@ fi
 
 # stow dotfiles
 # ========================================================================================================================
-cd ~/dotfiles/config/stow
+# packages are grouped by os: global is stowed everywhere, plus the group for this os
+STOW_ROOT=~/dotfiles/config/stow
+stow_groups=(global)
+[[ $IS_MAC == true ]] && stow_groups+=(macos)
+[[ $IS_ARCH == true ]] && stow_groups+=(omarchyos)
 
 # stow stow config
-stow stowrc --target=$HOME
+stow -d "$STOW_ROOT/global" -t "$HOME" stowrc
 
 # remove conflicts
 # ========================================================================================================================
 # dry run stow and pull conflicting target paths (relative to $HOME) out of its warnings
-conflicts=$(stow -n */ --ignore=stowrc 2>&1 | sed -nE \
+conflicts=$(for group in "${stow_groups[@]}"; do
+  (cd "$STOW_ROOT/$group" && stow -n */ 2>&1)
+done | sed -nE \
   -e 's/^  \* cannot stow .* over existing target (.*) since .*/\1/p' \
   -e 's/^  \* existing target is [^:]*: (.*)/\1/p' | sort -u)
 
@@ -56,7 +62,10 @@ if [[ -n "$conflicts" ]]; then
 fi
 
 # stow everything else
-stow */ --ignore=stowrc
+for group in "${stow_groups[@]}"; do
+  echo "stowing $group"
+  (cd "$STOW_ROOT/$group" && stow */)
+done
 
 
 # set zsh as the login shell

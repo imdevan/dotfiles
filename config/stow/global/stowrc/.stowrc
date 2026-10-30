@@ -1,17 +1,14 @@
 # Global stow config
 # https://www.gnu.org/software/stow/manual/stow.html#Resource-Files
 
-# Your stow directory
---dir=~/dotfiles/config/stow/
+# No dir option set: packages are grouped by os (global, macos, omarchyos),
+# so the stow dir is whichever group you run stow from
 
 # Where they should be saved; generally home
 --target='~/'
-
-# this is a test
 
 # Ignore files and directories that contain the string ".stow_ignore" anywhere
 # e.g. .stow_ignore.file.txt, file.stow_ignore.txt, .stow_ignore/file.txt
 --ignore='\.stow_ignore'
 
 #  .stow-local-ignore can be used to ignore files locally
-

@@ -7,7 +7,7 @@
 set -e
 
 # Default wallpaper location
-wallpaper_location="$HOME/Wallpapers"
+wallpaper_location="$HOME/Pictures/Wallpapers"
 
 # Function to show usage
 show_usage() {

@@ -350,7 +350,7 @@ alt + down  - move into the first child directory by alphabetical order
 
 ## tmux
 
-see [./config/stow/tmux/.tmux.config](./config/stow/tmux/.tmux.config)
+see [./config/stow/global/tmux/.tmux.config](./config/stow/global/tmux/.tmux.config)
 
 leader L = C-f
 
@@ -361,7 +361,7 @@ L C-r - load session
 
 ## aerospace
 
-see [./config/stow/aerospace/.aerospace.toml](./config/stow/aerospace/.aerospace.toml)
+see [./config/stow/macos/aerospace/.aerospace.toml](./config/stow/macos/aerospace/.aerospace.toml)
 
 ## qutebrowser
 

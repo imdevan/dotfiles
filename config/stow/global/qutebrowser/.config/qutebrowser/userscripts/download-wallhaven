@@ -7,7 +7,7 @@
 current_url="$QUTE_URL"
 
 # Path to your download script
-script_path="$HOME/dotfiles/functions/scripts/download-wallhaven.sh"
+script_path="$HOME/.config/qutebrowser/scripts/download-wallhaven.sh"
 
 # Check if we're on a wallhaven page
 if [[ "$current_url" =~ ^https://wallhaven\.cc/w/[a-zA-Z0-9]+$ ]]; then

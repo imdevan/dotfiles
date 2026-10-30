@@ -6,8 +6,8 @@
 
 -- Full opacity by default. Omarchy applies "0.985 0.96" to the default-opacity
 -- tag, so override that same tag (apps that opt out of the tag stay untouched).
-o.window({ tag = "default-opacity" }, { opacity = "1 1" })
--- o.window({ tag = "default-opacity" }, { opacity = "0.98 0.6" })
+-- o.window({ tag = "default-opacity" }, { opacity = "1 1" })
+o.window({ tag = "default-opacity" }, { opacity = "0.98 0.6" })
 -- o.window({ tag = "default-opacity" }, { opacity = "0.94 0.7" })
 -- o.window({ tag = "default-opacity" }, { opacity = "0.9 0.6" })
 -- o.window({ tag = "default-opacity" }, { opacity = "0.84 0.84" })

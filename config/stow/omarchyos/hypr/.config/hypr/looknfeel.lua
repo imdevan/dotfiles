@@ -17,9 +17,10 @@ end
 -- https://wiki.hypr.land/Configuring/Basics/Variables/#general
 hl.config({
   general = {
-    gaps_in = 4,
-    gaps_out = 8,
-    -- gaps_in = 0,
+    -- gaps_in = 4,
+    -- gaps_out = 8,
+    gaps_out = 4,
+    gaps_in = 0,
     -- gaps_out = 0,
     -- border_size = 0,
     border_size = 1,
@@ -64,8 +65,8 @@ hl.config({
       -- vibrancy = 1,
       -- vibrancy_darkness = 0.5,
       -- brightness = 0.7, 1, 1.5, 2
-      brightness = 1.5,
-      -- brightness = 1.25,
+      -- brightness = 1.5,
+      brightness = 1.25,
       -- brightness = 1,
       -- Optional: Use xray to make windows look behind other windows
       -- xray = true,

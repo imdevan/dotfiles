@@ -45,16 +45,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ### GNU stow
 
 ```sh
-cd ~/dotfiles/config/stow
-stow -t ~/ stow
+stow -d ~/dotfiles/config/stow/global -t ~/ stowrc
 ```
 
 
 ### connect everything else
 
 ```sh
-cd ~/dotfiles/config/stow
-stow *
+# global is shared; add macos or omarchyos for the current os
+cd ~/dotfiles/config/stow/global && stow */
+cd ~/dotfiles/config/stow/macos && stow */
 ```
 
 ### wezterm
@@ -106,7 +106,7 @@ https://www.lazyvim.org/
 Using GNU stow and installed aliases: 
 
 ```sh
-cd ~/dotfiles/config/stow/
+cd ~/dotfiles/config/stow/global
 sto nvim
 ```
 

@@ -1,0 +1,97 @@
+{
+  "bar": {
+    "centerAnchor": "omarchy.clock",
+    "layout": {
+      "center": [],
+      "left": [
+        {
+          "id": "omarchy.workspaces"
+        }
+      ],
+      "right": [
+        {
+          "id": "io.github.9khaledsayed.task-manager"
+        },
+        {
+          "id": "awkent01.touchpad"
+        },
+        {
+          "id": "omarchy.audio"
+        },
+        {
+          "id": "lgse.sandman"
+        },
+        {
+          "id": "omarchy.monitor"
+        },
+        {
+          "id": "omarchy.network"
+        },
+        {
+          "id": "omarchy.bluetooth"
+        },
+        {
+          "id": "bibek.focusd"
+        },
+        {
+          "id": "danexpo.crt"
+        },
+        {
+          "id": "jrmmhm.pocket",
+          "locked": "eDP-1",
+          "members": "omarchy.tray, io.github.9khaledsayed.task-manager, awkent01.touchpad, omarchy.audio, lgse.sandman, omarchy.monitor, omarchy.monitor, omarchy.network, omarchy.bluetooth, bibek.focusd, danexpo.crt",
+          "pinned": ""
+        },
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "bylund.ledge"
+        },
+        {
+          "id": "omarchy.indicators"
+        },
+        {
+          "id": "jankeesvw.downloads"
+        },
+        {
+          "id": "omarchy.agents"
+        },
+        {
+          "id": "omarchy.power"
+        },
+        {
+          "id": "omarchy.clock",
+          "format": "HH:mm",
+          "formatAlt": "d MMMM 'W'ww yyyy",
+          "verticalFormat": "HH\n—\nmm"
+        },
+        {
+          "id": "omarchy.keyboard-layout"
+        }
+      ]
+    },
+    "position": "bottom",
+    "transparent": false,
+    "id": "glassy.bar"
+  },
+  "idle": {
+    "lock": 1200,
+    "screensaver": 1200
+  },
+  "plugins": [
+    {
+      "id": "io.github.sirjul1337.lock-explorer",
+      "tourSeen": true,
+      "openAs": "panel",
+      "design": "ghosts"
+    }
+  ],
+  "version": 1,
+  "disabledPlugins": [
+    "omarchy.lock"
+  ],
+  "cloneSourceRestores": [
+    "io.github.sirjul1337.lock-explorer"
+  ]
+}
