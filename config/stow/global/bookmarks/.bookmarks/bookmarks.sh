@@ -93,8 +93,8 @@ alias taskm='cd '\''/home/devy/Projects/task_manager'\'' && tmux rename-window '
 # BM: task|/home/devy/Projects/nvim_plugins/task-manager.nvim||2026-04-08T11:29:24-07:00|2026-07-02T14:11:11-07:00|tm|||
 alias task='cd '\''/home/devy/Projects/nvim_plugins/task-manager.nvim'\'' && tmux rename-window '\''tm'\'''
 
-# BM: hc|/home/devy/dotfiles/config/stow/hypr/.config/hypr||2026-04-14T13:11:26-07:00|2026-04-14T13:11:46-07:00|hc|||.
-alias hc='cd '\''/home/devy/dotfiles/config/stow/hypr/.config/hypr'\'' && tmux rename-window '\''hc'\'' && nvim '\''.'\'''
+# BM: hc|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr||2026-04-14T13:11:26-07:00|2026-04-14T13:11:46-07:00|hc|||.
+alias hc='cd '\''/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr'\'' && tmux rename-window '\''hc'\'' && nvim '\''.'\'''
 
 # BM: way|/home/devy/.config/waybar||2026-04-19T10:46:55-07:00|2026-04-19T10:47:30-07:00|way|||style.css
 alias way='cd '\''/home/devy/.config/waybar'\'' && tmux rename-window '\''way'\'' && nvim '\''style.css'\'''
@@ -117,11 +117,11 @@ alias rndp='cd '\''/home/devy/Projects/react-native-dropdown-picker'\'' && tmux 
 # BM: qt|/home/devy/Projects/dance-partner-vibes|/home/devy/Projects/dance-partner-vibes|2026-05-01T17:32:50-07:00|2026-05-01T17:32:50-07:00|qt|||/home/devy/dotfiles/config/stow/qutebrowser/.config/qutebrowser/config.py
 alias qt='cd '\''/home/devy/Projects/dance-partner-vibes'\'' && tmux rename-window '\''qt'\'' && nvim '\''/home/devy/dotfiles/config/stow/qutebrowser/.config/qutebrowser/config.py'\'''
 
-# BM: hcl|/home/devy/dotfiles/config/stow/hypr/.config/hypr|/home/devy/dotfiles/config/stow/hypr/.config/hypr|2026-05-01T18:25:22-07:00|2026-05-01T18:25:22-07:00|hcl|||looknfeel.conf
-alias hcl='cd '\''/home/devy/dotfiles/config/stow/hypr/.config/hypr'\'' && tmux rename-window '\''hcl'\'' && nvim '\''looknfeel.conf'\'''
+# BM: hcl|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr|2026-05-01T18:25:22-07:00|2026-10-30T11:53:38-07:00|hcl|||./looknfeel.conf
+alias hcl='cd '\''/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr'\'' && tmux rename-window '\''hcl'\'' && nvim '\''./looknfeel.conf'\'''
 
-# BM: hcw|/home/devy/dotfiles/config/stow/hypr/.config/hypr|/home/devy/dotfiles/config/stow/hypr/.config/hypr|2026-05-01T18:25:36-07:00|2026-05-01T18:25:36-07:00|hcw|||windows.conf
-alias hcw='cd '\''/home/devy/dotfiles/config/stow/hypr/.config/hypr'\'' && tmux rename-window '\''hcw'\'' && nvim '\''windows.conf'\'''
+# BM: hcw|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr|2026-05-01T18:25:36-07:00|2026-05-01T18:25:36-07:00|hcw|||windows.conf
+alias hcw='cd '\''/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr'\'' && tmux rename-window '\''hcw'\'' && nvim '\''windows.conf'\'''
 
 # BM: vnu|/home/devy/dotfiles|/home/devy/dotfiles|2026-05-01T19:33:59-07:00|2026-05-01T19:33:59-07:00|vnu|||config/stow/nu/.config/nushell/aliases.nu
 alias vnu='cd '\''/home/devy/dotfiles'\'' && tmux rename-window '\''vnu'\'' && nvim '\''config/stow/nu/.config/nushell/aliases.nu'\'''
@@ -183,7 +183,7 @@ alias li='cd '\''/home/devy/Projects/clis/The Wheel/l'\'' && tmux rename-window 
 # BM: qute|/home/devy/dotfiles/config/stow/qutebrowser||2026-06-12T08:38:23-07:00|2026-06-12T08:38:23-07:00|qute|||
 alias qute='cd '\''/home/devy/dotfiles/config/stow/qutebrowser'\'' && tmux rename-window '\''qute'\'''
 
-# BM: fun|/home/devy/Projects/clis/functions||2026-06-18T08:59:00-07:00|2026-07-20T23:17:30-07:00|fun|||
+# BM: fun|/home/devy/Projects/clis/functions||2026-06-18T08:59:00-07:00|2026-11-04T08:05:34-08:00|fun|||
 alias fun='cd '\''/home/devy/Projects/clis/functions'\'' && tmux rename-window '\''fun'\'''
 
 # BM: lk|/home/devy/Projects/The Wheel/l||2026-06-18T23:19:55-07:00|2026-06-18T23:19:55-07:00|l|kw||
@@ -198,8 +198,8 @@ alias zd='cd '\''/home/devy/dotfiles'\'' && tmux rename-window '\''dot'\'''
 # BM: zp|/home/devy/Projects/prompter/prompter-cli||2026-06-21T13:17:42-07:00|2026-06-21T13:17:42-07:00|prmpt|||
 alias zp='cd '\''/home/devy/Projects/prompter/prompter-cli'\'' && tmux rename-window '\''prmpt'\'''
 
-# BM: zh|/home/devy/dotfiles/config/stow/hypr/.config/hypr||2026-06-21T13:18:07-07:00|2026-06-21T13:18:07-07:00|hypr|||
-alias zh='cd '\''/home/devy/dotfiles/config/stow/hypr/.config/hypr'\'' && tmux rename-window '\''hypr'\'''
+# BM: zh|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr||2026-06-21T13:18:07-07:00|2026-06-21T13:18:07-07:00|hypr|||
+alias zh='cd '\''/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr'\'' && tmux rename-window '\''hypr'\'''
 
 # BM: np|/home/devy/.config/nvim/lua/plugins||2026-06-21T13:19:09-07:00|2026-06-21T13:19:09-07:00||||
 alias np='cd '\''/home/devy/.config/nvim/lua/plugins'\'''
@@ -249,8 +249,8 @@ alias down='cd '\''/home/devy/Downloads'\'' && tmux rename-window '\''down'\'''
 # BM: gdocs|/home/devy/Projects/clis/go-cli-docs||2026-07-06T12:42:05-07:00|2026-07-06T12:42:05-07:00|gdocs|||
 alias gdocs='cd '\''/home/devy/Projects/clis/go-cli-docs'\'' && tmux rename-window '\''gdocs'\'''
 
-# BM: vt|/home/devy/dotfiles/config/stow/tmux||2026-07-08T13:04:02-07:00|2026-08-05T12:34:44-07:00|vt|||.config/tmux/tmux.conf
-alias vt='cd '\''/home/devy/dotfiles/config/stow/tmux'\'' && tmux rename-window '\''vt'\'' && nvim '\''.config/tmux/tmux.conf'\'''
+# BM: vt|/home/devy/dotfiles|/home/devy/dotfiles|2026-07-08T13:04:02-07:00|2026-11-04T10:40:21-08:00|vt|||config/stow/global/tmux/.config/tmux/tmux.conf
+alias vt='cd '\''/home/devy/dotfiles'\'' && tmux rename-window '\''vt'\'' && nvim '\''config/stow/global/tmux/.config/tmux/tmux.conf'\'''
 
 # BM: gopack|/home/devy/Projects/clis/go-cli-package||2026-07-08T13:42:09-07:00|2026-07-08T13:42:09-07:00||||
 alias gopack='cd '\''/home/devy/Projects/clis/go-cli-package'\'''
@@ -333,6 +333,24 @@ alias dog='cd '\''/home/devy/Projects/training'\'' && tmux rename-window '\''dog
 # BM: glassy|/home/devy/.config/omarchy/plugins/glassy.bar||2026-10-28T11:17:47-07:00|2026-10-28T11:17:47-07:00|glassy|||
 alias glassy='cd '\''/home/devy/.config/omarchy/plugins/glassy.bar'\'' && tmux rename-window '\''glassy'\'''
 
-# BM: coding|/home/devy/Music/coding||2026-10-28T22:20:58-07:00|2026-10-28T22:20:58-07:00|coding|mpv ./||
-alias coding='cd '\''/home/devy/Music/coding'\'' && tmux rename-window '\''coding'\'' && mpv ./'
+# BM: coding|/home/devy/Music/coding||2026-10-28T22:20:58-07:00|2026-10-30T11:29:54-07:00|coding||mpv --no-video --shuffle ./*|
+alias coding='cd '\''/home/devy/Music/coding'\'' && tmux rename-window '\''coding'\'' && mpv --no-video --shuffle ./*'
+
+# BM: func|/home/devy/Projects/clis/func||2026-10-29T23:40:15-07:00|2026-10-29T23:40:15-07:00|func|||
+alias func='cd '\''/home/devy/Projects/clis/func'\'' && tmux rename-window '\''func'\'''
+
+# BM: sto|/home/devy/Projects/clis/super-todo||2026-10-30T14:56:28-07:00|2026-10-30T14:56:28-07:00|sto|cw||
+alias sto='cd '\''/home/devy/Projects/clis/super-todo'\'' && tmux rename-window '\''sto'\'' && cw'
+
+# BM: vq|/home/devy/dotfiles/config/stow/global/qutebrowser|/home/devy/dotfiles/config/stow/global/qutebrowser|2026-11-02T16:45:34-08:00|2026-11-02T16:45:34-08:00|vq|||.config/qutebrowser/config.py
+alias vq='cd '\''/home/devy/dotfiles/config/stow/global/qutebrowser'\'' && tmux rename-window '\''vq'\'' && nvim '\''.config/qutebrowser/config.py'\'''
+
+# BM: vmpv|/home/devy/dotfiles/config/stow/global/mpv/.config/mpv|/home/devy/dotfiles/config/stow/global/mpv/.config/mpv|2026-11-03T13:30:03-08:00|2026-11-03T13:30:19-08:00|vmpv|||mpv.conf
+alias vmpv='cd '\''/home/devy/dotfiles/config/stow/global/mpv/.config/mpv'\'' && tmux rename-window '\''vmpv'\'' && nvim '\''mpv.conf'\'''
+
+# BM: vm|/home/devy/dotfiles/config/stow/global/mpv/.config/mpv|/home/devy/dotfiles/config/stow/global/mpv/.config/mpv|2026-11-03T13:30:08-08:00|2026-11-03T13:30:08-08:00|vm|||mpv.conf
+alias vm='cd '\''/home/devy/dotfiles/config/stow/global/mpv/.config/mpv'\'' && tmux rename-window '\''vm'\'' && nvim '\''mpv.conf'\'''
+
+# BM: vmpb|/home/devy/dotfiles/config/stow/global/mpv/.config/mpv|/home/devy/dotfiles/config/stow/global/mpv/.config/mpv|2026-11-03T13:30:13-08:00|2026-11-03T13:30:13-08:00|vmpb|||mpv.conf
+alias vmpb='cd '\''/home/devy/dotfiles/config/stow/global/mpv/.config/mpv'\'' && tmux rename-window '\''vmpb'\'' && nvim '\''mpv.conf'\'''
 
