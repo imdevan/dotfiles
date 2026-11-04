@@ -1,0 +1,11 @@
+# https://github.com/jesseduffield/lazydocker/blob/master/docs/Config.md
+
+# https://github.com/jesseduffield/lazydocker/blob/master/docs/Config.md#custom-commands
+# lazydocker can't bind custom commands to keys: press `c` on a container to pick one
+customCommands:
+  containers:
+    - name: 'open logs in nvim'
+      attach: true
+      shell: true
+      command: 'docker logs --timestamps {{ .Container.ID }} 2>&1 | nvim -R -c "set ft=log" -c "normal! G" -'
+      serviceNames: []
