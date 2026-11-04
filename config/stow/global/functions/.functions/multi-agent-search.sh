@@ -1,5 +1,8 @@
 #!/bin/sh bash
 
+# TODO: script. possibly small go cli
+
+
 # Function: multi-agent-search
 # Description: Open multiple agens in browser via query param
 # Usage: multi-agent-search [arguments]

@@ -1,3 +1,6 @@
+# TODO: find a better place for this. possily add os specific folders to funcs functionality
+
+
 # Hide and show hiddenfiles (Mac only)
 # Function to show or hide files
 # Takes either a YES or NO as argument

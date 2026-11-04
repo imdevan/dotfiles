@@ -1,3 +1,7 @@
+
+# TODO: clean up. possibly remove gac,gap, for lazygit. or move to individual scripts
+
+
 # source $dotfile_dir/.gitVars
 DEFAULT_BRANCH='development'
 DEFAULT_ORIGIN='origin'
@@ -37,7 +41,7 @@ function git_add_push() {
   git push
 }
 alias gap="git_add_push"
-#
+
 # Calls git add, git commit, and git push
 # Takes commit message
 function git_add_push_update() {

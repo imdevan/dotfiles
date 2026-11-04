@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# TODO: script
+
+
 # Function: clear_all_modules
 # Description: Clear all specified folders (defaults to common build/module directories)
 # Usage: clear_all_modules [-f] [folder_name1] [folder_name2] ...

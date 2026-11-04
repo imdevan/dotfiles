@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# TODO: script
+
+
+
 # Function: simulator
 # Description: Create or open ios simulator
 # Usage: simulator [arguments]

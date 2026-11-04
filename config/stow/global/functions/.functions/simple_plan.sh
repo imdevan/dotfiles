@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# TODO: script. possibly small go cli 
+
+
+
 # Function: simple_plan
 # Description: Create simple plan from current dir from template
 # Usage: simple_plan [-f]

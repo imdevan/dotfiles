@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+# TODO: script
+
 # Function: jobbies
 # Description: Open google chrome to job search bookmarks with dynamic configuration
 # Usage: jobbies [keyword1] [keyword2] ... or jobbies --config to show configuration

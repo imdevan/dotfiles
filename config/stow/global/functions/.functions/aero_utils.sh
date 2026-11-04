@@ -1,5 +1,9 @@
 #!/bin/sh
 
+
+# TODO: script. ossibly move inside of aerosace config stow dir
+
+
 # Function: aero_utils
 # Description: 
 #

@@ -1,3 +1,8 @@
+
+# TODO: script
+# rename to referesh_facebook_link
+
+
 # Calls git add, git commit, and git push
 # Takes commit message
 function referesh_facebook_link() {

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+
+# TODO: move to small go cli
+
+
+
 # Function: query_db
 # Description: Query nushell db
 # Usage: query_db [arguments]

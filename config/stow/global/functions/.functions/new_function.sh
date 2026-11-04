@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# TODO: intergrate into funcs
+
+
 # New function
 # Usage: new_function <function_name> [description]
 # Example: new_function my_function "This is a test function"

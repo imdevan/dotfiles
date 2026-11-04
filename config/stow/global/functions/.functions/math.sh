@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# TODO:  rewrite to small go cli
+
+
 # Function: math
 # Description: Do math
 # Usage: math [arguments]

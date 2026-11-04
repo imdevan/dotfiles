@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO: script. name: smoll. possibly small go script
+
 # Function: smoll
 # Description: make all imgs in folder small
 #   optionally take arg width

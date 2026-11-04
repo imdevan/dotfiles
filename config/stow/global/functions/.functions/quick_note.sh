@@ -5,8 +5,7 @@
 # Description: A quick note in the right folder
 # Usage: quick_note [arguments]
 # Alias: qn
-#
-# TODO: consider replacing with https://jrnl.sh/en/stable/overview/
+# Future note: consider moving to small go cli
 
 VAULT_DIR="$HOME/Documents/obsidian-vault"
 NOTES_DIR="$VAULT_DIR/quick_notes"

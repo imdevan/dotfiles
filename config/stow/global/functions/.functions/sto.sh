@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# TODO: script
+
+
+
 # Function: sto
 # Description: Functions to help with stowing dotfiles
 # Usage: sto [arguments]

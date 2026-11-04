@@ -1,5 +1,9 @@
 #!/bin/sh
 
+
+# TODO: script
+
+
 # Function: scripts
 # Description: Show available scripts in package.json
 # Usage: scripts [arguments]

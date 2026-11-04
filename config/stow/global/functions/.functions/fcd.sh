@@ -14,4 +14,4 @@ function fzf_cd() {
 }
 
 # Create alias
-alias fcd="fzf_cd"
+alias fd="fzf_cd"

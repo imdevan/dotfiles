@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO: script
+
 # Function: real_fake_person
 # Description: [Add description here]
 # Usage: real_fake_person [arguments]

@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# TODO: script
+
+
 # Function: sh_utils
 # Description: Shell utils
 # Usage: sh_utils [arguments]
@@ -66,4 +70,3 @@ zsh_profile_sum(){
   }'
 }
 
-alias zps="zsh_profile_sum"
