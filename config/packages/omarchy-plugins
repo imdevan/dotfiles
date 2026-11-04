@@ -7,3 +7,4 @@ omarchy plugin add https://github.com/andreas-bylund/omarchy-ledge.git --enable
 omarchy plugin add https://github.com/BibekBhusal0/omarchy-focusd.git --enable
 omarchy plugin add https://github.com/jrmmhm/omarchy-pocket.git --enable
 omarchy plugin add https://github.com/9khaledSayed/omarchy-task-manager.git --enable
+omarchy plugin add https://github.com/bwz-kk/omarchy-vibrance.git --enable
