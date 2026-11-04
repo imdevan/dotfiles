@@ -43,9 +43,6 @@
           "id": "jankeesvw.downloads"
         },
         {
-          "id": "bwzkk.vibrance"
-        },
-        {
           "id": "omarchy.indicators",
           "alwaysShow": true
         },
@@ -53,9 +50,12 @@
           "id": "omarchy.tray"
         },
         {
+          "id": "bwzkk.vibrance"
+        },
+        {
           "id": "jrmmhm.pocket",
           "locked": "",
-          "members": "omarchy.tray, io.github.9khaledsayed.task-manager, awkent01.touchpad, omarchy.audio, lgse.sandman, omarchy.monitor, omarchy.monitor, omarchy.bluetooth, bibek.focusd, danexpo.crt, bylund.ledge, omarchy.network, jankeesvw.downloads, bwzkk.vibrance, omarchy.indicators",
+          "members": "omarchy.tray, io.github.9khaledsayed.task-manager, awkent01.touchpad, omarchy.audio, lgse.sandman, omarchy.monitor, omarchy.monitor, omarchy.bluetooth, bibek.focusd, danexpo.crt, bylund.ledge, omarchy.network, jankeesvw.downloads, omarchy.indicators, bwzkk.vibrance",
           "pinned": ""
         },
         {
