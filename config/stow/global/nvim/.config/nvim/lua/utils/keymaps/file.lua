@@ -77,6 +77,20 @@ function M.implement_at_file_path(extra, extra_notif)
   vim.notify("Implement at file path copied" .. extra_notif, vim.log.levels.INFO)
 end
 
+-- "Implement" a simple high level plan contained in the current file
+function M.implement_simple()
+  local filepath = fn.expand("%:p")
+  if filepath == "" then
+    vim.notify("No file to implement", vim.log.levels.WARN)
+    return
+  end
+
+  local content = "this file contains a high level plan. read it and execute it: " .. filepath .. "\n"
+
+  fn.setreg("+", content)
+  vim.notify("Implement simple plan copied", vim.log.levels.INFO)
+end
+
 function M.implement_at_file_path_kiro()
   M.implement_at_file_path("ignore .kiro/steering instructions", "(for kiro)")
 end

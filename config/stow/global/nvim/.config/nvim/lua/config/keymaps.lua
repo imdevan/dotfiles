@@ -314,6 +314,7 @@ multi_set("n", "<leader>fp,<leader>il", file_utils.copy_file_path, { desc = "Cop
 set("n", "<leader>fP", file_utils.copy_full_file_path, { desc = "Copy full file path and line number" })
 
 set("n", "<leader>ii", file_utils.implement_at_file_path, { desc = "implement task" })
+set("n", "<leader>is", file_utils.implement_simple, { desc = "implement simple plan" })
 
 set(
   "n",
