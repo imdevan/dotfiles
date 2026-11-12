@@ -112,8 +112,8 @@ alias rndp='cd "/home/devy/Projects/react-native-dropdown-picker" && tmux rename
 # BM: qt|/home/devy/Projects/dance-partner-vibes|2026-05-01T17:32:50-07:00|2026-05-01T17:32:50-07:00|qt|||/home/devy/dotfiles/config/stow/qutebrowser/.config/qutebrowser/config.py
 alias qt='cd "/home/devy/Projects/dance-partner-vibes" && tmux rename-window "qt" && nvim "/home/devy/dotfiles/config/stow/qutebrowser/.config/qutebrowser/config.py"' # /home/devy/Projects/dance-partner-vibes
 
-# BM: hcl|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr|2026-05-01T18:25:22-07:00|2026-10-30T11:53:38-07:00|hcl|||./looknfeel.conf
-alias hcl='cd "/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr" && tmux rename-window "hcl" && nvim "./looknfeel.conf"' # /home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr
+# BM: hcl|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr|2026-05-01T18:25:22-07:00|2026-11-12T10:30:50-08:00|hcl|||looknfeel.lua
+alias hcl='cd "/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr" && tmux rename-window "hcl" && nvim "looknfeel.lua"' # /home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr
 
 # BM: hcw|/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr|2026-05-01T18:25:36-07:00|2026-05-01T18:25:36-07:00|hcw|||windows.conf
 alias hcw='cd "/home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr" && tmux rename-window "hcw" && nvim "windows.conf"' # /home/devy/dotfiles/config/stow/omarchyos/hypr/.config/hypr
@@ -207,18 +207,6 @@ alias a='cd "/home/devy/Projects/The Wheel/a"'
 
 # BM: ideas|/home/devy/Documents/Obsidian Vault|2026-06-27T09:10:15-07:00|2026-07-09T17:52:51-07:00|ideas|||./todo/Project Ideas.md
 alias ideas='cd "/home/devy/Documents/Obsidian Vault" && tmux rename-window "ideas" && nvim "./todo/Project Ideas.md"'
-
-# BM: ams|/home/devy/Projects/The Wheel/a|2026-06-28T00:50:37-07:00|2026-06-28T00:50:37-07:00|a|||
-alias ams='cd "/home/devy/Projects/The Wheel/a" && tmux rename-window "a"'
-
-# BM: fdsa|/home/devy/Projects/bookmark|2026-06-30T11:28:32-07:00|2026-06-30T11:28:32-07:00||||
-alias fdsa='cd "/home/devy/Projects/bookmark"'
-
-# BM: qwer|/home/devy/Projects/bookmark|2026-06-30T11:28:56-07:00|2026-06-30T11:28:56-07:00||||
-alias qwer='cd "/home/devy/Projects/bookmark"'
-
-# BM: foo|/home/devy/Projects/clis/bookmark|2026-06-30T20:37:41-07:00|2026-11-11T18:16:10-08:00|foo|echo "hello" \| cowsay||
-alias foo='cd "/home/devy/Projects/clis/bookmark" && tmux rename-window "foo" && echo "hello" | cowsay'
 
 # BM: vna|/home/devy/dotfiles/config/stow/nvim/.config/nvim|2026-07-02T10:52:38-07:00|2026-07-02T10:52:38-07:00|vn||aw|
 alias vna='cd "/home/devy/dotfiles/config/stow/nvim/.config/nvim" && tmux rename-window "vn" && aw'
@@ -366,4 +354,7 @@ alias fancy='cd "/home/devy/Projects/clis/bookmark" && tmux rename-window "fancy
 
 # BM: boos|/home/devy/dotfiles/config/stow/global/bookmarks/.bookmarks|2026-11-11T21:14:25-08:00|2026-11-11T21:14:25-08:00|bookdir|||
 alias boos='cd "/home/devy/dotfiles/config/stow/global/bookmarks/.bookmarks" && tmux rename-window "bookdir"' # bookmarks dir
+
+# BM: dots|/home/devy/dotfiles|2026-11-12T12:42:08-08:00|2026-11-12T12:42:08-08:00|dots|||
+alias dots='cd "/home/devy/dotfiles" && tmux rename-window "dots"'
 
