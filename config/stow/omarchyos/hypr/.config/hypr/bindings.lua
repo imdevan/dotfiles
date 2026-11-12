@@ -21,6 +21,9 @@ hl.unbind("SUPER + SHIFT + B") -- was: Browser
 hl.unbind("SUPER + SHIFT + C") -- was: Calendar (HEY)
 hl.unbind("SUPER + SHIFT + M") -- was: Music (Spotify)
 hl.unbind("SUPER + SHIFT + X") -- was: Twatter
+hl.unbind("SUPER + SHIFT + ?") -- was: 1Password
+hl.unbind("SUPER + SHIFT + /") -- was: 1Password
+hl.unbind("SUPER + ?")         -- was: 1Password
 
 -- Menus / system
 -- ================================================================================
