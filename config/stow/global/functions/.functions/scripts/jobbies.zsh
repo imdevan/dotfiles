@@ -1,9 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-
-# TODO: script
-
-# Function: jobbies
+# Script: jobbies
 # Description: Open google chrome to job search bookmarks with dynamic configuration
 # Usage: jobbies [keyword1] [keyword2] ... or jobbies --config to show configuration
 # Alias: j
@@ -110,5 +107,4 @@ function jobbies() {
   fi
 }
 
-# Create alias
-alias j="jobbies"
+jobbies "$@"

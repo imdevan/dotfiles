@@ -1,13 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script. possibly small go cli 
-
-
-
-# Function: simple_plan
+# Script: simple_plan
 # Description: Create simple plan from current dir from template
 # Usage: simple_plan [-f]
+#
+# possibly small go cli
 # Alias: simp
+
+source "$HOME/.functions/shared/has_flag.sh"
 
 function simple_plan() {
     mkdir -p plan
@@ -38,5 +38,4 @@ EOF
     nvim -c 'call feedkeys("/[\<CR>va[c", "n")' plan/simple.md
 }
 
-# Create alias
-alias simp="simple_plan"
+simple_plan "$@"

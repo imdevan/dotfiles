@@ -1,13 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-
-# TODO: script
-
-
-# Function: scripts
+# Script: scripts
 # Description: Show available scripts in package.json
 # Usage: scripts [arguments]
 # Alias: sc
+
+source "$HOME/.functions/shared/colors.sh"
 
 function scripts() {
     if [ -f "package.json" ]; then
@@ -53,5 +51,4 @@ function scripts() {
     fi
 }
 
-# Create alias
-alias sc="scripts"
+scripts "$@"

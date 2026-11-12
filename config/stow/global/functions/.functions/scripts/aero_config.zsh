@@ -1,18 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-
-# TODO: script. ossibly move inside of aerosace config stow dir
-
-
-# Function: aero_utils
-# Description: 
+# Script: aero_config
+# Description:
 #
 # Swap out aeorspace config files. 
 # This was implemented as a work around. Ideally specific properties should be updateable. 
 # Should probably also be an aero space plugin of some kind
 #
-# Usage: aero_utils [arguments]
-# Alias: au
+# Usage: aero_config [config_name]
+#
+# possibly move inside of aerosace config stow dir
+# Alias: ac
+
+dotfile_dir="${dotfile_dir:-$HOME/dotfiles}"
 
 function aero_config() {
     if [ -z "$dotfile_dir" ]; then
@@ -37,5 +37,4 @@ function aero_config() {
     fi
 }
 
-alias ac="aero_config"
-
+aero_config "$@"

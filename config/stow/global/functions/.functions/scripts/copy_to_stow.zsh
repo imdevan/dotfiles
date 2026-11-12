@@ -1,13 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script
-
-
-
-# Function: sto
-# Description: Functions to help with stowing dotfiles
-# Usage: sto [arguments]
-# Alias: s
+# Script: copy_to_stow
+# Description: Copy a file into the dotfiles stow directory
+# Usage: copy_to_stow <file> [stow_package]
+# Alias: cts
 
 function copy_to_stow() {
     # Function implementation goes here
@@ -25,4 +21,5 @@ function copy_to_stow() {
     # Copy the file to the stow directory
     cp $1 ~/dotfiles/config/stow/$file_name
 }
-alias cts="copy_to_stow"
+
+copy_to_stow "$@"

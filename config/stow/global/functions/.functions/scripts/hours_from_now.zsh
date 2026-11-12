@@ -1,9 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script
-
-
-# Function: hours_from_now
+# Script: hours_from_now
 # Description: take in a number of hours e.g. 154. print what day and time it will be after that many hours from current time
 # Usage: hours_from_now [arguments]
 # Alias: hfn
@@ -30,5 +27,4 @@ function hours_from_now() {
     echo "$result"
 }
 
-# Create alias
-alias hfn="hours_from_now"
+hours_from_now "$@"

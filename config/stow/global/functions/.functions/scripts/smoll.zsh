@@ -1,8 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script. name: smoll. possibly small go script
-
-# Function: smoll
+# Script: smoll
 # Description: make all imgs in folder small
 #   optionally take arg width
 #     default width: 420
@@ -13,6 +11,10 @@
 #   default dir: calling location
 #
 # Usage: smoll [width] [-d|--dir <dir>] [-t|--target <dir>]
+#
+# possibly small go script
+
+source "$HOME/.functions/shared/colors.sh"
 
 function smoll() {
   local width=420
@@ -63,3 +65,5 @@ function smoll() {
 
   echo "${green}smoll: ${bold}$count${reset}${green} image(s) -> $target (max width ${width}px)${reset}"
 }
+
+smoll "$@"

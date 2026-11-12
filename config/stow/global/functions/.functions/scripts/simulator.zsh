@@ -1,15 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-# TODO: script
-
-
-
-# Function: simulator
+# Script: simulator
 # Description: Create or open ios simulator
 # Usage: simulator [arguments]
-# Alias: s
+# Alias: simu
 
-# Function to handle simulator booting and opening
 function simulator() {
     local simulator_name=${1:-"iPhone 16"}
 
@@ -25,5 +20,4 @@ function simulator() {
     fi
 }
 
-# Create alias
-alias simu="simulator"
+simulator "$@"

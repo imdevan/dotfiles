@@ -1,9 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script
-
-
-# Function: clear_all_modules
+# Script: clear_all_modules
 # Description: Clear all specified folders (defaults to common build/module directories)
 # Usage: clear_all_modules [-f] [folder_name1] [folder_name2] ...
 # Examples:
@@ -11,7 +8,9 @@
 #   clear_all_modules -f                 # Force deletes common directories without prompts
 #   clear_all_modules dist                # Deletes all dist folders
 #   clear_all_modules node_modules dist   # Deletes all node_modules and dist folders
-# Alias: can! (with prompts), can!! (force mode)
+# Alias: can!
+
+source "$HOME/.functions/shared/colors.sh"
 
 function clear_all_modules() {
     local folders=()
@@ -88,7 +87,4 @@ function clear_all_modules() {
     echo "${green}All specified folders deleted.${reset}"
 }
 
-# Create alias
-alias 'can!'="clear_all_modules" # ! to prevent accidental trigger
-
-alias 'can!!'="clear_all_modules -f"
+clear_all_modules "$@"

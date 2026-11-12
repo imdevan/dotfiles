@@ -1,9 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script
-
-
-# Function: reverse_stow
+# Script: reverse_stow
 # Description: Put current directory in dotfiles/stow directory with name
 # Usage: reverse_stow [stow_name]
 # Alias: rs
@@ -117,5 +114,4 @@ function reverse_stow() {
     fi
 }
 
-# Create alias
-alias rs="reverse_stow"
+reverse_stow "$@"

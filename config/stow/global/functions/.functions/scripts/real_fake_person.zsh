@@ -1,10 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script
-
-# Function: real_fake_person
-# Description: [Add description here]
-# Usage: real_fake_person [arguments]
+# Script: real_fake_person
+# Description: Generate a fake person, append it to ~/Documents/rfp/real_fake_people.md and open it
+# Usage: real_fake_person
 # Alias: rfp
 
 RFP_FILE=~/Documents/rfp/real_fake_people.md
@@ -35,5 +33,4 @@ function real_fake_person() {
   nvim +$ "$RFP_FILE"
 }
 
-# Create alias
-alias rfp="real_fake_person"
+real_fake_person "$@"

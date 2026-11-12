@@ -1,10 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script
-
-
-
-# Function: which_lock
+# Script: which_lock
 # Description: Which lock file in directory
 # Usage: which_lock [arguments]
 # Alias: wl
@@ -38,5 +34,4 @@ function which_lock() {
     fi
 }
 
-# Create alias
-alias wl="which_lock"
+which_lock "$@"

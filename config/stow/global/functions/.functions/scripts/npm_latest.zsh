@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
-# TODO: script
-
-# Function: npm_latest
+# Script: npm_latest
 # Description: Get the latest version of package published to npm
 # Usage: npm_latest [arguments]
-# Alias: n
+# Alias: nl
+
+source "$HOME/.functions/shared/colors.sh"
 
 function npm_latest() {
     # Function implementation goes here
@@ -21,5 +21,4 @@ function npm_latest() {
 
 }
 
-# Create alias
-alias nl="npm_latest"
+npm_latest "$@"
