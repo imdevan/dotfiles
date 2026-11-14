@@ -93,7 +93,8 @@ zstyle ':fzf-tab:*' continuous-trigger ''
 # ================================================================================
 export PATH="${HOME}/.cargo/bin:${PATH}"
 export PATH="$PATH:$HOME/.local/bin"
-export ANDROID_HOME=/opt/android-sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_AVD_HOME=$HOME/.config/.android/avd
 export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
 export NU_CONFIG_DIR="$HOME/.config/nushell"
 
