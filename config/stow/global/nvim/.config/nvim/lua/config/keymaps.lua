@@ -279,8 +279,9 @@ set("n", "<leader>gA", git_utils.lazy_nested_commit, { desc = "Lazy add & commit
 -- set("v", "<leader>pM", math_utils.apply_math_to_numbers, { desc = "Apply math expression to all numbers in selection" })
 
 -- Case (toggle)
--- TODO: validate and probably remap for convience
-set("i", "<leader>pcc", "~", { desc = "Toggle case" })
+-- Removed: insert-mode <leader> maps make every typed <Space> wait for timeoutlen.
+-- Toggle case in normal mode with `~` instead.
+-- set("i", "<leader>pcc", "~", { desc = "Toggle case" })
 
 -- Context-aware navigation
 
@@ -327,6 +328,7 @@ set(
 
 set("n", "<leader>ig", file_utils.implement_feature_prompt, { desc = "Implement feature with tasks" })
 set("n", "<leader>if", file_utils.feature_task_prompt, { desc = "Create tasks for feature" })
+set("n", "<leader>i<M-f>", file_utils.feature_function_prompt, { desc = "Implement function" })
 set(
   "n",
   "<leader>iF",
