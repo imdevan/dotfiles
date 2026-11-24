@@ -61,8 +61,8 @@ alias prom='cd "/home/devy/Projects/prompter/prompter-cli" && tmux rename-window
 # BM: dstar|/home/devy/dotfiles/dotfiles-starter|2026-03-06T19:07:27-08:00|2026-03-06T19:07:27-08:00|dstar|||
 alias dstar='cd "/home/devy/dotfiles/dotfiles-starter" && tmux rename-window "dstar"'
 
-# BM: ms|/home/devy/Projects/meassuring-spoon|2026-03-08T15:38:14-07:00|2026-03-08T15:38:14-07:00|ms|||
-alias ms='cd "/home/devy/Projects/meassuring-spoon" && tmux rename-window "ms"'
+# BM: ms|/home/devy/Projects/ms|2026-03-08T15:38:14-07:00|2026-11-22T00:59:08-08:00|ms|||
+alias ms='cd "/home/devy/Projects/ms" && tmux rename-window "ms"'
 
 # BM: d4js|/home/devy/Projects/dotfiles-for-web-devs-presentation|2026-03-10T16:44:25-07:00|2026-03-10T16:44:25-07:00|d4js|||
 alias d4js='cd "/home/devy/Projects/dotfiles-for-web-devs-presentation" && tmux rename-window "d4js"'
@@ -357,4 +357,7 @@ alias boos='cd "/home/devy/dotfiles/config/stow/global/bookmarks/.bookmarks" && 
 
 # BM: dots|/home/devy/dotfiles|2026-11-12T12:42:08-08:00|2026-11-12T12:42:08-08:00|dots|||
 alias dots='cd "/home/devy/dotfiles" && tmux rename-window "dots"'
+
+# BM: rec|/home/devy/Projects/recap/recap-app|2026-11-17T16:03:00-08:00|2026-11-17T16:03:00-08:00|rec|||
+alias rec='cd "/home/devy/Projects/recap/recap-app" && tmux rename-window "rec"'
 
