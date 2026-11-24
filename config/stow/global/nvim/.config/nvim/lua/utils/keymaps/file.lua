@@ -126,6 +126,11 @@ function M.implement_feature_prompt()
   vim.notify("Implement feature prompt copied", vim.log.levels.INFO)
 end
 
+function M.feature_function_prompt()
+  fn.setreg("+", build_feature_prompt(nil, "implement this function: "))
+  vim.notify("Implement function prompt copied", vim.log.levels.INFO)
+end
+
 function M.feature_task_prompt_high_level()
   fn.setreg(
     "+",
