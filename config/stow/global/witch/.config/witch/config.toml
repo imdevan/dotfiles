@@ -1,0 +1,63 @@
+# witch configuration
+
+# General
+# editor = "nvim"
+
+# CLI behavior
+# Open the interactive list when run with no name (or no exact match) on a terminal.
+# interactive_default = true
+
+# What enter does in the interactive browser: "execute" runs the selection
+# (in your current shell with `eval "$(witch init zsh)"`), "print" prints it like witch <name>.
+# enter_action = "execute"
+
+# Index executables on $PATH (like which). Set false to only search sources.
+# index_path = true
+
+# UI
+# Render the interactive browser fullscreen (alternate screen, whole terminal pane)
+# instead of inline below the prompt.
+fullscreen = true
+# list_spacing options: compact (title only), tight (title + description, no margin), space (default, with spacing)
+# list_spacing = "space"
+
+# Colors
+# Colors support named, numeric, or hex values (ex: 7, 13, "#ff8800").
+# headings = "15"
+# primary = "02"
+# secondary = "06"
+# text = "07"
+# text_highlight = "06"
+# description_highlight = "05"
+# tags = "13"
+# flags = "12"
+# accent = "13"
+# muted = "08"
+# border = "08"
+# Background for the entry name and search term in the preview
+# highlight = "03"
+
+# Sources
+# Shell files or directories to parse for aliases and functions.
+# Directories are searched recursively. There are no default sources:
+# without any, witch only searches $PATH, like which.
+# Paths support ~ and $VARS; relative paths are relative to this file.
+#
+[[sources]]
+path = "~/.bookmarks/"
+
+[[sources]]
+path = "~/.aliases/"
+
+[[sources]]
+path = "~/.functions/"
+
+# Ignore
+# Files, directories, or glob patterns to skip inside sources.
+# A glob without a slash (like "*.zwc") matches file names anywhere.
+#
+# [[ignore]]
+# path = "*.zwc"
+#
+# [[ignore]]
+# path = "~/.config/zsh/plugins/**"
