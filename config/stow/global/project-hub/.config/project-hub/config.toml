@@ -7,7 +7,7 @@
 workspace_location = "~/Projects"  # Workspace root: always indexed, and where `import` clones projects (e.g. "~/Projects")
 # index_folders = []  # Additional glob patterns to scan for projects, indexed alongside workspace_location (e.g. ["~/work/*"])
 # ignore_folders = ["node_modules", "dist", "bin", ".git", ".vscode", "vendor", "build", "target", "pkg", ".venv"]
-# show_taskless = false  # When false: hide projects that don't have any tasks
+# show_taskless = true  # When false: hide projects that don't have any tasks
 # fts_files = ["plan/tasks.md", "plan/simple.md", "todo.md", "tasks.md", "PLAN.md"]
 # fts_features = ["## Feature ", "### Feature "]
 # fts_tasks = ["- [ ] ", "* [ ] "]
