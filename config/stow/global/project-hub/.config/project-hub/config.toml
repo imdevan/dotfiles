@@ -1,0 +1,50 @@
+# Configuration
+
+# General
+# editor = "nvim"
+
+# Settings
+workspace_location = "~/Projects"  # Workspace root: always indexed, and where `import` clones projects (e.g. "~/Projects")
+# index_folders = []  # Additional glob patterns to scan for projects, indexed alongside workspace_location (e.g. ["~/work/*"])
+# ignore_folders = ["node_modules", "dist", "bin", ".git", ".vscode", "vendor", "build", "target", "pkg", ".venv"]
+# show_taskless = false  # When false: hide projects that don't have any tasks
+# fts_files = ["plan/tasks.md", "plan/simple.md", "todo.md", "tasks.md", "PLAN.md"]
+# fts_features = ["## Feature ", "### Feature "]
+# fts_tasks = ["- [ ] ", "* [ ] "]
+# fts_subtasks = ["- [ ] ", "* [ ] "]
+# todo_tokens = ["TODO", "FIXME"]
+# open_with_tmux = false  # When true: opens project editor in a new tmux window named after the project
+# sync_interval = 3600  # Seconds between project scans (default: 3600 = 1 hour). Set to 0 to always rescan.
+
+# Display
+# home_icon = "~"  # Icon to represent home directory in list view
+# default_sort_by = "newest"  # Options: newest, oldest, a-z, z-a
+
+# UI
+# list_spacing options: compact, tight, space
+# list_spacing = "space"
+
+# Colors
+# Colors support named, numeric, or hex values (ex: 7, 13, "#ff8800").
+# [colors]
+# headings = "15"
+# primary = "02"
+# secondary = "06"
+# text = "07"
+# text_highlight = "06"
+# description_highlight = "05"
+# tags = "13"
+# flags = "12"
+# muted = "08"
+# border = "08"
+# error = "01"
+# success = "02"
+# title = "15"
+# highlight_border = "02"
+# name = "07"
+# highlight_name = "10"
+# tasks = "13"
+# progress_bg = "08"
+# progress_fg = "02"
+# highlight_progress_bg = "08"
+# highlight_progress_fg = "10"
