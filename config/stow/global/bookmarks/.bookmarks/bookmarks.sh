@@ -322,8 +322,8 @@ alias coding='cd "/home/devy/Music/coding" && tmux rename-window "coding" && mpv
 # BM: func|/home/devy/Projects/clis/func|2026-10-29T23:40:15-07:00|2026-10-29T23:40:15-07:00|func|||
 alias func='cd "/home/devy/Projects/clis/func" && tmux rename-window "func"'
 
-# BM: sto|/home/devy/Projects/clis/super-todo|2026-10-30T14:56:28-07:00|2026-10-30T14:56:28-07:00|sto|cw||
-alias sto='cd "/home/devy/Projects/clis/super-todo" && tmux rename-window "sto" && cw'
+# BM: sto|/home/devy/dotfiles/config/stow|2026-10-30T14:56:28-07:00|2026-11-25T11:47:17-08:00|sto|||
+alias sto='cd "/home/devy/dotfiles/config/stow" && tmux rename-window "sto"'
 
 # BM: vq|/home/devy/dotfiles/config/stow/global/qutebrowser|2026-11-02T16:45:34-08:00|2026-11-02T16:45:34-08:00|vq|||.config/qutebrowser/config.py
 alias vq='cd "/home/devy/dotfiles/config/stow/global/qutebrowser" && tmux rename-window "vq" && nvim ".config/qutebrowser/config.py"' # /home/devy/dotfiles/config/stow/global/qutebrowser
@@ -360,4 +360,7 @@ alias dots='cd "/home/devy/dotfiles" && tmux rename-window "dots"'
 
 # BM: rec|/home/devy/Projects/recap/recap-app|2026-11-17T16:03:00-08:00|2026-11-17T16:03:00-08:00|rec|||
 alias rec='cd "/home/devy/Projects/recap/recap-app" && tmux rename-window "rec"'
+
+# BM: pho|/home/devy/Projects/clis/project-hub|2026-11-25T10:59:05-08:00|2026-11-25T10:59:05-08:00|ph|||
+alias pho='cd "/home/devy/Projects/clis/project-hub" && tmux rename-window "ph"'
 
