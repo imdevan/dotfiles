@@ -2,7 +2,7 @@
   "LazyVim": { "branch": "main", "commit": "999700997f72227187d49d8b92667183dc7fc809" },
   "LuaSnip": { "branch": "master", "commit": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24" },
   "SchemaStore.nvim": { "branch": "main", "commit": "bc61f7c787ccd31e06d84991bd399c2aca421f43" },
-  "aether.nvim": { "branch": "v3", "commit": "567efb778534e11ee1072d4fe27178f705a27d8a" },
+  "aether": { "branch": "v3", "commit": "567efb778534e11ee1072d4fe27178f705a27d8a" },
   "astrolsp": { "branch": "main", "commit": "41810aa99789c5fcd2480a0e4ba27d3038afdd61" },
   "bamboo.nvim": { "branch": "master", "commit": "1309bc88bffcf1bedc3e84e7fa9004de93da774a" },
   "be-bold.nvim": { "branch": "main", "commit": "ab7a7a6482cdab4414c3a9b25bc489a92aae233a" },
